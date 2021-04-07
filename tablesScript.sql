@@ -1,55 +1,67 @@
--- Database: tinderdb
--- CREATE DATABASE tinderDB
- -- CREATE TABLE users(
+-- Database: tinderdb;
+
+-- Comment all and run this ine first
+-- DROP DATABASE IF EXISTS tinderDB;
+
+-- Comment all and run this line econd
+-- CREATE DATABASE tinderDB;
+
+-- #### After this PSQL Statement Create a new Query window from tinderDB OR connect to tinderDB using ~\c tinderDB~
+-- #### PSQL cannot select a database using a script
+
+
+-- CREATE TABLE users(
 -- "id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 -- email varchar(200) UNIQUE NOT NULL,
 -- "password" varchar(200) NOT NULL,
--- is_banned boolean NOT NULL,
--- is_premium boolean NOT NULL,
+-- is_banned boolean DEFAULT FALSE,
+-- is_premium boolean DEFAULT FALSE,
 -- credit_card_token nchar(200),
 -- first_name varchar(200),
--- last_name varchar(200)
- -- )
+-- last_name varchar(200),
+-- CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$')
+-- );
 -- CREATE TABLE moderators(
 -- "id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 -- email varchar(200) UNIQUE NOT NULL,
--- "password" varchar(200) NOT NULL
- -- )
- -- CREATE TABLE INTERESTS("id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- "password" varchar(200) NOT NULL,
+-- CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$')
+-- );
+-- CREATE TABLE INTERESTS("id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 -- "name" NCHAR(200) NOT NULL
--- 	)
- -- CREATE TYPE interaction_type AS ENUM('like', 'dislike','super_like');
+-- );
+-- CREATE TYPE interaction_type AS ENUM('like', 'dislike','super_like');
 -- CREATE TABLE interactions(
--- interaction_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- "id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 -- source_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
 -- target_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
 -- "type" interaction_type NOT NULL,
 -- created_at timestamp DEFAULT current_timestamp
- -- )
- -- CREATE TABLE blocks(
+-- );
+-- CREATE TABLE blocks(
 -- source_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
 -- target_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
 -- created_at timestamp DEFAULT current_timestamp,
 -- PRIMARY KEY (source_user_id,target_user_id)
- -- )
- -- CREATE TABLE reports(
--- report_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- );
+-- CREATE TABLE reports(
+-- "id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 -- source_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
 -- target_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
 -- reason varchar(400),
 -- created_at timestamp DEFAULT current_timestamp
- -- )
- -- CREATE TABLE transactions(
--- transaction_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- );
+-- CREATE TABLE transactions(
+-- "id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 -- user_id int REFERENCES users("id"),
 -- amount money NOT NULL,
 -- created_at timestamp DEFAULT current_timestamp
- -- )
- -- CREATE TABLE bans(
--- ban_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- );
+-- CREATE TABLE bans(
+-- "id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 -- moderator_id int REFERENCES moderators("id")  NOT NULL,
 -- user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
 -- reason varchar(400),
 -- created_at timestamp DEFAULT current_timestamp,
 -- expiry_date date NOT NULL
- -- )
+-- );
