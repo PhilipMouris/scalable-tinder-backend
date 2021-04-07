@@ -1,0 +1,57 @@
+-- Database: tinderdb
+ -- DROP DATABASE tinderdb;
+ -- USING tinderDB
+-- GO
+ -- CREATE TABLE users(
+-- "id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- email varchar(200) UNIQUE NOT NULL,
+-- "password" varchar(200) NOT NULL,
+-- is_banned boolean NOT NULL,
+-- is_premium boolean NOT NULL,
+-- credit_card_token nchar(200),
+-- first_name varchar(200),
+-- last_name varchar(200)
+ -- )
+-- CREATE TABLE moderators(
+-- "id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- email varchar(200) UNIQUE NOT NULL,
+-- "password" varchar(200) NOT NULL
+ -- )
+ -- CREATE TABLE INTERESTS("id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- "name" NCHAR(200) NOT NULL
+-- 	)
+ -- CREATE TYPE interaction_type AS ENUM('like', 'dislike','super_like');
+-- CREATE TABLE interactions(
+-- interaction_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- source_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
+-- target_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
+-- "type" interaction_type NOT NULL,
+-- created_at timestamp DEFAULT current_timestamp
+ -- )
+ -- CREATE TABLE blocks(
+-- source_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
+-- target_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
+-- created_at timestamp DEFAULT current_timestamp,
+-- PRIMARY KEY (source_user_id,target_user_id)
+ -- )
+ -- CREATE TABLE reports(
+-- report_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- source_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
+-- target_user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
+-- reason varchar(400),
+-- created_at timestamp DEFAULT current_timestamp
+ -- )
+ -- CREATE TABLE transactions(
+-- transaction_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- user_id int REFERENCES users("id"),
+-- amount money NOT NULL,
+-- created_at timestamp DEFAULT current_timestamp
+ -- )
+ -- CREATE TABLE bans(
+-- ban_id int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+-- moderator_id int REFERENCES moderators("id")  NOT NULL,
+-- user_id int REFERENCES users("id") ON DELETE CASCADE NOT NULL,
+-- reason varchar(400),
+-- created_at timestamp DEFAULT current_timestamp,
+-- expiry_date date NOT NULL
+ -- )
