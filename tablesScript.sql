@@ -1,7 +1,5 @@
 -- Database: tinderdb
- -- DROP DATABASE tinderdb;
- -- USING tinderDB
--- GO
+-- CREATE DATABASE tinderDB
  -- CREATE TABLE users(
 -- "id" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 -- email varchar(200) UNIQUE NOT NULL,
