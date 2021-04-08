@@ -17,8 +17,8 @@
 -- is_banned boolean DEFAULT FALSE,
 -- is_premium boolean DEFAULT FALSE,
 -- credit_card_token nchar(200),
--- first_name varchar(200),
--- last_name varchar(200),
+-- first_name varchar(200) NOT NULL,
+-- last_name varchar(200) NOT NULL,
 -- CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$')
 -- );
 -- CREATE TABLE moderators(
