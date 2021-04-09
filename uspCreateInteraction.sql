@@ -8,8 +8,8 @@ language plpgsql
 AS $$
 	begin
 
-		insert into interactions(source_user_id,target_user_id,"type",created_at) 
-		values (@source_user_id,@target_user_id,@"type",CURRENT_TIMESTAMP);		
+		insert into public.interactions(source_user_id,target_user_id,"type",created_at) 
+		values (source_user_id,target_user_id,"type",CURRENT_TIMESTAMP);		
 	
 	commit;
 	end; $$
