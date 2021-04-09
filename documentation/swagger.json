@@ -15,6 +15,18 @@
     {
       "name": "user",
       "description": "Operations about user"
+    },
+    {
+      "name": "blocks",
+      "description": "Operations about blocks"
+    },
+    {
+      "name": "transactions",
+      "description": "Operations about transactions"
+    },
+    {
+      "name": "bans",
+      "description": "Operations about bans"
     }
   ],
   "schemes": ["https"],
@@ -353,6 +365,881 @@
           }
         },
         "produces": ["application/json"]
+      }
+    },
+    "/moderator/ban": {
+      "post": {
+        "tags": ["bans"],
+        "summary": "moderator bans a certain user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "moderator_id": {
+                  "type": "int"
+                },
+                "user_id": {
+                  "type": "int"
+                },
+                "reason": {
+                  "type": "string",
+                  "example": "Discrimination Messages"
+                },
+                "expiry_date": {
+                  "type": "date",
+                  "example": "2020-04-03"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user banned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "date",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/updateBan": {
+      "put": {
+        "tags": ["bans"],
+        "summary": "moderator updates an existing ban",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "int"
+                },
+                "moderator_id": {
+                  "type": "int"
+                },
+                "user_id": {
+                  "type": "int"
+                },
+                "reason": {
+                  "type": "string",
+                  "example": "Discrimination Messages"
+                },
+                "expiry_date": {
+                  "type": "date",
+                  "example": "2020-04-03"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user ban updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "date",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/readBans/{id}": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "moderator reads all bans that he made",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "all moderator bans",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "date",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/readBans/{id}": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "user reads all bans that were made on him",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "all user bans",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "date",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/readBans/{mod_id}/{user_id}": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "read all bans that a moderator made on a user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "mod_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "all bans that a moderator made on a user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "date",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/readBans": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "read all bans ",
+        "produces": ["application/json"],
+        "parameters": [
+        ],
+        "responses": {
+          "200": {
+            "description": "all bans ",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "date",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/readBan/{id}": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "read a specific ban",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned Ban",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "date",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/moderator/ban/{id}": {
+      "delete": {
+        "tags": ["bans"],
+        "summary": "delete a specific ban",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted Ban Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateTransaction": {
+      "put": {
+        "tags": ["transactions"],
+        "summary": "update existing transaction",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "int"
+                },
+                "user_id": {
+                  "type": "int"
+                },
+                "amount": {
+                  "type": "money",
+                  "example": "$50,000"
+                },
+                "created_at": {
+                  "type": "timestamp",
+                  "example": "2021-04-08 21:32:36.504188"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "transaction updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "amount": {
+                      "type": "money",
+                      "example": "$50,000"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/readTransactions": {
+      "get": {
+        "tags": ["transactions"],
+        "summary": "get all transactions",
+        "produces": ["application/json"],
+        "parameters": [
+         
+        ],
+        "responses": {
+          "200": {
+            "description": "All Transactions Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "amount": {
+                      "type": "money",
+                      "example": "$50,000"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/readTransactions/{user_id}": {
+      "get": {
+        "tags": ["transactions"],
+        "summary": "get all transactions of a user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Transactions of User Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "amount": {
+                      "type": "money",
+                      "example": "$50,000"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/{id}": {
+      "get": {
+        "tags": ["transactions"],
+        "summary": "Get a specific transaction user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Transactions of User Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "int"
+                    },
+                    "user_id": {
+                      "type": "int"
+                    },
+                    "amount": {
+                      "type": "money",
+                      "example": "$50,000"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/{id}": {
+      "delete": {
+        "tags": ["transactions"],
+        "summary": "Delete a specific transaction user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted Transaction Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "int"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/updateBlock": {
+      "put": {
+        "tags": ["blocks"],
+        "summary": "Update an existing Block",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "source_id": {
+                  "type": "int"
+                },
+                "target_id": {
+                  "type": "int"
+                },
+                "created_at": {
+                  "type": "timestamp",
+                  "example": "2021-04-08 21:32:36.504188"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "block updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "int"
+                    },
+                    "target_id": {
+                      "type": "int"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/blocks": {
+      "get": {
+        "tags": ["blocks"],
+        "summary": "get all blocks",
+        "produces": ["application/json"],
+        "parameters": [
+         
+        ],
+        "responses": {
+          "200": {
+            "description": "All Blocks Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "int"
+                    },
+                    "target_id": {
+                      "type": "int"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "user/blocks/{source_id}": {
+      "get": {
+        "tags": ["blocks"],
+        "summary": "get all block done by a user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "source_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Blocks of User Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "int"
+                    },
+                    "target_id": {
+                      "type": "int"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "user/blocks/{target_id}": {
+      "get": {
+        "tags": ["blocks"],
+        "summary": "get all block done on a user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "target_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Blocks on a User Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "int"
+                    },
+                    "target_id": {
+                      "type": "int"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "user/blocks/{source_id}/{target_id}": {
+      "delete": {
+        "tags": ["blocks"],
+        "summary": "Delete a specific Block",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "source_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "target_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A block is deleted",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "int"
+                    },
+                    "target_id": {
+                      "type": "int"
+                    },
+                    "created_at": {
+                      "type": "timestamp",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
