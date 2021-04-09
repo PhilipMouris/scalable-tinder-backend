@@ -58,8 +58,7 @@ CREATE OR REPLACE FUNCTION "uspUpdateInteraction"(
 	id integer,
 	source_user_id int DEFAULT NULL,
 	target_user_id int DEFAULT NULL,
-	type interaction_type DEFAULT NULL,
-	created_at timestamp without time zone DEFAULT NULL)
+	type interaction_type DEFAULT NULL)
 	RETURNS interactionData
     LANGUAGE 'plpgsql'
 AS $$
@@ -68,20 +67,21 @@ BEGIN
     UPDATE interactions
        SET source_user_id      = COALESCE(uspUpdateInteraction.source_user_id, interactions.source_user_id),
            target_user_id      = COALESCE(uspUpdateInteraction.target_user_id, interactions.target_user_id),
-           "type"              = COALESCE(uspUpdateInteraction.type, interactions.type),
-           created_at          = COALESCE(uspUpdateInteraction.created_at, interactions.created_at)
+           "type"              = COALESCE(uspUpdateInteraction.type, interactions.type)
      WHERE interactions.id = uspUpdateInteraction.id
      RETURNING * INTO updated_interaction;
 	 RETURN updated_interaction;
 END;$$
 ;
 
-CREATE OR REPLACE PROCEDURE "uspDeleteInteraction"(interaction_id int)
+CREATE OR REPLACE FUNCTION "uspDeleteInteraction"(interaction_id int)
+RETURNS int
 LANGUAGE 'plpgsql'
 AS $$
 BEGIN
 	DELETE FROM public.interactions 
 	WHERE public.interactions.id = interaction_id;
+	RETURN interaction_id;
 END;$$
 ;
 
@@ -98,32 +98,28 @@ END;$$
 
 CREATE OR REPLACE FUNCTION "uspUpdateReport"(
 	id integer,
-	source_user_id int DEFAULT NULL,
-	target_user_id int DEFAULT NULL,
-	reason varchar(400) DEFAULT NULL,
-	created_at timestamp without time zone DEFAULT NULL)
+	reason varchar(400) DEFAULT NULL)
 	RETURNS reportData
     LANGUAGE 'plpgsql'
 AS $$
 DECLARE updated_report reportData;
 BEGIN
     UPDATE reports
-       SET source_user_id      = COALESCE(uspUpdateReport.source_user_id, reports.source_user_id),
-           target_user_id      = COALESCE(uspUpdateReport.target_user_id, reports.target_user_id),
-           reason              = COALESCE(uspUpdateReport.reason, reports.reason),
-           created_at          = COALESCE(uspUpdateReport.created_at, reports.created_at)
+       SET reason = COALESCE(uspUpdateReport.reason, reports.reason)
      WHERE reports.id = uspUpdateReport.id
 	 RETURNING * INTO updated_report;
      RETURN updated_report;
 END;$$
 ;
 
-CREATE OR REPLACE PROCEDURE "uspDeleteReport"(report_id int)
+CREATE OR REPLACE FUNCTION "uspDeleteReport"(report_id int)
+RETURNS int
 LANGUAGE 'plpgsql'
 AS $$
 BEGIN
 	DELETE FROM public.reports 
 	WHERE public.reports.id = report_id;
+	RETURN report_id;
 END;$$
 ;
 
