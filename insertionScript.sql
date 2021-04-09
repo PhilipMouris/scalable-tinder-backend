@@ -6,6 +6,30 @@ INSERT INTO public.users(
 	
 	INSERT INTO public.users(
 	email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
+	VALUES ('doja.cat@gmail.com', 123456789, false, false, NULL, 'Doja', 'Cat');
+	
+	INSERT INTO public.users(
+	email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
+	VALUES ('billie.eilish@gmail.com', 123456789, false, false, NULL, 'Billie', 'Eilish');
+	
+	INSERT INTO public.users(
+	email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
+	VALUES ('megan.stalyon@gmail.com', 123456789, false, false, NULL, 'Megan', 'The Stalyon');
+	
+	INSERT INTO public.users(
+	email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
+	VALUES ('selena.gomez@gmail.com', 123456789, false, false, NULL, 'Selena', 'Gomez');
+	
+	INSERT INTO public.users(
+	email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
+	VALUES ('justin.bieber@gmail.com', 123456789, false, false, NULL, 'Justin', 'Bieber');
+	
+	INSERT INTO public.users(
+	email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
+	VALUES ('post.malone@gmail.com', 123456789, false, false, NULL, 'Post', 'Malone');
+	
+	INSERT INTO public.users(
+	email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
 	VALUES ('taylor.swift@gmail.com', 123456789, false, true, 5186975364203198, 'Taylor', 'Swift');
 	
 	INSERT INTO public.users(
@@ -52,35 +76,16 @@ INSERT INTO public.users(
 	email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
 	VALUES ('miley.cyrus@gmail.com', 123456789, false, false, NULL, 'Miley', 'Cyrus');
 	
-	INSERT INTO public.users(
-	id, email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
-	OVERRIDING SYSTEM VALUE
-	VALUES (2,'doja.cat@gmail.com', 123456789, false, false, NULL, 'Doja', 'Cat');
+----------------------------------------------------------------------------------------------------
 
-	INSERT INTO public.users(
-	id, email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
-	OVERRIDING SYSTEM VALUE
-	VALUES (3,'billie.eilish@gmail.com', 123456789, false, false, NULL, 'Billie', 'Eilish');
-	
-	INSERT INTO public.users(
-	id, email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
-	OVERRIDING SYSTEM VALUE
-	VALUES (4,'megan.stalyon@gmail.com', 123456789, false, false, NULL, 'Megan', 'The Stalyon');
-	
-	INSERT INTO public.users(
-	id, email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
-	OVERRIDING SYSTEM VALUE
-	VALUES (5,'selena.gomez@gmail.com', 123456789, false, false, NULL, 'Selena', 'Gomez');
-	
-	INSERT INTO public.users(
-	id, email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
-	OVERRIDING SYSTEM VALUE
-	VALUES (6,'justin.bieber@gmail.com', 123456789, false, false, NULL, 'Justin', 'Bieber');
-	
-	INSERT INTO public.users(
-	id, email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
-	OVERRIDING SYSTEM VALUE
-	VALUES (7,'post.malone@gmail.com', 123456789, false, false, NULL, 'Post', 'Malone');
+--Moderators
+
+INSERT INTO public.moderators(
+	email, password)
+	VALUES ( 'hussein.badr@gmail.com', 123456789);
+INSERT INTO public.moderators(
+	email, password)
+	VALUES ( 'youssef.sameh@gmail.com', 123456789);
 
 ----------------------------------------------------------------------------------------------------
 
@@ -251,14 +256,5 @@ INSERT INTO public.transactions(
 	user_id, amount, created_at)
 	VALUES ( 12, 119.94, '2021-03-09 13:48:27.110024');
 	
-----------------------------------------------------------------------------------------------------
 
---Moderators
-
-INSERT INTO public.moderators(
-	email, password)
-	VALUES ( 'hussein.badr@gmail.com', 123456789);
-INSERT INTO public.moderators(
-	email, password)
-	VALUES ( 'youssef.sameh@gmail.com', 123456789);
 	
