@@ -1,6 +1,8 @@
+
+BEGIN;
 -- Users
 
-INSERT INTO public.users(
+	INSERT INTO public.users(
 	email, password, is_banned, is_premium, credit_card_token, first_name, last_name)
 	VALUES ('ariannagrande@gmail.com', 123456789, false, false, NULL, 'Arianna', 'Grande');
 	
@@ -80,10 +82,10 @@ INSERT INTO public.users(
 
 --Moderators
 
-INSERT INTO public.moderators(
+	INSERT INTO public.moderators(
 	email, password)
 	VALUES ( 'hussein.badr@gmail.com', 123456789);
-INSERT INTO public.moderators(
+	INSERT INTO public.moderators(
 	email, password)
 	VALUES ( 'youssef.sameh@gmail.com', 123456789);
 
@@ -91,7 +93,7 @@ INSERT INTO public.moderators(
 
 --Interests
 
-INSERT INTO public.interests(
+	INSERT INTO public.interests(
 	 name)
 	VALUES ( 'Surfing');
 	
@@ -163,51 +165,51 @@ INSERT INTO public.interests(
 	source_user_id, target_user_id, type)
 	VALUES ( 16, 1, 'like');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 16, 12, 'dislike');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 16, 13, 'super_like');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 16, 14, 'dislike');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 16, 15, 'like');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 1, 16, 'like');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 1, 8, 'dislike');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 8, 12, 'dislike');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 11, 15, 'super_like');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 15, 11, 'super_like');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 12, 16, 'like');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 18, 19, 'like');
 	
-INSERT INTO public.interactions(
+	INSERT INTO public.interactions(
 	source_user_id, target_user_id, type)
 	VALUES ( 19, 18, 'like');
 	
@@ -215,7 +217,7 @@ INSERT INTO public.interactions(
 
 --Reports
 
-INSERT INTO public.reports(
+	INSERT INTO public.reports(
 	source_user_id, target_user_id, reason, created_at)
 	VALUES (1, 17, 'racist bio', '2021-04-08 13:48:27.110024');
 	
@@ -224,7 +226,7 @@ INSERT INTO public.reports(
 
 --Blocks
 
-INSERT INTO public.blocks(
+	INSERT INTO public.blocks(
 	source_user_id, target_user_id)
 	VALUES (19, 18);
 	
@@ -232,7 +234,7 @@ INSERT INTO public.blocks(
 
 --Bans
 
-INSERT INTO public.bans(
+	INSERT INTO public.bans(
 	moderator_id, user_id, reason, expiry_date)
 	VALUES (1, 17, 'racist bio', '2021-09-09 13:48:27.110024');
 	
@@ -240,21 +242,19 @@ INSERT INTO public.bans(
 
 --Transactions
 
-INSERT INTO public.transactions(
+	INSERT INTO public.transactions(
 	user_id, amount, created_at)
 	VALUES ( 16, 19.99, '2021-04-09 13:48:27.110024');
 	
-INSERT INTO public.transactions(
+	INSERT INTO public.transactions(
 	user_id, amount, created_at)
 	VALUES ( 15, 39.98, '2021-04-07 13:48:27.110024');
 	
-INSERT INTO public.transactions(
+	INSERT INTO public.transactions(
 	user_id, amount, created_at)
 	VALUES ( 11, 59.97, '2021-04-01 13:48:27.110024');
 	
-INSERT INTO public.transactions(
+	INSERT INTO public.transactions(
 	user_id, amount, created_at)
 	VALUES ( 12, 119.94, '2021-03-09 13:48:27.110024');
-	
-
-	
+COMMIT;
