@@ -1,5 +1,5 @@
 
---DROP TYPE IF EXISTS userPublicData; 
+-- DROP TYPE IF EXISTS userPublicData; 
 CREATE TYPE userPublicData AS(
     id INT,
 	email VARCHAR,
@@ -22,7 +22,7 @@ CREATE TYPE userProfile AS(
 --DROP FUNCTION IF EXISTS  uspSignUp;
 CREATE OR REPLACE FUNCTION uspSignUp(
 	_email VARCHAR(200),
-	_"password" VARCHAR(200),
+	"_password" VARCHAR(200),
 	_first_name VARCHAR(200),
 	_last_name  VARCHAR(200)
 ) RETURNS userPublicData
