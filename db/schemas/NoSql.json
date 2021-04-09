@@ -43,8 +43,6 @@
   "userData": {
     "id": "(var char)",
     "gender": "ENUM(Male/Female)",
-    "firstName": "string",
-    "lastName": "string",
     "bio": "(string)",
     "birthDate": "(datetime)",
     "age": "(int)",
