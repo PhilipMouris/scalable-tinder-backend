@@ -22,7 +22,7 @@ AS $$
 DECLARE
 	new_report_data reportData;
 BEGIN
-	INSERT INTO public.blocks(source_user_id, target_user_id, reason, created_at) VALUES (_source_user_id, _target_user_id, _reason, _created_at)
+	INSERT INTO public.reports(source_user_id, target_user_id, reason, created_at) VALUES (_source_user_id, _target_user_id, _reason, _created_at)
 	RETURNING * INTO new_report_data;
 	RETURN new_report_data;
 END;
