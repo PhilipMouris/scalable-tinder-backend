@@ -21,7 +21,7 @@
       }
     ]
   },
-  "profile_views": {
+  "profileViews": {
     "id": "(var char)",
     "viewedUser": "(var char) ID",
     "viewers": [
@@ -48,30 +48,31 @@
     "age": "(int)",
     "location": {
       "lng": "(double)",
-      "lat": "(double)"
+      "lat": "(double)",
+      "addressName": "string"
     },
-    "links":{
-        "facebook":"(url)",
-        "instagram":"(url)",
-        "spotify":"(url)"
+    "links": {
+      "facebook": "(url)",
+      "instagram": "(url)",
+      "spotify": "(url)"
     },
     "profilePictures": [
-        {
-            "url":"(string)",
-            "isMain":"(boolean)",
-            "uploadedAt":"(datetime)"
-        }
+      {
+        "url": "(string)",
+        "isMain": "(boolean)",
+        "uploadedAt": "(datetime)"
+      }
     ],
-    "videos":["(url)"],
-    "interests":[
-        {
-            "interestID":"(var char)",
-            "name":"(string)"
-        }
+    "videos": ["(url)"],
+    "interests": [
+      {
+        "interestID": "(var char)",
+        "name": "(string)"
+      }
     ],
-    "preferences":{
-        "age":"(int)",
-        "location(radius)":"(int)"
+    "preferences": {
+      "age": "(int)",
+      "location(radius)": "(int)"
     }
   }
 }
