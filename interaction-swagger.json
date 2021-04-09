@@ -1,0 +1,105 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Tinder",
+    "description": "This is a basic documentation for the scalable tinder project, Spring 2021.",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "coming",
+  "basePath": "/soon",
+  "tags": [
+    {
+      "name": "interactions",
+      "description": "a user can interact with other users"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/interact/create": {
+      "post": {
+        "tag": ["interactions"],
+        "summary": "a user interacts with another user",
+        "description": "add a new interaction entry to interaction table, interaction entry primary key is (interaction_id)",
+        "operationId": "createInteraction",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "interactionData":{
+		"type": "object",
+		"properties": {
+
+		  "sourse_user_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+
+                  "target_user_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+
+		  "type":{
+		    "type": "string",
+		    "example: "like"
+		  },
+
+		  "created_at": {
+		    "type": "string",
+		    "format": "date-time",
+		    "example": "2021-04-05T20:26:02.000Z"
+		  }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An interaction is created successfully",
+            "schema": {
+              "interactionData": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "sourse_user_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "target_user_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "like"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2021-04-05T20:26:02.000Z"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "A user not exist"
+          }
+        }
+      }
+    }
+  }
+}
