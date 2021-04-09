@@ -37,7 +37,7 @@
                   "example": 1
                 },
                 "amount": {
-                  "type": "money",
+                  "type": "string",
                   "example": "$1.0"
                 }
               }
@@ -59,7 +59,7 @@
                   "example": 1
                 },
                 "amount": {
-                  "type": "money",
+                  "type": "string",
                   "example": "$1.0"
                 }
               }
