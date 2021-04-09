@@ -1,0 +1,103 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Tinder",
+    "description": "This is a basic documentation for the scalable tinder project, Spring 2021.",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "coming",
+  "basePath": "/soon",
+  "tags": [
+    {
+      "name": "reports",
+      "description": "a user can report another users"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/report": {
+      "post": {
+        "tags": ["reports"],
+        "summary": "a user reports another user",
+        "description": "add a new entry to reports table, report entry primary key is generated id.",
+        "operationId": "reportUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "reportData": {
+                "type": "object",
+                "properties": {
+                  "sourse_user_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "target_user_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "reason": {
+                    "type": "string",
+                    "example": "this user shows violence"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2021-04-05T20:26:02.000Z"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A report is created successfully",
+            "schema": {
+              "reportData": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "sourse_user_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "target_user_id": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "reason": {
+                    "type": "string",
+                    "example": "this user shows violence"
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2021-04-05T20:26:02.000Z"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "A user not exist"
+          }
+        }
+      }
+    }
+  }
+}
