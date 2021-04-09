@@ -1,0 +1,72 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a basic documentation for the scalable tinder project, Spring 2021.",
+    "version": "1.0.0",
+    "title": "Tinder",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "coming",
+  "basePath": "/soon",
+  "tags": [
+    {
+      "name": "transactions",
+      "description": "Operations about transactions"
+    }
+  ],
+  "schemes": ["https"],
+  "paths": {
+    "/transactions/create": {
+      "post": {
+        "tags": ["transactions"],
+        "description": "create a transaction",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "amount": {
+                  "type": "money",
+                  "example": "$1.0"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction created successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "user_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "amount": {
+                  "type": "money",
+                  "example": "$1.0"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
