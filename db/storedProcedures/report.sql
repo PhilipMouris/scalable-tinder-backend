@@ -1,6 +1,6 @@
 --## REPORT USER PROCEDURE ##--
 
-DROP TYPE IF Exists reportData; 
+-- DROP TYPE IF Exists reportData; 
 CREATE TYPE reportData AS(
 	id int,
 	source_user_id int, 
