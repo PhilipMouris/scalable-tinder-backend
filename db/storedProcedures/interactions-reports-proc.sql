@@ -1,12 +1,12 @@
 -- ---- INTERACTIONS PROCEDURES
--- DROP TYPE IF Exists interactionData; 
--- CREATE TYPE interactionData AS(
--- 	id int,
--- 	source_user_id int,
--- 	target_user_id int,
--- 	type interaction_type,
--- 	created_at timestamp	
--- );
+DROP TYPE IF Exists interactionData; 
+CREATE TYPE interactionData AS(
+	id int,
+	source_user_id int,
+	target_user_id int,
+	type interaction_type,
+	created_at timestamp	
+);
 
 CREATE OR REPLACE FUNCTION "uspReadInteraction"(interaction_id int) 
 RETURNS TABLE(id int,source_user_id int,target_user_id int,type interaction_type,created_at timestamp)
