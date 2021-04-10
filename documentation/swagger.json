@@ -1468,6 +1468,78 @@
         }
       }
     },
+    "/report": {
+      "post": {
+        "tags": ["reports"],
+        "summary": "a user reports another user",
+        "description": "add a new entry to reports table, report entry primary key is generated id.",
+        "operationId": "reportUser",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "sourse_user_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "target_user_id": {
+                  "type": "integer",
+                  "example": 2
+                },
+                "reason": {
+                  "type": "string",
+                  "example": "this user shows violence"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2021-04-05T20:26:02.000Z"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A report is created successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "sourse_user_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "target_user_id": {
+                  "type": "integer",
+                  "example": 2
+                },
+                "reason": {
+                  "type": "string",
+                  "example": "this user shows violence"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2021-04-05T20:26:02.000Z"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "A user not exist"
+          }
+        }
+      }
+    },
     "/user/reports/{id}": {
       "delete": {
         "tags": ["reports"],
@@ -1767,6 +1839,36 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/blocks/create": {
+      "post": {
+        "tags": ["blocks"],
+        "summary": "a user blocks another user",
+        "description": "add a new block entry to blocks table, block entry primary key is (source_user_id, target_user_id)",
+        "operationId": "blockUser",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/blockData"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A user is blocked successfully",
+            "schema": {
+              "$ref": "#/definitions/blockData"
+            }
+          },
+          "404": {
+            "description": "A user not exist"
           }
         }
       }
@@ -3094,6 +3196,24 @@
               "example": "20"
             }
           }
+        }
+      }
+    },
+    "blockData": {
+      "type": "object",
+      "properties": {
+        "sourse_user_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "target_user_id": {
+          "type": "integer",
+          "example": 2
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2021-04-05T20:26:02.000Z"
         }
       }
     },
