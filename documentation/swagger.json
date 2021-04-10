@@ -1481,26 +1481,24 @@
             "name": "body",
             "required": true,
             "schema": {
-              "reportData": {
-                "type": "object",
-                "properties": {
-                  "sourse_user_id": {
-                    "type": "integer",
-                    "example": 1
-                  },
-                  "target_user_id": {
-                    "type": "integer",
-                    "example": 2
-                  },
-                  "reason": {
-                    "type": "string",
-                    "example": "this user shows violence"
-                  },
-                  "created_at": {
-                    "type": "string",
-                    "format": "date-time",
-                    "example": "2021-04-05T20:26:02.000Z"
-                  }
+              "type": "object",
+              "properties": {
+                "sourse_user_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "target_user_id": {
+                  "type": "integer",
+                  "example": 2
+                },
+                "reason": {
+                  "type": "string",
+                  "example": "this user shows violence"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2021-04-05T20:26:02.000Z"
                 }
               }
             }
@@ -1510,30 +1508,28 @@
           "200": {
             "description": "A report is created successfully",
             "schema": {
-              "reportData": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "integer",
-                    "example": 1
-                  },
-                  "sourse_user_id": {
-                    "type": "integer",
-                    "example": 1
-                  },
-                  "target_user_id": {
-                    "type": "integer",
-                    "example": 2
-                  },
-                  "reason": {
-                    "type": "string",
-                    "example": "this user shows violence"
-                  },
-                  "created_at": {
-                    "type": "string",
-                    "format": "date-time",
-                    "example": "2021-04-05T20:26:02.000Z"
-                  }
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "sourse_user_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "target_user_id": {
+                  "type": "integer",
+                  "example": 2
+                },
+                "reason": {
+                  "type": "string",
+                  "example": "this user shows violence"
+                },
+                "created_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2021-04-05T20:26:02.000Z"
                 }
               }
             }
