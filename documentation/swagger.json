@@ -1024,6 +1024,70 @@
         }
       }
     },
+    "/user/interactions/create": {
+      "post": {
+        "tags": ["interactions"],
+        "summary": "Read interaction with id",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "source_user_id": {
+                  "type": "integer"
+                },
+                "target_user_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string",
+                  "example": "like"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Interaction Created Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "interactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "source_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "target_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "like"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user/interactions/{interaction_id}": {
       "get": {
         "tags": ["interactions"],
