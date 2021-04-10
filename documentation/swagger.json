@@ -29,6 +29,10 @@
 			"description": "Operations about bans"
 		},
 		{
+			"name": "chat",
+			"description": "Operations about chat"
+		},
+		{
 			"name": "moderator",
 			"description": "Operations about moderator"
 		},
@@ -164,6 +168,7 @@
 				"produces": ["application/json"]
 			}
 		},
+
 		"/user/{id}": {
 			"delete": {
 				"tags": ["user"],
@@ -199,6 +204,7 @@
 				"produces": ["application/json"]
 			}
 		},
+
 		"/user": {
 			"put": {
 				"tags": ["user"],
@@ -227,6 +233,109 @@
 								"last_name": {
 									"type": "string",
 									"example": "last_update"
+								},
+								"gender": {
+									"type": "string",
+									"example": "Male"
+								},
+								"bio": {
+									"type": "string",
+									"example": "Dummy bio"
+								},
+								"birthDate": {
+									"type": "string",
+									"format": "date-time",
+									"example": "12/07/1997 - 00:00:00"
+								},
+								"age": {
+									"type": "number",
+									"example": "18"
+								},
+								"location": {
+									"type": "object",
+									"properties": {
+										"lng": {
+											"type": "number",
+											"format": "double",
+											"example": "123.123"
+										},
+										"lat": {
+											"type": "number",
+											"format": "double",
+											"example": "123.123"
+										},
+										"addressName": {
+											"type": "string",
+											"example": "dummy street, dummy block, dummy city"
+										}
+									}
+								},
+								"links": {
+									"type": "object",
+									"properties": {
+										"facebook": {
+											"type": "string",
+											"format": "url",
+											"example": "facebook.com/dummyUser"
+										},
+										"instagram": {
+											"type": "string",
+											"format": "url",
+											"example": "instagram.com/dummyUser"
+										},
+										"spotify": {
+											"type": "string",
+											"format": "url",
+											"example": "spotify.com/dummyUser"
+										}
+									}
+								},
+								"profilePictures": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"url": {
+												"type": "string",
+												"example": "https://imagehost.com/123"
+											},
+											"isMain": {
+												"type": "boolean",
+												"example": "True"
+											}
+										}
+									}
+								},
+								"video": {
+									"type": "string",
+									"example": "https://videohost.com/123"
+								},
+								"interests": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"interestID": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											}
+										}
+									}
+								},
+								"preferences": {
+									"type": "object",
+									"properties": {
+										"age": {
+											"type": "integer",
+											"example": "18"
+										},
+										"location(radius)": {
+											"type": "integer",
+											"example": "20"
+										}
+									}
 								}
 							}
 						}
@@ -256,6 +365,109 @@
 										"last_name": {
 											"type": "string",
 											"example": "last_update"
+										},
+										"gender": {
+											"type": "string",
+											"example": "Male"
+										},
+										"bio": {
+											"type": "string",
+											"example": "Dummy bio"
+										},
+										"birthDate": {
+											"type": "string",
+											"format": "date-time",
+											"example": "12/07/1997 - 00:00:00"
+										},
+										"age": {
+											"type": "number",
+											"example": "18"
+										},
+										"location": {
+											"type": "object",
+											"properties": {
+												"lng": {
+													"type": "number",
+													"format": "double",
+													"example": "123.123"
+												},
+												"lat": {
+													"type": "number",
+													"format": "double",
+													"example": "123.123"
+												},
+												"addressName": {
+													"type": "string",
+													"example": "dummy street, dummy block, dummy city"
+												}
+											}
+										},
+										"links": {
+											"type": "object",
+											"properties": {
+												"facebook": {
+													"type": "string",
+													"format": "url",
+													"example": "facebook.com/dummyUser"
+												},
+												"instagram": {
+													"type": "string",
+													"format": "url",
+													"example": "instagram.com/dummyUser"
+												},
+												"spotify": {
+													"type": "string",
+													"format": "url",
+													"example": "spotify.com/dummyUser"
+												}
+											}
+										},
+										"profilePictures": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"url": {
+														"type": "string",
+														"example": "https://imagehost.com/123"
+													},
+													"isMain": {
+														"type": "boolean",
+														"example": "True"
+													}
+												}
+											}
+										},
+										"video": {
+											"type": "string",
+											"example": "https://videohost.com/123"
+										},
+										"interests": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"interestID": {
+														"type": "string"
+													},
+													"name": {
+														"type": "string"
+													}
+												}
+											}
+										},
+										"preferences": {
+											"type": "object",
+											"properties": {
+												"age": {
+													"type": "integer",
+													"example": "18"
+												},
+												"location(radius)": {
+													"type": "integer",
+													"example": "20"
+												}
+											}
 										}
 									}
 								}
@@ -266,6 +478,7 @@
 				"produces": ["application/json"]
 			}
 		},
+
 		"/user/passwords": {
 			"put": {
 				"tags": ["user"],
@@ -774,6 +987,7 @@
 				}
 			}
 		},
+
 		"/moderator/ban/{id}": {
 			"delete": {
 				"tags": ["bans"],
@@ -995,7 +1209,7 @@
 				}
 			}
 		},
-		"/transaction/{id}": {
+		"/transaction/delete/{id}": {
 			"delete": {
 				"tags": ["transactions"],
 				"summary": "Delete a specific transaction user",
@@ -1237,6 +1451,531 @@
 								}
 							}
 						}
+					}
+				}
+			}
+		},
+		"/user/update_info/": {
+			"put": {
+				"tags": ["user"],
+				"summary": "Update entire user object for any attribute",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Updated user object",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/user"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User updated with new BIO",
+						"schema": {
+							"$ref": "#/definitions/user"
+						}
+					},
+					"400": {
+						"description": "Invalid user info supplied"
+					},
+					"404": {
+						"description": "User Not found"
+					}
+				}
+			}
+		},
+		"/user/add_bio/": {
+			"put": {
+				"tags": ["user"],
+				"summary": "Update user with a new BIO",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Updated user object",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "number",
+									"example": "123"
+								},
+								"bio": {
+									"type": "string",
+									"example": "Dummy Bio"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User updated with new BIO",
+						"schema": {
+							"$ref": "#/definitions/user"
+						}
+					},
+					"400": {
+						"description": "Invalid user info supplied"
+					},
+					"404": {
+						"description": "User Not found"
+					}
+				}
+			}
+		},
+		"/user/set_location/": {
+			"put": {
+				"tags": ["user"],
+				"summary": "Update user with new location added manually",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Updated user object",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "number",
+									"example": "123"
+								},
+								"location": {
+									"type": "object",
+									"properties": {
+										"lng": {
+											"type": "number",
+											"format": "double",
+											"example": "123.123"
+										},
+										"lat": {
+											"type": "number",
+											"format": "double",
+											"example": "123.123"
+										}
+									}
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User updated with new location",
+						"schema": {
+							"$ref": "#/definitions/user"
+						}
+					},
+					"400": {
+						"description": "Invalid info supplied"
+					},
+					"404": {
+						"description": "User Not found"
+					}
+				}
+			}
+		},
+		"/user/add_multimedia/": {
+			"put": {
+				"tags": ["user"],
+				"summary": "Update user profile with new photos or videos",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Updated user object",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "number",
+									"example": "123"
+								},
+								"profilePictures": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"url": {
+												"type": "string",
+												"example": "https://imagehost.com/123"
+											},
+											"isMain": {
+												"type": "boolean",
+												"example": "True"
+											}
+										}
+									}
+								},
+								"video": {
+									"type": "string",
+									"example": "https://videohost.com/123"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User updated with new multimedia",
+						"schema": {
+							"$ref": "#/definitions/user"
+						}
+					},
+					"400": {
+						"description": "Invalid info supplied"
+					},
+					"404": {
+						"description": "User Not found"
+					}
+				}
+			}
+		},
+		"/user/update_social_links/": {
+			"put": {
+				"tags": ["user"],
+				"summary": "Update user profile with new social media links",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Updated user object",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "number",
+									"example": "123"
+								},
+								"links": {
+									"type": "object",
+									"properties": {
+										"facebook": {
+											"type": "string",
+											"example": "facebook.com/dummyUser"
+										},
+										"isntagram": {
+											"type": "string",
+											"example": "instagram.com/dummyUser"
+										},
+										"spotify": {
+											"type": "string",
+											"example": "spotify.com/dummyUser"
+										}
+									}
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User updated with new social links",
+						"schema": {
+							"$ref": "#/definitions/user"
+						}
+					},
+					"400": {
+						"description": "Invalid info supplied"
+					},
+					"404": {
+						"description": "User Not found"
+					}
+				}
+			}
+		},
+		"/user/update_interests/": {
+			"put": {
+				"tags": ["user"],
+				"summary": "Update user profile with new interests",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Updated user object",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "number",
+									"example": "123"
+								},
+								"interests": {
+									"type": "array",
+									"items": {
+										"type": "object",
+										"properties": {
+											"interestID": {
+												"type": "string"
+											},
+											"name": {
+												"type": "string"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User updated with new interests",
+						"schema": {
+							"$ref": "#/definitions/user"
+						}
+					},
+					"400": {
+						"description": "Invalid info supplied"
+					},
+					"404": {
+						"description": "User Not found"
+					}
+				}
+			}
+		},
+		"/user/update_preferences/": {
+			"put": {
+				"tags": ["user"],
+				"summary": "Update user profile with new interests",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Updated user object",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "number",
+									"example": "123"
+								},
+								"preferences": {
+									"type": "object",
+									"properties": {
+										"age": {
+											"type": "integer"
+										},
+										"location(radius)": {
+											"type": "integer"
+										}
+									}
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User updated with new preferences",
+						"schema": {
+							"$ref": "#/definitions/user"
+						}
+					},
+					"400": {
+						"description": "Invalid info supplied"
+					},
+					"404": {
+						"description": "User Not found"
+					}
+				}
+			}
+		},
+		"/chat/create_new/": {
+			"post": {
+				"tags": ["chat"],
+				"summary": "Create New Chat for matched users",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "user info required to create chat",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"userA": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "number",
+											"example": "123"
+										}
+									}
+								},
+								"userB": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "number",
+											"example": "123"
+										}
+									}
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Chat created between two users",
+						"schema": {
+							"$ref": "#/definitions/chat"
+						}
+					},
+					"400": {
+						"description": "Invalid info supplied"
+					},
+					"404": {
+						"description": "User Not found"
+					}
+				}
+			}
+		},
+		"/chat/update/": {
+			"put": {
+				"tags": ["chat"],
+				"summary": "update chat for matched users",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "chat info to update messages",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "number",
+									"example": "123"
+								},
+								"messages": {
+									"type": "object",
+									"properties": {
+										"sourceUser": {
+											"type": "number"
+										},
+										"media(optional)": {
+											"type": "string"
+										},
+										"text(optional)": {
+											"type": "string"
+										},
+										"createdAt": {
+											"type": "string",
+											"format": "date-time"
+										}
+									}
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Chat updated between two users",
+						"schema": {
+							"$ref": "#/definitions/chat"
+						}
+					},
+					"400": {
+						"description": "Invalid info supplied"
+					},
+					"404": {
+						"description": "chat Not found"
+					}
+				}
+			}
+		},
+		"/chat/read/{id}": {
+			"get": {
+				"tags": ["chat"],
+				"summary": "read chat for matched users",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "path",
+						"type": "number",
+						"name": "id",
+						"description": "chat id to get messages",
+						"required": true
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Chat retrieved between two users",
+						"schema": {
+							"$ref": "#/definitions/chat"
+						}
+					},
+					"400": {
+						"description": "Invalid id supplied"
+					},
+					"404": {
+						"description": "chat Not found"
+					}
+				}
+			}
+		},
+		"/chat/delete/{id}": {
+			"delete": {
+				"tags": ["chat"],
+				"summary": "read chat for matched users",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "path",
+						"type": "number",
+						"name": "id",
+						"description": "chat id to delete chat",
+						"required": true
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Chat deleted between two users",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"chat": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "number",
+											"example": "2"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Invalid id supplied"
+					},
+					"404": {
+						"description": "chat Not found"
 					}
 				}
 			}
@@ -1715,6 +2454,187 @@
 									}
 								}
 							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"user": {
+			"type": "object",
+			"required": ["id"],
+			"properties": {
+				"id": {
+					"type": "number",
+					"example": "123"
+				},
+				"gender": {
+					"type": "string",
+					"example": "Male"
+				},
+				"bio": {
+					"type": "string",
+					"example": "Dummy bio"
+				},
+				"birthDate": {
+					"type": "string",
+					"format": "date-time",
+					"example": "12/07/1997 - 00:00:00"
+				},
+				"age": {
+					"type": "number",
+					"example": "18"
+				},
+				"location": {
+					"type": "object",
+					"properties": {
+						"lng": {
+							"type": "number",
+							"format": "double",
+							"example": "123.123"
+						},
+						"lat": {
+							"type": "number",
+							"format": "double",
+							"example": "123.123"
+						},
+						"addressName": {
+							"type": "string",
+							"example": "dummy street, dummy block, dummy city"
+						}
+					}
+				},
+				"links": {
+					"type": "object",
+					"properties": {
+						"facebook": {
+							"type": "string",
+							"format": "url",
+							"example": "facebook.com/dummyUser"
+						},
+						"instagram": {
+							"type": "string",
+							"format": "url",
+							"example": "instagram.com/dummyUser"
+						},
+						"spotify": {
+							"type": "string",
+							"format": "url",
+							"example": "spotify.com/dummyUser"
+						}
+					}
+				},
+				"profilePictures": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"url": {
+								"type": "string",
+								"example": "https://imagehost.com/123"
+							},
+							"isMain": {
+								"type": "boolean",
+								"example": "True"
+							}
+						}
+					}
+				},
+				"video": {
+					"type": "string",
+					"example": "https://videohost.com/123"
+				},
+				"interests": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"interestID": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"preferences": {
+					"type": "object",
+					"properties": {
+						"age": {
+							"type": "integer",
+							"example": "18"
+						},
+						"location(radius)": {
+							"type": "integer",
+							"example": "20"
+						}
+					}
+				}
+			}
+		},
+		"chat": {
+			"type": "object",
+			"properties": {
+				"createdAt": {
+					"type": "string",
+					"format": "date-time"
+				},
+				"id": {
+					"type": "number",
+					"example": "123"
+				},
+				"userA": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "number",
+							"example": "123"
+						},
+						"fullName": {
+							"type": "string"
+						},
+						"age": {
+							"type": "number",
+							"example": "20"
+						}
+					}
+				},
+				"userB": {
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "number",
+							"example": "20"
+						},
+						"fullName": {
+							"type": "string"
+						},
+						"age": {
+							"type": "number",
+							"example": "20"
+						}
+					}
+				},
+				"messages": {
+					"type": "object",
+					"properties": {
+						"sourceUser": {
+							"type": "number",
+							"example": "20"
+						},
+						"media(optional)": {
+							"type": "string",
+							"example": "https://imagehost/123"
+						},
+						"text(optional)": {
+							"type": "string",
+							"example": "dummy message"
+						},
+						"createdAt": {
+							"type": "string",
+							"format": "date-time"
 						}
 					}
 				}
