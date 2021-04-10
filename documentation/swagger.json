@@ -1,2644 +1,3167 @@
 {
-	"swagger": "2.0",
-	"info": {
-		"description": " This is a basic documentation for the scalable tinder project, Spring 2021.",
-		"version": "1.0.0",
-		"title": "Tinder",
-		"license": {
-			"name": "Apache 2.0",
-			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-		}
-	},
-	"host": "coming",
-	"basePath": "/soon",
-	"tags": [
-		{
-			"name": "user",
-			"description": "Operations about user"
-		},
-		{
-			"name": "blocks",
-			"description": "Operations about blocks"
-		},
-		{
-			"name": "transactions",
-			"description": "Operations about transactions"
-		},
-		{
-			"name": "bans",
-			"description": "Operations about bans"
-		},
-		{
-			"name": "chat",
-			"description": "Operations about chat"
-		},
-		{
-			"name": "moderator",
-			"description": "Operations about moderator"
-		},
-		{
-			"name": "interests",
-			"description": "Operations about interests"
-		}
-	],
-	"schemes": ["https"],
-	"paths": {
-		"/user/signup": {
-			"post": {
-				"tags": ["user"],
-				"summary": "user signs up using email and password",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"email": {
-									"type": "string",
-									"example": "test@gmail.com"
-								},
-								"password": {
-									"type": "string",
-									"example": "******"
-								},
-								"first_name": {
-									"type": "string",
-									"example": "first name"
-								},
-								"last_name": {
-									"type": "string",
-									"example": "last name"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "user signed up",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"email": {
-											"type": "string",
-											"example": "test@gmail.com"
-										},
-										"first_name": {
-											"type": "string",
-											"example": "first name"
-										},
-										"last_name": {
-											"type": "string",
-											"example": "last name"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/user/sign_in": {
-			"post": {
-				"tags": ["user"],
-				"summary": "user signs in using email and password",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"email": {
-									"type": "string",
-									"example": "test@gmail.com"
-								},
-								"password": {
-									"type": "string",
-									"example": "******"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "user logged in",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "string",
-											"example": "5fc3a4b1bf42f31d4c29c6de"
-										},
-										"email": {
-											"type": "string",
-											"example": "test@gmail.com"
-										},
-										"first_name": {
-											"type": "string",
-											"example": "first name"
-										},
-										"last_name": {
-											"type": "string",
-											"example": "last name"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
+  "swagger": "2.0",
+  "info": {
+    "description": " This is a basic documentation for the scalable tinder project, Spring 2021.",
+    "version": "1.0.0",
+    "title": "Tinder",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "coming",
+  "basePath": "/soon",
+  "tags": [
+    {
+      "name": "user",
+      "description": "Operations about user"
+    },
+    { "name": "interactions", "description": "Operations about interactions" },
+    { "name": "reports", "description": "Operations about reports" },
+    {
+      "name": "blocks",
+      "description": "Operations about blocks"
+    },
+    {
+      "name": "transactions",
+      "description": "Operations about transactions"
+    },
+    {
+      "name": "bans",
+      "description": "Operations about bans"
+    },
+    {
+      "name": "chat",
+      "description": "Operations about chat"
+    },
+    {
+      "name": "moderator",
+      "description": "Operations about moderator"
+    },
+    {
+      "name": "interests",
+      "description": "Operations about interests"
+    }
+  ],
+  "schemes": ["https"],
+  "paths": {
+    "/user/signup": {
+      "post": {
+        "tags": ["user"],
+        "summary": "user signs up using email and password",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "test@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "******"
+                },
+                "first_name": {
+                  "type": "string",
+                  "example": "first name"
+                },
+                "last_name": {
+                  "type": "string",
+                  "example": "last name"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user signed up",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "test@gmail.com"
+                    },
+                    "first_name": {
+                      "type": "string",
+                      "example": "first name"
+                    },
+                    "last_name": {
+                      "type": "string",
+                      "example": "last name"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/sign_in": {
+      "post": {
+        "tags": ["user"],
+        "summary": "user signs in using email and password",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "test@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "******"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user logged in",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "5fc3a4b1bf42f31d4c29c6de"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "test@gmail.com"
+                    },
+                    "first_name": {
+                      "type": "string",
+                      "example": "first name"
+                    },
+                    "last_name": {
+                      "type": "string",
+                      "example": "last name"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
 
-		"/user/{id}": {
-			"delete": {
-				"tags": ["user"],
-				"summary": "deletes user profile by id",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "user deleted",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": 2
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
+    "/user/{id}": {
+      "delete": {
+        "tags": ["user"],
+        "summary": "deletes user profile by id",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user deleted",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
 
-		"/user": {
-			"put": {
-				"tags": ["user"],
-				"summary": "user can edit public account data",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": 2
-								},
-								"email": {
-									"type": "string",
-									"example": "test2@gmail.com"
-								},
-								"first_name": {
-									"type": "string",
-									"example": "update"
-								},
-								"last_name": {
-									"type": "string",
-									"example": "last_update"
-								},
-								"gender": {
-									"type": "string",
-									"example": "Male"
-								},
-								"bio": {
-									"type": "string",
-									"example": "Dummy bio"
-								},
-								"birthDate": {
-									"type": "string",
-									"format": "date-time",
-									"example": "12/07/1997 - 00:00:00"
-								},
-								"age": {
-									"type": "number",
-									"example": "18"
-								},
-								"location": {
-									"type": "object",
-									"properties": {
-										"lng": {
-											"type": "number",
-											"format": "double",
-											"example": "123.123"
-										},
-										"lat": {
-											"type": "number",
-											"format": "double",
-											"example": "123.123"
-										},
-										"addressName": {
-											"type": "string",
-											"example": "dummy street, dummy block, dummy city"
-										}
-									}
-								},
-								"links": {
-									"type": "object",
-									"properties": {
-										"facebook": {
-											"type": "string",
-											"format": "url",
-											"example": "facebook.com/dummyUser"
-										},
-										"instagram": {
-											"type": "string",
-											"format": "url",
-											"example": "instagram.com/dummyUser"
-										},
-										"spotify": {
-											"type": "string",
-											"format": "url",
-											"example": "spotify.com/dummyUser"
-										}
-									}
-								},
-								"profilePictures": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"url": {
-												"type": "string",
-												"example": "https://imagehost.com/123"
-											},
-											"isMain": {
-												"type": "boolean",
-												"example": "True"
-											}
-										}
-									}
-								},
-								"video": {
-									"type": "string",
-									"example": "https://videohost.com/123"
-								},
-								"interests": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"interestID": {
-												"type": "string"
-											},
-											"name": {
-												"type": "string"
-											}
-										}
-									}
-								},
-								"preferences": {
-									"type": "object",
-									"properties": {
-										"age": {
-											"type": "integer",
-											"example": "18"
-										},
-										"location(radius)": {
-											"type": "integer",
-											"example": "20"
-										}
-									}
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "user updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": 2
-										},
-										"email": {
-											"type": "string",
-											"example": "test2@gmail.com"
-										},
-										"first_name": {
-											"type": "string",
-											"example": "update"
-										},
-										"last_name": {
-											"type": "string",
-											"example": "last_update"
-										},
-										"gender": {
-											"type": "string",
-											"example": "Male"
-										},
-										"bio": {
-											"type": "string",
-											"example": "Dummy bio"
-										},
-										"birthDate": {
-											"type": "string",
-											"format": "date-time",
-											"example": "12/07/1997 - 00:00:00"
-										},
-										"age": {
-											"type": "number",
-											"example": "18"
-										},
-										"location": {
-											"type": "object",
-											"properties": {
-												"lng": {
-													"type": "number",
-													"format": "double",
-													"example": "123.123"
-												},
-												"lat": {
-													"type": "number",
-													"format": "double",
-													"example": "123.123"
-												},
-												"addressName": {
-													"type": "string",
-													"example": "dummy street, dummy block, dummy city"
-												}
-											}
-										},
-										"links": {
-											"type": "object",
-											"properties": {
-												"facebook": {
-													"type": "string",
-													"format": "url",
-													"example": "facebook.com/dummyUser"
-												},
-												"instagram": {
-													"type": "string",
-													"format": "url",
-													"example": "instagram.com/dummyUser"
-												},
-												"spotify": {
-													"type": "string",
-													"format": "url",
-													"example": "spotify.com/dummyUser"
-												}
-											}
-										},
-										"profilePictures": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"url": {
-														"type": "string",
-														"example": "https://imagehost.com/123"
-													},
-													"isMain": {
-														"type": "boolean",
-														"example": "True"
-													}
-												}
-											}
-										},
-										"video": {
-											"type": "string",
-											"example": "https://videohost.com/123"
-										},
-										"interests": {
-											"type": "array",
-											"items": {
-												"type": "object",
-												"properties": {
-													"interestID": {
-														"type": "string"
-													},
-													"name": {
-														"type": "string"
-													}
-												}
-											}
-										},
-										"preferences": {
-											"type": "object",
-											"properties": {
-												"age": {
-													"type": "integer",
-													"example": "18"
-												},
-												"location(radius)": {
-													"type": "integer",
-													"example": "20"
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
+    "/user": {
+      "put": {
+        "tags": ["user"],
+        "summary": "user can edit public account data",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 2
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test2@gmail.com"
+                },
+                "first_name": {
+                  "type": "string",
+                  "example": "update"
+                },
+                "last_name": {
+                  "type": "string",
+                  "example": "last_update"
+                },
+                "gender": {
+                  "type": "string",
+                  "example": "Male"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "Dummy bio"
+                },
+                "birthDate": {
+                  "type": "string",
+                  "format": "string",
+                  "example": "12/07/1997 - 00:00:00"
+                },
+                "age": {
+                  "type": "number",
+                  "example": "18"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "lng": {
+                      "type": "number",
+                      "format": "double",
+                      "example": "123.123"
+                    },
+                    "lat": {
+                      "type": "number",
+                      "format": "double",
+                      "example": "123.123"
+                    },
+                    "addressName": {
+                      "type": "string",
+                      "example": "dummy street, dummy block, dummy city"
+                    }
+                  }
+                },
+                "links": {
+                  "type": "object",
+                  "properties": {
+                    "facebook": {
+                      "type": "string",
+                      "format": "url",
+                      "example": "facebook.com/dummyUser"
+                    },
+                    "instagram": {
+                      "type": "string",
+                      "format": "url",
+                      "example": "instagram.com/dummyUser"
+                    },
+                    "spotify": {
+                      "type": "string",
+                      "format": "url",
+                      "example": "spotify.com/dummyUser"
+                    }
+                  }
+                },
+                "profilePictures": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "example": "https://imagehost.com/123"
+                      },
+                      "isMain": {
+                        "type": "boolean",
+                        "example": "True"
+                      }
+                    }
+                  }
+                },
+                "video": {
+                  "type": "string",
+                  "example": "https://videohost.com/123"
+                },
+                "interests": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "interestID": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "preferences": {
+                  "type": "object",
+                  "properties": {
+                    "age": {
+                      "type": "integer",
+                      "example": "18"
+                    },
+                    "location(radius)": {
+                      "type": "integer",
+                      "example": "20"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "test2@gmail.com"
+                    },
+                    "first_name": {
+                      "type": "string",
+                      "example": "update"
+                    },
+                    "last_name": {
+                      "type": "string",
+                      "example": "last_update"
+                    },
+                    "gender": {
+                      "type": "string",
+                      "example": "Male"
+                    },
+                    "bio": {
+                      "type": "string",
+                      "example": "Dummy bio"
+                    },
+                    "birthDate": {
+                      "type": "string",
+                      "format": "string",
+                      "example": "12/07/1997 - 00:00:00"
+                    },
+                    "age": {
+                      "type": "number",
+                      "example": "18"
+                    },
+                    "location": {
+                      "type": "object",
+                      "properties": {
+                        "lng": {
+                          "type": "number",
+                          "format": "double",
+                          "example": "123.123"
+                        },
+                        "lat": {
+                          "type": "number",
+                          "format": "double",
+                          "example": "123.123"
+                        },
+                        "addressName": {
+                          "type": "string",
+                          "example": "dummy street, dummy block, dummy city"
+                        }
+                      }
+                    },
+                    "links": {
+                      "type": "object",
+                      "properties": {
+                        "facebook": {
+                          "type": "string",
+                          "format": "url",
+                          "example": "facebook.com/dummyUser"
+                        },
+                        "instagram": {
+                          "type": "string",
+                          "format": "url",
+                          "example": "instagram.com/dummyUser"
+                        },
+                        "spotify": {
+                          "type": "string",
+                          "format": "url",
+                          "example": "spotify.com/dummyUser"
+                        }
+                      }
+                    },
+                    "profilePictures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "example": "https://imagehost.com/123"
+                          },
+                          "isMain": {
+                            "type": "boolean",
+                            "example": "True"
+                          }
+                        }
+                      }
+                    },
+                    "video": {
+                      "type": "string",
+                      "example": "https://videohost.com/123"
+                    },
+                    "interests": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "interestID": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "preferences": {
+                      "type": "object",
+                      "properties": {
+                        "age": {
+                          "type": "integer",
+                          "example": "18"
+                        },
+                        "location(radius)": {
+                          "type": "integer",
+                          "example": "20"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
 
-		"/user/passwords": {
-			"put": {
-				"tags": ["user"],
-				"summary": "user can change passwords by providing the old and new passwords",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": 2
-								},
-								"old_password": {
-									"type": "string",
-									"example": "password"
-								},
-								"new_password": {
-									"type": "string",
-									"example": "passwordNew"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "password updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"email": {
-											"type": "string",
-											"example": "test2@gmail.com"
-										},
-										"first_name": {
-											"type": "string",
-											"example": "update"
-										},
-										"last_name": {
-											"type": "string",
-											"example": "last_update"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
-		"/user/profile/{id}": {
-			"get": {
-				"tags": ["user"],
-				"summary": "user can view profile",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "password updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": 2
-										},
-										"email": {
-											"type": "string",
-											"example": "test2@gmail.com"
-										},
-										"first_name": {
-											"type": "string",
-											"example": "update"
-										},
-										"last_name": {
-											"type": "string",
-											"example": "last_update"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
-		"/moderator/ban": {
-			"post": {
-				"tags": ["bans"],
-				"summary": "moderator bans a certain user",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"moderator_id": {
-									"type": "int"
-								},
-								"user_id": {
-									"type": "int"
-								},
-								"reason": {
-									"type": "string",
-									"example": "Discrimination Messages"
-								},
-								"expiry_date": {
-									"type": "date",
-									"example": "2020-04-03"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "user banned",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"bans": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"moderator_id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"reason": {
-											"type": "string",
-											"example": "Discrimination Messages"
-										},
-										"expiry_date": {
-											"type": "date",
-											"example": "2020-04-03"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/moderator/updateBan": {
-			"put": {
-				"tags": ["bans"],
-				"summary": "moderator updates an existing ban",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "int"
-								},
-								"moderator_id": {
-									"type": "int"
-								},
-								"user_id": {
-									"type": "int"
-								},
-								"reason": {
-									"type": "string",
-									"example": "Discrimination Messages"
-								},
-								"expiry_date": {
-									"type": "date",
-									"example": "2020-04-03"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "user ban updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"bans": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"moderator_id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"reason": {
-											"type": "string",
-											"example": "Discrimination Messages"
-										},
-										"expiry_date": {
-											"type": "date",
-											"example": "2020-04-03"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/moderator/readBans/{id}": {
-			"get": {
-				"tags": ["bans"],
-				"summary": "moderator reads all bans that he made",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "all moderator bans",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"bans": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"moderator_id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"reason": {
-											"type": "string",
-											"example": "Discrimination Messages"
-										},
-										"expiry_date": {
-											"type": "date",
-											"example": "2020-04-03"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/user/readBans/{id}": {
-			"get": {
-				"tags": ["bans"],
-				"summary": "user reads all bans that were made on him",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "all user bans",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"bans": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"moderator_id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"reason": {
-											"type": "string",
-											"example": "Discrimination Messages"
-										},
-										"expiry_date": {
-											"type": "date",
-											"example": "2020-04-03"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/moderator/readBans/{mod_id}/{user_id}": {
-			"get": {
-				"tags": ["bans"],
-				"summary": "read all bans that a moderator made on a user",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "mod_id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					},
-					{
-						"name": "user_id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "all bans that a moderator made on a user",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"bans": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"moderator_id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"reason": {
-											"type": "string",
-											"example": "Discrimination Messages"
-										},
-										"expiry_date": {
-											"type": "date",
-											"example": "2020-04-03"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/moderator/readBans": {
-			"get": {
-				"tags": ["bans"],
-				"summary": "read all bans ",
-				"produces": ["application/json"],
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "all bans ",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"bans": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"moderator_id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"reason": {
-											"type": "string",
-											"example": "Discrimination Messages"
-										},
-										"expiry_date": {
-											"type": "date",
-											"example": "2020-04-03"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/moderator/readBan/{id}": {
-			"get": {
-				"tags": ["bans"],
-				"summary": "read a specific ban",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Returned Ban",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"bans": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"moderator_id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"reason": {
-											"type": "string",
-											"example": "Discrimination Messages"
-										},
-										"expiry_date": {
-											"type": "date",
-											"example": "2020-04-03"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
+    "/user/passwords": {
+      "put": {
+        "tags": ["user"],
+        "summary": "user can change passwords by providing the old and new passwords",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 2
+                },
+                "old_password": {
+                  "type": "string",
+                  "example": "password"
+                },
+                "new_password": {
+                  "type": "string",
+                  "example": "passwordNew"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "password updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "test2@gmail.com"
+                    },
+                    "first_name": {
+                      "type": "string",
+                      "example": "update"
+                    },
+                    "last_name": {
+                      "type": "string",
+                      "example": "last_update"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
+    "/user/profile/{id}": {
+      "get": {
+        "tags": ["user"],
+        "summary": "user can view profile",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "password updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "test2@gmail.com"
+                    },
+                    "first_name": {
+                      "type": "string",
+                      "example": "update"
+                    },
+                    "last_name": {
+                      "type": "string",
+                      "example": "last_update"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
+    "/moderator/ban": {
+      "post": {
+        "tags": ["bans"],
+        "summary": "moderator bans a certain user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "moderator_id": {
+                  "type": "integer"
+                },
+                "user_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "string",
+                  "example": "Discrimination Messages"
+                },
+                "expiry_date": {
+                  "type": "string",
+                  "example": "2020-04-03"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user banned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "string",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/updateBan": {
+      "put": {
+        "tags": ["bans"],
+        "summary": "moderator updates an existing ban",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "moderator_id": {
+                  "type": "integer"
+                },
+                "user_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "string",
+                  "example": "Discrimination Messages"
+                },
+                "expiry_date": {
+                  "type": "string",
+                  "example": "2020-04-03"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user ban updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "string",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/readBans/{id}": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "moderator reads all bans that he made",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "all moderator bans",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "string",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/readBans/{id}": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "user reads all bans that were made on him",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "all user bans",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "string",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/readBans/{mod_id}/{user_id}": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "read all bans that a moderator made on a user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "mod_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "all bans that a moderator made on a user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "string",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/readBans": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "read all bans ",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "all bans ",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "string",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/readBan/{id}": {
+      "get": {
+        "tags": ["bans"],
+        "summary": "read a specific ban",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned Ban",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "moderator_id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "expiry_date": {
+                      "type": "string",
+                      "example": "2020-04-03"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
 
-		"/moderator/ban/{id}": {
-			"delete": {
-				"tags": ["bans"],
-				"summary": "delete a specific ban",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Deleted Ban Successfully",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"bans": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/updateTransaction": {
-			"put": {
-				"tags": ["transactions"],
-				"summary": "update existing transaction",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "int"
-								},
-								"user_id": {
-									"type": "int"
-								},
-								"amount": {
-									"type": "money",
-									"example": "$50,000"
-								},
-								"created_at": {
-									"type": "timestamp",
-									"example": "2021-04-08 21:32:36.504188"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "transaction updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"transactions": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"amount": {
-											"type": "money",
-											"example": "$50,000"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/readTransactions": {
-			"get": {
-				"tags": ["transactions"],
-				"summary": "get all transactions",
-				"produces": ["application/json"],
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "All Transactions Returned",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"transactions": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"amount": {
-											"type": "money",
-											"example": "$50,000"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/readTransactions/{user_id}": {
-			"get": {
-				"tags": ["transactions"],
-				"summary": "get all transactions of a user",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "user_id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "All Transactions of User Returned",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"transactions": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"amount": {
-											"type": "money",
-											"example": "$50,000"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/transaction/{id}": {
-			"get": {
-				"tags": ["transactions"],
-				"summary": "Get a specific transaction user",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "All Transactions of User Returned",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"transactions": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "int"
-										},
-										"user_id": {
-											"type": "int"
-										},
-										"amount": {
-											"type": "money",
-											"example": "$50,000"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/transaction/delete/{id}": {
-			"delete": {
-				"tags": ["transactions"],
-				"summary": "Delete a specific transaction user",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Deleted Transaction Successfully",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"transactions": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "int"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/user/updateBlock": {
-			"put": {
-				"tags": ["blocks"],
-				"summary": "Update an existing Block",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"source_id": {
-									"type": "int"
-								},
-								"target_id": {
-									"type": "int"
-								},
-								"created_at": {
-									"type": "timestamp",
-									"example": "2021-04-08 21:32:36.504188"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "block updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"blocks": {
-									"type": "object",
-									"properties": {
-										"source_id": {
-											"type": "int"
-										},
-										"target_id": {
-											"type": "int"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/user/blocks": {
-			"get": {
-				"tags": ["blocks"],
-				"summary": "get all blocks",
-				"produces": ["application/json"],
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "All Blocks Returned",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"blocks": {
-									"type": "object",
-									"properties": {
-										"source_id": {
-											"type": "int"
-										},
-										"target_id": {
-											"type": "int"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"user/blocks/{source_id}": {
-			"get": {
-				"tags": ["blocks"],
-				"summary": "get all block done by a user",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "source_id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "All Blocks of User Returned",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"blocks": {
-									"type": "object",
-									"properties": {
-										"source_id": {
-											"type": "int"
-										},
-										"target_id": {
-											"type": "int"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"user/blocks/{target_id}": {
-			"get": {
-				"tags": ["blocks"],
-				"summary": "get all block done on a user",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "target_id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "All Blocks on a User Returned",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"blocks": {
-									"type": "object",
-									"properties": {
-										"source_id": {
-											"type": "int"
-										},
-										"target_id": {
-											"type": "int"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"user/blocks/{source_id}/{target_id}": {
-			"delete": {
-				"tags": ["blocks"],
-				"summary": "Delete a specific Block",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "source_id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					},
-					{
-						"name": "target_id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "A block is deleted",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"blocks": {
-									"type": "object",
-									"properties": {
-										"source_id": {
-											"type": "int"
-										},
-										"target_id": {
-											"type": "int"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/user/update_info/": {
-			"put": {
-				"tags": ["user"],
-				"summary": "Update entire user object for any attribute",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "Updated user object",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/user"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "User updated with new BIO",
-						"schema": {
-							"$ref": "#/definitions/user"
-						}
-					},
-					"400": {
-						"description": "Invalid user info supplied"
-					},
-					"404": {
-						"description": "User Not found"
-					}
-				}
-			}
-		},
-		"/user/add_bio/": {
-			"put": {
-				"tags": ["user"],
-				"summary": "Update user with a new BIO",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "Updated user object",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": "123"
-								},
-								"bio": {
-									"type": "string",
-									"example": "Dummy Bio"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "User updated with new BIO",
-						"schema": {
-							"$ref": "#/definitions/user"
-						}
-					},
-					"400": {
-						"description": "Invalid user info supplied"
-					},
-					"404": {
-						"description": "User Not found"
-					}
-				}
-			}
-		},
-		"/user/set_location/": {
-			"put": {
-				"tags": ["user"],
-				"summary": "Update user with new location added manually",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "Updated user object",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": "123"
-								},
-								"location": {
-									"type": "object",
-									"properties": {
-										"lng": {
-											"type": "number",
-											"format": "double",
-											"example": "123.123"
-										},
-										"lat": {
-											"type": "number",
-											"format": "double",
-											"example": "123.123"
-										}
-									}
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "User updated with new location",
-						"schema": {
-							"$ref": "#/definitions/user"
-						}
-					},
-					"400": {
-						"description": "Invalid info supplied"
-					},
-					"404": {
-						"description": "User Not found"
-					}
-				}
-			}
-		},
-		"/user/add_multimedia/": {
-			"put": {
-				"tags": ["user"],
-				"summary": "Update user profile with new photos or videos",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "Updated user object",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": "123"
-								},
-								"profilePictures": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"url": {
-												"type": "string",
-												"example": "https://imagehost.com/123"
-											},
-											"isMain": {
-												"type": "boolean",
-												"example": "True"
-											}
-										}
-									}
-								},
-								"video": {
-									"type": "string",
-									"example": "https://videohost.com/123"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "User updated with new multimedia",
-						"schema": {
-							"$ref": "#/definitions/user"
-						}
-					},
-					"400": {
-						"description": "Invalid info supplied"
-					},
-					"404": {
-						"description": "User Not found"
-					}
-				}
-			}
-		},
-		"/user/update_social_links/": {
-			"put": {
-				"tags": ["user"],
-				"summary": "Update user profile with new social media links",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "Updated user object",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": "123"
-								},
-								"links": {
-									"type": "object",
-									"properties": {
-										"facebook": {
-											"type": "string",
-											"example": "facebook.com/dummyUser"
-										},
-										"isntagram": {
-											"type": "string",
-											"example": "instagram.com/dummyUser"
-										},
-										"spotify": {
-											"type": "string",
-											"example": "spotify.com/dummyUser"
-										}
-									}
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "User updated with new social links",
-						"schema": {
-							"$ref": "#/definitions/user"
-						}
-					},
-					"400": {
-						"description": "Invalid info supplied"
-					},
-					"404": {
-						"description": "User Not found"
-					}
-				}
-			}
-		},
-		"/user/update_interests/": {
-			"put": {
-				"tags": ["user"],
-				"summary": "Update user profile with new interests",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "Updated user object",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": "123"
-								},
-								"interests": {
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"interestID": {
-												"type": "string"
-											},
-											"name": {
-												"type": "string"
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "User updated with new interests",
-						"schema": {
-							"$ref": "#/definitions/user"
-						}
-					},
-					"400": {
-						"description": "Invalid info supplied"
-					},
-					"404": {
-						"description": "User Not found"
-					}
-				}
-			}
-		},
-		"/user/update_preferences/": {
-			"put": {
-				"tags": ["user"],
-				"summary": "Update user profile with new interests",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "Updated user object",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": "123"
-								},
-								"preferences": {
-									"type": "object",
-									"properties": {
-										"age": {
-											"type": "integer"
-										},
-										"location(radius)": {
-											"type": "integer"
-										}
-									}
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "User updated with new preferences",
-						"schema": {
-							"$ref": "#/definitions/user"
-						}
-					},
-					"400": {
-						"description": "Invalid info supplied"
-					},
-					"404": {
-						"description": "User Not found"
-					}
-				}
-			}
-		},
-		"/chat/create_new/": {
-			"post": {
-				"tags": ["chat"],
-				"summary": "Create New Chat for matched users",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "user info required to create chat",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"userA": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": "123"
-										}
-									}
-								},
-								"userB": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": "123"
-										}
-									}
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Chat created between two users",
-						"schema": {
-							"$ref": "#/definitions/chat"
-						}
-					},
-					"400": {
-						"description": "Invalid info supplied"
-					},
-					"404": {
-						"description": "User Not found"
-					}
-				}
-			}
-		},
-		"/chat/update/": {
-			"put": {
-				"tags": ["chat"],
-				"summary": "update chat for matched users",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"description": "chat info to update messages",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": "123"
-								},
-								"messages": {
-									"type": "object",
-									"properties": {
-										"sourceUser": {
-											"type": "number"
-										},
-										"media(optional)": {
-											"type": "string"
-										},
-										"text(optional)": {
-											"type": "string"
-										},
-										"createdAt": {
-											"type": "string",
-											"format": "date-time"
-										}
-									}
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Chat updated between two users",
-						"schema": {
-							"$ref": "#/definitions/chat"
-						}
-					},
-					"400": {
-						"description": "Invalid info supplied"
-					},
-					"404": {
-						"description": "chat Not found"
-					}
-				}
-			}
-		},
-		"/chat/read/{id}": {
-			"get": {
-				"tags": ["chat"],
-				"summary": "read chat for matched users",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "path",
-						"type": "number",
-						"name": "id",
-						"description": "chat id to get messages",
-						"required": true
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Chat retrieved between two users",
-						"schema": {
-							"$ref": "#/definitions/chat"
-						}
-					},
-					"400": {
-						"description": "Invalid id supplied"
-					},
-					"404": {
-						"description": "chat Not found"
-					}
-				}
-			}
-		},
-		"/chat/delete/{id}": {
-			"delete": {
-				"tags": ["chat"],
-				"summary": "read chat for matched users",
-				"consumes": ["application/json"],
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "path",
-						"type": "number",
-						"name": "id",
-						"description": "chat id to delete chat",
-						"required": true
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Chat deleted between two users",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"chat": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": "2"
-										}
-									}
-								}
-							}
-						}
-					},
-					"400": {
-						"description": "Invalid id supplied"
-					},
-					"404": {
-						"description": "chat Not found"
-					}
-				}
-			}
-		},
-		"/moderator/signup": {
-			"post": {
-				"tags": ["moderator"],
-				"summary": "moderator signs up using email and password",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"email": {
-									"type": "string",
-									"example": "test@gmail.com"
-								},
-								"password": {
-									"type": "string",
-									"example": "******"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "moderator signed up",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"moderator": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"email": {
-											"type": "string",
-											"example": "test@gmail.com"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/moderator/sign_in": {
-			"post": {
-				"tags": ["moderator"],
-				"summary": "moderator signs in using email and password",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"email": {
-									"type": "string",
-									"example": "test@gmail.com"
-								},
-								"password": {
-									"type": "string",
-									"example": "******"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "moderator logged in",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"moderator": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "string",
-											"example": "5fc3a4b1bf42f31d4c29c6de"
-										},
-										"email": {
-											"type": "string",
-											"example": "test@gmail.com"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
-		"/moderator/{id}": {
-			"delete": {
-				"tags": ["moderator"],
-				"summary": "deletes moderator profile by id",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "moderator deleted",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"moderator": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": 2
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
-		"/moderator": {
-			"put": {
-				"tags": ["moderator"],
-				"summary": "moderator can edit public account data",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": 2
-								},
-								"email": {
-									"type": "string",
-									"example": "test2@gmail.com"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "moderator updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": 2
-										},
-										"email": {
-											"type": "string",
-											"example": "test2@gmail.com"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
-		"/moderator/passwords": {
-			"put": {
-				"tags": ["moderator"],
-				"summary": "moderator can change passwords by providing the old and new passwords",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"id": {
-									"type": "number",
-									"example": 2
-								},
-								"old_password": {
-									"type": "string",
-									"example": "password"
-								},
-								"new_password": {
-									"type": "string",
-									"example": "passwordNew"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "password updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"email": {
-											"type": "string",
-											"example": "test2@gmail.com"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
-		"/moderator/profile/{id}": {
-			"get": {
-				"tags": ["moderator"],
-				"summary": "moderator can view profile",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "password updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": 2
-										},
-										"email": {
-											"type": "string",
-											"example": "test2@gmail.com"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
-		"/moderator/reports": {
-			"get": {
-				"tags": ["moderator"],
-				"summary": "get all reports",
-				"produces": ["application/json"],
-				"parameters": [],
-				"responses": {
-					"200": {
-						"description": "All Reports Returned",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"reports": {
-									"type": "object",
-									"properties": {
-										"source_id": {
-											"type": "int"
-										},
-										"target_id": {
-											"type": "int"
-										},
-										"reason": {
-											"type": "string",
-											"example": "Discrimination Messages"
-										},
-										"created_at": {
-											"type": "timestamp",
-											"example": "2021-04-08 21:32:36.504188"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/moderator/interests": {
-			"post": {
-				"tags": ["interests"],
-				"summary": "moderator creates interest",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string",
-									"example": "Nasr City Haters"
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "interest created",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"name": {
-											"type": "string",
-											"example": "Nasr City Haters"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/moderator/interests/delete/{id}": {
-			"delete": {
-				"tags": ["interests"],
-				"summary": "deletes interest by id",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "interest deleted",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": 2
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
-		"/moderator/interests/update/{id}": {
-			"put": {
-				"tags": ["interests"],
-				"summary": "moderator can edit interest by id",
-				"consumes": ["application/json"],
-				"parameters": [
-					{
-						"in": "body",
-						"name": "body",
-						"required": true,
-						"schema": {
-							"type": "object",
-							"properties": {
-								"name": {
-									"type": "string",
-									"example": ""
-								}
-							}
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "interest updated",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"user": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "number",
-											"example": 2
-										},
-										"name": {
-											"type": "string",
-											"example": "Sheikh Zayed Lovers"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"produces": ["application/json"]
-			}
-		},
-		"/interests": {
-			"get": {
-				"tags": ["interests"],
-				"summary": "get all interests",
-				"produces": ["application/json"],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"type": "number"
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "all interests",
-						"schema": {
-							"type": "object",
-							"properties": {
-								"interess": {
-									"type": "object",
-									"properties": {
-										"id": {
-											"type": "integer",
-											"example": 1
-										},
-										"name": {
-											"type": "int"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	},
-	"definitions": {
-		"user": {
-			"type": "object",
-			"required": ["id"],
-			"properties": {
-				"id": {
-					"type": "number",
-					"example": "123"
-				},
-				"gender": {
-					"type": "string",
-					"example": "Male"
-				},
-				"bio": {
-					"type": "string",
-					"example": "Dummy bio"
-				},
-				"birthDate": {
-					"type": "string",
-					"format": "date-time",
-					"example": "12/07/1997 - 00:00:00"
-				},
-				"age": {
-					"type": "number",
-					"example": "18"
-				},
-				"location": {
-					"type": "object",
-					"properties": {
-						"lng": {
-							"type": "number",
-							"format": "double",
-							"example": "123.123"
-						},
-						"lat": {
-							"type": "number",
-							"format": "double",
-							"example": "123.123"
-						},
-						"addressName": {
-							"type": "string",
-							"example": "dummy street, dummy block, dummy city"
-						}
-					}
-				},
-				"links": {
-					"type": "object",
-					"properties": {
-						"facebook": {
-							"type": "string",
-							"format": "url",
-							"example": "facebook.com/dummyUser"
-						},
-						"instagram": {
-							"type": "string",
-							"format": "url",
-							"example": "instagram.com/dummyUser"
-						},
-						"spotify": {
-							"type": "string",
-							"format": "url",
-							"example": "spotify.com/dummyUser"
-						}
-					}
-				},
-				"profilePictures": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"url": {
-								"type": "string",
-								"example": "https://imagehost.com/123"
-							},
-							"isMain": {
-								"type": "boolean",
-								"example": "True"
-							}
-						}
-					}
-				},
-				"video": {
-					"type": "string",
-					"example": "https://videohost.com/123"
-				},
-				"interests": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"interestID": {
-								"type": "string"
-							},
-							"name": {
-								"type": "string"
-							}
-						}
-					}
-				},
-				"preferences": {
-					"type": "object",
-					"properties": {
-						"age": {
-							"type": "integer",
-							"example": "18"
-						},
-						"location(radius)": {
-							"type": "integer",
-							"example": "20"
-						}
-					}
-				}
-			}
-		},
-		"chat": {
-			"type": "object",
-			"properties": {
-				"createdAt": {
-					"type": "string",
-					"format": "date-time"
-				},
-				"id": {
-					"type": "number",
-					"example": "123"
-				},
-				"userA": {
-					"type": "object",
-					"properties": {
-						"id": {
-							"type": "number",
-							"example": "123"
-						},
-						"fullName": {
-							"type": "string"
-						},
-						"age": {
-							"type": "number",
-							"example": "20"
-						}
-					}
-				},
-				"userB": {
-					"type": "object",
-					"properties": {
-						"id": {
-							"type": "number",
-							"example": "20"
-						},
-						"fullName": {
-							"type": "string"
-						},
-						"age": {
-							"type": "number",
-							"example": "20"
-						}
-					}
-				},
-				"messages": {
-					"type": "object",
-					"properties": {
-						"sourceUser": {
-							"type": "number",
-							"example": "20"
-						},
-						"media(optional)": {
-							"type": "string",
-							"example": "https://imagehost/123"
-						},
-						"text(optional)": {
-							"type": "string",
-							"example": "dummy message"
-						},
-						"createdAt": {
-							"type": "string",
-							"format": "date-time"
-						}
-					}
-				}
-			}
-		}
-	}
+    "/moderator/ban/{id}": {
+      "delete": {
+        "tags": ["bans"],
+        "summary": "delete a specific ban",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted Ban Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/interactions/{interaction_id}": {
+      "get": {
+        "tags": ["interactions"],
+        "summary": "Read interaction with id",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "interaction_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Interaction Found Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "interactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "source_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "target_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "like"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/interactions/all/{page}/{limit}": {
+      "get": {
+        "tags": ["interactions"],
+        "summary": "Read all interactions with pagination",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "limit",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Interactions Found Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "interactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "source_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "target_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "like"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/interactions/source/{id}/{page}/{limit}": {
+      "get": {
+        "tags": ["interactions"],
+        "summary": "Read all interactions of source user with pagination",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "limit",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Interactions Found Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "interactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "source_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "target_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "like"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/interactions/target/{id}/{page}/{limit}": {
+      "get": {
+        "tags": ["interactions"],
+        "summary": "Read all interactions of target user with pagination",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "limit",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Interactions Found Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "interactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "source_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "target_user_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "like"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/updateInteraction": {
+      "put": {
+        "tags": ["interactions"],
+        "summary": "user updates an existing interaction",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "source_user_id": {
+                  "type": "integer"
+                },
+                "target_user_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string",
+                  "example": "like"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user interaction updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "interactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "source_user_id": {
+                      "type": "integer"
+                    },
+                    "target_user_id": {
+                      "type": "integer"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "like"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/interactions/delete/{id}": {
+      "delete": {
+        "tags": ["interactions"],
+        "summary": "delete a specific interaction",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted Interaction Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/matches/{id}": {
+      "get": {
+        "tags": ["matches"],
+        "summary": "Read all matches of a user sorted chronologically",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Matches Found Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "matches": {
+                  "type": "object",
+                  "properties": {
+                    "int_1_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "int_2_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "user_1_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "user_2_id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "int_1_type": {
+                      "type": "string",
+                      "example": "like"
+                    },
+                    "int_2_type": {
+                      "type": "string",
+                      "example": "like"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/updateReport": {
+      "put": {
+        "tags": ["reports"],
+        "summary": "update existing report",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "report updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "reports": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "source_user_id": {
+                      "type": "integer"
+                    },
+                    "target_user_id": {
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Explicit Content"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/reports/{id}": {
+      "delete": {
+        "tags": ["reports"],
+        "summary": "delete a specific reports",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted report Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bans": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/create": {
+      "post": {
+        "tags": ["transactions"],
+        "description": "create a transaction",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "amount": {
+                  "type": "string",
+                  "example": "$1.0"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction created successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "user_id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "amount": {
+                  "type": "string",
+                  "example": "$1.0"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/updateTransaction": {
+      "put": {
+        "tags": ["transactions"],
+        "summary": "update existing transaction",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "user_id": {
+                  "type": "integer"
+                },
+                "amount": {
+                  "type": "number",
+                  "example": "$50,000"
+                },
+                "created_at": {
+                  "type": "string",
+                  "example": "2021-04-08 21:32:36.504188"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "transaction updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "number",
+                      "example": "$50,000"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/readTransactions": {
+      "get": {
+        "tags": ["transactions"],
+        "summary": "get all transactions",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All Transactions Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "number",
+                      "example": "$50,000"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/readTransactions/{user_id}": {
+      "get": {
+        "tags": ["transactions"],
+        "summary": "get all transactions of a user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Transactions of User Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "number",
+                      "example": "$50,000"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/{id}": {
+      "get": {
+        "tags": ["transactions"],
+        "summary": "Get a specific transaction user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Transactions of User Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "number",
+                      "example": "$50,000"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/delete/{id}": {
+      "delete": {
+        "tags": ["transactions"],
+        "summary": "Delete a specific transaction user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted Transaction Successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactions": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/updateBlock": {
+      "put": {
+        "tags": ["blocks"],
+        "summary": "Update an existing Block",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "source_id": {
+                  "type": "integer"
+                },
+                "target_id": {
+                  "type": "integer"
+                },
+                "created_at": {
+                  "type": "string",
+                  "example": "2021-04-08 21:32:36.504188"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "block updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "integer"
+                    },
+                    "target_id": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/blocks": {
+      "get": {
+        "tags": ["blocks"],
+        "summary": "get all blocks",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All Blocks Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "integer"
+                    },
+                    "target_id": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/blocks/source/{source_id}": {
+      "get": {
+        "tags": ["blocks"],
+        "summary": "get all block done by a user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "source_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Blocks of User Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "integer"
+                    },
+                    "target_id": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/blocks/target/{target_id}": {
+      "get": {
+        "tags": ["blocks"],
+        "summary": "get all block done on a user",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "target_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Blocks on a User Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "integer"
+                    },
+                    "target_id": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/blocks/{source_id}/{target_id}": {
+      "delete": {
+        "tags": ["blocks"],
+        "summary": "Delete a specific Block",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "source_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "target_id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A block is deleted",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "blocks": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "integer"
+                    },
+                    "target_id": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/update_info/": {
+      "put": {
+        "tags": ["user"],
+        "summary": "Update entire user object for any attribute",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated with new BIO",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "400": {
+            "description": "Invalid user info supplied"
+          },
+          "404": {
+            "description": "User Not found"
+          }
+        }
+      }
+    },
+    "/user/add_bio/": {
+      "put": {
+        "tags": ["user"],
+        "summary": "Update user with a new BIO",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": "123"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "Dummy Bio"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated with new BIO",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "400": {
+            "description": "Invalid user info supplied"
+          },
+          "404": {
+            "description": "User Not found"
+          }
+        }
+      }
+    },
+    "/user/set_location/": {
+      "put": {
+        "tags": ["user"],
+        "summary": "Update user with new location added manually",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": "123"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "lng": {
+                      "type": "number",
+                      "format": "double",
+                      "example": "123.123"
+                    },
+                    "lat": {
+                      "type": "number",
+                      "format": "double",
+                      "example": "123.123"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated with new location",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "400": {
+            "description": "Invalid info supplied"
+          },
+          "404": {
+            "description": "User Not found"
+          }
+        }
+      }
+    },
+    "/user/add_multimedia/": {
+      "put": {
+        "tags": ["user"],
+        "summary": "Update user profile with new photos or videos",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": "123"
+                },
+                "profilePictures": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "example": "https://imagehost.com/123"
+                      },
+                      "isMain": {
+                        "type": "boolean",
+                        "example": "True"
+                      }
+                    }
+                  }
+                },
+                "video": {
+                  "type": "string",
+                  "example": "https://videohost.com/123"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated with new multimedia",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "400": {
+            "description": "Invalid info supplied"
+          },
+          "404": {
+            "description": "User Not found"
+          }
+        }
+      }
+    },
+    "/user/update_social_links/": {
+      "put": {
+        "tags": ["user"],
+        "summary": "Update user profile with new social media links",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": "123"
+                },
+                "links": {
+                  "type": "object",
+                  "properties": {
+                    "facebook": {
+                      "type": "string",
+                      "example": "facebook.com/dummyUser"
+                    },
+                    "isntagram": {
+                      "type": "string",
+                      "example": "instagram.com/dummyUser"
+                    },
+                    "spotify": {
+                      "type": "string",
+                      "example": "spotify.com/dummyUser"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated with new social links",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "400": {
+            "description": "Invalid info supplied"
+          },
+          "404": {
+            "description": "User Not found"
+          }
+        }
+      }
+    },
+    "/user/update_interests/": {
+      "put": {
+        "tags": ["user"],
+        "summary": "Update user profile with new interests",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": "123"
+                },
+                "interests": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "interestID": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated with new interests",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "400": {
+            "description": "Invalid info supplied"
+          },
+          "404": {
+            "description": "User Not found"
+          }
+        }
+      }
+    },
+    "/user/update_preferences/": {
+      "put": {
+        "tags": ["user"],
+        "summary": "Update user profile with new interests",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": "123"
+                },
+                "preferences": {
+                  "type": "object",
+                  "properties": {
+                    "age": {
+                      "type": "integer"
+                    },
+                    "location(radius)": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated with new preferences",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "400": {
+            "description": "Invalid info supplied"
+          },
+          "404": {
+            "description": "User Not found"
+          }
+        }
+      }
+    },
+    "/chat/create_new/": {
+      "post": {
+        "tags": ["chat"],
+        "summary": "Create New Chat for matched users",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "user info required to create chat",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userA": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": "123"
+                    }
+                  }
+                },
+                "userB": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": "123"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chat created between two users",
+            "schema": {
+              "$ref": "#/definitions/chat"
+            }
+          },
+          "400": {
+            "description": "Invalid info supplied"
+          },
+          "404": {
+            "description": "User Not found"
+          }
+        }
+      }
+    },
+    "/chat/update/": {
+      "put": {
+        "tags": ["chat"],
+        "summary": "update chat for matched users",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "chat info to update messages",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": "123"
+                },
+                "messages": {
+                  "type": "object",
+                  "properties": {
+                    "sourceUser": {
+                      "type": "number"
+                    },
+                    "media(optional)": {
+                      "type": "string"
+                    },
+                    "text(optional)": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chat updated between two users",
+            "schema": {
+              "$ref": "#/definitions/chat"
+            }
+          },
+          "400": {
+            "description": "Invalid info supplied"
+          },
+          "404": {
+            "description": "chat Not found"
+          }
+        }
+      }
+    },
+    "/chat/read/{id}": {
+      "get": {
+        "tags": ["chat"],
+        "summary": "read chat for matched users",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "type": "number",
+            "name": "id",
+            "description": "chat id to get messages",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chat retrieved between two users",
+            "schema": {
+              "$ref": "#/definitions/chat"
+            }
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "chat Not found"
+          }
+        }
+      }
+    },
+    "/chat/delete/{id}": {
+      "delete": {
+        "tags": ["chat"],
+        "summary": "read chat for matched users",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "type": "number",
+            "name": "id",
+            "description": "chat id to delete chat",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chat deleted between two users",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "chat": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": "2"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid id supplied"
+          },
+          "404": {
+            "description": "chat Not found"
+          }
+        }
+      }
+    },
+    "/moderator/signup": {
+      "post": {
+        "tags": ["moderator"],
+        "summary": "moderator signs up using email and password",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "test@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "******"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "moderator signed up",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "moderator": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "test@gmail.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/sign_in": {
+      "post": {
+        "tags": ["moderator"],
+        "summary": "moderator signs in using email and password",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "test@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "******"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "moderator logged in",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "moderator": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "5fc3a4b1bf42f31d4c29c6de"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "test@gmail.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
+    "/moderator/{id}": {
+      "delete": {
+        "tags": ["moderator"],
+        "summary": "deletes moderator profile by id",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "moderator deleted",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "moderator": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
+    "/moderator": {
+      "put": {
+        "tags": ["moderator"],
+        "summary": "moderator can edit public account data",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 2
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test2@gmail.com"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "moderator updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "test2@gmail.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
+    "/moderator/passwords": {
+      "put": {
+        "tags": ["moderator"],
+        "summary": "moderator can change passwords by providing the old and new passwords",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 2
+                },
+                "old_password": {
+                  "type": "string",
+                  "example": "password"
+                },
+                "new_password": {
+                  "type": "string",
+                  "example": "passwordNew"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "password updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "example": "test2@gmail.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
+    "/moderator/profile/{id}": {
+      "get": {
+        "tags": ["moderator"],
+        "summary": "moderator can view profile",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "password updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "test2@gmail.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
+    "/moderator/reports": {
+      "get": {
+        "tags": ["moderator"],
+        "summary": "get all reports",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "All Reports Returned",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "reports": {
+                  "type": "object",
+                  "properties": {
+                    "source_id": {
+                      "type": "integer"
+                    },
+                    "target_id": {
+                      "type": "integer"
+                    },
+                    "reason": {
+                      "type": "string",
+                      "example": "Discrimination Messages"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "example": "2021-04-08 21:32:36.504188"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/interests": {
+      "post": {
+        "tags": ["interests"],
+        "summary": "moderator creates interest",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Nasr City Haters"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "interest created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Nasr City Haters"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/moderator/interests/delete/{id}": {
+      "delete": {
+        "tags": ["interests"],
+        "summary": "deletes interest by id",
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "interest deleted",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
+    "/moderator/interests/update/{id}": {
+      "put": {
+        "tags": ["interests"],
+        "summary": "moderator can edit interest by id",
+        "consumes": ["application/json"],
+        "parameters": [
+          { "in": "path", "name": "id", "required": true, "type": "number" },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "sports"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "interest updated",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 2
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "Sheikh Zayed Lovers"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "produces": ["application/json"]
+      }
+    },
+    "/interests": {
+      "get": {
+        "tags": ["interests"],
+        "summary": "get all interests",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "all interests",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "interess": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "name": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "user": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": "123"
+        },
+        "gender": {
+          "type": "string",
+          "example": "Male"
+        },
+        "bio": {
+          "type": "string",
+          "example": "Dummy bio"
+        },
+        "birthDate": {
+          "type": "string",
+          "format": "string",
+          "example": "12/07/1997 - 00:00:00"
+        },
+        "age": {
+          "type": "number",
+          "example": "18"
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "lng": {
+              "type": "number",
+              "format": "double",
+              "example": "123.123"
+            },
+            "lat": {
+              "type": "number",
+              "format": "double",
+              "example": "123.123"
+            },
+            "addressName": {
+              "type": "string",
+              "example": "dummy street, dummy block, dummy city"
+            }
+          }
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "facebook": {
+              "type": "string",
+              "format": "url",
+              "example": "facebook.com/dummyUser"
+            },
+            "instagram": {
+              "type": "string",
+              "format": "url",
+              "example": "instagram.com/dummyUser"
+            },
+            "spotify": {
+              "type": "string",
+              "format": "url",
+              "example": "spotify.com/dummyUser"
+            }
+          }
+        },
+        "profilePictures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "example": "https://imagehost.com/123"
+              },
+              "isMain": {
+                "type": "boolean",
+                "example": "True"
+              }
+            }
+          }
+        },
+        "video": {
+          "type": "string",
+          "example": "https://videohost.com/123"
+        },
+        "interests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "interestID": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "preferences": {
+          "type": "object",
+          "properties": {
+            "age": {
+              "type": "integer",
+              "example": "18"
+            },
+            "location(radius)": {
+              "type": "integer",
+              "example": "20"
+            }
+          }
+        }
+      }
+    },
+    "chat": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "string"
+        },
+        "id": {
+          "type": "number",
+          "example": "123"
+        },
+        "userA": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number",
+              "example": "123"
+            },
+            "fullName": {
+              "type": "string"
+            },
+            "age": {
+              "type": "number",
+              "example": "20"
+            }
+          }
+        },
+        "userB": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number",
+              "example": "20"
+            },
+            "fullName": {
+              "type": "string"
+            },
+            "age": {
+              "type": "number",
+              "example": "20"
+            }
+          }
+        },
+        "messages": {
+          "type": "object",
+          "properties": {
+            "sourceUser": {
+              "type": "number",
+              "example": "20"
+            },
+            "media(optional)": {
+              "type": "string",
+              "example": "https://imagehost/123"
+            },
+            "text(optional)": {
+              "type": "string",
+              "example": "dummy message"
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "string"
+            }
+          }
+        }
+      }
+    }
+  }
 }
