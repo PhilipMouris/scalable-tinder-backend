@@ -1,4 +1,4 @@
-package NettyServer;
+package NettyWebServer;
 
 import Config.Config;
 import io.netty.bootstrap.ServerBootstrap;
@@ -7,7 +7,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public class WebServer {
+public class NettyServer {
 
     Config c = Config.getInstance();
     private int port = c.getWebServerPort();
@@ -21,7 +21,7 @@ public class WebServer {
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
 //                    .handler(new LoggingHandler(LogLevel.INFO))
-                    .childHandler(new WebServerInitializer(port));
+                    .childHandler(new NettyServerInitializer(port));
 //            b.option(ChannelOption.SO_KEEPALIVE, true);
             Channel ch = b.bind(port).sync().channel();
 
@@ -39,7 +39,7 @@ public class WebServer {
     }
 
     public static void main(String[] args) {
-        WebServer s = new WebServer();
+        NettyServer s = new NettyServer();
         s.start();
     }
 }

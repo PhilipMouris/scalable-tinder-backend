@@ -1,4 +1,4 @@
-package NettyServer;//package WebServer;
+package NettyWebServer;//package WebServer;
 //
 //
 //

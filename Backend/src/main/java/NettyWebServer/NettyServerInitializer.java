@@ -1,4 +1,4 @@
-package NettyServer;
+package NettyWebServer;
 
 import Config.Config;
 import com.rabbitmq.client.*;
@@ -19,17 +19,17 @@ import java.util.concurrent.TimeoutException;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
 
-public class WebServerInitializer extends ChannelInitializer<SocketChannel> {
+public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
 
     private Config config = Config.getInstance();
     private HashMap<String, ChannelHandlerContext> uuid = new HashMap<String, ChannelHandlerContext>();
     private Channel receiverChannel;
     private Channel senderChannel;
 
-//    private String loadBalancerHost = config.getLoadBalancerQueueHost();
-//    private int loadBalancerPort = config.getLoadBalancerQueuePort();
-//    private String loadBalancerUser = config.getLoadBalancerQueueUserName();
-//    private String loadBalancerPass = config.getLoadBalancerQueuePass();
+    private String loadBalancerHost = config.getLoadBalancerQueueHost();
+    private int loadBalancerPort = config.getLoadBalancerQueuePort();
+    private String loadBalancerUser = config.getLoadBalancerQueueUserName();
+    private String loadBalancerPass = config.getLoadBalancerQueuePass();
     private String RPC_QUEUE_SEND_TO = config.getLoadBalancerQueueName();
 
     private String serverHost = config.getServerQueueHost();
@@ -38,7 +38,7 @@ public class WebServerInitializer extends ChannelInitializer<SocketChannel> {
     private String serverPass = config.getServerQueuePass();
     private String RPC_QUEUE_REPLY_TO = config.getServerQueueName();
 
-    public WebServerInitializer(int port) {
+    public NettyServerInitializer(int port) {
 //        establishLoadBalancerConnection();
         establishServerConnection();
         serverQueue();
@@ -56,7 +56,7 @@ public class WebServerInitializer extends ChannelInitializer<SocketChannel> {
         p.addLast(new CorsHandler(corsConfig));
         p.addLast(new HttpObjectAggregator(65536));
         p.addLast(new HTTPHandler());
-        p.addLast("MQ", new WebServer.RequestHandler(senderChannel, uuid, RPC_QUEUE_REPLY_TO, RPC_QUEUE_SEND_TO));
+        p.addLast("MQ", new NettyWebServer.RequestHandler(senderChannel, uuid, RPC_QUEUE_REPLY_TO, RPC_QUEUE_SEND_TO));
     }
 
     private void establishLoadBalancerConnection() {
@@ -84,6 +84,9 @@ public class WebServerInitializer extends ChannelInitializer<SocketChannel> {
         Connection connection;
         try {
             connection = serverFactory.newConnection();
+            connection = serverFactory.newConnection();
+            senderChannel = connection.createChannel();
+            senderChannel.queueDeclare(RPC_QUEUE_SEND_TO, false, false, false, null);
             receiverChannel = connection.createChannel();
             receiverChannel.queueDeclare(RPC_QUEUE_REPLY_TO, false, false, false, null);
             receiverChannel.basicQos(4);

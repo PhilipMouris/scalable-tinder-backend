@@ -1,6 +1,6 @@
 package Config;
 
-import Controller.Controller;
+//import Controller.Controller;
 
 import java.io.*;
 import java.util.Properties;
@@ -17,13 +17,13 @@ public class Config {
     private final Properties serviceConfig = new Properties();
     private final Properties webServerConfig = new Properties();
 
-    private final String arangoPath = "/home/vm/Desktop/pintrest-user-master/BackEnd/src/main/resources/arango.conf";
-    private final String controllerPath = "/home/vm/Desktop/pintrest-user-master/BackEnd/src/main/resources/controller.conf";
-    private final String loadBalancerPath = "/home/vm/Desktop/pintrest-user-master/BackEnd/src/main/resources/load.balancer.conf";
-    private final String mediaServerPath = "/home/vm/Desktop/pintrest-user-master/BackEnd/src/main/resources/media.server.conf";
-    private final String mqInstancePath = "/home/vm/Desktop/pintrest-user-master/BackEnd/src/main/resources/mq.instance.conf";
-    private final String servicePath = "/home/vm/Desktop/pintrest-user-master/BackEnd/src/main/resources/service.conf";
-    private final String webServerPath = "/home/vm/Desktop/pintrest-user-master/BackEnd/src/main/resources/web.server.conf";
+    private final String arangoPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/arango.conf";
+    private final String controllerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/controller.conf";
+    private final String loadBalancerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/load.balancer.conf";
+    private final String mediaServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/media.server.conf";
+    private final String mqInstancePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/mq.instance.conf";
+    private final String servicePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/service.conf";
+    private final String webServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/web.server.conf";
 
     private Config() {
         loadConfig(arangoConfig, arangoPath);
@@ -44,7 +44,7 @@ public class Config {
         } catch (IOException e) {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
-            Controller.logger.error(errors);
+//            Controller.logger.error(errors);
             e.printStackTrace();
         }
     }
@@ -109,7 +109,7 @@ public class Config {
         } catch (IOException e) {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
-            Controller.logger.error(errors);
+//            Controller.logger.error(errors);
             e.printStackTrace();
         }
     }
