@@ -7,32 +7,15 @@ import NettyWebServer.NettyServer;
 import Controller.Controller;
 public class RunBackEnd {
 
-    private static ServicesType type;
+    private static ServicesType[] services;
 
     public static void main(String[] args) throws InterruptedException {
-
-
-
-        if(args.length > 1) {
-            if (args[1].toLowerCase().equals("post"))
-                type = ServicesType.user_to_user;
-            if (args[1].toLowerCase().equals("user"))
-                type = ServicesType.user;
-            if (args[1].toLowerCase().equals("chat"))
-                type = ServicesType.chat;
-        }
-        if(args.length > 0){
-            System.out.println("new Running from args : " + args[0]);
-            if(args.length > 1)
-                System.out.println("Running from args : " + args[1]);
-            run(args[0]);
-        } else {
+        
             run("server");
             run("loadBalancer");
             run("mQinstance");
-            type = ServicesType.user;
+            services = new ServicesType[]{ServicesType.user,ServicesType.moderator};
             run("controller");
-        }
 
     }
 
@@ -54,7 +37,9 @@ public class RunBackEnd {
                     break;
                 case "controller":
                     Controller c = new Controller();
-                    c.initService(type);
+                    for(ServicesType type:services) {
+                        c.initService(type);
+                    }
                     new Thread(() -> {
                         c.start();
                     }).start();
@@ -63,8 +48,8 @@ public class RunBackEnd {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    c.initDB();
-                    c.startService();
+                    c.initDBs();
+                    c.startServices();
 
                     break;
             }

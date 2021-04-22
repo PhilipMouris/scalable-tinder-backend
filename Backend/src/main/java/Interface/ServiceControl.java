@@ -163,19 +163,20 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             e.printStackTrace(new PrintWriter(errors));
             Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
         }
-        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Service Resumed"));
+//        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Service Resumed"));
     }
 
     public void freeze() {
         try {
             channel.basicCancel(consumerTag);
+            System.out.println("FREEZING");
         } catch (IOException e) {
             e.printStackTrace();
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
-            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
+//            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
         }
-        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Service Freezed"));
+//        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Service Freezed"));
     }
 
     //TODO CHECK IF FILE EXISTS FIRST IF THERE THEN LOG AN ERROR
@@ -184,7 +185,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         try {
             File idea = new File("/target/classes/" + RPC_QUEUE_NAME + "Commands/" + commandName + ".class");
             if (idea.exists()) {
-                Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, commandName + " Already exists please use update"));
+//                Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, commandName + " Already exists please use update"));
                 return;
             }
             fileWriter = new FileWriter(idea);
@@ -214,7 +215,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, "Invalid permissions."));
             return false;
         }
-        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Deletion successful."));
+//        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Deletion successful."));
         return true;
     }
 
