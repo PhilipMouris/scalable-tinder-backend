@@ -11,13 +11,14 @@ public class ServicesMQ {
 
     private Config config = Config.getInstance();
 
-    private final String HOST = config.getMqInstanceQueueHost();
-    private final int PORT = config.getMqInstanceQueuePort();
-    private final String instanceUser = config.getMqInstanceQueueUserName();
-    private final String instancePassword = config.getMqInstanceQueuePass();
-    private final String USER_QUEUE_NAME = config.getMqInstanceUserQueue();
-    private final String POST_QUEUE_NAME = config.getMqInstancePostQueue();
-    private final String CHAT_QUEUE_NAME = config.getMqInstanceChatQueue();
+    private final String HOST = config.getServicesMqQueueHost();
+    private final int PORT = config.getServicesMqQueuePort();
+    private final String instanceUser = config.getServicesMqQueueUserName();
+    private final String instancePassword = config.getServicesMqQueuePass();
+    private final String USER_QUEUE_NAME = config.getServicesMqUserQueue();
+    private final String USER_TO_USER_QUEUE_NAME = config.getServicesMqUserToUserQueue();
+    private final String MODERATOR_QUEUE_NAME = config.getServicesMqModeratorQueue();
+    private final String CHAT_QUEUE_NAME = config.getServicesMqChatQueue();
 
     private final String LOAD_BALANCER_EXTENSION = "-" +config.getLoadBalancerQueueName();
 //    private final String balancerHost = config.getLoadBalancerQueueHost();
@@ -29,7 +30,8 @@ public class ServicesMQ {
     private final String balancerUser = config.getServerQueueUserName();
     private final String balancerPass = config.getServerQueuePass();
     private final String LOAD_USER_QUEUE_NAME = config.getLoadBalancerUserQueue() + LOAD_BALANCER_EXTENSION;
-    private final String LOAD_POST_QUEUE_NAME = config.getLoadBalancerPostQueue() + LOAD_BALANCER_EXTENSION;
+    private final String LOAD_USER_TO_USER_QUEUE_NAME = config.getLoadBalancerUserToUserQueue() + LOAD_BALANCER_EXTENSION;
+    private final String LOAD_MODERATOR_QUEUE_NAME = config.getLoadBalancerModeratorQueue() + LOAD_BALANCER_EXTENSION;
     private final String LOAD_CHAT_QUEUE_NAME = config.getLoadBalancerChatQueue() + LOAD_BALANCER_EXTENSION;
 
     private final HashMap<String, Channel> LOAD_CHANNEL_MAP = new HashMap<>();
@@ -42,8 +44,10 @@ public class ServicesMQ {
 
     public void start(){
         consumeFromQueue(LOAD_CHAT_QUEUE_NAME, CHAT_QUEUE_NAME);
-        consumeFromQueue(LOAD_POST_QUEUE_NAME, POST_QUEUE_NAME);
+        consumeFromQueue(LOAD_MODERATOR_QUEUE_NAME, MODERATOR_QUEUE_NAME);
         consumeFromQueue(LOAD_USER_QUEUE_NAME, USER_QUEUE_NAME);
+        consumeFromQueue(LOAD_USER_TO_USER_QUEUE_NAME, USER_TO_USER_QUEUE_NAME);
+
     }
 
     private void consumeFromQueue(String RPC_QUEUE_NAME, String QUEUE_TO){
@@ -92,32 +96,40 @@ public class ServicesMQ {
         Connection connection;
         try {
             connection = LoadFactory.newConnection();
-            final Channel postChannel = connection.createChannel();
+            final Channel moderatorChannel = connection.createChannel();
             final Channel userChannel = connection.createChannel();
+            final Channel userToUserChannel = connection.createChannel();
             final Channel chatChannel = connection.createChannel();
 
             userChannel.queueDeclare(LOAD_USER_QUEUE_NAME, true, false, false, null);
             userChannel.basicQos(5);
-            postChannel.queueDeclare(LOAD_POST_QUEUE_NAME, true, false, false, null);
-            postChannel.basicQos(5);
+            moderatorChannel.queueDeclare(LOAD_MODERATOR_QUEUE_NAME, true, false, false, null);
+            moderatorChannel.basicQos(5);
             chatChannel.queueDeclare(LOAD_CHAT_QUEUE_NAME, true, false, false, null);
-            postChannel.basicQos(5);
+            chatChannel.basicQos(5);
+            userToUserChannel.queueDeclare(LOAD_USER_TO_USER_QUEUE_NAME, true, false, false, null);
+            userToUserChannel.basicQos(5);
 
             LOAD_CHANNEL_MAP.put(LOAD_USER_QUEUE_NAME, userChannel);
-            LOAD_CHANNEL_MAP.put(LOAD_POST_QUEUE_NAME, postChannel);
+            LOAD_CHANNEL_MAP.put(LOAD_MODERATOR_QUEUE_NAME, moderatorChannel);
             LOAD_CHANNEL_MAP.put(LOAD_CHAT_QUEUE_NAME, chatChannel);
+            LOAD_CHANNEL_MAP.put(LOAD_USER_TO_USER_QUEUE_NAME, userToUserChannel);
 
-            final Channel postChannel2 = connection.createChannel();
-            final Channel userChannel2 = connection.createChannel();
-            final Channel chatChannel2 = connection.createChannel();
 
-            userChannel.queueDeclare(USER_QUEUE_NAME, true, false, false, null);
-            postChannel.queueDeclare(POST_QUEUE_NAME, true, false, false, null);
-            chatChannel.queueDeclare(CHAT_QUEUE_NAME, true, false, false, null);
+            final Channel moderatorChannel_MQ = connection.createChannel();
+            final Channel userChannel_MQ = connection.createChannel();
+            final Channel chatChannel_MQ = connection.createChannel();
+            final Channel userToUserChannel_MQ = connection.createChannel();
 
-            REQUEST_CHANNEL_MAP.put(USER_QUEUE_NAME, userChannel2);
-            REQUEST_CHANNEL_MAP.put(POST_QUEUE_NAME, postChannel2);
-            REQUEST_CHANNEL_MAP.put(CHAT_QUEUE_NAME, chatChannel2);
+            userChannel_MQ.queueDeclare(USER_QUEUE_NAME, true, false, false, null);
+            moderatorChannel_MQ.queueDeclare(MODERATOR_QUEUE_NAME, true, false, false, null);
+            chatChannel_MQ.queueDeclare(CHAT_QUEUE_NAME, true, false, false, null);
+            userToUserChannel_MQ.queueDeclare(USER_TO_USER_QUEUE_NAME,true,false,false,null);
+
+            REQUEST_CHANNEL_MAP.put(USER_QUEUE_NAME, userChannel_MQ);
+            REQUEST_CHANNEL_MAP.put(MODERATOR_QUEUE_NAME, moderatorChannel_MQ);
+            REQUEST_CHANNEL_MAP.put(CHAT_QUEUE_NAME, chatChannel_MQ);
+            REQUEST_CHANNEL_MAP.put(USER_TO_USER_QUEUE_NAME,userToUserChannel_MQ);
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }
@@ -132,17 +144,20 @@ public class ServicesMQ {
         Connection connection;
         try {
             connection = factory.newConnection();
-            final Channel postChannel = connection.createChannel();
-            final Channel userChannel = connection.createChannel();
-            final Channel chatChannel = connection.createChannel();
+            final Channel moderatorChannel_MQ = connection.createChannel();
+            final Channel userChannel_MQ = connection.createChannel();
+            final Channel chatChannel_MQ = connection.createChannel();
+            final Channel userToUserChannel_MQ = connection.createChannel();
 
-            userChannel.queueDeclare(USER_QUEUE_NAME, true, false, false, null);
-            postChannel.queueDeclare(POST_QUEUE_NAME, true, false, false, null);
-            chatChannel.queueDeclare(CHAT_QUEUE_NAME, true, false, false, null);
+            userChannel_MQ.queueDeclare(USER_QUEUE_NAME, true, false, false, null);
+            moderatorChannel_MQ.queueDeclare(MODERATOR_QUEUE_NAME, true, false, false, null);
+            chatChannel_MQ.queueDeclare(CHAT_QUEUE_NAME, true, false, false, null);
+            userToUserChannel_MQ.queueDeclare(USER_TO_USER_QUEUE_NAME,true,false,false,null);
 
-            REQUEST_CHANNEL_MAP.put(USER_QUEUE_NAME, userChannel);
-            REQUEST_CHANNEL_MAP.put(POST_QUEUE_NAME, postChannel);
-            REQUEST_CHANNEL_MAP.put(CHAT_QUEUE_NAME, chatChannel);
+            REQUEST_CHANNEL_MAP.put(USER_QUEUE_NAME, userChannel_MQ);
+            REQUEST_CHANNEL_MAP.put(MODERATOR_QUEUE_NAME, moderatorChannel_MQ);
+            REQUEST_CHANNEL_MAP.put(CHAT_QUEUE_NAME, chatChannel_MQ);
+            REQUEST_CHANNEL_MAP.put(USER_TO_USER_QUEUE_NAME,userToUserChannel_MQ);
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }

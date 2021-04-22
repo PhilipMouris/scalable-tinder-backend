@@ -22,7 +22,8 @@ public class QueueLoadBalance {
     private final String RPC_QUEUE_NAME = config.getLoadBalancerQueueName();
     private final String LOAD_BALANCER_EXTENSION = "-" +config.getLoadBalancerQueueName();
     private final String USER_QUEUE_NAME = config.getLoadBalancerUserQueue() + LOAD_BALANCER_EXTENSION;
-    private final String POST_QUEUE_NAME = config.getLoadBalancerPostQueue()+ LOAD_BALANCER_EXTENSION;
+    private final String MODERATOR_QUEUE_NAME = config.getLoadBalancerModeratorQueue()+ LOAD_BALANCER_EXTENSION;
+    private final String USER_TO_USER_QUEUE_NAME = config.getLoadBalancerUserToUserQueue()+ LOAD_BALANCER_EXTENSION;
     private final String CHAT_QUEUE_NAME = config.getLoadBalancerChatQueue()+ LOAD_BALANCER_EXTENSION;
 
     private final HashMap<String, Channel> REQUEST_CHANNEL_MAP = new HashMap<String, Channel>();
@@ -81,19 +82,22 @@ public class QueueLoadBalance {
         try {
             connection = factory.newConnection();
             final Channel loadBalancerChannel = connection.createChannel();
-            final Channel postChannel = connection.createChannel();
+            final Channel moderatorChannel = connection.createChannel();
+            final Channel userToUserChannel = connection.createChannel();
             final Channel userChannel = connection.createChannel();
             final Channel chatChannel = connection.createChannel();
 
             loadBalancerChannel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null);
             loadBalancerChannel.basicQos(1);
             userChannel.queueDeclare(USER_QUEUE_NAME, true, false, false, null);
-            postChannel.queueDeclare(POST_QUEUE_NAME, true, false, false, null);
+            moderatorChannel.queueDeclare(MODERATOR_QUEUE_NAME, true, false, false, null);
+            userToUserChannel.queueDeclare(USER_TO_USER_QUEUE_NAME,true,false,false,null);
             chatChannel.queueDeclare(CHAT_QUEUE_NAME, true, false, false, null);
 
             REQUEST_CHANNEL_MAP.put(RPC_QUEUE_NAME, loadBalancerChannel);
             REQUEST_CHANNEL_MAP.put(USER_QUEUE_NAME, userChannel);
-            REQUEST_CHANNEL_MAP.put(POST_QUEUE_NAME, postChannel);
+            REQUEST_CHANNEL_MAP.put(MODERATOR_QUEUE_NAME, moderatorChannel);
+            REQUEST_CHANNEL_MAP.put(USER_TO_USER_QUEUE_NAME, userToUserChannel);
             REQUEST_CHANNEL_MAP.put(CHAT_QUEUE_NAME, chatChannel);
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();

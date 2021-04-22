@@ -13,26 +13,26 @@ public class Config {
     private final Properties controllerConfig = new Properties();
     private final Properties loadBalancerConfig = new Properties();
     private final Properties mediaServerConfig = new Properties();
-    private final Properties mqInstanceConfig = new Properties();
+    private final Properties servicesMQConfig = new Properties();
     private final Properties serviceConfig = new Properties();
-    private final Properties webServerConfig = new Properties();
+    private final Properties NettyServerConfig = new Properties();
 
     private final String arangoPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/arango.conf";
     private final String controllerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/controller.conf";
     private final String loadBalancerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/load.balancer.conf";
     private final String mediaServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/media.server.conf";
-    private final String mqInstancePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/mq.instance.conf";
+    private final String servicesMQPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/mq.instance.conf";
     private final String servicePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/service.conf";
-    private final String webServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/web.server.conf";
+    private final String nettyServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/web.server.conf";
 
     private Config() {
         loadConfig(arangoConfig, arangoPath);
         loadConfig(controllerConfig, controllerPath);
         loadConfig(loadBalancerConfig, loadBalancerPath);
         loadConfig(mediaServerConfig, mediaServerPath);
-        loadConfig(mqInstanceConfig, mqInstancePath);
+        loadConfig(servicesMQConfig, servicesMQPath);
         loadConfig(serviceConfig, servicePath);
-        loadConfig(webServerConfig, webServerPath);
+        loadConfig(NettyServerConfig, nettyServerPath);
 //        readSystemVariables(loadBalancerConfig,"load_balancer_rabbitmq_host");
     }
 
@@ -80,8 +80,8 @@ public class Config {
                 path = mediaServerPath;
                 break;
             case MqInstance:
-                props = mqInstanceConfig;
-                path = mqInstancePath;
+                props = servicesMQConfig;
+                path = servicesMQPath;
                 break;
             case PostSql:
 //                props = postSqlConf;
@@ -92,8 +92,8 @@ public class Config {
                 path = servicePath;
                 break;
             case WebServer:
-                props = webServerConfig;
-                path = webServerPath;
+                props = NettyServerConfig;
+                path = nettyServerPath;
                 break;
         }
         props.setProperty(key,val);
@@ -118,27 +118,27 @@ public class Config {
     //Web WebServer Configs
 
     public int getWebServerPort() {
-        return Integer.parseInt(webServerConfig.getProperty("server_port"));
+        return Integer.parseInt(NettyServerConfig.getProperty("server_port"));
     }
 
     public String getServerQueueHost() {
-        return webServerConfig.getProperty("server_rabbitmq_host");
+        return NettyServerConfig.getProperty("server_rabbitmq_host");
     }
 
     public int getServerQueuePort() {
-        return Integer.parseInt(webServerConfig.getProperty("server_rabbitmq_port"));
+        return Integer.parseInt(NettyServerConfig.getProperty("server_rabbitmq_port"));
     }
 
     public String getServerQueueUserName() {
-        return webServerConfig.getProperty("server_rabbitmq_username");
+        return NettyServerConfig.getProperty("server_rabbitmq_username");
     }
 
     public String getServerQueuePass() {
-        return webServerConfig.getProperty("server_rabbitmq_password");
+        return NettyServerConfig.getProperty("server_rabbitmq_password");
     }
 
     public String getServerQueueName() {
-        return webServerConfig.getProperty("server_rabbitmq_queue");
+        return NettyServerConfig.getProperty("server_rabbitmq_queue");
     }
 
 
@@ -167,9 +167,12 @@ public class Config {
     public String getLoadBalancerUserQueue() {
         return loadBalancerConfig.getProperty("load_balancer_rabbitmq_user_queue");
     }
+    public String getLoadBalancerUserToUserQueue() {
+        return loadBalancerConfig.getProperty("load_balancer_rabbitmq_usertouser_queue");
+    }
 
-    public String getLoadBalancerPostQueue() {
-        return loadBalancerConfig.getProperty("load_balancer_rabbitmq_post_queue");
+    public String getLoadBalancerModeratorQueue() {
+        return loadBalancerConfig.getProperty("load_balancer_rabbitmq_moderator_queue");
     }
 
     public String getLoadBalancerChatQueue() {
@@ -194,32 +197,35 @@ public class Config {
 
     //MqInstance Configs
 
-    public String getMqInstanceQueueHost() {
-        return mqInstanceConfig.getProperty("mq_instance_rabbitmq_host");
+    public String getServicesMqQueueHost() {
+        return servicesMQConfig.getProperty("mq_instance_rabbitmq_host");
     }
 
-    public int getMqInstanceQueuePort() {
-        return Integer.parseInt(mqInstanceConfig.getProperty("mq_instance_rabbitmq_port"));
+    public int getServicesMqQueuePort() {
+        return Integer.parseInt(servicesMQConfig.getProperty("mq_instance_rabbitmq_port"));
     }
 
-    public String getMqInstanceQueueUserName() {
-        return mqInstanceConfig.getProperty("mq_instance_rabbitmq_username");
+    public String getServicesMqQueueUserName() {
+        return servicesMQConfig.getProperty("mq_instance_rabbitmq_username");
     }
 
-    public String getMqInstanceQueuePass() {
-        return mqInstanceConfig.getProperty("mq_instance_rabbitmq_password");
+    public String getServicesMqQueuePass() {
+        return servicesMQConfig.getProperty("mq_instance_rabbitmq_password");
     }
 
-    public String getMqInstanceUserQueue() {
-        return mqInstanceConfig.getProperty("mq_instance_rabbitmq_user_queue");
+    public String getServicesMqUserQueue() {
+        return servicesMQConfig.getProperty("mq_instance_rabbitmq_user_queue");
     }
 
-    public String getMqInstancePostQueue() {
-        return mqInstanceConfig.getProperty("mq_instance_rabbitmq_post_queue");
+    public String getServicesMqUserToUserQueue() {
+        return servicesMQConfig.getProperty("mq_instance_rabbitmq_usertouser_queue");
+    }
+    public String getServicesMqModeratorQueue() {
+        return servicesMQConfig.getProperty("mq_instance_rabbitmq_moderator_queue");
     }
 
-    public String getMqInstanceChatQueue() {
-        return mqInstanceConfig.getProperty("mq_instance_rabbitmq_chat_queue");
+    public String getServicesMqChatQueue() {
+        return servicesMQConfig.getProperty("mq_instance_rabbitmq_chat_queue");
     }
 
 

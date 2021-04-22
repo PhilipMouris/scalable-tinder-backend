@@ -2,21 +2,15 @@
 //import Controller.Controller;
 import MessageQueue.ServicesMQ;
 import MessageQueue.QueueLoadBalance;
-import Models.ServicesType;
+import Entities.ServicesType;
 import NettyWebServer.NettyServer;
-
+import Controller.Controller;
 public class RunBackEnd {
 
     private static ServicesType type;
 
     public static void main(String[] args) throws InterruptedException {
 
-//        run("server");
-//        run("controller");
-//        run("loadBalancer");
-//        run("mQinstance");
-//        type = ServicesType.user;
-//        run("client");
 
 
         if(args.length > 1) {
@@ -34,11 +28,10 @@ public class RunBackEnd {
             run(args[0]);
         } else {
             run("server");
-//            run("controller");
             run("loadBalancer");
             run("mQinstance");
-//            type = ServicesType.post;
-//            run("client");
+            type = ServicesType.user;
+            run("controller");
         }
 
     }
@@ -50,10 +43,7 @@ public class RunBackEnd {
                     NettyServer s = new NettyServer();
                     s.start();
                     break;
-//                case "controller":
-//                    Controller controller = new Controller();
-//                    controller.start();
-//                    break;
+
                 case "loadbalancer":
                     QueueLoadBalance loadBalancer = new QueueLoadBalance();
                     loadBalancer.start();
@@ -62,21 +52,21 @@ public class RunBackEnd {
                     ServicesMQ mQinstance = new ServicesMQ();
                     mQinstance.start();
                     break;
-//                case "client":
-//                    Client c = new Client();
-//                    c.initService(type);
-//                    new Thread(() -> {
-//                        c.start();
-//                    }).start();
-//                    try {
-//                        Thread.sleep(200);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    c.initDB();
-//                    c.startService();
-//
-//                    break;
+                case "controller":
+                    Controller c = new Controller();
+                    c.initService(type);
+                    new Thread(() -> {
+                        c.start();
+                    }).start();
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    c.initDB();
+                    c.startService();
+
+                    break;
             }
         });
         t.start();

@@ -1,4 +1,4 @@
-package Models;
+package Entities;
 
 public enum ServicesType {
     user,
