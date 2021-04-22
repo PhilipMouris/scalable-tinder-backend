@@ -20,6 +20,12 @@ public class ServicesMQ {
     private final String MODERATOR_QUEUE_NAME = config.getServicesMqModeratorQueue();
     private final String CHAT_QUEUE_NAME = config.getServicesMqChatQueue();
 
+    private final String RESPONSE_EXTENSION = "-" +"Response";
+    private final String RESPONSE_USER_QUEUE_NAME = config.getServicesMqUserQueue() + RESPONSE_EXTENSION;
+    private final String RESPONSE_USER_TO_USER_QUEUE_NAME = config.getServicesMqUserToUserQueue()+ RESPONSE_EXTENSION;
+    private final String RESPONSE_MODERATOR_QUEUE_NAME = config.getServicesMqModeratorQueue()+ RESPONSE_EXTENSION;
+    private final String RESPONSE_CHAT_QUEUE_NAME = config.getServicesMqChatQueue()+ RESPONSE_EXTENSION;
+    private final String RESPONSE_MAIN_QUEUE_NAME = config.getServerQueueName();
     private final String LOAD_BALANCER_EXTENSION = "-" +config.getLoadBalancerQueueName();
 //    private final String balancerHost = config.getLoadBalancerQueueHost();
 //    private final int balancerPort = config.getLoadBalancerQueuePort();
@@ -36,6 +42,7 @@ public class ServicesMQ {
 
     private final HashMap<String, Channel> LOAD_CHANNEL_MAP = new HashMap<>();
     private final HashMap<String, Channel> REQUEST_CHANNEL_MAP = new HashMap<>();
+    private final HashMap<String, Channel> RESPONSE_CHANNEL_MAP = new HashMap<>();
 
     public ServicesMQ() {
         establishConsumeConnections();
@@ -43,15 +50,53 @@ public class ServicesMQ {
     }
 
     public void start(){
-        consumeFromQueue(LOAD_CHAT_QUEUE_NAME, CHAT_QUEUE_NAME);
-        consumeFromQueue(LOAD_MODERATOR_QUEUE_NAME, MODERATOR_QUEUE_NAME);
-        consumeFromQueue(LOAD_USER_QUEUE_NAME, USER_QUEUE_NAME);
-        consumeFromQueue(LOAD_USER_TO_USER_QUEUE_NAME, USER_TO_USER_QUEUE_NAME);
+        consumeFromRequestQueue(LOAD_CHAT_QUEUE_NAME, CHAT_QUEUE_NAME);
+        consumeFromRequestQueue(LOAD_MODERATOR_QUEUE_NAME, MODERATOR_QUEUE_NAME);
+        consumeFromRequestQueue(LOAD_USER_QUEUE_NAME, USER_QUEUE_NAME);
+        consumeFromRequestQueue(LOAD_USER_TO_USER_QUEUE_NAME, USER_TO_USER_QUEUE_NAME);
+
+        consumeFromResponseQueue(RESPONSE_CHAT_QUEUE_NAME);
+        consumeFromResponseQueue(RESPONSE_MODERATOR_QUEUE_NAME);
+        consumeFromResponseQueue(RESPONSE_USER_QUEUE_NAME);
+        consumeFromResponseQueue(RESPONSE_USER_TO_USER_QUEUE_NAME);
 
     }
+    private void consumeFromResponseQueue(String RPC_QUEUE_NAME){
+        try {
+            Channel serviceResQueue = RESPONSE_CHANNEL_MAP.get(RPC_QUEUE_NAME);
+            System.out.println(" [x] Awaiting RPC RESPONSES on Queue : " + RPC_QUEUE_NAME);
+            Consumer consumer = new DefaultConsumer(serviceResQueue) {
+                @Override
+                public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) {
+                    try {
+                        //Using Reflection to convert a command String to its appropriate class
+//                        Channel receiver = REQUEST_CHANNEL_MAP.get(RESPONSE_MAIN_QUEUE_NAME);
 
-    private void consumeFromQueue(String RPC_QUEUE_NAME, String QUEUE_TO){
+                        System.out.println("Responding to corrID: "+ properties.getCorrelationId() +  ", on Queue : " + RPC_QUEUE_NAME);
+                        System.out.println("Request    :   " + new String(body, "UTF-8"));
+                        System.out.println("Application    :   " + RPC_QUEUE_NAME);
+                        System.out.println();
 
+                        serviceResQueue.basicPublish("", RESPONSE_MAIN_QUEUE_NAME, properties, body);
+
+                    } catch (RuntimeException| IOException e) {
+                        e.printStackTrace();
+                        consumeFromResponseQueue(RPC_QUEUE_NAME);
+                    } finally {
+                        synchronized (this) {
+                            this.notify();
+                        }
+                    }
+                }
+            };
+            serviceResQueue.basicConsume(RPC_QUEUE_NAME, true, consumer);
+            // Wait and be prepared to consume the message from RPC client.
+        } catch (Exception e) {
+            e.printStackTrace();
+//            consumeFromQueue(RPC_QUEUE_NAME,QUEUE_TO);
+        }
+    }
+    private void consumeFromRequestQueue(String RPC_QUEUE_NAME, String QUEUE_TO){
         try {
             Channel balancer = LOAD_CHANNEL_MAP.get(RPC_QUEUE_NAME);
             System.out.println(" [x] Awaiting RPC requests on Queue : " + RPC_QUEUE_NAME);
@@ -71,7 +116,7 @@ public class ServicesMQ {
 
                     } catch (RuntimeException| IOException e) {
                         e.printStackTrace();
-                        consumeFromQueue(RPC_QUEUE_NAME,QUEUE_TO);
+                        consumeFromRequestQueue(RPC_QUEUE_NAME,QUEUE_TO);
                     } finally {
                         synchronized (this) {
                             this.notify();
@@ -130,6 +175,22 @@ public class ServicesMQ {
             REQUEST_CHANNEL_MAP.put(MODERATOR_QUEUE_NAME, moderatorChannel_MQ);
             REQUEST_CHANNEL_MAP.put(CHAT_QUEUE_NAME, chatChannel_MQ);
             REQUEST_CHANNEL_MAP.put(USER_TO_USER_QUEUE_NAME,userToUserChannel_MQ);
+
+            final Channel moderatorChannel_res = connection.createChannel();
+            final Channel userChannel_res = connection.createChannel();
+            final Channel chatChannel_res = connection.createChannel();
+            final Channel userToUserChannel_res = connection.createChannel();
+            final Channel main_res = connection.createChannel();
+            userChannel_res.queueDeclare(RESPONSE_USER_QUEUE_NAME, true, false, false, null);
+            moderatorChannel_res.queueDeclare(RESPONSE_MODERATOR_QUEUE_NAME, true, false, false, null);
+            chatChannel_res.queueDeclare(RESPONSE_CHAT_QUEUE_NAME, true, false, false, null);
+            userToUserChannel_res.queueDeclare(RESPONSE_USER_TO_USER_QUEUE_NAME,true,false,false,null);
+//            main_res.queueDeclare(RESPONSE_MAIN_QUEUE_NAME,true,false,false,null);
+//            RESPONSE_CHANNEL_MAP.put(RESPONSE_MAIN_QUEUE_NAME,main_res);
+            RESPONSE_CHANNEL_MAP.put(RESPONSE_USER_QUEUE_NAME, userChannel_res);
+            RESPONSE_CHANNEL_MAP.put(RESPONSE_MODERATOR_QUEUE_NAME, moderatorChannel_res);
+            RESPONSE_CHANNEL_MAP.put(RESPONSE_CHAT_QUEUE_NAME, chatChannel_res);
+            RESPONSE_CHANNEL_MAP.put(RESPONSE_USER_TO_USER_QUEUE_NAME,userToUserChannel_res);
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();
         }

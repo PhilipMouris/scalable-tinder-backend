@@ -57,7 +57,7 @@ public abstract class ConcreteCommand extends Command {
             doCommand();
 
             jsonObject.add("response", responseJson);
-            channel.basicPublish("", properties.getReplyTo(), replyProps, jsonObject.toString().getBytes("UTF-8"));;
+            channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonObject.toString().getBytes("UTF-8"));;
 //            channel.basicAck(envelope.getDeliveryTag(), false);
         } catch (Exception e) {
             e.printStackTrace();

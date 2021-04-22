@@ -35,6 +35,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
     protected Config conf = Config.getInstance();
     protected int maxDBConnections = conf.getServiceMaxDbConnections();
     protected String RPC_QUEUE_NAME; //set by init
+    private String RESPONSE_EXTENSION = "-Response";
 //    RedisConf redisConf ;
 //    protected RLiveObjectService liveObjectService; // For Post Only
 //    protected ArangoInstance arangoInstance; // For Post Only
@@ -87,6 +88,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                     AMQP.BasicProperties replyProps = new AMQP.BasicProperties
                             .Builder()
                             .correlationId(properties.getCorrelationId())
+                            .replyTo(RPC_QUEUE_NAME+RESPONSE_EXTENSION)
                             .build();
 //                    Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Responding to corrID: " + properties.getCorrelationId() + ", on Queue : " + RPC_QUEUE_NAME));
                     System.out.println("Responding to corrID: " + properties.getCorrelationId() + ", on Queue : " + RPC_QUEUE_NAME);
