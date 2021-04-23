@@ -3,18 +3,16 @@ package NettyWebServer;
 import Config.Config;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-import java.io.IOException;
-import java.net.SocketException;
-
-public class NettyServer {
+public class NettyServer2 {
 
     Config c = Config.getInstance();
     private int port = c.getWebServerPort();
-    public NettyServer(int port){
+    public NettyServer2(int port){
         this.port = port;
     }
     public void start() {
@@ -27,7 +25,6 @@ public class NettyServer {
                     .channel(NioServerSocketChannel.class)
 //                    .handler(new LoggingHandler(LogLevel.INFO))
                     .childHandler(new NettyServerInitializer(port));
-//            b.option(ChannelOption.SO_KEEPALIVE, true);
             Channel ch = b.bind(port).sync().channel();
 
             System.err.println("Web Server is listening on http://127.0.0.1:" + port + '/');
@@ -36,7 +33,6 @@ public class NettyServer {
 
         }  
         catch (InterruptedException e) {
-            System.out.println("ALO");
             e.printStackTrace();
 
         } finally {
@@ -46,17 +42,8 @@ public class NettyServer {
     }
 
     public static void main(String[] args) {
-        int[] ports = new int[]{8020,8021};
-        for(int port :ports){
-            NettyServer s = new NettyServer(port);
-            new Thread(() -> {
-                s.start();
-            }).start();
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        NettyServer2 s = new NettyServer2(8020);
+        s.start();
+        
     }
 }

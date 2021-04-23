@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import static io.netty.buffer.Unpooled.copiedBuffer;
 import static io.netty.handler.codec.http.HttpResponseStatus.*;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
@@ -27,7 +28,7 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         JSONObject fullRequest = new JSONObject();
-
+//        System.out.println(msg);
         if (msg instanceof HttpRequest) {
             HttpRequest request = this.request = (HttpRequest) msg;
             if (HttpHeaders.is100ContinueExpected(request)) {
@@ -73,8 +74,15 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
         if (msg instanceof HttpContent) {
             HttpContent httpContent = (HttpContent) msg;
             ByteBuf content = httpContent.content();
-
-            ctx.fireChannelRead(content);
+            if(msg.toString().contains("HEAD")) {
+                FullHttpResponse response = new DefaultFullHttpResponse(
+                        HttpVersion.HTTP_1_1,
+                        OK,
+                        copiedBuffer("ACK".getBytes()));
+                ctx.writeAndFlush(response);
+            }else{
+                ctx.fireChannelRead(content);
+            }
         }
         if (msg instanceof LastHttpContent) {
 //            LastHttpContent trailer = (LastHttpContent) msg;
@@ -120,8 +128,17 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        cause.printStackTrace();
-        ctx.close();
+//        System.out.println("ALO");
+//        cause.printStackTrace();
+        FullHttpResponse response = new DefaultFullHttpResponse(
+                HTTP_1_1, OK,
+                Unpooled.copiedBuffer("Not KeepAlive", CharsetUtil.UTF_8));
+        response.headers().setInt(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
+        // Add keep alive header as per:
+        // - http://www.w3.org/Protocols/HTTP/1.1/draft-ietf-http-v11-spec-01.html#Connection
+        response.headers().set(HttpHeaderNames.CONNECTION, HttpHeaderValues.KEEP_ALIVE);
+        ctx.write(response);
+//        ctx.close();
     }
 
 }

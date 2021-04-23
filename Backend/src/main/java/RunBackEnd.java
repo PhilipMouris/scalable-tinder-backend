@@ -8,9 +8,9 @@ import Controller.Controller;
 public class RunBackEnd {
 
     private static ServicesType[] services;
-
+    private static int[] ports;
     public static void main(String[] args) throws InterruptedException {
-        
+            ports = new int[]{8020,8021};
             run("server");
             run("loadBalancer");
             run("mQinstance");
@@ -23,8 +23,17 @@ public class RunBackEnd {
         Thread t = new Thread(() -> {
             switch (instance.toLowerCase()){
                 case "server":
-                    NettyServer s = new NettyServer();
-                    s.start();
+                    for(int port :ports){
+                        NettyServer s = new NettyServer(port);
+                        new Thread(() -> {
+                            s.start();
+                        }).start();
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     break;
 
                 case "loadbalancer":

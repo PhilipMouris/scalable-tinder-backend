@@ -89,6 +89,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+//        System.out.println("ALO ERORR");
         cause.printStackTrace();
         ctx.writeAndFlush(new DefaultFullHttpResponse(
                 HttpVersion.HTTP_1_1,
