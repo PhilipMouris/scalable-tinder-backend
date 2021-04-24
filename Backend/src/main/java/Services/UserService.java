@@ -13,6 +13,10 @@ import java.io.StringWriter;
 
 public class UserService extends ServiceControl {
 
+    public UserService(int ID) {
+        super(ID);
+    }
+
     @Override
     public void init() {
         RPC_QUEUE_NAME = conf.getServicesMqUserQueue();

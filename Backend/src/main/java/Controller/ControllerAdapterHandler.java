@@ -25,9 +25,9 @@ import static io.netty.buffer.Unpooled.copiedBuffer;
 
 public class ControllerAdapterHandler extends ChannelInboundHandlerAdapter {
 
-    private HashMap<String,ServiceControl> availableServices ;
+    private HashMap<String, HashMap<String,ServiceControl>> availableServices ;
 
-    public ControllerAdapterHandler(HashMap<String,ServiceControl> availableServices) {
+    public ControllerAdapterHandler(HashMap<String, HashMap<String,ServiceControl>> availableServices) {
         this.availableServices= availableServices;
     }
 
@@ -43,11 +43,12 @@ public class ControllerAdapterHandler extends ChannelInboundHandlerAdapter {
             final String corrId = (String) channelHandlerContext.channel().attr(AttributeKey.valueOf("CORRID")).get();
             jsonRequest.put("command", body.get("command"));
             String service_s = (String) body.get("application");
+            String instance = (String) body.get("instance_num");
             String param = (String) body.get("param");
             String path = (String) body.get("path");
             jsonRequest.put("application", service_s);
             jsonRequest.put("body", body);
-            ServiceControl service = availableServices.get(service_s);
+            ServiceControl service = availableServices.get(service_s).get(instance);
             String responseMessage = controlService(channelHandlerContext,service,(String)(body.get("command")),param,path);
 
             Controller.sendResponse(channelHandlerContext,responseMessage);
@@ -116,7 +117,7 @@ public class ControllerAdapterHandler extends ChannelInboundHandlerAdapter {
                     copiedBuffer(errors.toString().getBytes()));
             ctx.writeAndFlush(response);
         }
-        return responseMessage;
+        return responseMessage +" Instance ID: "+service.ID;
     }
 
     @Override

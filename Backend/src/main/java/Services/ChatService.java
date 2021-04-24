@@ -5,6 +5,10 @@ import Interface.ServiceControl;
 
 public class ChatService extends ServiceControl{
 
+    public ChatService(int ID) {
+        super(ID);
+    }
+
     @Override
     public void init() {
         RPC_QUEUE_NAME = conf.getServicesMqChatQueue();
@@ -22,7 +26,7 @@ public class ChatService extends ServiceControl{
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 
-    public static void main(String[] args) {
-        new ChatService().start();
-    }
+//    public static void main(String[] args) {
+//        new ChatService().start();
+//    }
 }

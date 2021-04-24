@@ -30,6 +30,7 @@ import org.json.JSONObject;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -38,12 +39,11 @@ import static io.netty.buffer.Unpooled.copiedBuffer;
 public class Controller {
 
     public static Channel channel;
-    protected ServiceControl service;
     Config conf = Config.getInstance();
     private String server = conf.getControllerHost();
     private int port = conf.getControllerPort();
-    private String serviceName;
-    private HashMap<String,ServiceControl>  availableServices = new HashMap<>();
+    private HashMap<String, HashMap<String,ServiceControl>>  availableServices = new HashMap<>();
+    private HashMap<String,Integer> instancesCounts = new HashMap<String, Integer>();
 //    public static void main(String[] args) {
 //        Client c = new Client();
 //        c.initService(ServicesType.post);
@@ -52,11 +52,20 @@ public class Controller {
 //        }).start();
 //        c.startService();
 //    }
-
+    public Controller(){
+        availableServices.putIfAbsent(conf.getServicesMqUserQueue(),new HashMap<>());
+        availableServices.putIfAbsent(conf.getServicesMqModeratorQueue(),new HashMap<>());
+        availableServices.putIfAbsent(conf.getServicesMqUserToUserQueue(),new HashMap<>());
+        availableServices.putIfAbsent(conf.getServicesMqChatQueue(),new HashMap<>());
+        instancesCounts.putIfAbsent(conf.getServicesMqUserQueue(),0);
+        instancesCounts.putIfAbsent(conf.getServicesMqUserToUserQueue(),0);
+        instancesCounts.putIfAbsent(conf.getServicesMqModeratorQueue(),0);
+        instancesCounts.putIfAbsent(conf.getServicesMqChatQueue(),0);
+    }
     public void initDBs(){
-        for(String service : availableServices.keySet()){
-            availableServices.get(service).initDB();
-        }
+//        for(String service : availableServices.keySet()){
+//            availableServices.get(service).initDB();
+//        }
     }
     public static void sendResponse(ChannelHandlerContext ctx,String responseMsg){
         JsonParser jsonParser = new JsonParser();
@@ -72,37 +81,57 @@ public class Controller {
         response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
         ctx.writeAndFlush(response);
     }
-    public void initService(ServicesType serviceName) {
+    public ServiceControl initService(ServicesType serviceName) {
+        ServiceControl service = null;
         switch (serviceName) {
-            case user:
-                service = new UserService();
-//                this.serviceName = conf.getServicesMqUserQueue();
-                availableServices.putIfAbsent(conf.getServicesMqUserQueue(),service);
-                break;
-            case user_to_user:
-                service = new UserToUserService();
-//                this.serviceName = conf.getServicesMqUserToUserQueue();
-                availableServices.putIfAbsent(conf.getServicesMqUserToUserQueue(),service);
+            case user: {
+
+                
+                int newId = instancesCounts.get(conf.getServicesMqUserQueue()) + 1;
+                service = new UserService(newId);
+                instancesCounts.replace(conf.getServicesMqUserQueue(), newId);
+                availableServices.get(conf.getServicesMqUserQueue()).putIfAbsent(newId + "", service);
+                System.out.println("INSTANCE "+newId+" OF SERVICE "+serviceName+" IS RUNNING");
 
                 break;
-            case moderator:
-                service = new ModeratorService();
-//                this.serviceName = conf.getServicesMqModeratorQueue();
-                availableServices.putIfAbsent(conf.getServicesMqModeratorQueue(),service);
+            }
+            case user_to_user: {
+
+//                this.serviceName = conf.getServicesMqUserToUserQueue();
+                int newId = instancesCounts.get(conf.getServicesMqUserToUserQueue()) + 1;
+                service = new UserToUserService(newId);
+                instancesCounts.replace(conf.getServicesMqUserToUserQueue(), newId);
+                availableServices.get(conf.getServicesMqUserToUserQueue()).putIfAbsent(newId + "", service);
+                System.out.println("INSTANCE "+newId+" OF SERVICE "+serviceName+" IS RUNNING");
                 break;
+            }
+            case moderator: {
+
+//                this.serviceName = conf.getServicesMqModeratorQueue();
+                int newId = instancesCounts.get(conf.getServicesMqModeratorQueue()) + 1;
+                service = new ModeratorService(newId);
+                instancesCounts.replace(conf.getServicesMqModeratorQueue(), newId);
+                availableServices.get(conf.getServicesMqModeratorQueue()).putIfAbsent(newId + "", service);
+                System.out.println("INSTANCE "+newId+" OF SERVICE "+serviceName+" IS RUNNING");
+                break;
+            }
             case chat:
-                service = new ChatService();
 //                this.serviceName = conf.getServicesMqChatQueue();
-                availableServices.putIfAbsent(conf.getServicesMqChatQueue(),service);
+                int newId = instancesCounts.get(conf.getServicesMqChatQueue()) + 1;
+                service = new ChatService(newId);
+                instancesCounts.replace(conf.getServicesMqChatQueue(), newId);
+                availableServices.get(conf.getServicesMqChatQueue()).putIfAbsent(newId + "", service);
+                System.out.println("INSTANCE "+newId+" OF SERVICE "+serviceName+" IS RUNNING");
                 break;
             // TODO ADD SERVICE
         }
+        return service;
     }
 
     public void startServices() {
-        for(String service : availableServices.keySet()){
-            availableServices.get(service).start();
-        }
+//        for(String service : availableServices.keySet()){
+//            availableServices.get(service).start();
+//        }
     }
 
     public void start() {

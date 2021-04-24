@@ -28,5 +28,6 @@ POST http://127.0.0.1:8084
 "command" : "freeze",  
 "application" : "User",  
 "param": "",  
-"path":""  
+"path":""   ,
+"instance_num":"1"  
 }  

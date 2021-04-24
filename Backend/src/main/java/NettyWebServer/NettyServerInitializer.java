@@ -22,7 +22,10 @@ import static io.netty.buffer.Unpooled.copiedBuffer;
 public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
 
     private Config config = Config.getInstance();
-    private HashMap<String, ChannelHandlerContext> uuid = new HashMap<String, ChannelHandlerContext>();
+
+
+
+    private static HashMap<String, ChannelHandlerContext> uuid = new HashMap<String, ChannelHandlerContext>();
     private Channel receiverChannel;
     private Channel senderChannel;
 
@@ -40,8 +43,11 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
 
     public NettyServerInitializer(int port) {
 //        establishLoadBalancerConnection();
-        establishServerConnection();
-        serverQueue();
+//        establishServerConnection();
+//        serverQueue();
+    }
+    public static HashMap<String, ChannelHandlerContext> getUuid() {
+        return uuid;
     }
 
     @Override

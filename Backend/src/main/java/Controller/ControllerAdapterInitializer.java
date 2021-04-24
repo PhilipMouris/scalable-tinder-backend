@@ -21,9 +21,9 @@ import java.util.HashMap;
 
 public class ControllerAdapterInitializer extends ChannelInitializer<SocketChannel> {
 
-    private HashMap<String,ServiceControl> availableServices = new HashMap<>();
+    private HashMap<String, HashMap<String,ServiceControl>> availableServices = new HashMap<>();
 
-    public ControllerAdapterInitializer(HashMap<String,ServiceControl> services) {
+    public ControllerAdapterInitializer(HashMap<String, HashMap<String,ServiceControl>> services) {
         this.availableServices = services;
     }
 

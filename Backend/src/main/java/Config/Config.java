@@ -249,7 +249,10 @@ public class Config {
     public int getServiceMaxDbConnections() {
         return Integer.parseInt(serviceConfig.getProperty("service_max_db"));
     }
-
+    public int getUserServiceNumInstances(){return Integer.parseInt(serviceConfig.getProperty("user_service_num_instances"));}
+    public int getModeratorServiceNumInstances(){return Integer.parseInt(serviceConfig.getProperty("moderator_service_num_instances"));}
+    public int getUserToUserServiceNumInstances(){return Integer.parseInt(serviceConfig.getProperty("user_to_user_service_num_instances"));}
+    public int getChatServiceNumInstances(){return Integer.parseInt(serviceConfig.getProperty("chat_service_num_instances"));}
 
     //Arango Configs
 
