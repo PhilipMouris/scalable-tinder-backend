@@ -22,7 +22,10 @@ import static io.netty.buffer.Unpooled.copiedBuffer;
 public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
 
     private Config config = Config.getInstance();
-    private HashMap<String, ChannelHandlerContext> uuid = new HashMap<String, ChannelHandlerContext>();
+
+
+
+    private static HashMap<String, ChannelHandlerContext> uuid = new HashMap<String, ChannelHandlerContext>();
     private Channel receiverChannel;
     private Channel senderChannel;
 
@@ -40,15 +43,18 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
 
     public NettyServerInitializer(int port) {
 //        establishLoadBalancerConnection();
-        establishServerConnection();
-        serverQueue();
+//        establishServerConnection();
+//        serverQueue();
+    }
+    public static HashMap<String, ChannelHandlerContext> getUuid() {
+        return uuid;
     }
 
     @Override
     protected void initChannel(SocketChannel arg0) {
         CorsConfig corsConfig = CorsConfigBuilder.forAnyOrigin()
                 .allowedRequestHeaders("X-Requested-With", "Content-Type", "Content-Length")
-                .allowedRequestMethods(HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.OPTIONS)
+                .allowedRequestMethods(HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.OPTIONS,HttpMethod.HEAD)
                 .build();
         ChannelPipeline p = arg0.pipeline();
         p.addLast("decoder", new HttpRequestDecoder());

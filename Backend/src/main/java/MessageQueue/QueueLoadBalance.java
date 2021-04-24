@@ -11,10 +11,7 @@ public class QueueLoadBalance {
 
     private Config config = Config.getInstance();
 
-//    private final String HOST = config.getLoadBalancerQueueHost();
-//    private final int PORT = config.getLoadBalancerQueuePort();
-//    private final String USER = config.getLoadBalancerQueueUserName();
-//    private final String PASS = config.getLoadBalancerQueuePass();
+
     private final String HOST = config.getServerQueueHost();
     private final int PORT = config.getServerQueuePort();
     private final String USER = config.getServerQueueUserName();

@@ -7,14 +7,19 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+import java.io.IOException;
+import java.net.SocketException;
+
 public class NettyServer {
 
     Config c = Config.getInstance();
     private int port = c.getWebServerPort();
-
+    public NettyServer(int port){
+        this.port = port;
+    }
     public void start() {
 
-        EventLoopGroup bossGroup = new NioEventLoopGroup(2);
+        EventLoopGroup bossGroup = new NioEventLoopGroup(4);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
@@ -29,7 +34,9 @@ public class NettyServer {
 
             ch.closeFuture().sync();
 
-        } catch (InterruptedException e) {
+        }  
+        catch (InterruptedException e) {
+            System.out.println("ALO");
             e.printStackTrace();
 
         } finally {
@@ -39,7 +46,17 @@ public class NettyServer {
     }
 
     public static void main(String[] args) {
-        NettyServer s = new NettyServer();
-        s.start();
+        int[] ports = new int[]{8020,8021};
+        for(int port :ports){
+            NettyServer s = new NettyServer(port);
+            new Thread(() -> {
+                s.start();
+            }).start();
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -13,6 +13,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public class ModeratorService extends ServiceControl {
+    public ModeratorService(int ID) {
+        super(ID);
+    }
 
 //    private RedisConf redisConf;
 

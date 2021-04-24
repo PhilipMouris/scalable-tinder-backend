@@ -6,6 +6,10 @@ import Interface.ServiceControl;
 
 public class UserToUserService extends ServiceControl {
 
+    public UserToUserService(int ID) {
+        super(ID);
+    }
+
     @Override
     public void init() {
         RPC_QUEUE_NAME = conf.getServicesMqUserToUserQueue();

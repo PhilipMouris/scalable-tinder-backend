@@ -1,30 +1,45 @@
 package Controller;
 
 import Interface.ServiceControl;
+import NettyWebServer.HTTPHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.http.HttpMethod;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpRequestDecoder;
+import io.netty.handler.codec.http.HttpResponseEncoder;
+import io.netty.handler.codec.http.cors.CorsConfig;
+import io.netty.handler.codec.http.cors.CorsConfigBuilder;
+import io.netty.handler.codec.http.cors.CorsHandler;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 
+import java.util.HashMap;
+
 
 public class ControllerAdapterInitializer extends ChannelInitializer<SocketChannel> {
 
-    private final ServiceControl service;
+    private HashMap<String, HashMap<String,ServiceControl>> availableServices = new HashMap<>();
 
-    public ControllerAdapterInitializer(ServiceControl service) {
-        this.service = service;
+    public ControllerAdapterInitializer(HashMap<String, HashMap<String,ServiceControl>> services) {
+        this.availableServices = services;
     }
 
     @Override
     protected void initChannel(SocketChannel channel) {
-        ChannelPipeline pipeline = channel.pipeline();
-
-        pipeline.addLast("encode", new ObjectEncoder());
-        pipeline.addLast("decoder", new ObjectDecoder(ClassResolvers
-                .cacheDisabled(getClass().getClassLoader())));
-        pipeline.addLast("handler", new ControllerAdapterHandler(service));
+        CorsConfig corsConfig = CorsConfigBuilder.forAnyOrigin()
+                .allowedRequestHeaders("X-Requested-With", "Content-Type", "Content-Length")
+                .allowedRequestMethods(HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.OPTIONS)
+                .build();
+        ChannelPipeline p = channel.pipeline();
+        p.addLast("decoder", new HttpRequestDecoder());
+        p.addLast("encoder", new HttpResponseEncoder());
+        p.addLast(new CorsHandler(corsConfig));
+        p.addLast(new HttpObjectAggregator(65536));
+        p.addLast(new HTTPHandler());
+        p.addLast("handler", new ControllerAdapterHandler(availableServices));
     }
 
 }
