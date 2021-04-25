@@ -3,14 +3,14 @@
 ## To Run the Full Application:
 
 ### In Terminal:
+1- In text editor, Replace the content of haproxy.cfg with /resources/haproxy.cfg  
+2- Run startup bash file in /Backend
+3- In IntelliJ, load the maven dependencies from pom.xml  
+4- Run "RunBackEnd.java".  
 
-1- sudo rabbitmq-server  
-2- In a new terminal shell,  sudo gedit  /etc/haproxy/haproxy.cfg   
-3- In text editor, Replace the content of haproxy.cfg with /resources/haproxy.cfg  
-4- sudo haproxy -f /etc/haproxy/haproxy.cfg  
-5- In IntelliJ, load the maven dependencies from pom.xml  
-6- Run "RunBackEnd.java".  
 
+To Run Arangodb web interface go to http://localhost:8529 after running bash script (Username: root, password is empty)
+For Postgresql run pgadmin username is postgres and password is vm, hostname is localhost
 ### The Load-Balancer Path is 127.0.0.1:90, all requests will be sent to this address.  
 
 Sample Request:   

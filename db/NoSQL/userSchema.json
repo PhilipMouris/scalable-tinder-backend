@@ -1,0 +1,131 @@
+{
+  "rule": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "firstName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "uniqueItems": true,
+        "format": "email"
+      },
+      "gender": {
+        "type": "string",
+        "enum": [
+          "male",
+          "female"
+        ]
+      },
+      "birthDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "bio": {
+        "type": "string"
+      },
+      "location": {
+        "type": "object",
+        "properties": {
+          "lng": "number",
+          "lat": "number",
+          "addressName": "string"
+        }
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "facebook": {
+            "type": "string",
+            "format": "uri"
+          },
+          "twitter": {
+            "type": "string",
+            "format": "uri"
+          },
+          "instagram": {
+            "type": "string",
+            "format": "uri"
+          },
+          "spotify": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "profilePictures": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "isMain": {
+              "type": "boolean"
+            },
+            "uploadedAt": {
+              "type": "string",
+              "format": "datetime"
+            }
+          }
+        }
+      },
+      "videos": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "interests": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "interestID": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "preferences": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "age": {
+              "type": "integer"
+            },
+            "location": {
+              "type": "number",
+              "description": "Radius"
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "firstName",
+      "lastName",
+      "email",
+      "id",
+      "gender",
+      "birthDate",
+      "location",
+      "preferences",
+      "interests"
+    ]
+  },
+  "level": "moderate",
+  "message": "Customer Schema Validation Failed."
+}
