@@ -33,9 +33,9 @@
       "location": {
         "type": "object",
         "properties": {
-          "lng": "number",
-          "lat": "number",
-          "addressName": "string"
+          "lng": {"type":"number"},
+          "lat": {"type":"number"},
+          "addressName": {"type":"string"}
         }
       },
       "links": {
@@ -73,7 +73,7 @@
             },
             "uploadedAt": {
               "type": "string",
-              "format": "datetime"
+              "format": "date-time"
             }
           }
         }
@@ -107,8 +107,7 @@
               "type": "integer"
             },
             "location": {
-              "type": "number",
-              "description": "Radius"
+              "type": "number"
             }
           }
         }
