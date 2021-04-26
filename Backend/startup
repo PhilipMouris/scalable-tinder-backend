@@ -6,3 +6,4 @@ sudo systemctl start arangodb3
 sudo haproxy -f /etc/haproxy/haproxy.cfg
 sudo redis-server
 sudo rabbitmq-server
+sudo systemctl start ceph.target
