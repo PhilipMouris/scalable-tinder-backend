@@ -65,10 +65,15 @@ import java.util.*;
                 notification_schema.setRule(notificationSchema.get("rule").toString());
                 notification_schema.setLevel(CollectionSchema.Level.MODERATE);
 
-                arangoDB.db(dbName).createCollection("users",new CollectionCreateOptions().setSchema(user_schema));
-                arangoDB.db(dbName).createCollection("notifications",new CollectionCreateOptions().setSchema(notification_schema));
-                arangoDB.db(dbName).createCollection("chats",new CollectionCreateOptions().setSchema(chat_schema));
-                arangoDB.db(dbName).createCollection("profileViews",new CollectionCreateOptions().setSchema(profileView_schema));
+//                arangoDB.db(dbName).createCollection("users",new CollectionCreateOptions().setSchema(user_schema));
+//                arangoDB.db(dbName).createCollection("notifications",new CollectionCreateOptions().setSchema(notification_schema));
+//                arangoDB.db(dbName).createCollection("chats",new CollectionCreateOptions().setSchema(chat_schema));
+//                arangoDB.db(dbName).createCollection("profileViews",new CollectionCreateOptions().setSchema(profileView_schema));
+//
+                arangoDB.db(dbName).createCollection("users");
+                arangoDB.db(dbName).createCollection("notifications");
+                arangoDB.db(dbName).createCollection("chats");
+                arangoDB.db(dbName).createCollection("profileViews");
 //                Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,"Database created: " + dbName));
 
                 System.out.println("Database created: " + dbName);
@@ -119,8 +124,8 @@ import java.util.*;
         public static void main(String[] args) {
             ArangoInstance arangoInstance  = new ArangoInstance(15);
 //            arangoInstance.arangoDB.db("Post").createCollection("notifications");
-//            arangoInstance.dropDB();
-//            arangoInstance.initializeDB();
+            arangoInstance.dropDB();
+            arangoInstance.initializeDB();
         }
 
 
