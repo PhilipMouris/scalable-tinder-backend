@@ -4,6 +4,7 @@ package Interface;
 //import Cache.UserCacheController;
 //import ClientService.Client;
 import Controller.Controller;
+import Database.ArangoInstance;
 import Entities.ErrorLog;
 import Config.Config;
 import Config.ConfigTypes;
@@ -44,7 +45,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
     public int ID;
 //    RedisConf redisConf ;
 //    protected RLiveObjectService liveObjectService; // For Post Only
-//    protected ArangoInstance arangoInstance; // For Post Only
+    protected ArangoInstance arangoInstance; // For Post Only
 //    protected ChatArangoInstance ChatArangoInstance;
 //    protected UserCacheController userCacheController; // For UserModel Only
     private int threadsNo = conf.getServiceMaxThreads();
@@ -205,7 +206,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         init.put("envelope", envelope);
                         init.put("body", message);
 //                        init.put("RLiveObjectService", liveObjectService);
-//                        init.put("ArangoInstance", arangoInstance);
+                        init.put("ArangoInstance", arangoInstance);
 //                        init.put("ChatArangoInstance", ChatArangoInstance);
 //                        init.put("UserCacheController", userCacheController);
                         cmd.init(init);
@@ -314,19 +315,19 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             add_command(commandName, filePath);
     }
 
-//    public void setArangoInstance(ArangoInstance arangoInstance) {
-//        this.arangoInstance = arangoInstance;
-//    }
-//
-//    public void createPostDB(){
-//
-//        arangoInstance.initializeDB();
-//    }
+    public void setArangoInstance(ArangoInstance arangoInstance) {
+        this.arangoInstance = arangoInstance;
+    }
 
-//    public void dropPostDB(){
-//
-//        arangoInstance.dropDB();
-//    }
+    public void createNoSQLDB(){
+
+        arangoInstance.initializeDB();
+    }
+
+    public void dropNoSQLDB(){
+
+        arangoInstance.dropDB();
+    }
 //
 //
 //    public void seedPostDB(){

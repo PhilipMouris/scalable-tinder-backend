@@ -14,6 +14,7 @@ NettyWebServer/NettyServer.class
 Interface/ConcreteCommand.class
 NettyWebServer/NettyServerInitializer.class
 RunBackEnd.class
+Database/ArangoInstance.class
 Config/Config.class
 Entities/ServicesType.class
 Config/ConfigTypes.class

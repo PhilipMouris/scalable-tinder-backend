@@ -24,6 +24,27 @@ public class Config {
     private final String servicesMQPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/mq.instance.conf";
     private final String servicePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/service.conf";
     private final String nettyServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/web.server.conf";
+    private final String arangoUserName="root";
+    private final String arangoPass="";
+
+    public Properties getArangoConfig() {
+        return arangoConfig;
+    }
+
+    public String getArangoPath() {
+        return arangoPath;
+    }
+
+    public String getArangoPass() {
+        return arangoPass;
+    }
+
+    public String getArangoDBName() {
+        return arangoDBName;
+    }
+
+    private final String arangoDBName="tinderDB";
+
 
     private Config() {
         loadConfig(arangoConfig, arangoPath);

@@ -1,0 +1,20 @@
+{
+  "rule": {
+    "type": "object",
+    "properties": {
+      "viewedUser":{"type":"string"},
+      "viewers":{"type":"object",
+      "properties":{
+        "createdAt":{"type":"string","format":"date-time"},
+        "userID":{"type":"string"}
+        }}
+
+    },
+    "required": [
+      "viewedUser",
+      "viewers"
+    ]
+  },
+  "level": "moderate",
+  "message": "Customer Schema Validation Failed."
+}

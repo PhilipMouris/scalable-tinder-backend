@@ -3,6 +3,7 @@ package Services;
 
 //import Cache.UserCacheController;
 import Controller.Controller;
+import Database.ArangoInstance;
 import Interface.ServiceControl;
 import Entities.ErrorLog;
 import io.netty.handler.logging.LogLevel;
@@ -25,14 +26,14 @@ public class UserService extends ServiceControl {
 
     @Override
     public void initDB() {
-//        try {
-////            userCacheController = new UserCacheController();
-//        } catch (IOException e) {
-//            StringWriter errors = new StringWriter();
-//            e.printStackTrace(new PrintWriter(errors));
+        try {
+                  arangoInstance=new ArangoInstance(15);
+        } catch (Exception e) {
+            StringWriter errors = new StringWriter();
+            e.printStackTrace(new PrintWriter(errors));
 //            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
-//            e.printStackTrace();
-//        }
+            e.printStackTrace();
+        }
     }
 
     @Override
