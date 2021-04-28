@@ -28,7 +28,7 @@ import java.util.*;
         private String dbUserName = conf.getArangoUserName();
         private String dbPass = conf.getArangoQueuePass();
 
-        private String dbName = conf.getArangoDBName();
+        private String dbName = conf.getArangoDbName();
 
         public ArangoInstance(int maxConnections){
             arangoDB = new ArangoDB.Builder().host(conf.getArangoHost(),conf.getArangoPort()).user(dbUserName).maxConnections(maxConnections).build();

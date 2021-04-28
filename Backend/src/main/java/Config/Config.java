@@ -35,15 +35,8 @@ public class Config {
         return arangoPath;
     }
 
-    public String getArangoPass() {
-        return arangoPass;
-    }
 
-    public String getArangoDBName() {
-        return arangoDBName;
-    }
 
-    private final String arangoDBName="tinderDB";
 
 
     private Config() {
@@ -293,8 +286,8 @@ public class Config {
         return arangoConfig.getProperty("arango_password");
     }
 
-    public String getArangoPostDbName() {
-        return arangoConfig.getProperty("arango_post_db_name");
+    public String getArangoDbName() {
+        return arangoConfig.getProperty("arango_db_name");
     }
 
     public String getArangoChatDbName() {
