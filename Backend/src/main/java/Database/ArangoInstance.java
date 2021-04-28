@@ -65,10 +65,15 @@ import java.util.*;
                 notification_schema.setRule(notificationSchema.get("rule").toString());
                 notification_schema.setLevel(CollectionSchema.Level.MODERATE);
 
-                arangoDB.db(dbName).createCollection("users",new CollectionCreateOptions().setSchema(user_schema));
-                arangoDB.db(dbName).createCollection("notifications",new CollectionCreateOptions().setSchema(notification_schema));
-                arangoDB.db(dbName).createCollection("chats",new CollectionCreateOptions().setSchema(chat_schema));
-                arangoDB.db(dbName).createCollection("profileViews",new CollectionCreateOptions().setSchema(profileView_schema));
+//                arangoDB.db(dbName).createCollection("users",new CollectionCreateOptions().setSchema(user_schema));
+//                arangoDB.db(dbName).createCollection("notifications",new CollectionCreateOptions().setSchema(notification_schema));
+//                arangoDB.db(dbName).createCollection("chats",new CollectionCreateOptions().setSchema(chat_schema));
+//                arangoDB.db(dbName).createCollection("profileViews",new CollectionCreateOptions().setSchema(profileView_schema));
+//
+                arangoDB.db(dbName).createCollection("users");
+                arangoDB.db(dbName).createCollection("notifications");
+                arangoDB.db(dbName).createCollection("chats");
+                arangoDB.db(dbName).createCollection("profileViews");
 //                Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,"Database created: " + dbName));
 
                 System.out.println("Database created: " + dbName);
@@ -96,6 +101,34 @@ import java.util.*;
             DocumentEntity e = arangoDB.db(dbName).collection("users").insertDocument(userData);
             return e.getKey();
         }
+        public UserData getUserData(String userID){
+            UserData userData=arangoDB.db(dbName).collection("users").getDocument(userID, UserData.class);
+            return userData;
+        }
+        public DocumentEntity userAddBio(String userID, String bio) {
+            UserData userData=getUserData(userID);
+            DocumentEntity response=null;
+            System.out.println(userData);
+            if (userData!=null){
+                userData.setBio(bio);
+                response= arangoDB.db(dbName).collection("users").updateDocument(userID, userData,new DocumentUpdateOptions().returnNew(true));
+            }
+            else{
+//                throw error 404
+            }
+            return response;
+        }
+        public DocumentEntity updateUserData(String userID,UserData userData){
+            UserData userDataToFind=getUserData(userID);
+            DocumentEntity response=null;
+            if (userDataToFind!=null){
+               response= arangoDB.db(dbName).collection("users").updateDocument(userID, userData,new DocumentUpdateOptions().returnNew(true));
+            }
+            else{
+//                throw error 404
+            }
+            return response;
+        }
 //        public CategoryDBObject getCategory(String id){
 //            // System.out.println(arangoDB.db(dbName).collection("categories").getDocument(id,Arango.CategoryDBObject.class));
 //            CategoryDBObject category =arangoDB.db(dbName).collection("categories").getDocument(id, CategoryDBObject.class);
@@ -122,6 +155,7 @@ import java.util.*;
 //            arangoInstance.dropDB();
 //            arangoInstance.initializeDB();
         }
+
 
 
     }

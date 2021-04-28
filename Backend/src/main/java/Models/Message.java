@@ -11,6 +11,26 @@ public class Message {
     @SerializedName("userData")
     private UserData userData;
 
+    private String userID;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    private String bio;
+
     public UserData getUserData() {
         return userData;
     }
