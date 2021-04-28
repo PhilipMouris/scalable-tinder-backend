@@ -1,6 +1,7 @@
 package Interface;
 
-//import Models.Message;
+
+import Models.Message;
 
 import java.util.TreeMap;
 
@@ -13,8 +14,8 @@ public abstract class Command implements Runnable {
     }
 
     protected abstract void execute();
-//    public abstract void setMessage(Message message);
-//    public abstract Message getMessage();
+    public abstract void setMessage(Message message);
+    public abstract Message getMessage();
 
     final public void run() {
          this.execute();
