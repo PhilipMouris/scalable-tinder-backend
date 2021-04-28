@@ -10,7 +10,7 @@ import com.arangodb.entity.DocumentField.Type;
 import java.util.*;
 import javax.persistence.*;
 @Entity
-class UserPreference {
+public class UserPreference {
     private int age;
     private double location;
 
