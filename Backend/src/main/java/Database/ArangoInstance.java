@@ -11,9 +11,11 @@ import com.arangodb.model.*;
 import io.netty.handler.logging.LogLevel;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import com.google.gson.Gson;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,7 +25,7 @@ import java.util.*;
     public class ArangoInstance {
 
         private Config conf = Config.getInstance();
-
+        private Gson gson;
         private ArangoDB arangoDB;
         private String dbUserName = conf.getArangoUserName();
         private String dbPass = conf.getArangoQueuePass();
@@ -31,6 +33,7 @@ import java.util.*;
         private String dbName = conf.getArangoDbName();
 
         public ArangoInstance(int maxConnections){
+            gson=new Gson();
             arangoDB = new ArangoDB.Builder().host(conf.getArangoHost(),conf.getArangoPort()).user(dbUserName).maxConnections(maxConnections).build();
 //            Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database connected: POST"));
             
@@ -108,7 +111,6 @@ import java.util.*;
         public DocumentEntity userAddBio(String userID, String bio) {
             UserData userData=getUserData(userID);
             DocumentEntity response=null;
-            System.out.println(userData);
             if (userData!=null){
                 userData.setBio(bio);
                 response= arangoDB.db(dbName).collection("users").updateDocument(userID, userData,new DocumentUpdateOptions().returnNew(true));
@@ -121,13 +123,19 @@ import java.util.*;
         public DocumentEntity updateUserData(String userID,UserData userData){
             UserData userDataToFind=getUserData(userID);
             DocumentEntity response=null;
+            System.out.println("UserData Is"+new Gson().toJson(userData));
             if (userDataToFind!=null){
-               response= arangoDB.db(dbName).collection("users").updateDocument(userID, userData,new DocumentUpdateOptions().returnNew(true));
+                System.out.println(userData);
+               response= arangoDB.db(dbName).collection("users").updateDocument(userID, gson.toJson(userData),new DocumentUpdateOptions().returnNew(true));
             }
             else{
 //                throw error 404
             }
             return response;
+        }
+        public DocumentDeleteEntity deleteUserData(String userID){
+            DocumentDeleteEntity<Void> userData=arangoDB.db(dbName).collection("users").deleteDocument(userID);
+            return userData;
         }
 //        public CategoryDBObject getCategory(String id){
 //            // System.out.println(arangoDB.db(dbName).collection("categories").getDocument(id,Arango.CategoryDBObject.class));
