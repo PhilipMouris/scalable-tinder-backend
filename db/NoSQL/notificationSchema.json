@@ -1,0 +1,43 @@
+{
+   "rule":{
+      "type":"object",
+      "properties":{
+         "userID":{
+            "type":"string"
+         },
+         "type":{
+            "type":"string",
+            "enum":[
+               "message",
+               "profile_changes",
+               "ban",
+               "new_match",
+               "other"
+            ]
+         },
+         "imageURL":{
+            "type":"string",
+            "format":"uri"
+         },
+         "title":{
+            "type":"string"
+         },
+         "body":{
+            "type":"string"
+         },
+         "createdAt":{
+            "type":"string",
+            "format":"date-time"
+         }
+      },
+      "required":[
+         "userID",
+         "type",
+         "imageURL",
+         "title",
+         "createdAt"
+      ]
+   },
+   "level":"moderate",
+   "message":"Customer Schema Validation Failed."
+}

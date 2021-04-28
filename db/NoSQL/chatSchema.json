@@ -1,0 +1,37 @@
+{
+  "rule": {
+    "type": "object",
+    "properties": {
+      "createdAt":{"type":"string","format":"date-time"},
+      "userA":{"type":"object",
+      "properties":{
+        "fullname":{"type":"string"},
+        "birthDate":{"type":"string","format":"date-time"}
+        }},
+      "userB":{"type":"object",
+        "properties":{
+          "fullname":{"type":"string"},
+          "birthDate":{"type":"string","format":"date-time"}
+          }},
+        "messages":{"type":"array",
+        "items":{
+          "type":"object",
+          "properties":{
+            "sourceUser":{"type":"string"},
+            "media":{"type":"string","format":"uri"},
+            "text":{"type":"string"},
+            "createdAt":{"type":"string","format":"date-time"}
+          }
+          }}
+
+
+    },
+    "required": [
+      "userA",
+      "userB",
+      "messages"
+    ]
+  },
+  "level": "moderate",
+  "message": "Customer Schema Validation Failed."
+}
