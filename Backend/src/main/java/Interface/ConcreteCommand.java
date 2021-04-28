@@ -37,6 +37,7 @@ public abstract class ConcreteCommand extends Command {
 //                    parameters.get("RLiveObjectService");
             ArangoInstance = (ArangoInstance)
                     parameters.get("ArangoInstance");
+            System.out.println("ARANGO is "+ArangoInstance);
 //            UserCacheController = (UserCacheController)
 //                    parameters.get("UserCacheController");
 //            ChatArangoInstance = (ChatArangoInstance)
