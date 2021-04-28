@@ -2,7 +2,6 @@
 
 ## To Run the Full Application:
 
-Run ./db/NoSQL/arangoSetup.js
 ### In Terminal:
 1- In text editor, Replace the content of haproxy.cfg with /resources/haproxy.cfg  
 2- Install Ceph (Media storage) by this command ```yay -S ceph``` , if encountered 404 error run these two commands ```sudo pacman -Syy``` and ```sudo pacman -Syu```
