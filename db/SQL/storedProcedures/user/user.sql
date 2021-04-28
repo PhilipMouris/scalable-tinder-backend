@@ -1,4 +1,3 @@
-
 -- DROP TYPE IF EXISTS userPublicData; 
 CREATE TYPE userPublicData AS(
     id INT,
