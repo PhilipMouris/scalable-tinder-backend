@@ -22,11 +22,7 @@ For Postgresql run pgadmin username is postgres and password is vm, hostname is 
 #### SQL
 Run all Scripts in ./db/SQL in pgAdmin or posgreSQL shell
 #### NoSQL
-1- Open Terminal in ./db/NoSQL/
-
-2- Run ```npm i```
-
-3- Run ```node arangoSetup.js```
+1- Run ./Database/ArangoInstance.java
 
 ### The Load-Balancer Path is 127.0.0.1:90, all requests will be sent to this address.  
 
