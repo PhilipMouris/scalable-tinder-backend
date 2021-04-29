@@ -10,6 +10,7 @@ public class Config {
     private static Config instance = new Config();
 
     private final Properties arangoConfig = new Properties();
+    private final Properties minioConfig = new Properties();
     private final Properties controllerConfig = new Properties();
     private final Properties loadBalancerConfig = new Properties();
     private final Properties mediaServerConfig = new Properties();
@@ -19,6 +20,7 @@ public class Config {
     private final Properties postgresqlConfig = new Properties();
 
     private final String arangoPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/arango.conf";
+    private final String minioPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/minio.conf";
     private final String controllerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/controller.conf";
     private final String loadBalancerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/load.balancer.conf";
     private final String mediaServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/media.server.conf";
@@ -26,8 +28,7 @@ public class Config {
     private final String servicePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/service.conf";
     private final String nettyServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/web.server.conf";
     private final String postgresqlPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/postgresql.conf";
-    private final String arangoUserName="root";
-    private final String arangoPass="";
+
 
     public Properties getArangoConfig() {
         return arangoConfig;
@@ -43,6 +44,7 @@ public class Config {
 
     private Config() {
         loadConfig(arangoConfig, arangoPath);
+        loadConfig(minioConfig,minioPath)   ;
         loadConfig(controllerConfig, controllerPath);
         loadConfig(loadBalancerConfig, loadBalancerPath);
         loadConfig(mediaServerConfig, mediaServerPath);
@@ -112,6 +114,9 @@ public class Config {
                 props = NettyServerConfig;
                 path = nettyServerPath;
                 break;
+            case Minio:
+                props=minioConfig;
+                path=minioPath;
         }
         props.setProperty(key,val);
         writeConfig(props, path);
@@ -293,10 +298,12 @@ public class Config {
         return arangoConfig.getProperty("arango_db_name");
     }
 
-    public String getArangoChatDbName() {
-        return arangoConfig.getProperty("arango_chat_db_name");
-    }
+// Minio Configs
 
+    public String getMinioAccessKey(){return minioConfig.getProperty("minio_access_key");}
+    public String getMinioSecretKey(){return minioConfig.getProperty("minio_secret_key");}
+    public String getMinioBucketName(){return minioConfig.getProperty("minio_bucket_name");}
+    public String getMinioPort(){return minioConfig.getProperty("minio_port");}
     //Postgresql Configs
 
     public String getPostgresqlUserName() {return postgresqlConfig.getProperty("postgresql_username");}

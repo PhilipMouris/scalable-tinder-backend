@@ -14,6 +14,7 @@ import Config.ConfigTypes;
 //import Models.CategoryDBObject;
 //import Models.ErrorLog;
 //import Models.PostDBObject;
+import MediaServer.MinioInstance;
 import NettyWebServer.NettyServerInitializer;
 import com.rabbitmq.client.*;
 import io.netty.channel.ChannelHandlerContext;
@@ -47,6 +48,16 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 //    RedisConf redisConf ;
 //    protected RLiveObjectService liveObjectService; // For Post Only
     protected ArangoInstance arangoInstance; // For Post Only
+
+    public MinioInstance getMinioInstance() {
+        return minioInstance;
+    }
+
+    public void setFileUploader(MinioInstance minioInstance) {
+        this.minioInstance = minioInstance;
+    }
+
+    protected MinioInstance minioInstance;
     protected PostgreSQL postgresDB;
 //    protected ChatArangoInstance ChatArangoInstance;
 //    protected UserCacheController userCacheController; // For UserModel Only
@@ -210,6 +221,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         init.put("body", message);
 //                        init.put("RLiveObjectService", liveObjectService);
                         init.put("ArangoInstance", arangoInstance);
+                        init.put("FileUploader", minioInstance);
 //                        init.put("ChatArangoInstance", ChatArangoInstance);
 //                        init.put("UserCacheController", userCacheController);
                         cmd.init(init);
@@ -321,6 +333,8 @@ public abstract class ServiceControl {    // This class is responsible for Manag
     public void setArangoInstance(ArangoInstance arangoInstance) {
         this.arangoInstance = arangoInstance;
     }
+
+
 
     public void createNoSQLDB(){
 

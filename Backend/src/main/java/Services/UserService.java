@@ -2,14 +2,11 @@ package Services;
 
 
 //import Cache.UserCacheController;
-import Controller.Controller;
 import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Interface.ServiceControl;
-import Entities.ErrorLog;
-import io.netty.handler.logging.LogLevel;
+import MediaServer.MinioInstance;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -28,7 +25,8 @@ public class UserService extends ServiceControl {
     @Override
     public void initDB() {
         try {
-                  arangoInstance=new ArangoInstance(15);
+                arangoInstance=new ArangoInstance(15);
+                minioInstance =new MinioInstance();
                 postgresDB= new PostgreSQL();
                 postgresDB.initSource();
         } catch (Exception e) {

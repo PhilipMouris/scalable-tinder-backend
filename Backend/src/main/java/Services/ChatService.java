@@ -2,8 +2,13 @@ package Services;
 
 //import Database.ChatArangoInstance;
 import Database.ArangoInstance;
+
 import Database.PostgreSQL;
 import Interface.ServiceControl;
+import MediaServer.MinioInstance;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -23,7 +28,9 @@ public class ChatService extends ServiceControl{
     @Override
     public void initDB() {
         try {
+            minioInstance =new MinioInstance();
             arangoInstance=new ArangoInstance(15);
+
             postgresDB= new PostgreSQL();
             postgresDB.initSource();
         } catch (Exception e) {

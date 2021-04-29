@@ -8,5 +8,6 @@ public enum ConfigTypes {
     MqInstance,
     PostSql,
     Service,
-    WebServer
+    WebServer ,
+    Minio
 }

@@ -5,6 +5,7 @@ import Controller.Controller;
 //import Database.ArangoInstance;
 //import Interface.ControlService;
 import Database.ArangoInstance;
+
 import Database.PostgreSQL;
 import Interface.ServiceControl;
 import Entities.ErrorLog;
@@ -47,7 +48,6 @@ public class ModeratorService extends ServiceControl {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public void setDBConnections(int connections){
