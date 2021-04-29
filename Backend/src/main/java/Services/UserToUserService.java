@@ -2,7 +2,12 @@ package Services;
 
 
 //import Cache.UserCacheController;
+import Database.ArangoInstance;
 import Interface.ServiceControl;
+import MediaServer.MinioInstance;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class UserToUserService extends ServiceControl {
 
@@ -18,14 +23,15 @@ public class UserToUserService extends ServiceControl {
 
     @Override
     public void initDB() {
-//        try {
-////            userCacheController = new UserCacheController();
-//        } catch (IOException e) {
-//            StringWriter errors = new StringWriter();
-//            e.printStackTrace(new PrintWriter(errors));
+        try {
+            minioInstance =new MinioInstance();
+            arangoInstance=new ArangoInstance(15);
+        } catch (Exception e) {
+            StringWriter errors = new StringWriter();
+            e.printStackTrace(new PrintWriter(errors));
 //            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
-//            e.printStackTrace();
-//        }
+            e.printStackTrace();
+        }
     }
 
     @Override

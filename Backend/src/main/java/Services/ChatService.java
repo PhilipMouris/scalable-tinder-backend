@@ -1,7 +1,12 @@
 package Services;
 
 //import Database.ChatArangoInstance;
+import Database.ArangoInstance;
 import Interface.ServiceControl;
+import MediaServer.MinioInstance;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class ChatService extends ServiceControl{
 
@@ -17,7 +22,15 @@ public class ChatService extends ServiceControl{
 
     @Override
     public void initDB() {
-        //ChatArangoInstance = new ChatArangoInstance(maxDBConnections);
+        try {
+            minioInstance =new MinioInstance();
+            arangoInstance=new ArangoInstance(15);
+        } catch (Exception e) {
+            StringWriter errors = new StringWriter();
+            e.printStackTrace(new PrintWriter(errors));
+//            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
+            e.printStackTrace();
+        }
     }
 
     @Override
