@@ -9,7 +9,7 @@ import com.arangodb.entity.DocumentField.Type;
 
 import java.util.*;
 import javax.persistence.*;
-@Entity
+
 public class UserLinks {
     private String facebook;
     private String instagram;

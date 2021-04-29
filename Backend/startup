@@ -1,3 +1,5 @@
+sudo chown -R postgres:postgres /var/lib/postgres/
+sudo su - postgres -c "initdb --locale en_US.UTF-8 -D '/var/lib/postgres/data'"
 sudo systemctl start  postgresql
 sudo chown -R arangodb:arangodb /var/lib/arangodb3
 sudo chown -R arangodb:arangodb /var/log/arangodb3

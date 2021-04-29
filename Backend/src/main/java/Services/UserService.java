@@ -4,6 +4,7 @@ package Services;
 //import Cache.UserCacheController;
 import Controller.Controller;
 import Database.ArangoInstance;
+import Database.PostgreSQL;
 import Interface.ServiceControl;
 import Entities.ErrorLog;
 import io.netty.handler.logging.LogLevel;
@@ -28,6 +29,8 @@ public class UserService extends ServiceControl {
     public void initDB() {
         try {
                   arangoInstance=new ArangoInstance(15);
+                postgresDB= new PostgreSQL();
+                postgresDB.initSource();
         } catch (Exception e) {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
@@ -36,10 +39,13 @@ public class UserService extends ServiceControl {
         }
     }
 
+
     @Override
-    public void setDBConnections(int connections) {
-        // TODO @soudian
+    public void setDBConnections(int connections){
+        postgresDB.setDbMaxConnections(connections+"");
+//        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
+    
 
 
 //    public static void main(String[] argv) {

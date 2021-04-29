@@ -9,6 +9,7 @@
 3- Run startup bash file in /Backend
 
 4- In IntelliJ, load the maven dependencies from pom.xml  
+mvn install:install-file -Dfile=/home/vm/Desktop/commons-dbcp2-2.8.0-bin/commons-dbcp2-2.8.0/commons-dbcp2-2.8.0.jar -DgroupId=org.apache.commons -DartifactId=commons-dbcp2 -Dversion=2.8.0 -Dpackaging=jar
 
 5- Run "RunBackEnd.java".  
 

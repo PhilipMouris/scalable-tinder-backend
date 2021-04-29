@@ -2,13 +2,20 @@ package Interface;
 
 
 import Models.Message;
-
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.TreeMap;
 
 public abstract class Command implements Runnable {
 
     protected TreeMap<String, Object> data;
-
+    protected Connection dbConn;
+    protected CallableStatement proc;
+    protected Statement query;
+    protected ResultSet set;
+    
     final public void init(TreeMap<String, Object> parameters) {
         this.data = parameters;
     }
