@@ -39,7 +39,7 @@ public class ArangoInstance {
         ArangoInstance arangoInstance = new ArangoInstance(15);
 //            arangoInstance.arangoDB.db("Post").createCollection("notifications");
 
-//              arangoInstance.dropDB();
+              arangoInstance.dropDB();
         arangoInstance.initializeDB();
     }
 
