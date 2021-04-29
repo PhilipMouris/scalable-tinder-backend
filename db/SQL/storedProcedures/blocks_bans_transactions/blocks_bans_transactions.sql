@@ -22,7 +22,7 @@ END;$$
 ;
 
 DROP FUNCTION IF EXISTS "uspUpdateBan";
-CREATE OR REPLACE FUNCTION "uspUpdateBan"(in_id int,mod_id int,user_id int,in_reason varchar(400),in_expiry_date date) RETURNS "banData"
+CREATE OR REPLACE FUNCTION "uspUpdateBan"(in_id int,in_reason varchar(400),in_expiry_date date) RETURNS "banData"
 LANGUAGE 'plpgsql'
 AS $$
 DECLARE 
@@ -52,7 +52,7 @@ BEGIN
 END;$$
 ;
 DROP FUNCTION IF EXISTS "uspReadAllBans";
-CREATE OR REPLACE FUNCTION "uspReadAllBans"() RETURNS TABLE(id int,moderator_id int,user_id int,reason varchar,expiry_date date,page int,"limit" int)
+CREATE OR REPLACE FUNCTION "uspReadAllBans"(page int,"limit" int) RETURNS TABLE(id int,moderator_id int,user_id int,reason varchar,expiry_date date,page int,"limit" int)
 LANGUAGE 'plpgsql'
 AS $$
 BEGIN
