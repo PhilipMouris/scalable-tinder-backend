@@ -5,6 +5,7 @@ package Interface;
 //import ClientService.Client;
 import Controller.Controller;
 import Database.ArangoInstance;
+import Database.PostgreSQL;
 import Entities.ErrorLog;
 import Config.Config;
 import Config.ConfigTypes;
@@ -46,6 +47,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 //    RedisConf redisConf ;
 //    protected RLiveObjectService liveObjectService; // For Post Only
     protected ArangoInstance arangoInstance; // For Post Only
+    protected PostgreSQL postgresDB;
 //    protected ChatArangoInstance ChatArangoInstance;
 //    protected UserCacheController userCacheController; // For UserModel Only
     private int threadsNo = conf.getServiceMaxThreads();
@@ -204,6 +206,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         init.put("properties", properties);
                         init.put("replyProps", replyProps);
                         init.put("envelope", envelope);
+                        init.put("PostgresInstance",postgresDB);
                         init.put("body", message);
 //                        init.put("RLiveObjectService", liveObjectService);
                         init.put("ArangoInstance", arangoInstance);

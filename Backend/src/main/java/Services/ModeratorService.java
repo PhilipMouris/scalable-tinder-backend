@@ -4,6 +4,8 @@ package Services;
 import Controller.Controller;
 //import Database.ArangoInstance;
 //import Interface.ControlService;
+import Database.ArangoInstance;
+import Database.PostgreSQL;
 import Interface.ServiceControl;
 import Entities.ErrorLog;
 import io.netty.handler.logging.LogLevel;
@@ -34,13 +36,23 @@ public class ModeratorService extends ServiceControl {
 
     @Override
     public void initDB() {
-        //arangoInstance = new ArangoInstance(maxDBConnections);
+        try {
+            arangoInstance=new ArangoInstance(15);
+            postgresDB= new PostgreSQL();
+            postgresDB.initSource();
+        } catch (Exception e) {
+            StringWriter errors = new StringWriter();
+            e.printStackTrace(new PrintWriter(errors));
+//            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     public void setDBConnections(int connections){
-        this.maxDBConnections = connections;
-       // arangoInstance.setMaxDBConnections(maxDBConnections);
+        postgresDB.setDbMaxConnections(connections+"");
+//        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 
 

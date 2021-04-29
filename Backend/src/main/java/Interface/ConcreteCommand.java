@@ -5,7 +5,7 @@ package Interface;
 import Database.ArangoInstance;
 //import Database.ChatArangoInstance;
 //import Models.ErrorLog;
-import Models.Message;
+import Database.PostgreSQL;
 import Models.Message;
 import com.google.gson.*;
 import com.rabbitmq.client.AMQP;
@@ -21,9 +21,11 @@ public abstract class ConcreteCommand extends Command {
 
 //    protected RLiveObjectService RLiveObjectService;
     protected ArangoInstance ArangoInstance;
+    protected PostgreSQL PostgresInstance;
 //    protected ChatArangoInstance ChatArangoInstance;
 //    protected UserCacheController UserCacheController;
     protected Message message;
+    protected JsonObject jsonBodyObject;
     protected JsonElement responseJson = new JsonObject();
     protected Gson gson;
     protected JsonParser jsonParser;
@@ -37,6 +39,7 @@ public abstract class ConcreteCommand extends Command {
 //                    parameters.get("RLiveObjectService");
             ArangoInstance = (ArangoInstance)
                     parameters.get("ArangoInstance");
+            PostgresInstance = (PostgreSQL) parameters.get("PostgresInstance");
             System.out.println("ARANGO is "+ArangoInstance);
 //            UserCacheController = (UserCacheController)
 //                    parameters.get("UserCacheController");
@@ -49,15 +52,15 @@ public abstract class ConcreteCommand extends Command {
             Envelope envelope = (Envelope) parameters.get("envelope");
 
             jsonParser = new JsonParser();
-            JsonObject jsonObject = (JsonObject) jsonParser.parse((String) parameters.get("body"));
-            gson = new GsonBuilder().create();
-            System.out.println(jsonObject.get("body").toString());
-            message = gson.fromJson(jsonObject.get("body").toString(), Message.class);
+            jsonBodyObject = (JsonObject) jsonParser.parse((String) parameters.get("body"));
+            gson = new GsonBuilder().setDateFormat("YYYY-MM-dd HH:mm:SS").create();
+            System.out.println(jsonBodyObject.get("body").toString());
+            message = gson.fromJson(jsonBodyObject.get("body").toString(), Message.class);
 
             doCommand();
 
-            jsonObject.add("response", responseJson);
-            channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonObject.toString().getBytes("UTF-8"));;
+            jsonBodyObject.add("response", responseJson);
+            channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
 //            channel.basicAck(envelope.getDeliveryTag(), false);
         } catch (Exception e) {
             e.printStackTrace();

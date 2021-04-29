@@ -1,7 +1,12 @@
 package Services;
 
 //import Database.ChatArangoInstance;
+import Database.ArangoInstance;
+import Database.PostgreSQL;
 import Interface.ServiceControl;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class ChatService extends ServiceControl{
 
@@ -17,12 +22,22 @@ public class ChatService extends ServiceControl{
 
     @Override
     public void initDB() {
-        //ChatArangoInstance = new ChatArangoInstance(maxDBConnections);
+        try {
+            arangoInstance=new ArangoInstance(15);
+            postgresDB= new PostgreSQL();
+            postgresDB.initSource();
+        } catch (Exception e) {
+            StringWriter errors = new StringWriter();
+            e.printStackTrace(new PrintWriter(errors));
+//            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     public void setDBConnections(int connections){
-        this.maxDBConnections = connections;
+        postgresDB.setDbMaxConnections(connections+"");
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 
