@@ -1,4 +1,3 @@
-<<<<<<< HEAD:db/SQL/storedProcedures/user/user.sql
 
 -- DROP TYPE IF EXISTS userPublicData; 
 CREATE TYPE userPublicData AS(

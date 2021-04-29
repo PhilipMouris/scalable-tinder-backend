@@ -17,6 +17,7 @@ public class Config {
     private final Properties servicesMQConfig = new Properties();
     private final Properties serviceConfig = new Properties();
     private final Properties NettyServerConfig = new Properties();
+    private final Properties postgresqlConfig = new Properties();
 
     private final String arangoPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/arango.conf";
     private final String minioPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/minio.conf";
@@ -26,6 +27,8 @@ public class Config {
     private final String servicesMQPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/mq.instance.conf";
     private final String servicePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/service.conf";
     private final String nettyServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/web.server.conf";
+    private final String postgresqlPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/postgresql.conf";
+
 
     public Properties getArangoConfig() {
         return arangoConfig;
@@ -48,6 +51,7 @@ public class Config {
         loadConfig(servicesMQConfig, servicesMQPath);
         loadConfig(serviceConfig, servicePath);
         loadConfig(NettyServerConfig, nettyServerPath);
+        loadConfig(postgresqlConfig,postgresqlPath);
 //        readSystemVariables(loadBalancerConfig,"load_balancer_rabbitmq_host");
     }
 
@@ -300,4 +304,20 @@ public class Config {
     public String getMinioSecretKey(){return minioConfig.getProperty("minio_secret_key");}
     public String getMinioBucketName(){return minioConfig.getProperty("minio_bucket_name");}
     public String getMinioPort(){return minioConfig.getProperty("minio_port");}
+    //Postgresql Configs
+
+    public String getPostgresqlUserName() {return postgresqlConfig.getProperty("postgresql_username");}
+    public String getPostgresqlPassword() {return postgresqlConfig.getProperty("postgresql_password");}
+
+    public String getPostgresqlHost() {return postgresqlConfig.getProperty("postgresql_host");}
+
+    public String getPostgresqlPort() {return postgresqlConfig.getProperty("postgresql_port");}
+    public String getPostgresqlDBName() {return postgresqlConfig.getProperty("postgresql_db_name");}
+    public String getPostgresqlMaxConn() {return postgresqlConfig.getProperty("postgresql_max_db");}
+
+    public String getPostgresqlInitConn() {return postgresqlConfig.getProperty("postgresql_init_db");}
+
+
+
+
 }

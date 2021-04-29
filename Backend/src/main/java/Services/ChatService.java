@@ -2,8 +2,13 @@ package Services;
 
 //import Database.ChatArangoInstance;
 import Database.ArangoInstance;
+
+import Database.PostgreSQL;
 import Interface.ServiceControl;
 import MediaServer.MinioInstance;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -25,6 +30,9 @@ public class ChatService extends ServiceControl{
         try {
             minioInstance =new MinioInstance();
             arangoInstance=new ArangoInstance(15);
+
+            postgresDB= new PostgreSQL();
+            postgresDB.initSource();
         } catch (Exception e) {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
@@ -33,9 +41,10 @@ public class ChatService extends ServiceControl{
         }
     }
 
+
     @Override
     public void setDBConnections(int connections){
-        this.maxDBConnections = connections;
+        postgresDB.setDbMaxConnections(connections+"");
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 

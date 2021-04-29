@@ -160,8 +160,9 @@ import java.util.*;
         public static void main(String[] args) {
             ArangoInstance arangoInstance  = new ArangoInstance(15);
 //            arangoInstance.arangoDB.db("Post").createCollection("notifications");
-            arangoInstance.dropDB();
-            arangoInstance.initializeDB();
+
+//              arangoInstance.dropDB();
+              arangoInstance.initializeDB();
         }
 
 

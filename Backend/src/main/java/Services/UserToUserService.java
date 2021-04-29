@@ -3,8 +3,12 @@ package Services;
 
 //import Cache.UserCacheController;
 import Database.ArangoInstance;
+import Database.PostgreSQL;
 import Interface.ServiceControl;
 import MediaServer.MinioInstance;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -26,6 +30,8 @@ public class UserToUserService extends ServiceControl {
         try {
             minioInstance =new MinioInstance();
             arangoInstance=new ArangoInstance(15);
+            postgresDB= new PostgreSQL();
+            postgresDB.initSource();
         } catch (Exception e) {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
@@ -34,9 +40,11 @@ public class UserToUserService extends ServiceControl {
         }
     }
 
+
     @Override
-    public void setDBConnections(int connections) {
-        // TODO @soudian
+    public void setDBConnections(int connections){
+        postgresDB.setDbMaxConnections(connections+"");
+//        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 
 

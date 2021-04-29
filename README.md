@@ -9,6 +9,7 @@
 3- Run startup bash file in /Backend and mediaServerStartup.bash in /Backend
 
 4- In IntelliJ, load the maven dependencies from pom.xml  
+mvn install:install-file -Dfile=/home/vm/Desktop/commons-dbcp2-2.8.0-bin/commons-dbcp2-2.8.0/commons-dbcp2-2.8.0.jar -DgroupId=org.apache.commons -DartifactId=commons-dbcp2 -Dversion=2.8.0 -Dpackaging=jar
 
 5- Run "RunBackEnd.java".  
 
@@ -22,6 +23,7 @@ For Postgresql run pgadmin username is postgres and password is vm, hostname is 
 Run all Scripts in ./db/SQL in pgAdmin or posgreSQL shell
 #### NoSQL
 1- Run Main Method in ArnagoInstance file
+
 
 ### The Load-Balancer Path is 127.0.0.1:90, all requests will be sent to this address.  
 

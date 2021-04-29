@@ -8,7 +8,7 @@ import com.arangodb.entity.DocumentField.Type;
 
 import java.util.*;
 import javax.persistence.*;
-@Entity
+
 public class UserInterest {
      String interestID;
      String name;

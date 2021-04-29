@@ -9,7 +9,6 @@ import com.arangodb.entity.DocumentField.Type;
 
 import java.util.*;
 import javax.persistence.*;
-@Entity
 public class UserLocation {
     private double lng;
     private double lat;
