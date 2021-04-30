@@ -9,6 +9,9 @@ import io.netty.util.AttributeKey;
 import io.netty.util.CharsetUtil;
 import org.json.JSONObject;
 
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -32,6 +35,10 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         JSONObject fullRequest = new JSONObject();
 //        System.out.println(msg);
+        if(msg instanceof HttpServletRequest){
+            HttpServletRequest req=(HttpServletRequest) msg;
+            System.out.println("IP is "+req.getRemoteAddr());
+        }
         if (msg instanceof HttpRequest) {
             HttpRequest request = this.request = (HttpRequest) msg;
             if (HttpHeaders.is100ContinueExpected(request)) {
