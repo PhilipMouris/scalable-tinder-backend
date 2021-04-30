@@ -1,6 +1,9 @@
 package Database;
 
 import Config.Config;
+import Controller.ControllerAdapterHandler;
+import Models.*;
+import com.arangodb.ArangoCursor;
 import Models.UserData;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
@@ -16,13 +19,15 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ArangoInstance {
 
     private final Config conf = Config.getInstance();
-    private final Gson gson;
 
-   
+    private final Logger LOGGER = Logger.getLogger(ArangoInstance.class.getName()) ;
 
     public String getDbName() {
         return dbName;
@@ -41,7 +46,7 @@ public class ArangoInstance {
     private final String dbPass = conf.getArangoQueuePass();
 
     private final String dbName = conf.getArangoDbName();
-
+    private Gson gson;
     public ArangoInstance(int maxConnections) {
         gson = new Gson();
         arangoDB = new ArangoDB.Builder().host(conf.getArangoHost(), conf.getArangoPort()).user(dbUserName).maxConnections(maxConnections).build();
@@ -98,8 +103,9 @@ public class ArangoInstance {
 
             System.out.println("Database created: " + dbName);
 //                Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database created: " + dbName));
-        } catch (ArangoDBException  e) {
+            } catch (ArangoDBException e) {
             e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
 //                Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,"Failed to create database: " + dbName));
         }
     }

@@ -1,5 +1,6 @@
 package Commands.UserCommands;
 
+import Entities.HttpResponseTypes;
 import Database.ArangoInstance;
 import Interface.ConcreteCommand;
 import Models.Message;
@@ -14,7 +15,7 @@ import org.json.JSONObject;
 public class UpdateUserData extends ConcreteCommand {
 
     @Override
-    protected void doCommand() {
+    protected HttpResponseTypes doCommand() {
 
         ArangoDB arangoDB= ArangoInstance.getArangoDB();
         String userID= message.getUserID();
@@ -26,13 +27,14 @@ public class UpdateUserData extends ConcreteCommand {
             System.out.println(userData);
             res = arangoDB.db(ArangoInstance.getDbName()).collection("users").updateDocument(userID, gson.toJson(userData), new DocumentUpdateOptions().returnNew(true));
         } else {
-//                throw error 404
+               return HttpResponseTypes._404;
         }
         JsonObject response = new JsonObject();
         JSONObject userDataJSON=new JSONObject(res);
         String newDocumentString=userDataJSON.get("new").toString();
         response.add("userData", jsonParser.parse(newDocumentString));
         responseJson = jsonParser.parse(response.toString());
+        return HttpResponseTypes._200;
     }
 
     @Override

@@ -2,6 +2,7 @@ package Services;
 
 
 //import Cache.UserCacheController;
+import Controller.ControllerAdapterHandler;
 import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Interface.ServiceControl;
@@ -12,12 +13,15 @@ import java.io.StringWriter;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserToUserService extends ServiceControl {
 
     public UserToUserService(int ID) {
         super(ID);
     }
+    private final Logger LOGGER = Logger.getLogger(UserToUserService.class.getName()) ;
 
     @Override
     public void init() {
@@ -36,14 +40,14 @@ public class UserToUserService extends ServiceControl {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
 //            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         }
     }
 
 
     @Override
-    public void setDBConnections(int connections){
-        postgresDB.setDbMaxConnections(connections+"");
+    public boolean setMaxDBConnections(String connections){
+        return postgresDB.setDbMaxConnections(connections+"");
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 

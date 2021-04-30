@@ -1,18 +1,21 @@
 package Commands.ModeratorCommands;
 
+import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
 import Models.BanData;
 import Models.Message;
 import com.google.gson.JsonObject;
-import org.json.JSONObject;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CreateBan extends ConcreteCommand {
+    private final Logger LOGGER = Logger.getLogger(CreateBan.class.getName()) ;
 
     @Override
-    protected void doCommand() {
+    protected HttpResponseTypes doCommand() {
         try {
             dbConn = PostgresInstance.getDataSource().getConnection();
             dbConn.setAutoCommit(true);
@@ -36,16 +39,20 @@ public class CreateBan extends ConcreteCommand {
             }
 
             JsonObject response = new JsonObject();
-            System.out.println("BEFORE"+gson.toJson(out_banData));
             response.add("record", jsonParser.parse(gson.toJson(out_banData)));
             responseJson = response;
-            System.out.println(response + "ALOOO");
+            LOGGER.log(Level.INFO,"Command: "+CreateBan.class.getName()+" Executed Successfully");
+            return HttpResponseTypes._200;
         }catch (SQLException e) {
             e.printStackTrace();
 //            CommandsHelp.handleError(map.get("app"), map.get("method"), e.getMessage(), map.get("correlation_id"), LOGGER);
-            //Logger.log(Level.SEVERE, e.getMessage(), e);
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            return HttpResponseTypes._500;
         } catch (Exception e){
             e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            return HttpResponseTypes._500;
+
         }
         finally {
             PostgresInstance.disconnect(null, proc, dbConn);

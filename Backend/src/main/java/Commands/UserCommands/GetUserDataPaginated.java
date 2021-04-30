@@ -1,5 +1,6 @@
 package Commands.UserCommands;
 
+import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
 //import Models.User;
 import Models.Message;
@@ -18,7 +19,7 @@ import java.util.*;
 public class GetUserDataPaginated extends ConcreteCommand {
 
     @Override
-    protected void doCommand() {
+    protected HttpResponseTypes doCommand() {
         ArangoDB arangoDB=ArangoInstance.getArangoDB();
         List<UserData> userDataList=new ArrayList<UserData>();
         String dbName=ArangoInstance.getDbName();
@@ -42,6 +43,7 @@ public class GetUserDataPaginated extends ConcreteCommand {
         response.add("userDataArray", jsonParser.parse(gson.toJson(userDataList)));
         responseJson = jsonParser.parse(response.toString());
         System.out.println(response);
+        return  HttpResponseTypes._200;
     }
     @Override
     public void setMessage(Message message) {
