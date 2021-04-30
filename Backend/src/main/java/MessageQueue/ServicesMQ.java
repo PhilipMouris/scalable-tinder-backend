@@ -1,6 +1,7 @@
 package MessageQueue;
 
 import Config.Config;
+import Controller.ControllerAdapterHandler;
 import NettyWebServer.NettyServerInitializer;
 import com.rabbitmq.client.*;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,6 +12,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
 
@@ -36,6 +39,7 @@ public class ServicesMQ {
     private final String balancerUser = config.getServerQueueUserName();
     private final String balancerPass = config.getServerQueuePass();
 
+    private final Logger LOGGER = Logger.getLogger(ServicesMQ.class.getName()) ;
 
 
 
@@ -79,7 +83,7 @@ public class ServicesMQ {
             userToUserChannel_res.queueDeclare(RESPONSE_USER_TO_USER_QUEUE_NAME,true,false,false,null);
 
         } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         }
     }
 

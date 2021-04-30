@@ -33,6 +33,7 @@ public class PostgreSQL {
     private String DB_MAX_CONNECTIONS = conf.getPostgresqlMaxConn();
     private PoolingDriver dbDriver;
     private PoolingDataSource<PoolableConnection> dataSource;
+    private PoolableConnectionFactory poolableConnectionFactory;
 
     public void shutdownDriver() throws SQLException {
         dbDriver.closePool(DB_NAME);
@@ -77,7 +78,7 @@ public class PostgreSQL {
             try {
                 query.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
             }
         }
     }
@@ -139,23 +140,11 @@ public class PostgreSQL {
 
             ConnectionFactory connectionFactory = new DriverManagerConnectionFactory(
                     DB_URL, props);
-            PoolableConnectionFactory poolableConnectionFactory = new PoolableConnectionFactory(
+            poolableConnectionFactory = new PoolableConnectionFactory(
                     connectionFactory, null);
             poolableConnectionFactory.setPoolStatements(true);
 
-            GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
-            poolConfig.setMaxIdle(Integer.parseInt(DB_INIT_CONNECTIONS));
-            poolConfig.setMaxTotal(Integer.parseInt(DB_MAX_CONNECTIONS));
-            ObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(
-                    poolableConnectionFactory, poolConfig);
-            poolableConnectionFactory.setPool(connectionPool);
-
-            Class.forName("org.apache.commons.dbcp2.PoolingDriver");
-            dbDriver = (PoolingDriver) DriverManager
-                    .getDriver("jdbc:apache:commons:dbcp:");
-            dbDriver.registerPool(DB_NAME, connectionPool);
-
-            dataSource = new PoolingDataSource<>(connectionPool);
+            setConnection();
             System.out.println("Connected to PostGresql");
             
         } catch (Exception ex) {
@@ -163,7 +152,21 @@ public class PostgreSQL {
                     + ex.getMessage(), ex);
         }
     }
+    private void setConnection() throws ClassNotFoundException, SQLException {
+        GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
+        poolConfig.setMaxIdle(Integer.parseInt(DB_INIT_CONNECTIONS));
+        poolConfig.setMaxTotal(Integer.parseInt(DB_MAX_CONNECTIONS));
+        ObjectPool<PoolableConnection> connectionPool = new GenericObjectPool<>(
+                poolableConnectionFactory, poolConfig);
+        poolableConnectionFactory.setPool(connectionPool);
 
+        Class.forName("org.apache.commons.dbcp2.PoolingDriver");
+        dbDriver = (PoolingDriver) DriverManager
+                .getDriver("jdbc:apache:commons:dbcp:");
+        dbDriver.registerPool(DB_NAME, connectionPool);
+
+        dataSource = new PoolingDataSource<>(connectionPool);
+    }
     public  void setDBUser(String name) {
         DB_USERNAME = name;
     }
@@ -186,9 +189,36 @@ public class PostgreSQL {
         DB_NAME = name;
     }
 
-    public void setDbInitConnections (String initConnections){ DB_INIT_CONNECTIONS = initConnections;}
+    public void setDbInitConnections (String initConnections){
+        DB_INIT_CONNECTIONS = initConnections;
+        try {
+            setConnection();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            LOGGER.log(Level.SEVERE,throwables.getMessage(),throwables);
 
-    public void setDbMaxConnections (String maxConnections ){DB_MAX_CONNECTIONS =maxConnections;  }
+        }
+    }
+
+    public boolean setDbMaxConnections (String maxConnections ){
+        DB_MAX_CONNECTIONS =maxConnections;
+        try {
+            setConnection();
+            return true;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            return false;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            LOGGER.log(Level.SEVERE,throwables.getMessage(),throwables);
+            return false;
+
+        }
+    }
 
     public String getDbInitConnections() { return DB_INIT_CONNECTIONS;}
 

@@ -32,6 +32,7 @@ public class Message implements Serializable {
     private UserData userData;
     private BanData banData;
 
+
     public BanData getBanData() {
         return banData;
     }

@@ -6,15 +6,16 @@ import Database.ArangoInstance;
 //import Database.ChatArangoInstance;
 //import Models.ErrorLog;
 import Database.PostgreSQL;
+import Entities.HttpResponseTypes;
 import Models.Message;
 import com.google.gson.*;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Envelope;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public abstract class ConcreteCommand extends Command {
 
@@ -29,6 +30,7 @@ public abstract class ConcreteCommand extends Command {
     protected JsonElement responseJson = new JsonObject();
     protected Gson gson;
     protected JsonParser jsonParser;
+    private final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
 
     @Override
     protected void execute() {
@@ -40,7 +42,7 @@ public abstract class ConcreteCommand extends Command {
             ArangoInstance = (ArangoInstance)
                     parameters.get("ArangoInstance");
             PostgresInstance = (PostgreSQL) parameters.get("PostgresInstance");
-            System.out.println("ARANGO is "+ArangoInstance);
+            LOGGER.log(Level.INFO,"ARANGO is "+ArangoInstance);
 //            UserCacheController = (UserCacheController)
 //                    parameters.get("UserCacheController");
 //            ChatArangoInstance = (ChatArangoInstance)
@@ -54,18 +56,18 @@ public abstract class ConcreteCommand extends Command {
             jsonParser = new JsonParser();
             jsonBodyObject = (JsonObject) jsonParser.parse((String) parameters.get("body"));
             gson = new GsonBuilder().setDateFormat("YYYY-MM-dd HH:mm:SS").create();
-            System.out.println(jsonBodyObject.get("body").toString());
+//            System.out.println(jsonBodyObject.get("body").toString());
             message = gson.fromJson(jsonBodyObject.get("body").toString(), Message.class);
 
-            doCommand();
-
+            HttpResponseTypes status = doCommand();
+            jsonBodyObject.add("status",jsonParser.parse(status.toString()));
             jsonBodyObject.add("response", responseJson);
             channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
 //            channel.basicAck(envelope.getDeliveryTag(), false);
         } catch (Exception e) {
-            e.printStackTrace();
-            StringWriter errors = new StringWriter();
-            e.printStackTrace(new PrintWriter(errors));
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+//            StringWriter errors = new StringWriter();
+//            e.printStackTrace(new PrintWriter(errors));
 //            Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
         }
     }
@@ -78,5 +80,5 @@ public abstract class ConcreteCommand extends Command {
         return message;
     }
 
-    protected abstract void doCommand();
+    protected abstract HttpResponseTypes doCommand();
 }

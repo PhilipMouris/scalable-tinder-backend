@@ -13,11 +13,14 @@ import io.netty.handler.logging.LogLevel;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ModeratorService extends ServiceControl {
     public ModeratorService(int ID) {
         super(ID);
     }
+    private final Logger LOGGER = Logger.getLogger(ModeratorService.class.getName()) ;
 
 //    private RedisConf redisConf;
 
@@ -29,7 +32,7 @@ public class ModeratorService extends ServiceControl {
 //            StringWriter errors = new StringWriter();
 //            e.printStackTrace(new PrintWriter(errors));
 //            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
-//            e.printStackTrace();
+//            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
 //        }
 //        liveObjectService = redisConf.getService();
     }
@@ -44,14 +47,14 @@ public class ModeratorService extends ServiceControl {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
 //            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         }
     }
 
 
     @Override
-    public void setDBConnections(int connections){
-        postgresDB.setDbMaxConnections(connections+"");
+    public boolean setMaxDBConnections(String connections){
+        return postgresDB.setDbMaxConnections(connections+"");
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 

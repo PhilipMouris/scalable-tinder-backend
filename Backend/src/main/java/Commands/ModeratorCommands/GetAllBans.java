@@ -1,5 +1,7 @@
 package Commands.ModeratorCommands;
 
+import Controller.ControllerAdapterHandler;
+import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
 import Models.BanData;
 import Models.Message;
@@ -9,11 +11,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GetAllBans extends ConcreteCommand {
+    private final Logger LOGGER = Logger.getLogger(GetAllBans.class.getName()) ;
 
     @Override
-    protected void doCommand() {
+    protected HttpResponseTypes doCommand() {
         try {
             dbConn = PostgresInstance.getDataSource().getConnection();
             dbConn.setAutoCommit(true);
@@ -24,9 +29,9 @@ public class GetAllBans extends ConcreteCommand {
                     message.getPage(),
                     message.getLimit()
                     )
-                    );
+            );
             List<BanData> out_banData_list = new ArrayList<BanData>();
-            while(set.next()){
+            while (set.next()) {
                 BanData out_banData = new BanData();
                 out_banData.setId(set.getInt("id"));
                 out_banData.setModerator_id(set.getInt("moderator_id"));
@@ -38,21 +43,23 @@ public class GetAllBans extends ConcreteCommand {
             }
 
             JsonObject response = new JsonObject();
-            System.out.println("BEFORE"+gson.toJson(out_banData_list));
+            System.out.println("BEFORE" + gson.toJson(out_banData_list));
             response.add("record", jsonParser.parse(gson.toJson(out_banData_list)));
             responseJson = response;
-            System.out.println(response + "ALOOO");
-        }catch (SQLException e) {
-            e.printStackTrace();
+            return HttpResponseTypes._200;
+        } catch (SQLException e) {
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            return HttpResponseTypes._500;
 //            CommandsHelp.handleError(map.get("app"), map.get("method"), e.getMessage(), map.get("correlation_id"), LOGGER);
             //Logger.log(Level.SEVERE, e.getMessage(), e);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        finally {
+        } catch (Exception e) {
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            return  HttpResponseTypes._500;
+        } finally {
             PostgresInstance.disconnect(null, proc, dbConn);
         }
     }
+
 
     @Override
     public void setMessage(Message message) {
