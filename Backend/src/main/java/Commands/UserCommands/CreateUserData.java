@@ -2,17 +2,20 @@ package Commands.UserCommands;
 
 import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
-//import Models.User;
 import Models.Message;
+import com.arangodb.ArangoDB;
+import com.arangodb.entity.DocumentEntity;
 import org.json.JSONObject;
 
 public class CreateUserData extends ConcreteCommand {
 
     @Override
     protected HttpResponseTypes doCommand() {
-        String id = ArangoInstance.insertNewUser(message.getUserData());
-        JSONObject response  = new JSONObject();
-        response.put("id",id);
+        ArangoDB arangoDB=ArangoInstance.getArangoDB();
+        DocumentEntity dbRes = arangoDB.db(ArangoInstance.getDbName()).collection("users").insertDocument(message.getUserData());
+        String id = dbRes.getKey();
+        JSONObject response = new JSONObject();
+        response.put("id", id);
         responseJson = jsonParser.parse(response.toString());
         System.out.println(response);
         return HttpResponseTypes._200;

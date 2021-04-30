@@ -3,17 +3,14 @@ package Interface;
 //import Cache.RedisConf;
 //import Cache.UserCacheController;
 //import ClientService.Client;
+
+import Config.Config;
+import Config.ConfigTypes;
 import Controller.Controller;
 import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Entities.ErrorLog;
-import Config.Config;
-import Config.ConfigTypes;
-//import Database.ArangoInstance;
-//import Database.ChatArangoInstance;
-//import Models.CategoryDBObject;
-//import Models.ErrorLog;
-//import Models.PostDBObject;
+import MediaServer.MinioInstance;
 import NettyWebServer.NettyServerInitializer;
 import NettyWebServer.RequestHandler;
 import com.rabbitmq.client.*;
@@ -47,28 +44,27 @@ import static io.netty.buffer.Unpooled.copiedBuffer;
 
 public abstract class ServiceControl {    // This class is responsible for Managing Each Service (Application) Fully (Queue (Reuqest/Response), Controller etc.)
 
+    public int ID;
     protected Config conf = Config.getInstance();
     protected int maxDBConnections = conf.getServiceMaxDbConnections();
     protected String RPC_QUEUE_NAME; //set by init
-    private String RESPONSE_EXTENSION = "-Response";
-    private String REQUEST_EXTENSION = "-Request";
-    public int ID;
-//    RedisConf redisConf ;
+    //    RedisConf redisConf ;
 //    protected RLiveObjectService liveObjectService; // For Post Only
     protected ArangoInstance arangoInstance; // For Post Only
+    protected MinioInstance minioInstance;
     protected PostgreSQL postgresDB;
-//    protected ChatArangoInstance ChatArangoInstance;
+    private final String RESPONSE_EXTENSION = "-Response";
+    private final String REQUEST_EXTENSION = "-Request";
+    //    protected ChatArangoInstance ChatArangoInstance;
 //    protected UserCacheController userCacheController; // For UserModel Only
     private int threadsNo = conf.getServiceMaxThreads();
-    private ThreadPoolExecutor executor; //Executes the requests of this service
-
-    private String host = conf.getServerQueueHost();    // Define the Queue containing the requests of this service
-    private int port = conf.getServerQueuePort();
-    private String user = conf.getServerQueueUserName();
-    private String pass = conf.getServerQueuePass();
+    private final ThreadPoolExecutor executor; //Executes the requests of this service
+    private final String host = conf.getServerQueueHost();    // Define the Queue containing the requests of this service
+    private final int port = conf.getServerQueuePort();
+    private final String user = conf.getServerQueueUserName();
+    private final String pass = conf.getServerQueuePass();
     private Channel requestQueueChannel; //The Channel containing the Queue of this service
     private Channel responseQueueChannel;
-
     private String requestConsumerTag;
     private String responseConsumerTag;
     private Consumer requestConsumer;
@@ -82,9 +78,17 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadsNo);
         init();
         initDB();
-        REQUEST_QUEUE_NAME = RPC_QUEUE_NAME+ REQUEST_EXTENSION;
-        RESPONSE_QUEUE_NAME = RPC_QUEUE_NAME+ RESPONSE_EXTENSION;
+        REQUEST_QUEUE_NAME = RPC_QUEUE_NAME + REQUEST_EXTENSION;
+        RESPONSE_QUEUE_NAME = RPC_QUEUE_NAME + RESPONSE_EXTENSION;
         this.ID = ID;
+    }
+
+    public MinioInstance getMinioInstance() {
+        return minioInstance;
+    }
+
+    public void setFileUploader(MinioInstance minioInstance) {
+        this.minioInstance = minioInstance;
     }
 
     public abstract void init();
@@ -105,7 +109,8 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             default:return HttpResponseStatus.ACCEPTED;
         }
     }
-    private void consumeFromResponseQueue(){
+
+    private void consumeFromResponseQueue() {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(host);
         factory.setPort(port);
@@ -184,7 +189,8 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 //            consumeFromQueue(RPC_QUEUE_NAME,QUEUE_TO);
         }
     }
-    private void consumeFromRequestQueue(){
+
+    private void consumeFromRequestQueue() {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(host);
@@ -197,7 +203,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             connection = factory.newConnection();
             requestQueueChannel = connection.createChannel();
             requestQueueChannel.queueDeclare(REQUEST_QUEUE_NAME, true, false, false, null);
-            requestQueueChannel .basicQos(threadsNo);
+            requestQueueChannel.basicQos(threadsNo);
 //            redisConf = new RedisConf();
 //            liveObjectService = redisConf.getService();
 //
@@ -216,7 +222,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                     LOGGER.log(Level.INFO,"INSTANCE NUM   :   " + ID);
                     try {
                         //Using Reflection to convert a command String to its appropriate class
-                        String message = new String(body, "UTF-8");
+                        String message = new String(body, StandardCharsets.UTF_8);
                         JSONParser parser = new JSONParser();
                         JSONObject command = (JSONObject) parser.parse(message);
                         String className = (String) command.get("command");
@@ -231,14 +237,15 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         Command cmd = (Command) last_com.newInstance();
 
                         TreeMap<String, Object> init = new TreeMap<>();
-                        init.put("channel",requestQueueChannel);
+                        init.put("channel", requestQueueChannel);
                         init.put("properties", properties);
                         init.put("replyProps", replyProps);
                         init.put("envelope", envelope);
-                        init.put("PostgresInstance",postgresDB);
+                        init.put("PostgresInstance", postgresDB);
                         init.put("body", message);
 //                        init.put("RLiveObjectService", liveObjectService);
                         init.put("ArangoInstance", arangoInstance);
+                        init.put("FileUploader", minioInstance);
 //                        init.put("ChatArangoInstance", ChatArangoInstance);
 //                        init.put("UserCacheController", userCacheController);
                         cmd.init(init);
@@ -385,12 +392,13 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         this.arangoInstance = arangoInstance;
     }
 
-    public void createNoSQLDB(){
+
+    public void createNoSQLDB() {
 
         arangoInstance.initializeDB();
     }
 
-    public void dropNoSQLDB(){
+    public void dropNoSQLDB() {
 
         arangoInstance.dropDB();
     }

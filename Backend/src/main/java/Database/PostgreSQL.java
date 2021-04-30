@@ -6,18 +6,10 @@ import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
-import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class PostgreSQL {
     private static final Logger LOGGER = Logger
@@ -34,24 +26,6 @@ public class PostgreSQL {
     private PoolingDriver dbDriver;
     private PoolingDataSource<PoolableConnection> dataSource;
     private PoolableConnectionFactory poolableConnectionFactory;
-
-    public void shutdownDriver() throws SQLException {
-        dbDriver.closePool(DB_NAME);
-    }
-
-    public void printDriverStats() throws SQLException {
-        ObjectPool<? extends Connection> connectionPool = dbDriver
-                .getConnectionPool(DB_NAME);
-
-        System.out.println("DB Active Connections: "
-                + connectionPool.getNumActive());
-        System.out.println("DB Idle Connections: "
-                + connectionPool.getNumIdle());
-    }
-
-    public PoolingDataSource<PoolableConnection> getDataSource() {
-        return dataSource;
-    }
 
     public static void disconnect(ResultSet rs, PreparedStatement statement,
                                   Connection conn, Statement query) {
@@ -74,7 +48,7 @@ public class PostgreSQL {
             }
         }
 
-        if(query != null){
+        if (query != null) {
             try {
                 query.close();
             } catch (SQLException e) {
@@ -107,6 +81,24 @@ public class PostgreSQL {
 
     }
 
+    public void shutdownDriver() throws SQLException {
+        dbDriver.closePool(DB_NAME);
+    }
+
+    public void printDriverStats() throws SQLException {
+        ObjectPool<? extends Connection> connectionPool = dbDriver
+                .getConnectionPool(DB_NAME);
+
+        System.out.println("DB Active Connections: "
+                + connectionPool.getNumActive());
+        System.out.println("DB Idle Connections: "
+                + connectionPool.getNumIdle());
+    }
+
+    public PoolingDataSource<PoolableConnection> getDataSource() {
+        return dataSource;
+    }
+
     public void initSource() {
         try {
             try {
@@ -119,12 +111,12 @@ public class PostgreSQL {
             try {
 
 
-                DB_URL = "jdbc:postgresql://" + DB_HOST + ':' + DB_PORT + "/"+ DB_NAME;
+                DB_URL = "jdbc:postgresql://" + DB_HOST + ':' + DB_PORT + "/" + DB_NAME;
 
-            } catch (Exception e1){
+            } catch (Exception e1) {
                 try {
 //                    readConfFile();
-                } catch ( Exception e2 ) {
+                } catch (Exception e2) {
                     e2.printStackTrace();
                 }
                 System.out.println("Used Config File For DB");
@@ -146,7 +138,7 @@ public class PostgreSQL {
 
             setConnection();
             System.out.println("Connected to PostGresql");
-            
+
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, "Got error initializing data source: "
                     + ex.getMessage(), ex);
@@ -167,7 +159,9 @@ public class PostgreSQL {
 
         dataSource = new PoolingDataSource<>(connectionPool);
     }
-    public  void setDBUser(String name) {
+   
+
+    public void setDBUser(String name) {
         DB_USERNAME = name;
     }
 
@@ -183,7 +177,6 @@ public class PostgreSQL {
         DB_HOST = host;
     }
 
-    
 
     public void setDBName(String name) {
         DB_NAME = name;
@@ -220,9 +213,13 @@ public class PostgreSQL {
         }
     }
 
-    public String getDbInitConnections() { return DB_INIT_CONNECTIONS;}
+    public String getDbMaxConnections() {
+        return DB_MAX_CONNECTIONS;
+    }
 
-    public String getDbMaxConnections(){return DB_MAX_CONNECTIONS;}
+    public void setDbMaxConnections(String maxConnections) {
+        DB_MAX_CONNECTIONS = maxConnections;
+    }
 
 //    private boolean formatURL() {
 //        setDBURL("jdbc:postgresql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME);
@@ -232,6 +229,5 @@ public class PostgreSQL {
 //        return matcher.matches();
 //    }
 
-    
 
 }

@@ -1,24 +1,39 @@
 package Commands.UserCommands;
 
 import Entities.HttpResponseTypes;
+import Database.ArangoInstance;
 import Interface.ConcreteCommand;
-//import Models.User;
 import Models.Message;
+import Models.UserData;
+import com.arangodb.ArangoDB;
 import com.arangodb.entity.DocumentEntity;
+import com.arangodb.model.DocumentUpdateOptions;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.json.JSONObject;
 
 public class UpdateUserData extends ConcreteCommand {
 
     @Override
     protected HttpResponseTypes doCommand() {
-        DocumentEntity userData = ArangoInstance.updateUserData(message.getUserID(),message.getUserData());
-        System.out.println(userData);
-        JSONObject response  = new JSONObject();
-        JSONObject userDataJSON= new JSONObject(gson.toJson(userData));
-        System.out.println(userDataJSON);
-        response.put("userData", userDataJSON);
+
+        ArangoDB arangoDB= ArangoInstance.getArangoDB();
+        String userID= message.getUserID();
+        UserData userData= message.getUserData();
+        UserData userDataToFind = ArangoInstance.getUserData(userID);
+        DocumentEntity res = null;
+        System.out.println("UserData Is" + new Gson().toJson(userData));
+        if (userDataToFind != null) {
+            System.out.println(userData);
+            res = arangoDB.db(ArangoInstance.getDbName()).collection("users").updateDocument(userID, gson.toJson(userData), new DocumentUpdateOptions().returnNew(true));
+        } else {
+               return HttpResponseTypes._404;
+        }
+        JsonObject response = new JsonObject();
+        JSONObject userDataJSON=new JSONObject(res);
+        String newDocumentString=userDataJSON.get("new").toString();
+        response.add("userData", jsonParser.parse(newDocumentString));
         responseJson = jsonParser.parse(response.toString());
-        System.out.println(response);
         return HttpResponseTypes._200;
     }
 

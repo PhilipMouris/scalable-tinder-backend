@@ -2,14 +2,12 @@ package Services;
 
 
 //import Cache.UserCacheController;
-import Controller.Controller;
+
 import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Interface.ServiceControl;
-import Entities.ErrorLog;
-import io.netty.handler.logging.LogLevel;
+import MediaServer.MinioInstance;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.logging.Level;
@@ -31,9 +29,10 @@ public class UserService extends ServiceControl {
     @Override
     public void initDB() {
         try {
-                  arangoInstance=new ArangoInstance(15);
-                postgresDB= new PostgreSQL();
-                postgresDB.initSource();
+            arangoInstance = new ArangoInstance(15);
+            minioInstance = new MinioInstance();
+            postgresDB = new PostgreSQL();
+            postgresDB.initSource();
         } catch (Exception e) {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
@@ -48,7 +47,6 @@ public class UserService extends ServiceControl {
         return postgresDB.setDbMaxConnections(connections+"");
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
-    
 
 
 //    public static void main(String[] argv) {

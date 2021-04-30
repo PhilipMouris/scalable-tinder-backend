@@ -2,6 +2,7 @@ package Interface;
 
 
 import Models.Message;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,17 +16,19 @@ public abstract class Command implements Runnable {
     protected CallableStatement proc;
     protected Statement query;
     protected ResultSet set;
-    
+
     final public void init(TreeMap<String, Object> parameters) {
         this.data = parameters;
     }
 
     protected abstract void execute();
-    public abstract void setMessage(Message message);
+
     public abstract Message getMessage();
 
+    public abstract void setMessage(Message message);
+
     final public void run() {
-         this.execute();
+        this.execute();
     }
 
 }

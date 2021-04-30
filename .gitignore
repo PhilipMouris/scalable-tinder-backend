@@ -1,5 +1,8 @@
+<<<<<<< HEAD
+**/node_modules/
+**/minio
 node_modules/
-target/
+**/target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
