@@ -75,14 +75,13 @@ public abstract class ConcreteCommand extends Command {
     }
 
     private String generateSQLQuery(){
-        JSONObject messageParams = message.getParameters();
         if(customQuery!= null) return customQuery;
         String query = String.format("SELECT * FROM %s(", storedProcedure);
         for(int i =0;i<inputParams.length;i++){
             // TODO: Required Fields & validations
-            query+= messageParams.has(inputParams[i])?
-                    messageParams.get(inputParams[i]) : null;
-            query+= ",";
+            Object parameter = message.getParameter(inputParams[i]);
+            String newParameterString = parameter != null ? "'%s',":"%s,";
+            query+= String.format(newParameterString, parameter);
         }
         query = query.substring(0,query.length()-1) + ")";
         return query;
@@ -112,7 +111,7 @@ public abstract class ConcreteCommand extends Command {
             Statement query = dbConn.createStatement();
             query.setPoolable(true);
             String SQLQuery = customQuery !=null ? customQuery : generateSQLQuery();
-            System.out.println(SQLQuery + SQLQuery);
+            System.out.println(SQLQuery + "SQLL");
             set = query.executeQuery(SQLQuery);
             JSONObject response = new JSONObject();
             response.put(outputName, convertToJSONArray(set));
