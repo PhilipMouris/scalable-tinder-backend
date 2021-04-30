@@ -11,9 +11,14 @@ import com.google.gson.*;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Envelope;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.TreeMap;
 
 public abstract class ConcreteCommand extends Command {
@@ -25,48 +30,39 @@ public abstract class ConcreteCommand extends Command {
 //    protected ChatArangoInstance ChatArangoInstance;
 //    protected UserCacheController UserCacheController;
     protected Message message;
-    protected JsonObject jsonBodyObject;
-    protected JsonElement responseJson = new JsonObject();
+    protected JSONObject jsonBodyObject;
+    protected JSONObject responseJson = new JSONObject();
     protected Gson gson;
     protected JsonParser jsonParser;
+    protected String customQuery;
+    public  String  storedProcedure;
+    protected String[] inputParams;
+    protected String[] outputParams;
+    protected String outputName = "record";
 
     @Override
     protected void execute() {
 
         try {
             TreeMap<String, Object> parameters = data;
-//            RLiveObjectService = (RLiveObjectService)
-//                    parameters.get("RLiveObjectService");
             ArangoInstance = (ArangoInstance)
                     parameters.get("ArangoInstance");
             PostgresInstance = (PostgreSQL) parameters.get("PostgresInstance");
-            System.out.println("ARANGO is "+ArangoInstance);
-//            UserCacheController = (UserCacheController)
-//                    parameters.get("UserCacheController");
-//            ChatArangoInstance = (ChatArangoInstance)
-//                    parameters.get("ChatArangoInstance");
-
             Channel channel = (Channel) parameters.get("channel");
-            AMQP.BasicProperties properties = (AMQP.BasicProperties) parameters.get("properties");
             AMQP.BasicProperties replyProps = (AMQP.BasicProperties) parameters.get("replyProps");
-            Envelope envelope = (Envelope) parameters.get("envelope");
-
             jsonParser = new JsonParser();
-            jsonBodyObject = (JsonObject) jsonParser.parse((String) parameters.get("body"));
-            gson = new GsonBuilder().setDateFormat("YYYY-MM-dd HH:mm:SS").create();
-            System.out.println(jsonBodyObject.get("body").toString());
-            message = gson.fromJson(jsonBodyObject.get("body").toString(), Message.class);
-
+            String jsonString = (String) parameters.get("body");
+            message = new Message();
+            jsonBodyObject = new JSONObject(jsonString);
+            message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
             doCommand();
-
-            jsonBodyObject.add("response", responseJson);
+            doCustomCommand();
+            jsonBodyObject.put("response", responseJson);
             channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
-//            channel.basicAck(envelope.getDeliveryTag(), false);
         } catch (Exception e) {
             e.printStackTrace();
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
-//            Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
         }
     }
 
@@ -78,5 +74,65 @@ public abstract class ConcreteCommand extends Command {
         return message;
     }
 
-    protected abstract void doCommand();
+    private String generateSQLQuery(){
+        JSONObject messageParams = message.getParameters();
+        if(customQuery!= null) return customQuery;
+        String query = String.format("SELECT * FROM %s(", storedProcedure);
+        for(int i =0;i<inputParams.length;i++){
+            // TODO: Required Fields & validations
+            query+= messageParams.has(inputParams[i])?
+                    messageParams.get(inputParams[i]) : null;
+            query+= ",";
+        }
+        query = query.substring(0,query.length()-1) + ")";
+        return query;
+    }
+    public JSONArray convertToJSONArray(ResultSet resultSet)
+            throws Exception {
+        JSONArray jsonArray = new JSONArray();
+        while (resultSet.next()) {
+            JSONObject obj = new JSONObject();
+            int total_rows = resultSet.getMetaData().getColumnCount();
+            for (int i = 0; i < total_rows; i++) {
+                obj.put(resultSet.getMetaData().getColumnLabel(i + 1)
+                        .toLowerCase(), resultSet.getObject(i + 1));
+
+            }
+            jsonArray.put(obj);
+        }
+        return jsonArray;
+    }
+    protected void doCommand() {
+        try {
+            setParameters();
+            // In case only a custom command is needed
+            if(storedProcedure==null)return;
+            dbConn = PostgresInstance.getDataSource().getConnection();
+            dbConn.setAutoCommit(true);
+            Statement query = dbConn.createStatement();
+            query.setPoolable(true);
+            String SQLQuery = customQuery !=null ? customQuery : generateSQLQuery();
+            System.out.println(SQLQuery + SQLQuery);
+            set = query.executeQuery(SQLQuery);
+            JSONObject response = new JSONObject();
+            response.put(outputName, convertToJSONArray(set));
+            responseJson = response;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            PostgresInstance.disconnect(null, proc, dbConn);
+        }
+    };
+
+    public void setParameters(){
+        
+    };
+
+    public void doCustomCommand(){
+        
+    }
 }

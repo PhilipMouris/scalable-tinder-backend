@@ -41,38 +41,39 @@ import java.util.*;
         }
 
 
-        public void initializeDB(){
+        public void initializeDB() {
 
-            try{
-                
-                JSONParser parser=new JSONParser();
-                JSONObject userSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/userSchema.json"));
-                JSONObject notificationSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/notificationSchema.json"));
-                JSONObject chatSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/chatSchema.json"));
-                JSONObject profileViewSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/profileViewSchema.json"));
-                arangoDB.createDatabase(dbName);
-                CollectionSchema user_schema=new CollectionSchema();
-                user_schema.setMessage((String) userSchema.get("message"));
-                user_schema.setRule(userSchema.get("rule").toString());
-                user_schema.setLevel(CollectionSchema.Level.MODERATE);
-                CollectionSchema chat_schema=new CollectionSchema();
-                chat_schema.setMessage(chatSchema.get("message").toString());
-                chat_schema.setRule(chatSchema.get("rule").toString());
-                chat_schema.setLevel(CollectionSchema.Level.MODERATE);
-                CollectionSchema profileView_schema=new CollectionSchema();
-                profileView_schema.setMessage(profileViewSchema.get("message").toString());
-                profileView_schema.setRule(profileViewSchema.get("rule").toString());
-                profileView_schema.setLevel(CollectionSchema.Level.MODERATE);
-                CollectionSchema notification_schema=new CollectionSchema();
-                notification_schema.setMessage(notificationSchema.get("message").toString());
-                notification_schema.setRule(notificationSchema.get("rule").toString());
-                notification_schema.setLevel(CollectionSchema.Level.MODERATE);
+            try {
+
+//                JSONParser parser=new JSONParser();
+//                JSONObject userSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/userSchema.json"));
+//                JSONObject notificationSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/notificationSchema.json"));
+//                JSONObject chatSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/chatSchema.json"));
+//                JSONObject profileViewSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/profileViewSchema.json"));
+//                arangoDB.createDatabase(dbName);
+//                CollectionSchema user_schema=new CollectionSchema();
+//                user_schema.setMessage((String) userSchema.get("message"));
+//                user_schema.setRule(userSchema.get("rule").toString());
+//                user_schema.setLevel(CollectionSchema.Level.MODERATE);
+//                CollectionSchema chat_schema=new CollectionSchema();
+//                chat_schema.setMessage(chatSchema.get("message").toString());
+//                chat_schema.setRule(chatSchema.get("rule").toString());
+//                chat_schema.setLevel(CollectionSchema.Level.MODERATE);
+//                CollectionSchema profileView_schema=new CollectionSchema();
+//                profileView_schema.setMessage(profileViewSchema.get("message").toString());
+//                profileView_schema.setRule(profileViewSchema.get("rule").toString());
+//                profileView_schema.setLevel(CollectionSchema.Level.MODERATE);
+//                CollectionSchema notification_schema=new CollectionSchema();
+//                notification_schema.setMessage(notificationSchema.get("message").toString());
+//                notification_schema.setRule(notificationSchema.get("rule").toString());
+//                notification_schema.setLevel(CollectionSchema.Level.MODERATE);
 
 //                arangoDB.db(dbName).createCollection("users",new CollectionCreateOptions().setSchema(user_schema));
 //                arangoDB.db(dbName).createCollection("notifications",new CollectionCreateOptions().setSchema(notification_schema));
 //                arangoDB.db(dbName).createCollection("chats",new CollectionCreateOptions().setSchema(chat_schema));
 //                arangoDB.db(dbName).createCollection("profileViews",new CollectionCreateOptions().setSchema(profileView_schema));
-//
+//             arangoDB
+                arangoDB.createDatabase(dbName);
                 arangoDB.db(dbName).createCollection("users");
                 arangoDB.db(dbName).createCollection("notifications");
                 arangoDB.db(dbName).createCollection("chats");
@@ -81,13 +82,14 @@ import java.util.*;
 
                 System.out.println("Database created: " + dbName);
 //                Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database created: " + dbName));
-            } catch (ArangoDBException | FileNotFoundException e) {
+            } catch (ArangoDBException e) {
                 e.printStackTrace();
 //                Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,"Failed to create database: " + dbName));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
             }
         }
 

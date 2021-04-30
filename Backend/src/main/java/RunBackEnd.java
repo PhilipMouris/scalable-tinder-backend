@@ -1,5 +1,6 @@
 //import ClientService.Client;
 //import Controller.Controller;
+import Cache.ReddisConnection;
 import Config.Config;
 import Interface.ServiceControl;
 import MessageQueue.ServicesMQ;
@@ -19,7 +20,7 @@ public class RunBackEnd {
             run("mQinstance");
             services = new ServicesType[]{ServicesType.user,ServicesType.moderator};
             run("controller");
-
+            // new ReddisConnection();
     }
     private static int getInitialInstanceNum(ServicesType serviceName){
         Config config = Config.getInstance();

@@ -13,13 +13,13 @@ public class UserAddBio extends ConcreteCommand {
 
     @Override
     protected void doCommand() {
-        DocumentEntity userData = ArangoInstance.userAddBio(message.getUserID(),message.getBio());
-        JSONObject response  = new JSONObject();
-        JSONObject userDataJSON= new JSONObject(gson.toJson(userData));
-        System.out.println(userDataJSON);
-        response.put("userData", userDataJSON);
-        responseJson = jsonParser.parse(response.toString());
-        System.out.println(response);
+//        DocumentEntity userData = ArangoInstance.userAddBio(message.getUserID(),message.getBio());
+//        JSONObject response  = new JSONObject();
+//        JSONObject userDataJSON= new JSONObject(gson.toJson(userData));
+//        System.out.println(userDataJSON);
+//        response.put("userData", userDataJSON);
+//        //responseJson = jsonParser.parse(response.toString());
+//        System.out.println(response);
     }
 
     @Override

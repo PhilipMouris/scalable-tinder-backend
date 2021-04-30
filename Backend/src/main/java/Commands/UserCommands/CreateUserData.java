@@ -11,12 +11,14 @@ public class CreateUserData extends ConcreteCommand {
 
     @Override
     protected void doCommand() {
-        String id = ArangoInstance.insertNewUser(message.getUserData());
+        //String id = ArangoInstance.insertNewUser(message.getUserData());
         JSONObject response  = new JSONObject();
-        response.put("id",id);
-        responseJson = jsonParser.parse(response.toString());
+        //response.put("id",id);
+        //responseJson = jsonParser.parse(response.toString());
         System.out.println(response);
     }
+
+  
 
     @Override
     public void setMessage(Message message) {
