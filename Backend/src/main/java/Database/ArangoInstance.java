@@ -21,6 +21,21 @@ public class ArangoInstance {
 
     private final Config conf = Config.getInstance();
     private final Gson gson;
+
+   
+
+    public String getDbName() {
+        return dbName;
+    }
+
+    public ArangoDB getArangoDB() {
+        return arangoDB;
+    }
+
+    public void setArangoDB(ArangoDB arangoDB) {
+        this.arangoDB = arangoDB;
+    }
+
     private ArangoDB arangoDB;
     private final String dbUserName = conf.getArangoUserName();
     private final String dbPass = conf.getArangoQueuePass();
@@ -99,45 +114,12 @@ public class ArangoInstance {
         }
     }
 
-    public String insertNewUser(UserData userData) {
-        DocumentEntity e = arangoDB.db(dbName).collection("users").insertDocument(userData);
-        return e.getKey();
-    }
 
     public UserData getUserData(String userID) {
         UserData userData = arangoDB.db(dbName).collection("users").getDocument(userID, UserData.class);
         return userData;
     }
 
-    public DocumentEntity userAddBio(String userID, String bio) {
-        UserData userData = getUserData(userID);
-        DocumentEntity response = null;
-        if (userData != null) {
-            userData.setBio(bio);
-            response = arangoDB.db(dbName).collection("users").updateDocument(userID, userData, new DocumentUpdateOptions().returnNew(true));
-        } else {
-//                throw error 404
-        }
-        return response;
-    }
-
-    public DocumentEntity updateUserData(String userID, UserData userData) {
-        UserData userDataToFind = getUserData(userID);
-        DocumentEntity response = null;
-        System.out.println("UserData Is" + new Gson().toJson(userData));
-        if (userDataToFind != null) {
-            System.out.println(userData);
-            response = arangoDB.db(dbName).collection("users").updateDocument(userID, gson.toJson(userData), new DocumentUpdateOptions().returnNew(true));
-        } else {
-//                throw error 404
-        }
-        return response;
-    }
-
-    public DocumentDeleteEntity deleteUserData(String userID) {
-        DocumentDeleteEntity<Void> userData = arangoDB.db(dbName).collection("users").deleteDocument(userID);
-        return userData;
-    }
 
     public void setMaxDBConnections(int maxDBConnections) {
         arangoDB = new ArangoDB.Builder().user(dbUserName).password(dbPass).maxConnections(maxDBConnections).build();
