@@ -26,15 +26,9 @@ import java.util.logging.Logger;
 public class ArangoInstance {
 
     private final Config conf = Config.getInstance();
-    private final Gson gson;
 
-   
-
-    private String dbName = conf.getArangoDbName();
     private final Logger LOGGER = Logger.getLogger(ArangoInstance.class.getName()) ;
 
-    public ArangoInstance(int maxConnections){
-            arangoDB = new ArangoDB.Builder().host(conf.getArangoHost(),conf.getArangoPort()).user(dbUserName).maxConnections(maxConnections).build();
     public String getDbName() {
         return dbName;
     }
@@ -52,7 +46,7 @@ public class ArangoInstance {
     private final String dbPass = conf.getArangoQueuePass();
 
     private final String dbName = conf.getArangoDbName();
-
+    private Gson gson;
     public ArangoInstance(int maxConnections) {
         gson = new Gson();
         arangoDB = new ArangoDB.Builder().host(conf.getArangoHost(), conf.getArangoPort()).user(dbUserName).maxConnections(maxConnections).build();
@@ -109,14 +103,10 @@ public class ArangoInstance {
 
             System.out.println("Database created: " + dbName);
 //                Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database created: " + dbName));
-            } catch (ArangoDBException | FileNotFoundException e) {
-                e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            } catch (ArangoDBException e) {
+            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
 //                Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,"Failed to create database: " + dbName));
-            } catch (ParseException e) {
-                e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
-            } catch (IOException e) {
-                e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
-            }
         }
     }
 

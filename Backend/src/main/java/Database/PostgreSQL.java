@@ -217,10 +217,7 @@ public class PostgreSQL {
         return DB_MAX_CONNECTIONS;
     }
 
-    public void setDbMaxConnections(String maxConnections) {
-        DB_MAX_CONNECTIONS = maxConnections;
-    }
-
+ 
 //    private boolean formatURL() {
 //        setDBURL("jdbc:postgresql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME);
 //        System.out.println("database url..."+DB_URL);
