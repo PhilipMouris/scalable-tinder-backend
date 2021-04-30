@@ -1,5 +1,7 @@
 package Commands.ModeratorCommands;
 
+import Controller.ControllerAdapterHandler;
+import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
 import Models.BanData;
 import Models.Message;
@@ -7,12 +9,14 @@ import com.google.gson.JsonObject;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Types;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DeleteBan extends ConcreteCommand {
+    private final Logger LOGGER = Logger.getLogger(DeleteBan.class.getName()) ;
 
     @Override
-    protected void doCommand() {
+    protected HttpResponseTypes doCommand() {
         try {
             dbConn = PostgresInstance.getDataSource().getConnection();
             dbConn.setAutoCommit(true);
@@ -28,17 +32,25 @@ public class DeleteBan extends ConcreteCommand {
                 deleted_id = set.getInt(1);
 //                System.out.println(set);
             }
-
+            if(deleted_id==0) {
+                return HttpResponseTypes._404;   //Return 404 Not Found if the Ban was not found
+            }
             JsonObject response = new JsonObject();
             response.add("id", jsonParser.parse(deleted_id+""));
+
             responseJson = response;
-            System.out.println(response + "ALOOO");
+
+            return HttpResponseTypes._200;
         }catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            return HttpResponseTypes._500;
+
 //            CommandsHelp.handleError(map.get("app"), map.get("method"), e.getMessage(), map.get("correlation_id"), LOGGER);
             //Logger.log(Level.SEVERE, e.getMessage(), e);
         } catch (Exception e){
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            return HttpResponseTypes._500;
+
         }
         finally {
             PostgresInstance.disconnect(null, proc, dbConn);

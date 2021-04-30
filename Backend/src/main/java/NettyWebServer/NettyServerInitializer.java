@@ -1,6 +1,7 @@
 package NettyWebServer;
 
 import Config.Config;
+import Controller.ControllerAdapterHandler;
 import com.rabbitmq.client.*;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
@@ -16,6 +17,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
 
@@ -40,6 +43,7 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
     private String serverUser = config.getServerQueueUserName();
     private String serverPass = config.getServerQueuePass();
     private String RPC_QUEUE_REPLY_TO = config.getServerQueueName();
+    private final Logger LOGGER = Logger.getLogger(NettyServerInitializer.class.getName()) ;
 
     public NettyServerInitializer(int port) {
 //        establishLoadBalancerConnection();
@@ -77,7 +81,7 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
             senderChannel = connection.createChannel();
             senderChannel.queueDeclare(RPC_QUEUE_SEND_TO, false, false, false, null);
         } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         }
     }
 
@@ -97,7 +101,7 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
             receiverChannel.queueDeclare(RPC_QUEUE_REPLY_TO, false, false, false, null);
             receiverChannel.basicQos(4);
         } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         }
     }
 
@@ -141,14 +145,14 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
                         ctxRec.writeAndFlush(response);
                         ctxRec.close();
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
                         serverQueue();
                     }
                 }
             };
             receiverChannel.basicConsume(RPC_QUEUE_REPLY_TO, true, consumer);
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
 //            serverQueue();
         }
     }
