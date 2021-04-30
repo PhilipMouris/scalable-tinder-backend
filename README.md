@@ -3,15 +3,6 @@
 ## To Run the Full Application:
 
 
-### In Terminal:
-1- In text editor, Replace the content of haproxy.cfg with /resources/haproxy.cfg  
-2- If encountered 404 error when using ```yay``` run these two commands ```sudo pacman -Syy``` and ```sudo pacman -Syu```
-
-3- Run startup bash file in /Backend and mediaServerStartup in /Backend (If first time run bash minioDownload)
-
-4- In IntelliJ, load the maven dependencies from pom.xml  
-mvn install:install-file -Dfile=/home/vm/Desktop/commons-dbcp2-2.8.0-bin/commons-dbcp2-2.8.0/commons-dbcp2-2.8.0.jar -DgroupId=org.apache.commons -DartifactId=commons-dbcp2 -Dversion=2.8.0 -Dpackaging=jar
-
 ###  Initialize Databases
 #### SQL
 Run all Scripts in ./db/SQL in pgAdmin or posgreSQL shell
@@ -23,7 +14,7 @@ Run all Scripts in ./db/SQL in pgAdmin or posgreSQL shell
 1. In a new terminal shell, sudo gedit /etc/haproxy/haproxy.cfg, this will open a text editor 
 2. In text editor, Replace the content of the opened file with the content of "/resources/haproxy.cfg" , then save and close the text editor 
 3. If encountered 404 error when using ```yay``` run these two commands ```sudo pacman -Syy``` and ```sudo pacman -Syu``` 
-4. Run "startup" bash file in /Backend and mediaServerStartup.bash in /Backend 
+4. Run startup bash file in /Backend and mediaServerStartup in /Backend (If first time run bash minioDownload)
 5. In terminal, run "mvn install:install-file -Dfile=/home/vm/Desktop/commons-dbcp2-2.8.0-bin/commons-dbcp2-2.8.0/commons-dbcp2-2.8.0.jar -DgroupId=org.apache.commons -DartifactId=commons-dbcp2 -Dversion=2.8.0 -Dpackaging=jar"
 6. In IntelliJ, load the maven dependencies from pom.xml (By Building the project)
 7. Run "RunBackEnd.java".  
