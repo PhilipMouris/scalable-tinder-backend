@@ -3,14 +3,13 @@
 ## To Run the Full Application:
 
 ### In Terminal:
-1- In text editor, Replace the content of haproxy.cfg with /resources/haproxy.cfg  
-2- If encountered 404 error when using ```yay``` run these two commands ```sudo pacman -Syy``` and ```sudo pacman -Syu```
+1- In a new terminal shell, sudo gedit /etc/haproxy/haproxy.cfg, this will open a text editor
+3- In text editor, Replace the content of the opened file with /resources/haproxy.cfg , then save and close the text editor
+4- If encountered 404 error when using ```yay``` run these two commands ```sudo pacman -Syy``` and ```sudo pacman -Syu```
 
-3- Run startup bash file in /Backend and mediaServerStartup.bash in /Backend
-
-4- In IntelliJ, load the maven dependencies from pom.xml  
-mvn install:install-file -Dfile=/home/vm/Desktop/commons-dbcp2-2.8.0-bin/commons-dbcp2-2.8.0/commons-dbcp2-2.8.0.jar -DgroupId=org.apache.commons -DartifactId=commons-dbcp2 -Dversion=2.8.0 -Dpackaging=jar
-
+5- Run "startup" bash file in /Backend and mediaServerStartup.bash in /Backend
+7- In terminal, run "mvn install:install-file -Dfile=/home/vm/Desktop/commons-dbcp2-2.8.0-bin/commons-dbcp2-2.8.0/commons-dbcp2-2.8.0.jar -DgroupId=org.apache.commons -DartifactId=commons-dbcp2 -Dversion=2.8.0 -Dpackaging=jar"
+6- In IntelliJ, load the maven dependencies from pom.xml (By Building the project)
 5- Run "RunBackEnd.java".  
 
 
