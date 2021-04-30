@@ -158,7 +158,7 @@ public class MinioInstance {
         System.out.println(fileName);
         byte[] downloadedFile= minio.downloadFile(fileName);
         File fileToWrite=new File("/home/vm/Desktop/Scalable/thumbsu.mp4");
-        FileOutputStream fos = new FileOutputStream(fileToWrite);
+        FileOutputStream fos = new FileOutputStream(fileToWrite); 
         try  {
             fos.write(downloadedFile);
             //fos.close(); There is no more need for this line since you had created the instance of "fos" inside the try. And this will automatically close the OutputStream
