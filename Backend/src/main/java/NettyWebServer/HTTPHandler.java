@@ -5,6 +5,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.*;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.AttributeKey;
 import io.netty.util.CharsetUtil;
 import org.json.JSONObject;
@@ -42,6 +43,10 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
         }
         if (msg instanceof HttpRequest) {
             HttpRequest request = this.request = (HttpRequest) msg;
+            if (request.uri().contains("/chat/update")) {
+                ctx.fireChannelRead(((FullHttpRequest)request).retain());
+                return;
+            }
             if (HttpHeaders.is100ContinueExpected(request)) {
                 send100Continue(ctx);
             }

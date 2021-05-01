@@ -6,6 +6,7 @@ CREATE TYPE userPublicData AS(
 	first_name VARCHAR,
 	last_name VARCHAR
 
+
 );
 
 -- DROP TYPE IF EXISTS userProfile
@@ -80,6 +81,7 @@ END;$$
 
 
 
+
 --DROP  FUNCTION  IF EXISTS  uspEditAccountData;
 CREATE OR REPLACE FUNCTION uspEditAccountData(
 	_id int,
@@ -136,9 +138,11 @@ AS $$
 DECLARE
     user_profile userProfile;
 BEGIN
+
 	SELECT id, email, first_name, last_name,is_premium From public."users" AS u
 	WHERE id = _id
 	INTO user_profile;
 	RETURN user_profile;
 END;$$
 ;
+
