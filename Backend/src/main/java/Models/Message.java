@@ -32,6 +32,14 @@ public class Message implements Serializable {
        return getParameter(key.substring(spliceIndex), newParams);
     }
 
+    public String getParameterValues(String[] keys){
+        String values = "";
+        for(int i =0;i<keys.length;i++){
+            values += getParameter(keys[i]) + ",";
+        }
+        return values;
+    }
+
     public String getStringParameters(){
         return parameters.toString();
     }

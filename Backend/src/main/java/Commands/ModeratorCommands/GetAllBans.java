@@ -12,5 +12,6 @@ public class GetAllBans extends ConcreteCommand {
         inputParams = new String[]{"page", "limit"};
         // Defaults to "record" Not required
         outputName = "bans";
+        useCache=true;
     }
 }

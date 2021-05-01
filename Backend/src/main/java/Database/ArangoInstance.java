@@ -1,5 +1,6 @@
 package Database;
 
+import Cache.RedisConnection;
 import Config.Config;
 import Models.*;
 import com.arangodb.ArangoCursor;
@@ -29,7 +30,7 @@ import java.util.*;
         private ArangoDB arangoDB;
         private String dbUserName = conf.getArangoUserName();
         private String dbPass = conf.getArangoQueuePass();
-
+        protected RedisConnection redis = RedisConnection.getInstance();
         private String dbName = conf.getArangoDbName();
 
         public ArangoInstance(int maxConnections){
@@ -53,13 +54,19 @@ import java.util.*;
         }
 
         public JSONObject find(String collectionName, Object key, String modelName){
-             // CACHE HERE
+           String id = collectionName+","+(String)key;
+           String value = redis.getKey(id);
+           if(value != null){
+               System.out.println(value + "VALUE");
+               return new JSONObject(value);
+           }
             try {
-                System.out.println("FINDPARAMS"+ collectionName + " " + (String) key + " " +  modelName);
                 Class modelClass = modelName == null ? null : Class.forName(String.format("Models.%s", modelName));
                 Object modelObject = modelClass == null ? null : modelClass.newInstance();
                 Object object = arangoDB.db(dbName).collection(collectionName).getDocument((String) key, modelObject.getClass());
-                return new JSONObject(gson.toJson(object));
+                JSONObject document = new JSONObject(gson.toJson(object));
+                redis.setKey(id,document.toString());
+                return document;
             }catch (Exception e){
                 e.printStackTrace();
                 return null;

@@ -2,6 +2,7 @@ package Interface;
 
 //import Cache.UserCacheController;
 //import ClientService.Client;
+import Cache.RedisConnection;
 import Database.ArangoInstance;
 //import Database.ChatArangoInstance;
 //import Models.ErrorLog;
@@ -44,6 +45,8 @@ public abstract class ConcreteCommand extends Command {
     protected String type;
     protected String model;
     protected String collection;
+    protected Boolean useCache=false;
+    protected RedisConnection redis = RedisConnection.getInstance();
     
 
     @Override
@@ -107,9 +110,20 @@ public abstract class ConcreteCommand extends Command {
         }
         return jsonArray;
     }
+    private String getSQLCommandId() {
+        return String.format("%s%s",storedProcedure,message.getParameterValues(inputParams));
+    }
     private void handleSQLCommand() {
-        if(storedProcedure==null) return;
+        if(storedProcedure==null && customQuery==null) return;
         try{
+            String id = getSQLCommandId();
+            if(useCache) {
+                String value = redis.getKey(id);
+                if(value != null){
+                    responseJson.put(outputName,new JSONArray(value));
+                    return;
+                }
+            }
         dbConn = PostgresInstance.getDataSource().getConnection();
         dbConn.setAutoCommit(true);
         Statement query = dbConn.createStatement();
@@ -117,7 +131,9 @@ public abstract class ConcreteCommand extends Command {
         String SQLQuery = customQuery !=null ? customQuery : generateSQLQuery();
         set = query.executeQuery(SQLQuery);
         JSONObject response = new JSONObject();
-        response.put(outputName, convertToJSONArray(set));
+        JSONArray data = convertToJSONArray(set);
+        response.put(outputName,data );
+        redis.setKey(id, data.toString());
         responseJson = response;
         }
         catch (SQLException e) {
