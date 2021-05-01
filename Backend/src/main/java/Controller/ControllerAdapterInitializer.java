@@ -1,5 +1,6 @@
 package Controller;
 
+import Chat.TextWebSocketFrameHandler;
 import Interface.ServiceControl;
 import NettyWebServer.HTTPHandler;
 import io.netty.channel.ChannelInitializer;
@@ -12,6 +13,7 @@ import io.netty.handler.codec.http.HttpResponseEncoder;
 import io.netty.handler.codec.http.cors.CorsConfig;
 import io.netty.handler.codec.http.cors.CorsConfigBuilder;
 import io.netty.handler.codec.http.cors.CorsHandler;
+import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
@@ -40,6 +42,8 @@ public class ControllerAdapterInitializer extends ChannelInitializer<SocketChann
         p.addLast(new HttpObjectAggregator(65536));
         p.addLast(new HTTPHandler());
         p.addLast("handler", new ControllerAdapterHandler(availableServices));
+        p.addLast(new WebSocketServerProtocolHandler("/chat/update"));
+        p.addLast(new TextWebSocketFrameHandler());
     }
 
 }

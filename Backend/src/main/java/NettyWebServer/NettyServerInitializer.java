@@ -1,6 +1,7 @@
 package NettyWebServer;
 
 import Config.Config;
+import Chat.TextWebSocketFrameHandler;
 import Controller.ControllerAdapterHandler;
 import com.rabbitmq.client.*;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,6 +12,7 @@ import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.http.cors.CorsConfig;
 import io.netty.handler.codec.http.cors.CorsConfigBuilder;
 import io.netty.handler.codec.http.cors.CorsHandler;
+import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -67,6 +69,8 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
         p.addLast(new HttpObjectAggregator(65536));
         p.addLast(new HTTPHandler());
         p.addLast("MQ", new NettyWebServer.RequestHandler(senderChannel, uuid, RPC_QUEUE_REPLY_TO, RPC_QUEUE_SEND_TO));
+        p.addLast(new WebSocketServerProtocolHandler("/chat/update"));
+        p.addLast(new TextWebSocketFrameHandler());
     }
 
     private void establishLoadBalancerConnection() {
@@ -157,4 +161,3 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
         }
     }
 }
-
