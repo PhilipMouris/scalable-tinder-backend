@@ -1,72 +1,134 @@
-Apr 30, 2021 3:33:32 PM NettyWebServer.NettyServer start
+May 01, 2021 3:44:21 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8020/
-Apr 30, 2021 3:33:32 PM NettyWebServer.NettyServer start
+May 01, 2021 3:44:21 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
-Apr 30, 2021 3:33:33 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 3:44:22 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-Apr 30, 2021 3:33:33 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 3:44:22 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-Apr 30, 2021 3:33:33 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 3:44:22 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-Apr 30, 2021 3:33:33 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 3:44:22 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-Apr 30, 2021 3:33:33 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 3:44:22 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-Apr 30, 2021 3:33:33 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 3:44:22 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-Apr 30, 2021 3:33:34 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 3:44:23 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-Apr 30, 2021 3:33:34 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 3:44:23 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-Apr 30, 2021 3:33:34 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 3:44:23 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-Apr 30, 2021 3:33:34 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 3:44:23 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-Apr 30, 2021 3:33:34 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 3:44:23 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-Apr 30, 2021 3:33:34 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 3:44:23 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-Apr 30, 2021 3:33:55 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"84","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","limit":7,"page":0,"command":"GetAllBans"},"Uri":"/","command":"GetAllBans"}to: Moderator-Request
-Apr 30, 2021 3:33:55 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: f8c49770-2032-454b-a5d8-f8c9d10b88ed, on Queue : Moderator-Request
-Apr 30, 2021 3:33:55 PM Interface.ServiceControl$2 handleDelivery
+May 01, 2021 3:44:26 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"316","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"274104"},"application":"User","limit":10,"page":0,"command":"DeleteUserData","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"DeleteUserData"}to: User-Request
+May 01, 2021 3:44:26 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: e9b99ea6-b21c-4df8-8424-0144469848f5, on Queue : User-Request
+May 01, 2021 3:44:26 AM Interface.ServiceControl$2 handleDelivery
 INFO: INSTANCE NUM   :   1
-Apr 30, 2021 3:33:56 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetAllBans
-Apr 30, 2021 3:33:56 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@4920e5a0
-Apr 30, 2021 3:33:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: f8c49770-2032-454b-a5d8-f8c9d10b88ed, on Queue : Moderator-Response
-Apr 30, 2021 3:33:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"84","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","limit":7,"page":0,"command":"GetAllBans"},"Uri":"/","command":"GetAllBans","status":"_200","response":{"record":[{"id":6,"moderator_id":1,"user_id":1,"reason":"ALO","created_at":"2021-04-29 00:33:132","expiry_date":"2020-10-13 00:00:00"},{"id":7,"moderator_id":1,"user_id":1,"reason":"ALO","created_at":"2021-04-29 00:33:35","expiry_date":"2020-10-13 00:00:00"},{"id":8,"moderator_id":1,"user_id":1,"reason":"ALO","created_at":"2021-04-30 00:35:451","expiry_date":"2020-10-13 00:00:00"},{"id":9,"moderator_id":1,"user_id":1,"reason":"ALO","created_at":"2021-04-30 00:52:963","expiry_date":"2020-10-13 00:00:00"},{"id":10,"moderator_id":1,"user_id":1,"reason":"ALO","created_at":"2021-04-30 01:00:409","expiry_date":"2020-10-13 00:00:00"},{"id":11,"moderator_id":1,"user_id":1,"reason":"ALO","created_at":"2021-04-30 02:33:184","expiry_date":"2020-10-13 00:00:00"},{"id":12,"moderator_id":1,"user_id":1,"reason":"ALO","created_at":"2021-04-30 03:11:800","expiry_date":"2020-10-13 00:00:00"}]}}
-Apr 30, 2021 3:33:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-Apr 30, 2021 3:33:57 PM Interface.ServiceControl$1 handleDelivery
+May 01, 2021 3:44:26 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:DeleteUserData
+May 01, 2021 3:44:26 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@2e09ca1d
+May 01, 2021 3:44:26 AM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.DeleteUserData Executed Successfully
+May 01, 2021 3:44:26 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: e9b99ea6-b21c-4df8-8424-0144469848f5, on Queue : User-Response
+May 01, 2021 3:44:26 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"316","Content-Type":"application/json"},"response":{},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"274104"},"application":"User","limit":10,"page":0,"command":"DeleteUserData","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"DeleteUserData","status":"_404"}
+May 01, 2021 3:44:26 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 01, 2021 3:44:26 AM Interface.ServiceControl$1 handleDelivery
 INFO: INSTANCE NUM   :   1
-Apr 30, 2021 3:33:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"record":[{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13 00:00:00","created_at":"2021-04-29 00:33:132","id":6},{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13 00:00:00","created_at":"2021-04-29 00:33:35","id":7},{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13 00:00:00","created_at":"2021-04-30 00:35:451","id":8},{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13 00:00:00","created_at":"2021-04-30 00:52:963","id":9},{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13 00:00:00","created_at":"2021-04-30 01:00:409","id":10},{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13 00:00:00","created_at":"2021-04-30 02:33:184","id":11},{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13 00:00:00","created_at":"2021-04-30 03:11:800","id":12}]}
-Apr 30, 2021 3:34:25 PM Controller.Controller sendResponse
-INFO: COMMAND ADDED
-Apr 30, 2021 3:34:32 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"160","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","command":"CreateAlo","banData":{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13"}},"Uri":"/","command":"CreateAlo"}to: Moderator-Request
-Apr 30, 2021 3:34:32 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: e9df7c0a-4ae5-4d13-87aa-299e7e8800e7, on Queue : Moderator-Request
-Apr 30, 2021 3:34:32 PM Interface.ServiceControl$2 handleDelivery
+May 01, 2021 3:44:26 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {}
+May 01, 2021 3:45:00 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"316","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"274104"},"application":"User","limit":10,"page":0,"command":"UpdateUserData","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"UpdateUserData"}to: User-Request
+May 01, 2021 3:45:00 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 54385a19-9867-4b76-acca-00143e66b752, on Queue : User-Request
+May 01, 2021 3:45:00 AM Interface.ServiceControl$2 handleDelivery
 INFO: INSTANCE NUM   :   2
-Apr 30, 2021 3:34:32 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateAlo
-Apr 30, 2021 3:34:32 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@16ba9d0a
-Apr 30, 2021 3:34:32 PM Commands.ModeratorCommands.CreateAlo doCommand
-INFO: Command: Commands.ModeratorCommands.CreateAlo Executed Successfully
-Apr 30, 2021 3:34:32 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: e9df7c0a-4ae5-4d13-87aa-299e7e8800e7, on Queue : Moderator-Response
-Apr 30, 2021 3:34:32 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"160","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","command":"CreateAlo","banData":{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13"}},"Uri":"/","command":"CreateAlo","status":"_200","response":{"record":{"id":36,"moderator_id":1,"user_id":1,"reason":"ALO","created_at":"2021-04-30 15:34:385","expiry_date":"2020-10-13 00:00:00"}}}
-Apr 30, 2021 3:34:32 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-Apr 30, 2021 3:34:32 PM Interface.ServiceControl$1 handleDelivery
+May 01, 2021 3:45:01 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:UpdateUserData
+May 01, 2021 3:45:01 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@486365ab
+May 01, 2021 3:45:01 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 54385a19-9867-4b76-acca-00143e66b752, on Queue : User-Response
+May 01, 2021 3:45:01 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"316","Content-Type":"application/json"},"response":{},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"274104"},"application":"User","limit":10,"page":0,"command":"UpdateUserData","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"UpdateUserData","status":"_404"}
+May 01, 2021 3:45:01 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 01, 2021 3:45:01 AM Interface.ServiceControl$1 handleDelivery
 INFO: INSTANCE NUM   :   2
-Apr 30, 2021 3:34:32 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"record":{"reason":"ALO","user_id":1,"moderator_id":1,"expiry_date":"2020-10-13 00:00:00","created_at":"2021-04-30 15:34:385","id":36}}
+May 01, 2021 3:45:01 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {}
+May 01, 2021 3:45:06 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"315","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},"application":"User","limit":10,"page":0,"command":"UpdateUserData","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"UpdateUserData"}to: User-Request
+May 01, 2021 3:45:06 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 390d02d0-83f9-47a6-b160-f9553976b22e, on Queue : User-Request
+May 01, 2021 3:45:06 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   3
+May 01, 2021 3:45:06 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:UpdateUserData
+May 01, 2021 3:45:06 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@e39a90b
+May 01, 2021 3:45:06 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 390d02d0-83f9-47a6-b160-f9553976b22e, on Queue : User-Response
+May 01, 2021 3:45:06 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"315","Content-Type":"application/json"},"response":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"_rev":"_cQWFnvq---","bio":"HI TEHEREss UPDATE2222xsa","_id":"users/27410","id":"27410","_key":"27410","map":{"preferences":{"map":{"location":124124,"age":14335}},"user_id":17,"bio":"HI TEHEREss UPDATE","id":"27410"}}},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},"application":"User","limit":10,"page":0,"command":"UpdateUserData","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"UpdateUserData","status":"_200"}
+May 01, 2021 3:45:06 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 01, 2021 3:45:06 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   3
+May 01, 2021 3:45:06 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"_rev":"_cQWFnvq---","bio":"HI TEHEREss UPDATE2222xsa","_id":"users/27410","id":"27410","_key":"27410","map":{"preferences":{"map":{"location":124124,"age":14335}},"user_id":17,"bio":"HI TEHEREss UPDATE","id":"27410"}}}
+May 01, 2021 3:45:33 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"311","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},"application":"User","limit":10,"page":0,"command":"UserAddBio","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"UserAddBio"}to: User-Request
+May 01, 2021 3:45:33 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: d405b17f-480a-4930-9b54-cde2f10c1cd1, on Queue : User-Request
+May 01, 2021 3:45:33 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   4
+May 01, 2021 3:45:33 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:UserAddBio
+May 01, 2021 3:45:33 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@28b2e93f
+May 01, 2021 3:45:33 AM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.UserAddBio Executed Successfully
+May 01, 2021 3:45:33 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: d405b17f-480a-4930-9b54-cde2f10c1cd1, on Queue : User-Response
+May 01, 2021 3:45:33 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"311","Content-Type":"application/json"},"response":{"record":{"preferences":{"location":143,"age":1242},"user_id":17,"_rev":"_cQWGCji---","bio":"HI TEHEREss UPDATE2222xsa","_id":"users/27410","id":"27410","_key":"27410","map":{"preferences":{"map":{"location":124124,"age":14335}},"user_id":17,"bio":"HI TEHEREss UPDATE","id":"27410"}}},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},"application":"User","limit":10,"page":0,"command":"UserAddBio","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"UserAddBio","status":"_200"}
+May 01, 2021 3:45:33 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 01, 2021 3:45:33 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   4
+May 01, 2021 3:45:33 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"record":{"preferences":{"location":143,"age":1242},"user_id":17,"_rev":"_cQWGCji---","bio":"HI TEHEREss UPDATE2222xsa","_id":"users/27410","id":"27410","_key":"27410","map":{"preferences":{"map":{"location":124124,"age":14335}},"user_id":17,"bio":"HI TEHEREss UPDATE","id":"27410"}}}
+May 01, 2021 3:46:01 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"314","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"27414210"},"application":"User","limit":10,"page":0,"command":"UserAddBio","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"UserAddBio"}to: User-Request
+May 01, 2021 3:46:01 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 50140275-12f6-4f19-bd5f-f1283830d6a9, on Queue : User-Request
+May 01, 2021 3:46:01 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 01, 2021 3:46:01 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:UserAddBio
+May 01, 2021 3:46:01 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@2e09ca1d
+May 01, 2021 3:46:01 AM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.UserAddBio Executed Successfully
+May 01, 2021 3:46:01 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 50140275-12f6-4f19-bd5f-f1283830d6a9, on Queue : User-Response
+May 01, 2021 3:46:01 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"314","Content-Type":"application/json"},"response":{},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"27414210"},"application":"User","limit":10,"page":0,"command":"UserAddBio","banData":{"user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":10}},"Uri":"/","command":"UserAddBio","status":"_404"}
+May 01, 2021 3:46:01 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 01, 2021 3:46:01 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 01, 2021 3:46:01 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {}

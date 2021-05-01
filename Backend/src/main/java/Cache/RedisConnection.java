@@ -31,17 +31,26 @@ public class RedisConnection {
      }
 
      public String getKey(String key){
-           return redisCommands.get(key);
+         try {
+             return redisCommands.get(key);
+         }catch (Exception e){
+             return null;
+         }
      }
 
      public String setKey(String key,String value){
-         redisCommands.set(key,value);
-         Date oldDate = new Date();
-         Date newDate = new Date(oldDate.getTime() + TimeUnit.HOURS.toMillis(expiryDuration));
-         redisCommands.expireat(key,newDate);
-         return value;
+         try {
+             redisCommands.set(key, value);
+             Date oldDate = new Date();
+             Date newDate = new Date(oldDate.getTime() + TimeUnit.HOURS.toMillis(expiryDuration));
+             redisCommands.expireat(key, newDate);
+             return value;
+         }catch(Exception e){
+             return null;
+         }
      }
      public static RedisConnection getInstance(){
+         System.out.println(redis + "REDIS");
          return redis;
      }
 

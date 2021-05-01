@@ -23,11 +23,8 @@ public class Config {
     private final Properties serviceConfig = new Properties();
     private final Properties NettyServerConfig = new Properties();
     private final Properties postgresqlConfig = new Properties();
-<<<<<<< HEAD
     private final Properties redisConfig = new Properties();
-=======
     private final Properties loggerConfig = new Properties();
->>>>>>> e19d2841c1136831c0cabaaf2729f93cb75ced80
 
     private final String arangoPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/arango.conf";
     private final String minioPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/minio.conf";
@@ -38,14 +35,11 @@ public class Config {
     private final String servicePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/service.conf";
     private final String nettyServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/web.server.conf";
     private final String postgresqlPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/postgresql.conf";
-<<<<<<< HEAD
     private final String redisPath = "Backend/src/main/resources/redisEnv.conf";
-=======
     private final String loggerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/logger.conf";
 
     private final String arangoUserName="root";
     private final String arangoPass="";
->>>>>>> e19d2841c1136831c0cabaaf2729f93cb75ced80
 
 
     public Properties getArangoConfig() {
@@ -74,12 +68,9 @@ public class Config {
         loadConfig(serviceConfig, servicePath);
         loadConfig(NettyServerConfig, nettyServerPath);
         loadConfig(postgresqlConfig,postgresqlPath);
-<<<<<<< HEAD
         loadConfig(redisConfig, redisPath);
-=======
         loadConfig(loggerConfig,loggerPath);
-
->>>>>>> e19d2841c1136831c0cabaaf2729f93cb75ced80
+        
 //        readSystemVariables(loadBalancerConfig,"load_balancer_rabbitmq_host");
     }
 

@@ -14,6 +14,7 @@ import com.google.gson.*;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Envelope;
+import org.json.HTTP;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -49,7 +50,6 @@ public abstract class ConcreteCommand extends Command {
     protected String model;
     protected String collection;
     protected Boolean useCache=false;
-    protected RedisConnection redis = RedisConnection.getInstance();
     
     private final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
 
@@ -75,9 +75,10 @@ public abstract class ConcreteCommand extends Command {
             jsonBodyObject = new JSONObject(jsonString);
             message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
             HttpResponseTypes status = doCommand();
+            System.out.println(status + "STATUS");
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);
-            jsonBodyObject.put("status",jsonParser.parse(status.toString()));
+            jsonBodyObject.put("status",status);
             channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
@@ -125,15 +126,16 @@ public abstract class ConcreteCommand extends Command {
     private String getSQLCommandId() {
         return String.format("%s%s",storedProcedure,message.getParameterValues(inputParams));
     }
-    private HttpResponseTypes void handleSQLCommand() {
-        if(storedProcedure==null && customQuery==null) return;
+    private HttpResponseTypes handleSQLCommand() {
+        if(storedProcedure==null && customQuery==null) return null;
         try{
             String id = getSQLCommandId();
             if(useCache) {
-                String value = redis.getKey(id);
+                String value = RedisConnection.getInstance().getKey(id);
                 if(value != null){
                     responseJson.put(outputName,new JSONArray(value));
-                    return;
+                    LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
+                    return HttpResponseTypes._200;
                 }
             }
         dbConn = PostgresInstance.getDataSource().getConnection();
@@ -145,10 +147,10 @@ public abstract class ConcreteCommand extends Command {
         JSONObject response = new JSONObject();
         JSONArray data = convertToJSONArray(set);
         response.put(outputName,data );
-        redis.setKey(id, data.toString());
+        RedisConnection.getInstance().setKey(id, data.toString());
         responseJson = response;
         LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
-        return HttpResponseTypes._200;
+        return data.length()== 0 && !(storedProcedure==null) && !(storedProcedure.contains("Get"))   ? HttpResponseTypes._404: HttpResponseTypes._200;
         }
         catch (SQLException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
@@ -165,7 +167,7 @@ public abstract class ConcreteCommand extends Command {
     }
     protected  HttpResponseTypes  handleNoSQLCommand(){
         try {
-            if (collection ==  null) return;
+            if (collection ==  null) return null;
             ArrayList<Object> parameters = new ArrayList<>();
             for(int i =0;i<inputParams.length;i++) {
                 // TODO: Required Fields & validations
@@ -178,10 +180,9 @@ public abstract class ConcreteCommand extends Command {
                 case "create":
                     String key = ArangoInstance.insert(collection, parameters.get(0));
                     responseJson.put("id",key);
-                    return;
+                    return HttpResponseTypes._200;
                 case "delete":
                      dbResponse = ArangoInstance.delete(collection, parameters.get(0));
-                     responseJson.put(outputName,dbResponse);
                      break;
                 //case "update":
                 case "find":
@@ -190,18 +191,23 @@ public abstract class ConcreteCommand extends Command {
                 case "update":
                     dbResponse  = ArangoInstance.update(collection,parameters.get(0),parameters.get(1));
             }
+            LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
             responseJson.put(outputName, dbResponse);
-
+            System.out.println(dbResponse + "DBB");
+            if(dbResponse==null) return HttpResponseTypes._404;
+            return HttpResponseTypes._200;
         }
         catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            return HttpResponseTypes._500;
         }
     }
-    protected void doCommand() {
-        //Logger LOGGER = Logger.getLogger(UpdateBan.class.getName())
+    protected HttpResponseTypes doCommand() {
         setParameters();
-        handleSQLCommand();
-        handleNoSQLCommand();
+        HttpResponseTypes sqlStatus =  handleSQLCommand();
+        HttpResponseTypes NoSqlStatus = handleNoSQLCommand();
+        return sqlStatus == null? NoSqlStatus:sqlStatus;
+
 
 
     };
