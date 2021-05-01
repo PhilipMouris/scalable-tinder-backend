@@ -49,6 +49,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             channelHandlerContext.fireChannelRead(o);
             return;
         }
+
         ByteBuf buffer;
         if(o instanceof TextWebSocketFrame) {
             buffer = (ByteBuf) (((TextWebSocketFrame)o).content());
