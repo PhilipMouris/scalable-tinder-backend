@@ -39,6 +39,8 @@ public class Message implements Serializable {
         return values;
     }
 
+
+
     public String getStringParameters(){
         return parameters.toString();
     }

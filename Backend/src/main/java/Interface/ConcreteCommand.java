@@ -39,7 +39,7 @@ public abstract class ConcreteCommand extends Command {
     protected Message message;
     protected JSONObject jsonBodyObject;
     protected JSONObject responseJson = new JSONObject();
-    protected Gson gson;
+    protected Gson gson = new Gson();
     protected JsonParser jsonParser;
     protected String customQuery;
     public  String  storedProcedure;
@@ -126,6 +126,13 @@ public abstract class ConcreteCommand extends Command {
     private String getSQLCommandId() {
         return String.format("%s%s",storedProcedure,message.getParameterValues(inputParams));
     }
+
+    private HttpResponseTypes sqlStatus(JSONArray data){
+        if (!(storedProcedure==null) && (storedProcedure.contains("GetAll"))) return HttpResponseTypes._200;
+        if(data.length()== 0) return HttpResponseTypes._404;
+        if(data.getJSONObject(0).length() ==0 ) return HttpResponseTypes._404;
+        return HttpResponseTypes._200;
+    }
     private HttpResponseTypes handleSQLCommand() {
         if(storedProcedure==null && customQuery==null) return null;
         try{
@@ -150,7 +157,8 @@ public abstract class ConcreteCommand extends Command {
         RedisConnection.getInstance().setKey(id, data.toString());
         responseJson = response;
         LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
-        return data.length()== 0 && !(storedProcedure==null) && !(storedProcedure.contains("Get"))   ? HttpResponseTypes._404: HttpResponseTypes._200;
+        System.out.println(data + "DATAA");
+        return sqlStatus(data);
         }
         catch (SQLException e) {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);

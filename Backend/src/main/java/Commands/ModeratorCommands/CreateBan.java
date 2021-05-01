@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CreateBan extends ConcreteCommand {
-    private final Logger LOGGER = Logger.getLogger(CreateBan.class.getName()) ;
 
     @Override
     public void setParameters() {
