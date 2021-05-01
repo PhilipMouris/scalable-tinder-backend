@@ -3,9 +3,11 @@ package NettyWebServer;
 import Config.Config;
 import com.rabbitmq.client.*;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.CompositeByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.*;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.AttributeKey;
 import io.netty.util.CharsetUtil;
 import org.json.JSONException;
@@ -13,6 +15,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
@@ -38,14 +41,32 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object o) {
-        ByteBuf buffer = (ByteBuf) o;
+        if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)){
+            channelHandlerContext.fireChannelRead(o);
+            return;
+        }
+        ByteBuf buffer;
+        if(o instanceof TextWebSocketFrame) {
+            buffer = (ByteBuf) (((TextWebSocketFrame)o).content());
+        }
+        else {
+            buffer = (ByteBuf) o;
+        }
 
         //try and catch
         try {
             JSONObject body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
-
-            final JSONObject jsonRequest = (JSONObject) channelHandlerContext.channel().attr(AttributeKey.valueOf("REQUEST")).get();
-            final String corrId = (String) channelHandlerContext.channel().attr(AttributeKey.valueOf("CORRID")).get();
+            final JSONObject jsonRequest;
+            final String corrId;
+            if(o instanceof TextWebSocketFrame){
+                jsonRequest = new JSONObject();
+                jsonRequest.put("Headers", new JSONObject());
+                corrId = UUID.randomUUID().toString();
+            }
+            else {
+                jsonRequest = (JSONObject) channelHandlerContext.channel().attr(AttributeKey.valueOf("REQUEST")).get();
+                corrId = (String) channelHandlerContext.channel().attr(AttributeKey.valueOf("CORRID")).get();
+            }
             jsonRequest.put("command", body.get("command"));
             String service = (String) body.get("application");
             jsonRequest.put("application", service);
@@ -60,7 +81,9 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             jsonRequest.put("body", body);
 
             transmitRequest(corrId,jsonRequest,channelHandlerContext,service);
-
+            if (o instanceof TextWebSocketFrame) {
+                channelHandlerContext.fireChannelRead(o);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
             String responseMessage = "NO JSON PROVIDED";
