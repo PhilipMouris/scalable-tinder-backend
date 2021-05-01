@@ -13,15 +13,15 @@ public class UpdateUserData extends ConcreteCommand {
 
     @Override
     protected void doCommand() {
-        // DocumentEntity userData = ArangoInstance.updateUserData(message.getUserID(),message.getUserData());
-//        JSONObject response  = new JSONObject();
-//        JSONObject userDataJSON= new JSONObject(gson.toJson(userData));
-//        response.put("userData", userDataJSON);
-        //responseJson = jsonParser.parse(response.toString());
+        Object userID = (String) message.getParameter("userData.id");
+        Object userData = message.getParameter("userData");
+        DocumentEntity data = ArangoInstance.updateUserData(userID, userData);
+        if(data==null){
+            // throw error 404
+        }
+        responseJson  = new JSONObject();
+        JSONObject userDataJSON= new JSONObject(new Gson().toJson(data));
+        responseJson.put("userData", new JSONObject(userDataJSON.get("newDocument").toString()));
     }
 
-    @Override
-    public void setMessage(Message message) {
-
-    }
 }

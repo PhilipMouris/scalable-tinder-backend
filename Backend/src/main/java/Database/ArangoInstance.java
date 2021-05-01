@@ -40,6 +40,49 @@ import java.util.*;
 
         }
 
+        public String insert(String collectionName, Object object){
+            JSONObject json = new JSONObject(object.toString());
+            DocumentEntity document = arangoDB.db(dbName).collection(collectionName).insertDocument(json.toString());
+            return document.getKey();
+        }
+
+        public JSONObject delete(String collectionName, Object key){
+            DocumentDeleteEntity<Void> data= arangoDB.db(dbName).collection(collectionName).deleteDocument((String) key);
+            return new JSONObject(gson.toJson(data));
+            
+        }
+
+        public JSONObject find(String collectionName, Object key, String modelName){
+             // CACHE HERE
+            try {
+                System.out.println("FINDPARAMS"+ collectionName + " " + (String) key + " " +  modelName);
+                Class modelClass = modelName == null ? null : Class.forName(String.format("Models.%s", modelName));
+                Object modelObject = modelClass == null ? null : modelClass.newInstance();
+                Object object = arangoDB.db(dbName).collection(collectionName).getDocument((String) key, modelObject.getClass());
+                return new JSONObject(gson.toJson(object));
+            }catch (Exception e){
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        public JSONObject update(String collection,Object key,Object updateQuery){
+            try {
+                JSONObject json = new JSONObject(updateQuery.toString());
+                DocumentEntity response = arangoDB.db(dbName).collection("users").updateDocument((String) key, json.toString(), new DocumentUpdateOptions().returnNew(true));
+                if (response == null)
+                    return null;
+                JSONObject dbData = new JSONObject(gson.toJson(response));
+
+                return new JSONObject(dbData.get("newDocument").toString());
+            }
+            catch(ArangoDBException e) {
+                // 404 here
+                return null;
+            }
+        }
+
+
 
         public void initializeDB() {
 
@@ -102,43 +145,22 @@ import java.util.*;
 //                Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,"Failed to drop database: " + dbName));
             }
         }
-        public String insertNewUser(UserData userData){
-            DocumentEntity e = arangoDB.db(dbName).collection("users").insertDocument(userData);
-            return e.getKey();
-        }
-        public UserData getUserData(String userID){
-            UserData userData=arangoDB.db(dbName).collection("users").getDocument(userID, UserData.class);
-            return userData;
-        }
-        public DocumentEntity userAddBio(String userID, String bio) {
-            UserData userData=getUserData(userID);
+
+
+        public DocumentEntity updateUserData(Object userID,Object userData){
+            JSONObject storedData = this.find("users", userID, "UserData");
             DocumentEntity response=null;
-            if (userData!=null){
-                userData.setBio(bio);
-                response= arangoDB.db(dbName).collection("users").updateDocument(userID, userData,new DocumentUpdateOptions().returnNew(true));
-            }
-            else{
-//                throw error 404
-            }
-            return response;
-        }
-        public DocumentEntity updateUserData(String userID,UserData userData){
-            UserData userDataToFind=getUserData(userID);
-            DocumentEntity response=null;
-            System.out.println("UserData Is"+new Gson().toJson(userData));
-            if (userDataToFind!=null){
+            System.out.println("UserData Is" + new Gson().toJson(userData));
+            if (storedData!=null){
                 System.out.println(userData);
-               response= arangoDB.db(dbName).collection("users").updateDocument(userID, gson.toJson(userData),new DocumentUpdateOptions().returnNew(true));
+               response = arangoDB.db(dbName).collection("users").updateDocument((String) userID, userData.toString(), new DocumentUpdateOptions().returnNew(true));
             }
             else{
 //                throw error 404
             }
             return response;
         }
-        public DocumentDeleteEntity deleteUserData(String userID){
-            DocumentDeleteEntity<Void> userData=arangoDB.db(dbName).collection("users").deleteDocument(userID);
-            return userData;
-        }
+
 //        public CategoryDBObject getCategory(String id){
 //            // System.out.println(arangoDB.db(dbName).collection("categories").getDocument(id,Arango.CategoryDBObject.class));
 //            CategoryDBObject category =arangoDB.db(dbName).collection("categories").getDocument(id, CategoryDBObject.class);

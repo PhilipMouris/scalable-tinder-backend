@@ -7,6 +7,7 @@ import Database.ArangoInstance;
 //import Models.ErrorLog;
 import Database.PostgreSQL;
 import Models.Message;
+import com.arangodb.entity.DocumentEntity;
 import com.google.gson.*;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -19,6 +20,7 @@ import java.io.StringWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public abstract class ConcreteCommand extends Command {
@@ -39,6 +41,10 @@ public abstract class ConcreteCommand extends Command {
     protected String[] inputParams;
     protected String[] outputParams;
     protected String outputName = "record";
+    protected String type;
+    protected String model;
+    protected String collection;
+    
 
     @Override
     protected void execute() {
@@ -86,13 +92,13 @@ public abstract class ConcreteCommand extends Command {
         query = query.substring(0,query.length()-1) + ")";
         return query;
     }
-    public JSONArray convertToJSONArray(ResultSet resultSet)
+    private JSONArray convertToJSONArray(ResultSet resultSet)
             throws Exception {
         JSONArray jsonArray = new JSONArray();
         while (resultSet.next()) {
             JSONObject obj = new JSONObject();
-            int total_rows = resultSet.getMetaData().getColumnCount();
-            for (int i = 0; i < total_rows; i++) {
+            int totalRows = resultSet.getMetaData().getColumnCount();
+            for (int i = 0; i < totalRows; i++) {
                 obj.put(resultSet.getMetaData().getColumnLabel(i + 1)
                         .toLowerCase(), resultSet.getObject(i + 1));
 
@@ -101,21 +107,18 @@ public abstract class ConcreteCommand extends Command {
         }
         return jsonArray;
     }
-    protected void doCommand() {
-        try {
-            setParameters();
-            // In case only a custom command is needed
-            if(storedProcedure==null)return;
-            dbConn = PostgresInstance.getDataSource().getConnection();
-            dbConn.setAutoCommit(true);
-            Statement query = dbConn.createStatement();
-            query.setPoolable(true);
-            String SQLQuery = customQuery !=null ? customQuery : generateSQLQuery();
-            System.out.println(SQLQuery + "SQLL");
-            set = query.executeQuery(SQLQuery);
-            JSONObject response = new JSONObject();
-            response.put(outputName, convertToJSONArray(set));
-            responseJson = response;
+    private void handleSQLCommand() {
+        if(storedProcedure==null) return;
+        try{
+        dbConn = PostgresInstance.getDataSource().getConnection();
+        dbConn.setAutoCommit(true);
+        Statement query = dbConn.createStatement();
+        query.setPoolable(true);
+        String SQLQuery = customQuery !=null ? customQuery : generateSQLQuery();
+        set = query.executeQuery(SQLQuery);
+        JSONObject response = new JSONObject();
+        response.put(outputName, convertToJSONArray(set));
+        responseJson = response;
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -125,6 +128,48 @@ public abstract class ConcreteCommand extends Command {
         finally {
             PostgresInstance.disconnect(null, proc, dbConn);
         }
+
+    }
+    protected  void handleNoSQLCommand(){
+        try {
+            if (collection ==  null) return;
+            ArrayList<Object> parameters = new ArrayList<>();
+            for(int i =0;i<inputParams.length;i++) {
+                // TODO: Required Fields & validations
+               parameters.add(message.getParameter(inputParams[i]));
+            }
+
+            responseJson = new JSONObject();
+            JSONObject dbResponse = null;
+            switch(type){
+                case "create":
+                    String key = ArangoInstance.insert(collection, parameters.get(0));
+                    responseJson.put("id",key);
+                    return;
+                case "delete":
+                     dbResponse = ArangoInstance.delete(collection, parameters.get(0));
+                     responseJson.put(outputName,dbResponse);
+                     break;
+                //case "update":
+                case "find":
+                    dbResponse = ArangoInstance.find(collection, parameters.get(0), model);
+                    break;
+                case "update":
+                    dbResponse  = ArangoInstance.update(collection,parameters.get(0),parameters.get(1));
+            }
+            responseJson.put(outputName, dbResponse);
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    protected void doCommand() {
+        setParameters();
+        handleSQLCommand();
+        handleNoSQLCommand();
+
+
     };
 
     public void setParameters(){
