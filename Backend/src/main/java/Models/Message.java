@@ -17,7 +17,6 @@ public class Message implements Serializable {
     }
 
     public Object getParameter(String key){
-        System.out.println(key + " INITIAL");
         if(key.contains(".")) return getParameter(key, parameters);
         return parameters.has(key)? parameters.get(key): null;
     }

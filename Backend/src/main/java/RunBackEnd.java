@@ -4,10 +4,12 @@ import Cache.RedisConnection;
 import Config.Config;
 import Interface.ServiceControl;
 import MessageQueue.ServicesMQ;
-import MessageQueue.QueueLoadBalance;
 import Entities.ServicesType;
 import NettyWebServer.NettyServer;
 import Controller.Controller;
+
+import java.util.logging.Level;
+
 public class RunBackEnd {
 
     private static ServicesType[] services;
@@ -48,7 +50,7 @@ public class RunBackEnd {
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            e.printStackTrace();s.LOGGER.log(Level.SEVERE,e.getMessage(),e);
                         }
                     }
                     break;
@@ -66,7 +68,7 @@ public class RunBackEnd {
                             try {
                                 Thread.sleep(200);
                             } catch (InterruptedException e) {
-                                e.printStackTrace();
+                                e.printStackTrace();s.LOGGER.log(Level.SEVERE,e.getMessage(),e);
                             }
                         }
                     }
@@ -76,7 +78,7 @@ public class RunBackEnd {
                     try {
                         Thread.sleep(200);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        e.printStackTrace();c.LOGGER.log(Level.SEVERE,e.getMessage(),e);
                     }
 //                    c.initDBs();
 //                    c.startServices();

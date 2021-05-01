@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package Database;
 
 import Cache.RedisConnection;
@@ -200,3 +201,141 @@ import java.util.*;
 
     }
 
+=======
+package Database;
+
+import Config.Config;
+import Controller.ControllerAdapterHandler;
+import Models.*;
+import com.arangodb.ArangoCursor;
+import Models.UserData;
+import com.arangodb.ArangoDB;
+import com.arangodb.ArangoDBException;
+import com.arangodb.entity.DocumentDeleteEntity;
+import com.arangodb.entity.DocumentEntity;
+import com.arangodb.model.CollectionSchema;
+import com.arangodb.model.DocumentUpdateOptions;
+import com.google.gson.Gson;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ArangoInstance {
+
+    private final Config conf = Config.getInstance();
+
+    private final Logger LOGGER = Logger.getLogger(ArangoInstance.class.getName()) ;
+
+    public String getDbName() {
+        return dbName;
+    }
+
+    public ArangoDB getArangoDB() {
+        return arangoDB;
+    }
+
+    public void setArangoDB(ArangoDB arangoDB) {
+        this.arangoDB = arangoDB;
+    }
+
+    private ArangoDB arangoDB;
+    private final String dbUserName = conf.getArangoUserName();
+    private final String dbPass = conf.getArangoQueuePass();
+
+    private final String dbName = conf.getArangoDbName();
+    private Gson gson;
+    public ArangoInstance(int maxConnections) {
+        gson = new Gson();
+        arangoDB = new ArangoDB.Builder().host(conf.getArangoHost(), conf.getArangoPort()).user(dbUserName).maxConnections(maxConnections).build();
+//            Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database connected: POST"));
+
+
+    }
+
+    public static void main(String[] args) {
+        ArangoInstance arangoInstance = new ArangoInstance(15);
+//            arangoInstance.arangoDB.db("Post").createCollection("notifications");
+
+              arangoInstance.dropDB();
+        arangoInstance.initializeDB();
+    }
+
+    public void initializeDB() {
+
+        try {
+
+//            JSONParser parser = new JSONParser();
+//            JSONObject userSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/userSchema.json"));
+//            JSONObject notificationSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/notificationSchema.json"));
+//            JSONObject chatSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/chatSchema.json"));
+//            JSONObject profileViewSchema = (JSONObject) parser.parse(new FileReader("/home/vm/Desktop/scalable-tinder/db/NoSQL/profileViewSchema.json"));
+            arangoDB.createDatabase(dbName);
+//            CollectionSchema user_schema = new CollectionSchema();
+//            user_schema.setMessage((String) userSchema.get("message"));
+//            user_schema.setRule(userSchema.get("rule").toString());
+//            user_schema.setLevel(CollectionSchema.Level.MODERATE);
+//            CollectionSchema chat_schema = new CollectionSchema();
+//            chat_schema.setMessage(chatSchema.get("message").toString());
+//            chat_schema.setRule(chatSchema.get("rule").toString());
+//            chat_schema.setLevel(CollectionSchema.Level.MODERATE);
+//            CollectionSchema profileView_schema = new CollectionSchema();
+//            profileView_schema.setMessage(profileViewSchema.get("message").toString());
+//            profileView_schema.setRule(profileViewSchema.get("rule").toString());
+//            profileView_schema.setLevel(CollectionSchema.Level.MODERATE);
+//            CollectionSchema notification_schema = new CollectionSchema();
+//            notification_schema.setMessage(notificationSchema.get("message").toString());
+//            notification_schema.setRule(notificationSchema.get("rule").toString());
+//            notification_schema.setLevel(CollectionSchema.Level.MODERATE);
+
+//                arangoDB.db(dbName).createCollection("users",new CollectionCreateOptions().setSchema(user_schema));
+//                arangoDB.db(dbName).createCollection("notifications",new CollectionCreateOptions().setSchema(notification_schema));
+//                arangoDB.db(dbName).createCollection("chats",new CollectionCreateOptions().setSchema(chat_schema));
+//                arangoDB.db(dbName).createCollection("profileViews",new CollectionCreateOptions().setSchema(profileView_schema));
+//
+            arangoDB.db(dbName).createCollection("users");
+            arangoDB.db(dbName).createCollection("notifications");
+            arangoDB.db(dbName).createCollection("chats");
+            arangoDB.db(dbName).createCollection("profileViews");
+//                Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,"Database created: " + dbName));
+
+            System.out.println("Database created: " + dbName);
+//                Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database created: " + dbName));
+            } catch (ArangoDBException e) {
+            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
+//                Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,"Failed to create database: " + dbName));
+        }
+    }
+
+    public void dropDB() {
+
+        try {
+            arangoDB.db(dbName).drop();
+//                Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database dropped: " + dbName));
+        } catch (ArangoDBException e) {
+//                Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,"Failed to drop database: " + dbName));
+        }
+    }
+
+
+    public UserData getUserData(String userID) {
+        UserData userData = arangoDB.db(dbName).collection("users").getDocument(userID, UserData.class);
+        return userData;
+    }
+
+
+    public void setMaxDBConnections(int maxDBConnections) {
+        arangoDB = new ArangoDB.Builder().user(dbUserName).password(dbPass).maxConnections(maxDBConnections).build();
+    }
+    
+
+}
+
+>>>>>>> e19d2841c1136831c0cabaaf2729f93cb75ced80

@@ -67,3 +67,100 @@ Recent access records:
 2021-22-29 03:22:27.378 [nioEventLoopGroup-4-1] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
 >>>>>>> d5961aee49f8a95eba7112b5b857082c664e87fa
 Recent access records: 
+<<<<<<< HEAD
+2021-45-30 02:45:07.132 [nioEventLoopGroup-4-1] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-56-30 17:56:34.586 [nioEventLoopGroup-4-1] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+=======
+2021-05-30 01:05:51.275 [nioEventLoopGroup-4-8] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-30-30 01:30:44.554 [nioEventLoopGroup-4-3] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-59-30 01:59:07.159 [nioEventLoopGroup-5-2] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-06-30 02:06:56.822 [pool-25-thread-4] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - Consumer Interface.ServiceControl$2@2df9aa96 (amq.ctag-tDSqMbq63CcvILZahaWTaw) method handleDelivery for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1) threw an exception for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1)
+java.lang.ClassFormatError: Incompatible magic value 1885430635 in class file Commands/ModeratorCommands/CreateAlo
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:1016) ~[?:?]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:151) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:825) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:723) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:646) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:522) ~[?:?]
+	at java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.lang.Class.forName(Class.java:377) ~[?:?]
+	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:222) ~[classes/:?]
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100) [amqp-client-5.1.2.jar:5.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-09-30 02:09:37.270 [nioEventLoopGroup-4-1] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-14-30 02:14:09.488 [pool-30-thread-4] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - Consumer Interface.ServiceControl$2@3f50553d (amq.ctag-KL6aI94xAN0z_MMUjtNKHw) method handleDelivery for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1) threw an exception for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1)
+java.lang.ClassFormatError: Incompatible magic value 1547911516 in class file Commands/ModeratorCommands/CreateAlo
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:1016) ~[?:?]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:151) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:825) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:723) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:646) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:522) ~[?:?]
+	at java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.lang.Class.forName(Class.java:377) ~[?:?]
+	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:222) ~[classes/:?]
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100) [amqp-client-5.1.2.jar:5.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-22-30 02:22:10.717 [pool-25-thread-4] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - Consumer Interface.ServiceControl$2@fbe929a (amq.ctag-aJXQieg1P7-EF8h-TwZ7JA) method handleDelivery for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1) threw an exception for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1)
+java.lang.ClassFormatError: Incompatible magic value 1547911516 in class file Commands/ModeratorCommands/CreateAlo
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:1016) ~[?:?]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:151) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:825) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:723) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:646) ~[?:?]
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:522) ~[?:?]
+	at java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.lang.Class.forName(Class.java:377) ~[?:?]
+	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:225) ~[classes/:?]
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100) [amqp-client-5.1.2.jar:5.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-38-30 03:38:34.926 [pool-25-thread-4] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - Consumer Interface.ServiceControl$2@53cdcbac (amq.ctag-5cCudEaVENKqYVCJBZ4pIg) method handleDelivery for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1) threw an exception for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1)
+java.lang.NoClassDefFoundError: Commands/ModeratorCommands/CreateBan (wrong name: ModeratorCommands/CreateBan)
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:1016) ~[?:?]
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:151) ~[?:?]
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:514) ~[?:?]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:422) ~[?:?]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:416) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:691) ~[?:?]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:415) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:589) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:522) ~[?:?]
+	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:228) ~[classes/:?]
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100) [amqp-client-5.1.2.jar:5.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-40-30 03:40:45.711 [nioEventLoopGroup-5-8] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-49-30 03:49:39.034 [nioEventLoopGroup-4-1] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-52-30 03:52:00.915 [nioEventLoopGroup-4-2] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-34-30 15:34:32.598 [nioEventLoopGroup-4-7] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+>>>>>>> e9c6eb823c22c569ee0a0bba3e81f67bfac986ba
+Recent access records: 

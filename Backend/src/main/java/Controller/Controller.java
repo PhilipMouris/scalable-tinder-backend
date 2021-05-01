@@ -6,6 +6,7 @@ import Entities.ControlCommand;
 import Entities.ControlMessage;
 import Entities.ErrorLog;
 import Entities.ServicesType;
+import Logger.MyLogger;
 import NettyWebServer.NettyServerInitializer;
 import Services.ChatService;
 import Services.UserToUserService;
@@ -33,6 +34,8 @@ import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
 
@@ -44,7 +47,9 @@ public class Controller {
     private int port = conf.getControllerPort();
     private HashMap<String, HashMap<String,ServiceControl>>  availableServices = new HashMap<>();
     private HashMap<String,Integer> instancesCounts = new HashMap<String, Integer>();
-//    public static void main(String[] args) {
+    public static final Logger LOGGER = Logger.getLogger(Controller.class.getName()) ;
+
+    //    public static void main(String[] args) {
 //        Client c = new Client();
 //        c.initService(ServicesType.post);
 //        new Thread(() -> {
@@ -61,20 +66,24 @@ public class Controller {
         instancesCounts.putIfAbsent(conf.getServicesMqUserToUserQueue(),0);
         instancesCounts.putIfAbsent(conf.getServicesMqModeratorQueue(),0);
         instancesCounts.putIfAbsent(conf.getServicesMqChatQueue(),0);
+
+        MyLogger main_logger = new MyLogger();
+        main_logger.initialize();
     }
     public void initDBs(){
 //        for(String service : availableServices.keySet()){
 //            availableServices.get(service).initDB();
 //        }
     }
-    public static void sendResponse(ChannelHandlerContext ctx,String responseMsg){
+    public static void sendResponse(ChannelHandlerContext ctx,String responseMsg,boolean isError){
         JsonParser jsonParser = new JsonParser();
         JSONObject responseJ= new JSONObject();
+        Controller.LOGGER.log(Level.INFO,responseMsg);
         responseJ.put("Message",responseMsg);
         JsonObject responseJson =(JsonObject) jsonParser.parse(responseJ.toString());
         FullHttpResponse response = new DefaultFullHttpResponse(
                 HttpVersion.HTTP_1_1,
-                HttpResponseStatus.OK,
+                isError?HttpResponseStatus.BAD_REQUEST:HttpResponseStatus.OK,
                 copiedBuffer(responseJson.get("Message").toString().getBytes()));
 
         response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
@@ -165,7 +174,7 @@ public class Controller {
 //            Controller.channel.closeFuture().sync();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
             Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR,errors.toString()));

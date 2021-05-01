@@ -1,8 +1,11 @@
 package Commands.ModeratorCommands;
 
+import Controller.ControllerAdapterHandler;
+import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
 
 public class GetAllBans extends ConcreteCommand {
+    private final Logger LOGGER = Logger.getLogger(GetAllBans.class.getName()) ;
 
     @Override
     public void setParameters() {

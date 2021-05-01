@@ -2,12 +2,17 @@ package Config;
 
 //import Controller.Controller;
 
+import Controller.ControllerAdapterHandler;
+
 import java.io.*;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Config {
 
     private static Config instance = new Config();
+    private final Logger LOGGER = Logger.getLogger(Config.class.getName()) ;
 
     private final Properties arangoConfig = new Properties();
     private final Properties minioConfig = new Properties();
@@ -18,7 +23,11 @@ public class Config {
     private final Properties serviceConfig = new Properties();
     private final Properties NettyServerConfig = new Properties();
     private final Properties postgresqlConfig = new Properties();
+<<<<<<< HEAD
     private final Properties redisConfig = new Properties();
+=======
+    private final Properties loggerConfig = new Properties();
+>>>>>>> e19d2841c1136831c0cabaaf2729f93cb75ced80
 
     private final String arangoPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/arango.conf";
     private final String minioPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/minio.conf";
@@ -29,7 +38,14 @@ public class Config {
     private final String servicePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/service.conf";
     private final String nettyServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/web.server.conf";
     private final String postgresqlPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/postgresql.conf";
+<<<<<<< HEAD
     private final String redisPath = "Backend/src/main/resources/redisEnv.conf";
+=======
+    private final String loggerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/logger.conf";
+
+    private final String arangoUserName="root";
+    private final String arangoPass="";
+>>>>>>> e19d2841c1136831c0cabaaf2729f93cb75ced80
 
 
     public Properties getArangoConfig() {
@@ -58,7 +74,12 @@ public class Config {
         loadConfig(serviceConfig, servicePath);
         loadConfig(NettyServerConfig, nettyServerPath);
         loadConfig(postgresqlConfig,postgresqlPath);
+<<<<<<< HEAD
         loadConfig(redisConfig, redisPath);
+=======
+        loadConfig(loggerConfig,loggerPath);
+
+>>>>>>> e19d2841c1136831c0cabaaf2729f93cb75ced80
 //        readSystemVariables(loadBalancerConfig,"load_balancer_rabbitmq_host");
     }
 
@@ -71,7 +92,7 @@ public class Config {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
 //            Controller.logger.error(errors);
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         }
     }
 
@@ -139,7 +160,7 @@ public class Config {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
 //            Controller.logger.error(errors);
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         }
     }
 
@@ -324,6 +345,10 @@ public class Config {
 
     public String getPostgresqlInitConn() {return postgresqlConfig.getProperty("postgresql_init_db");}
 
+    //  Logger Configs
+    public String getLoggerPath() {return loggerConfig.getProperty("logger_path");}
+
+    public String getLoggerPropsPath() {return loggerConfig.getProperty("logger_props_path");}
 
 
 

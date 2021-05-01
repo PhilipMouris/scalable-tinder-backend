@@ -7,6 +7,7 @@ import Database.ArangoInstance;
 //import Database.ChatArangoInstance;
 //import Models.ErrorLog;
 import Database.PostgreSQL;
+import Entities.HttpResponseTypes;
 import Models.Message;
 import com.arangodb.entity.DocumentEntity;
 import com.google.gson.*;
@@ -23,6 +24,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public abstract class ConcreteCommand extends Command {
 
@@ -48,6 +51,7 @@ public abstract class ConcreteCommand extends Command {
     protected Boolean useCache=false;
     protected RedisConnection redis = RedisConnection.getInstance();
     
+    private final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
 
     @Override
     protected void execute() {
@@ -57,6 +61,12 @@ public abstract class ConcreteCommand extends Command {
             ArangoInstance = (ArangoInstance)
                     parameters.get("ArangoInstance");
             PostgresInstance = (PostgreSQL) parameters.get("PostgresInstance");
+            LOGGER.log(Level.INFO,"ARANGO is "+ArangoInstance);
+//            UserCacheController = (UserCacheController)
+//                    parameters.get("UserCacheController");
+//            ChatArangoInstance = (ChatArangoInstance)
+//                    parameters.get("ChatArangoInstance");
+
             Channel channel = (Channel) parameters.get("channel");
             AMQP.BasicProperties replyProps = (AMQP.BasicProperties) parameters.get("replyProps");
             jsonParser = new JsonParser();
@@ -64,14 +74,16 @@ public abstract class ConcreteCommand extends Command {
             message = new Message();
             jsonBodyObject = new JSONObject(jsonString);
             message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
-            doCommand();
+            HttpResponseTypes status = doCommand();
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);
+            jsonBodyObject.put("status",jsonParser.parse(status.toString()));
             channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
         } catch (Exception e) {
-            e.printStackTrace();
-            StringWriter errors = new StringWriter();
-            e.printStackTrace(new PrintWriter(errors));
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+//            StringWriter errors = new StringWriter();
+//            e.printStackTrace(new PrintWriter(errors));
+//            Client.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
         }
     }
 
@@ -113,7 +125,7 @@ public abstract class ConcreteCommand extends Command {
     private String getSQLCommandId() {
         return String.format("%s%s",storedProcedure,message.getParameterValues(inputParams));
     }
-    private void handleSQLCommand() {
+    private HttpResponseTypes void handleSQLCommand() {
         if(storedProcedure==null && customQuery==null) return;
         try{
             String id = getSQLCommandId();
@@ -135,18 +147,23 @@ public abstract class ConcreteCommand extends Command {
         response.put(outputName,data );
         redis.setKey(id, data.toString());
         responseJson = response;
+        LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
+        return HttpResponseTypes._200;
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            return HttpResponseTypes._500;
         } catch (Exception e){
             e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            return HttpResponseTypes._500;
         }
         finally {
             PostgresInstance.disconnect(null, proc, dbConn);
         }
 
     }
-    protected  void handleNoSQLCommand(){
+    protected  HttpResponseTypes  handleNoSQLCommand(){
         try {
             if (collection ==  null) return;
             ArrayList<Object> parameters = new ArrayList<>();
@@ -181,6 +198,7 @@ public abstract class ConcreteCommand extends Command {
         }
     }
     protected void doCommand() {
+        //Logger LOGGER = Logger.getLogger(UpdateBan.class.getName())
         setParameters();
         handleSQLCommand();
         handleNoSQLCommand();

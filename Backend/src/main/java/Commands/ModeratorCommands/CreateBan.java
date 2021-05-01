@@ -1,15 +1,18 @@
 package Commands.ModeratorCommands;
 
+import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
 import Models.BanData;
 import Models.Message;
 import com.google.gson.JsonObject;
-import org.json.JSONObject;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CreateBan extends ConcreteCommand {
+    private final Logger LOGGER = Logger.getLogger(CreateBan.class.getName()) ;
 
     @Override
     public void setParameters() {

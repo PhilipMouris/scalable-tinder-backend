@@ -9,11 +9,14 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 import java.io.IOException;
 import java.net.SocketException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class NettyServer {
 
     Config c = Config.getInstance();
     private int port = c.getWebServerPort();
+    public final Logger LOGGER = Logger.getLogger(NettyServer.class.getName()) ;
     public NettyServer(int port){
         this.port = port;
     }
@@ -30,14 +33,15 @@ public class NettyServer {
 //            b.option(ChannelOption.SO_KEEPALIVE, true);
             Channel ch = b.bind(port).sync().channel();
 
-            System.err.println("Web Server is listening on http://127.0.0.1:" + port + '/');
 
+//            System.err.println("Web Server is listening on http://127.0.0.1:" + port + '/');
+            LOGGER.log(Level.INFO,"Web Server is listening on http://127.0.0.1:" + port + '/');
             ch.closeFuture().sync();
 
         }  
         catch (InterruptedException e) {
             System.out.println("ALO");
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
 
         } finally {
             workerGroup.shutdownGracefully();
@@ -55,7 +59,7 @@ public class NettyServer {
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                e.printStackTrace();s.LOGGER.log(Level.SEVERE,e.getMessage(),e);
             }
         }
     }

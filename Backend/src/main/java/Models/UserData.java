@@ -1,16 +1,7 @@
 package Models;
 
-import com.arangodb.entity.DocumentEntity;
-import com.arangodb.entity.VertexEntity;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import org.hibernate.annotations.GenericGenerator;
-import com.arangodb.entity.DocumentField;
-import com.arangodb.entity.DocumentField.Type;
-
-import java.time.LocalDateTime;
-import java.util.*;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -19,7 +10,15 @@ public class UserData {
     private String id;
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    private String _key ;
+    private String _key;
+    private String bio;
+    private String birthDate;
+    private UserLocation location;
+    private UserLinks links;
+    private List<UserPicture> profilePictures;
+    private List<String> videos;
+    private List<UserInterest> interests;
+    private UserPreference preferences;
 
     public String getBirthDate() {
         return birthDate;
@@ -28,15 +27,6 @@ public class UserData {
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
-
-    private String bio;
-    private String birthDate;
-    private UserLocation location;
-    private UserLinks links;
-    private List <UserPicture> profilePictures;
-    private List<String> videos;
-    private List <UserInterest> interests;
-    private UserPreference preferences;
 
     public String getId() {
         return id;
@@ -69,9 +59,6 @@ public class UserData {
     public void setBio(String bio) {
         this.bio = bio;
     }
-
-
-
 
 
     public UserLocation getLocation() {

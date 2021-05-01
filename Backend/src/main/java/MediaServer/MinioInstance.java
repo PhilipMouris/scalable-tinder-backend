@@ -39,15 +39,6 @@ public class MinioInstance {
                     System.out.println("Bucket  already exists.");
                 }
 
-                // Upload '/home/user/Photos/asiaphotos.zip' as object name 'asiaphotos-2015.zip' to bucket
-                // 'asiatrip'.
-//                Uploading an image with a directory
-//                ObjectWriteResponse res=minioClient.uploadObject(
-//                        UploadObjectArgs.builder()
-//                                .bucket("scalable-tinder")
-//                                .object("thumbsup.png")
-//                                .filename("/home/vm/Desktop/Scalable/index.png")
-//                                .build());
             } catch (MinioException | IOException | InvalidKeyException | NoSuchAlgorithmException e) {
                 System.out.println("Error occurred: " + e);
                 System.out.println("HTTP trace: " );

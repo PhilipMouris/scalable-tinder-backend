@@ -3,19 +3,16 @@ package Interface;
 //import Cache.RedisConf;
 //import Cache.UserCacheController;
 //import ClientService.Client;
+
+import Config.Config;
+import Config.ConfigTypes;
 import Controller.Controller;
 import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Entities.ErrorLog;
-import Config.Config;
-import Config.ConfigTypes;
-//import Database.ArangoInstance;
-//import Database.ChatArangoInstance;
-//import Models.CategoryDBObject;
-//import Models.ErrorLog;
-//import Models.PostDBObject;
 import MediaServer.MinioInstance;
 import NettyWebServer.NettyServerInitializer;
+import NettyWebServer.RequestHandler;
 import com.rabbitmq.client.*;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.*;
@@ -24,30 +21,67 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
 import java.io.*;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.TreeMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
 
 public abstract class ServiceControl {    // This class is responsible for Managing Each Service (Application) Fully (Queue (Reuqest/Response), Controller etc.)
 
+    public int ID;
     protected Config conf = Config.getInstance();
     protected int maxDBConnections = conf.getServiceMaxDbConnections();
     protected String RPC_QUEUE_NAME; //set by init
-    private String RESPONSE_EXTENSION = "-Response";
-    private String REQUEST_EXTENSION = "-Request";
-    public int ID;
-//    RedisConf redisConf ;
+    //    RedisConf redisConf ;
 //    protected RLiveObjectService liveObjectService; // For Post Only
     protected ArangoInstance arangoInstance; // For Post Only
+    protected MinioInstance minioInstance;
+    protected PostgreSQL postgresDB;
+    private final String RESPONSE_EXTENSION = "-Response";
+    private final String REQUEST_EXTENSION = "-Request";
+    //    protected ChatArangoInstance ChatArangoInstance;
+//    protected UserCacheController userCacheController; // For UserModel Only
+    private int threadsNo = conf.getServiceMaxThreads();
+    private final ThreadPoolExecutor executor; //Executes the requests of this service
+    private final String host = conf.getServerQueueHost();    // Define the Queue containing the requests of this service
+    private final int port = conf.getServerQueuePort();
+    private final String user = conf.getServerQueueUserName();
+    private final String pass = conf.getServerQueuePass();
+    private Channel requestQueueChannel; //The Channel containing the Queue of this service
+    private Channel responseQueueChannel;
+    private String requestConsumerTag;
+    private String responseConsumerTag;
+    private Consumer requestConsumer;
+    private Consumer responseConsumer;
+    private String REQUEST_QUEUE_NAME;
+    private String RESPONSE_QUEUE_NAME;
+    private Class last_com;
+    public final Logger LOGGER = Logger.getLogger(ServiceControl.class.getName()) ;
+
+    public ServiceControl(int ID) {
+        this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadsNo);
+        init();
+        initDB();
+        REQUEST_QUEUE_NAME = RPC_QUEUE_NAME + REQUEST_EXTENSION;
+        RESPONSE_QUEUE_NAME = RPC_QUEUE_NAME + RESPONSE_EXTENSION;
+        this.ID = ID;
+    }
 
     public MinioInstance getMinioInstance() {
         return minioInstance;
@@ -55,36 +89,6 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 
     public void setFileUploader(MinioInstance minioInstance) {
         this.minioInstance = minioInstance;
-    }
-
-    protected MinioInstance minioInstance;
-    protected PostgreSQL postgresDB;
-//    protected ChatArangoInstance ChatArangoInstance;
-//    protected UserCacheController userCacheController; // For UserModel Only
-    private int threadsNo = conf.getServiceMaxThreads();
-    private ThreadPoolExecutor executor; //Executes the requests of this service
-
-    private String host = conf.getServerQueueHost();    // Define the Queue containing the requests of this service
-    private int port = conf.getServerQueuePort();
-    private String user = conf.getServerQueueUserName();
-    private String pass = conf.getServerQueuePass();
-    private Channel requestQueueChannel; //The Channel containing the Queue of this service
-    private Channel responseQueueChannel;
-
-    private String requestConsumerTag;
-    private String responseConsumerTag;
-    private Consumer requestConsumer;
-    private Consumer responseConsumer;
-    private String REQUEST_QUEUE_NAME;
-    private String RESPONSE_QUEUE_NAME;
-
-    public ServiceControl(int ID) {
-        this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadsNo);
-        init();
-        initDB();
-        REQUEST_QUEUE_NAME = RPC_QUEUE_NAME+ REQUEST_EXTENSION;
-        RESPONSE_QUEUE_NAME = RPC_QUEUE_NAME+ RESPONSE_EXTENSION;
-        this.ID = ID;
     }
 
     public abstract void init();
@@ -96,12 +100,17 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         consumeFromResponseQueue();
     }
 
-    public void setMaxDBConnections(int connections) {
-        setDBConnections(connections);
-        conf.setProperty(ConfigTypes.Service, "service.max.db", String.valueOf(connections));
-
+    
+    private static HttpResponseStatus mapToStatus(String status){
+        switch (status){
+            case "_200":return HttpResponseStatus.OK;
+            case "_404":return HttpResponseStatus.NOT_FOUND;
+            case "_500":return HttpResponseStatus.BAD_REQUEST;
+            default:return HttpResponseStatus.ACCEPTED;
+        }
     }
-    private void consumeFromResponseQueue(){
+
+    private void consumeFromResponseQueue() {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(host);
         factory.setPort(port);
@@ -114,7 +123,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             responseQueueChannel = connection.createChannel();
             responseQueueChannel.queueDeclare(RESPONSE_QUEUE_NAME, true, false, false, null);
             responseQueueChannel.basicQos(threadsNo);
-            System.out.println(" [x] Awaiting RPC RESPONSES on Queue : " + RESPONSE_QUEUE_NAME);
+            LOGGER.log(Level.INFO," [x] Awaiting RPC RESPONSES on Queue : " + RESPONSE_QUEUE_NAME);
             responseConsumer = new DefaultConsumer(responseQueueChannel) {
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) {
@@ -122,18 +131,17 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         //Using Reflection to convert a command String to its appropriate class
 //                        Channel receiver = REQUEST_CHANNEL_MAP.get(RESPONSE_MAIN_QUEUE_NAME);
 
-                        System.out.println("Responding to corrID: "+ properties.getCorrelationId() +  ", on Queue : " + RESPONSE_QUEUE_NAME);
-                        System.out.println("Request    :   " + new String(body, "UTF-8"));
-                        System.out.println("Application    :   " + RPC_QUEUE_NAME);
-                        System.out.println("INSTANCE NUM   :   " + ID);
-                        System.out.println();
+                        LOGGER.log(Level.INFO,"Responding to corrID: "+ properties.getCorrelationId() +  ", on Queue : " + RESPONSE_QUEUE_NAME);
+                        LOGGER.log(Level.INFO,"Request    :   " + new String(body, "UTF-8"));
+                        LOGGER.log(Level.INFO,"Application    :   " + RPC_QUEUE_NAME);
+                        LOGGER.log(Level.INFO,"INSTANCE NUM   :   " + ID);
                         String responseMsg = new String(body, "UTF-8");
 
                         org.json.JSONObject responseJson = new org.json.JSONObject(responseMsg);
-
+                        String status=responseJson.get("status").toString() ;
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
-                                HttpResponseStatus.OK,
+                                mapToStatus(status),
                                 copiedBuffer(responseJson.get("response").toString().getBytes()));
 
                         org.json.JSONObject headers = (org.json.JSONObject) responseJson.get("Headers");
@@ -148,15 +156,24 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
                         response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
 
-                        System.out.println("Response   :   " + responseJson.get("response"));
-                        System.out.println();
+                        LOGGER.log(Level.INFO,"Response   :   " + responseJson.get("response"));
 
                         ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
                         ctxRec.writeAndFlush(response);
                         ctxRec.close();
 
                     } catch (RuntimeException| IOException e) {
-                        e.printStackTrace();
+                        FullHttpResponse response = new DefaultFullHttpResponse(
+                                HttpVersion.HTTP_1_1,
+                                HttpResponseStatus.BAD_REQUEST,
+                                copiedBuffer("ERROR".toString().getBytes()));
+
+                        response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
+                        response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
+                        ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
+                        ctxRec.writeAndFlush(response);
+                        ctxRec.close();
+                        LOGGER.log(Level.SEVERE,e.getMessage(),e);
                         consumeFromResponseQueue();
                     } finally {
                         synchronized (this) {
@@ -168,11 +185,12 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             responseConsumerTag = responseQueueChannel.basicConsume(RESPONSE_QUEUE_NAME, true, responseConsumer);
             // Wait and be prepared to consume the message from RPC client.
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
 //            consumeFromQueue(RPC_QUEUE_NAME,QUEUE_TO);
         }
     }
-    private void consumeFromRequestQueue(){
+
+    private void consumeFromRequestQueue() {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(host);
@@ -185,12 +203,12 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             connection = factory.newConnection();
             requestQueueChannel = connection.createChannel();
             requestQueueChannel.queueDeclare(REQUEST_QUEUE_NAME, true, false, false, null);
-            requestQueueChannel .basicQos(threadsNo);
+            requestQueueChannel.basicQos(threadsNo);
 //            redisConf = new RedisConf();
 //            liveObjectService = redisConf.getService();
 //
 //            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, " [x] Awaiting RPC requests on Queue : " + RPC_QUEUE_NAME));
-            System.out.println(" [x] Awaiting RPC requests on Queue : " + REQUEST_QUEUE_NAME);
+            LOGGER.log(Level.INFO," [x] Awaiting RPC requests on Queue : " + REQUEST_QUEUE_NAME);
             requestConsumer = new DefaultConsumer(requestQueueChannel) {
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
@@ -200,24 +218,30 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                             .replyTo(RESPONSE_QUEUE_NAME)
                             .build();
 //                    Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Responding to corrID: " + properties.getCorrelationId() + ", on Queue : " + RPC_QUEUE_NAME));
-                    System.out.println("Responding to corrID: " + properties.getCorrelationId() + ", on Queue : " + REQUEST_QUEUE_NAME);
-                    System.out.println("INSTANCE NUM   :   " + ID);
+                    LOGGER.log(Level.INFO,"Responding to corrID: " + properties.getCorrelationId() + ", on Queue : " + REQUEST_QUEUE_NAME);
+                    LOGGER.log(Level.INFO,"INSTANCE NUM   :   " + ID);
                     try {
                         //Using Reflection to convert a command String to its appropriate class
-                        String message = new String(body, "UTF-8");
+                        String message = new String(body, StandardCharsets.UTF_8);
                         JSONParser parser = new JSONParser();
                         JSONObject command = (JSONObject) parser.parse(message);
                         String className = (String) command.get("command");
-                        System.out.println("className:"+className);
-                        Class com = Class.forName("Commands."+RPC_QUEUE_NAME + "Commands." + className);
-                        Command cmd = (Command) com.newInstance();
+                        LOGGER.log(Level.INFO,"className:"+className);
+                        last_com = Class.forName("Commands."+RPC_QUEUE_NAME + "Commands." + className);
+//                        ClassLoader parentLoader = com.getClassLoader();
+//                        File dir= new File("/home/vm/Desktop/scalable-tinder/Backend/target/classes");
+//                        URLClassLoader loader1 = new URLClassLoader(
+//                                new URL[] { dir.toURL()}, parentLoader);
+//                        Class com2 = loader1.loadClass("Commands."+RPC_QUEUE_NAME+"Commands."+className);
+
+                        Command cmd = (Command) last_com.newInstance();
 
                         TreeMap<String, Object> init = new TreeMap<>();
-                        init.put("channel",requestQueueChannel);
+                        init.put("channel", requestQueueChannel);
                         init.put("properties", properties);
                         init.put("replyProps", replyProps);
                         init.put("envelope", envelope);
-                        init.put("PostgresInstance",postgresDB);
+                        init.put("PostgresInstance", postgresDB);
                         init.put("body", message);
 //                        init.put("RLiveObjectService", liveObjectService);
                         init.put("ArangoInstance", arangoInstance);
@@ -227,7 +251,17 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         cmd.init(init);
                         executor.submit(cmd);
                     } catch (RuntimeException | ParseException | ClassNotFoundException | IllegalAccessException | InstantiationException e) {
-                        e.printStackTrace();
+                        FullHttpResponse response = new DefaultFullHttpResponse(
+                                HttpVersion.HTTP_1_1,
+                                HttpResponseStatus.BAD_REQUEST,
+                                copiedBuffer("ERROR".toString().getBytes()));
+
+                        response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
+                        response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
+                        ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
+                        ctxRec.writeAndFlush(response);
+                        ctxRec.close();
+                        LOGGER.log(Level.SEVERE,e.getMessage(),e);
                         StringWriter errors = new StringWriter();
                         e.printStackTrace(new PrintWriter(errors));
                         Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
@@ -243,91 +277,115 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 
 
         } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
             Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
 //            start();
         }
     }
-    protected abstract void setDBConnections(int connections);
+    public abstract boolean setMaxDBConnections(String connections);
 
-    public void setMaxThreadsSize(int threads) {
+    public boolean setMaxThreadsSize(int threads) {
         threadsNo = threads;
         executor.setMaximumPoolSize(threads);
         conf.setProperty(ConfigTypes.Service, "service.max.thread", String.valueOf(threads));
+        return true;
     }
 
-    public void resume() {
+    public boolean resume() {
         try {
             requestConsumerTag = requestQueueChannel.basicConsume(REQUEST_QUEUE_NAME, false, requestConsumer);
             responseConsumerTag =responseQueueChannel.basicConsume(RESPONSE_QUEUE_NAME, false, responseConsumer);
+            return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
             Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
+            return false;
         }
 //        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Service Resumed"));
     }
 
-    public void freeze() {
+    public boolean freeze() {
         try {
             requestQueueChannel.basicCancel(requestConsumerTag);
             responseQueueChannel.basicCancel(responseConsumerTag);
-            System.out.println("FREEZING");
+            return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
+            return false;
 //            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
         }
 //        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Service Freezed"));
     }
 
     //TODO CHECK IF FILE EXISTS FIRST IF THERE THEN LOG AN ERROR
-    public void add_command(String commandName, String source_code) {
+    public boolean add_command(String commandName, String source_code) {
         FileWriter fileWriter;
         try {
-            File idea = new File("/target/classes/" + RPC_QUEUE_NAME + "Commands/" + commandName + ".class");
-            if (idea.exists()) {
+
+            // Save source in .java file.
+            File root = new File("/home/vm/Desktop/scalable-tinder/Backend/target/classes/Commands/" + RPC_QUEUE_NAME + "Commands"); // On Windows running on C:\, this is C:\java.
+            File sourceFile = new File(root, commandName+".java");
+            if (sourceFile.exists()) {
+                LOGGER.log(Level.SEVERE,commandName + " Already Exists please use update");
 //                Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, commandName + " Already exists please use update"));
-                return;
+                return false;
             }
-            fileWriter = new FileWriter(idea);
-            BufferedWriter bufferedWriter =
-                    new BufferedWriter(fileWriter);
-            bufferedWriter.write(source_code);
-            bufferedWriter.close();
+            sourceFile.getParentFile().mkdirs();
+            Files.write(sourceFile.toPath(), source_code.getBytes(StandardCharsets.UTF_8));
+
+            // Compile source file.
+            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+            
+            compiler.run(null, null, null, sourceFile.getPath());
+
+            
+            boolean deleted = Files.deleteIfExists(sourceFile.toPath());
+            return true;
+
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
             Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
+            return false;
         }
 
     }
 
     public boolean delete_command(String commandName) {
         try {
-            Files.deleteIfExists(Paths.get("/target/classes/" + RPC_QUEUE_NAME + "Commands/" + commandName + ".class"));
+            if(!Files.deleteIfExists(Paths.get("/home/vm/Desktop/scalable-tinder/Backend/target/classes/Commands/" + RPC_QUEUE_NAME + "Commands/" + commandName + ".class"))){
+                LOGGER.log(Level.SEVERE,"No such file/directory exists");
+                
+                return false;
+            }
+            last_com=null;
+            System.gc();
+            System.runFinalization();
         } catch (NoSuchFileException e) {
-            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, "No such file/directory exists"));
+            LOGGER.log(Level.SEVERE,"No such file/directory exists");
             return false;
         } catch (DirectoryNotEmptyException e) {
-            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, "Directory is not empty."));
+            LOGGER.log(Level.SEVERE,"Directory is not empty.");
             return false;
         } catch (IOException e) {
-            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, "Invalid permissions."));
+            LOGGER.log(Level.SEVERE,"Invalid permissions.");
             return false;
-        }
-//        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Deletion successful."));
+        } 
+        LOGGER.log(Level.INFO, "Deletion successful.");
         return true;
     }
 
-    public void update_command(String commandName, String filePath) {
+    public boolean update_command(String commandName, String filePath) {
         if(delete_command(commandName))
-            add_command(commandName, filePath);
+            return add_command(commandName, filePath);
+        return false;
     }
 
     public void setArangoInstance(ArangoInstance arangoInstance) {
@@ -335,15 +393,27 @@ public abstract class ServiceControl {    // This class is responsible for Manag
     }
 
 
-
-    public void createNoSQLDB(){
+    public void createNoSQLDB() {
 
         arangoInstance.initializeDB();
     }
 
-    public void dropNoSQLDB(){
+    public void dropNoSQLDB() {
 
         arangoInstance.dropDB();
+    }
+    public static Level mapToLevel(String level){
+        switch (level.toLowerCase(Locale.ROOT)){
+            case "error","severe":return Level.SEVERE;
+            case "info":return Level.INFO;
+            case "warning": return Level.WARNING;
+            case "config": return Level.CONFIG;
+            default: return  Level.ALL;
+        }
+    }
+    public boolean set_log_level(String level){
+        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).setLevel(mapToLevel(level));
+        return true;
     }
 //
 //
