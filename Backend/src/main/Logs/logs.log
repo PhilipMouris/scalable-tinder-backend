@@ -1,0 +1,122 @@
+May 01, 2021 2:46:34 AM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8021/
+May 01, 2021 2:46:34 AM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8020/
+May 01, 2021 2:46:36 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 01, 2021 2:46:36 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 01, 2021 2:46:36 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 01, 2021 2:46:36 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 01, 2021 2:46:36 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 01, 2021 2:46:36 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 01, 2021 2:46:36 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 01, 2021 2:46:36 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 01, 2021 2:46:37 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 01, 2021 2:46:37 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 01, 2021 2:46:37 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 01, 2021 2:46:37 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 01, 2021 2:46:52 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"48","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn"}to: User-Request
+May 01, 2021 2:46:52 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: fd3af9b9-ad28-42de-b317-27022dc0b9e2, on Queue : User-Request
+May 01, 2021 2:46:52 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 01, 2021 2:46:52 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:SignIn
+May 01, 2021 2:46:52 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@6fa9c7c5
+May 01, 2021 2:46:52 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: fd3af9b9-ad28-42de-b317-27022dc0b9e2, on Queue : User-Response
+May 01, 2021 2:46:52 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"48","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn","status":"_200","response":{"success":"true"}}
+May 01, 2021 2:46:52 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 01, 2021 2:46:52 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 01, 2021 2:46:52 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"success":"true"}
+May 01, 2021 2:47:17 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"48","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn"}to: User-Request
+May 01, 2021 2:47:17 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: a2c8a5d8-685d-4a0c-9434-5c0e4839808b, on Queue : User-Request
+May 01, 2021 2:47:17 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 01, 2021 2:47:17 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:SignIn
+May 01, 2021 2:47:17 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@408a613c
+May 01, 2021 2:47:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: a2c8a5d8-685d-4a0c-9434-5c0e4839808b, on Queue : User-Response
+May 01, 2021 2:47:18 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"48","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn","status":"_200","response":{"success":"true"}}
+May 01, 2021 2:47:18 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 01, 2021 2:47:18 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 01, 2021 2:47:18 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"success":"true"}
+May 01, 2021 2:47:45 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"application":"chat","Headers":{},"body":{"application":"chat","body":{"image":"dd","fromUserId":"1","text":"ping","toUserId":"2"},"command":"sendMessage"},"command":"sendMessage"}to: chat-Request
+May 01, 2021 2:47:47 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"application":"chat","Headers":{},"body":{"application":"chat","body":{"fromUserId":"2","text":"pong","toUserId":"1"},"command":"sendMessage"},"command":"sendMessage"}to: chat-Request
+May 01, 2021 2:47:51 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"application":"chat","Headers":{},"body":{"application":"chat","body":{"image":"dd","fromUserId":"1","text":"ping","toUserId":"2"},"command":"sendMessage"},"command":"sendMessage"}to: chat-Request
+May 01, 2021 2:47:53 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"application":"chat","Headers":{},"body":{"application":"chat","body":{"fromUserId":"2","text":"pong","toUserId":"1"},"command":"sendMessage"},"command":"sendMessage"}to: chat-Request
+May 01, 2021 2:47:55 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"application":"chat","Headers":{},"body":{"application":"chat","body":{"image":"dd","fromUserId":"1","text":"ping","toUserId":"2"},"command":"sendMessage"},"command":"sendMessage"}to: chat-Request
+May 01, 2021 2:48:00 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"application":"chat","Headers":{},"body":{"application":"chat","body":{"fromUserId":"2","text":"pong","toUserId":"1"},"command":"sendMessage"},"command":"sendMessage"}to: chat-Request
+May 01, 2021 2:48:02 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"application":"chat","Headers":{},"body":{"application":"chat","body":{"image":"dd","fromUserId":"1","text":"ping","toUserId":"2"},"command":"sendMessage"},"command":"sendMessage"}to: chat-Request
+May 01, 2021 2:48:09 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"48","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn"}to: User-Request
+May 01, 2021 2:48:09 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 0ef79e22-7f1c-4218-94a2-1e1914a8de6b, on Queue : User-Request
+May 01, 2021 2:48:09 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   3
+May 01, 2021 2:48:09 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:SignIn
+May 01, 2021 2:48:09 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@6425f35c
+May 01, 2021 2:48:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 0ef79e22-7f1c-4218-94a2-1e1914a8de6b, on Queue : User-Response
+May 01, 2021 2:48:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"48","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn","status":"_200","response":{"success":"true"}}
+May 01, 2021 2:48:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 01, 2021 2:48:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   3
+May 01, 2021 2:48:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"success":"true"}
+May 01, 2021 2:48:17 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"48","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn"}to: User-Request
+May 01, 2021 2:48:17 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 6cabb86b-8caf-4a76-bdb7-306f74a67ca9, on Queue : User-Request
+May 01, 2021 2:48:17 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   4
+May 01, 2021 2:48:17 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:SignIn
+May 01, 2021 2:48:17 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@49f974c3
+May 01, 2021 2:48:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 6cabb86b-8caf-4a76-bdb7-306f74a67ca9, on Queue : User-Response
+May 01, 2021 2:48:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"48","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn","status":"_200","response":{"success":"true"}}
+May 01, 2021 2:48:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 01, 2021 2:48:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   4
+May 01, 2021 2:48:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"success":"true"}

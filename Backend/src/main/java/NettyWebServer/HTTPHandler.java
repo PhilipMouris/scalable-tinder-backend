@@ -10,9 +10,14 @@ import io.netty.util.AttributeKey;
 import io.netty.util.CharsetUtil;
 import org.json.JSONObject;
 
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
 import static io.netty.handler.codec.http.HttpResponseStatus.*;
@@ -20,6 +25,7 @@ import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 public class HTTPHandler extends ChannelInboundHandlerAdapter {
     private HttpRequest request;
+    private final Logger LOGGER = Logger.getLogger(HTTPHandler.class.getName()) ;
 
     public void channelReadComplete(ChannelHandlerContext ctx) {
         ctx.flush();
@@ -30,6 +36,10 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         JSONObject fullRequest = new JSONObject();
 //        System.out.println(msg);
+        if(msg instanceof HttpServletRequest){
+            HttpServletRequest req=(HttpServletRequest) msg;
+            System.out.println("IP is "+req.getRemoteAddr());
+        }
         if (msg instanceof HttpRequest) {
             HttpRequest request = this.request = (HttpRequest) msg;
             if (request.uri().contains("/chat/update")) {
@@ -134,7 +144,8 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 //        System.out.println("ALO");
-//        cause.printStackTrace();
+//        cause.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+        
         FullHttpResponse response = new DefaultFullHttpResponse(
                 HTTP_1_1, OK,
                 Unpooled.copiedBuffer("Not KeepAlive", CharsetUtil.UTF_8));

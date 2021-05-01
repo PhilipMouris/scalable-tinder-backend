@@ -10,12 +10,15 @@ import MediaServer.MinioInstance;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserService extends ServiceControl {
 
     public UserService(int ID) {
         super(ID);
     }
+    private final Logger LOGGER = Logger.getLogger(UserService.class.getName()) ;
 
     @Override
     public void init() {
@@ -34,14 +37,14 @@ public class UserService extends ServiceControl {
             StringWriter errors = new StringWriter();
             e.printStackTrace(new PrintWriter(errors));
 //            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         }
     }
 
 
     @Override
-    public void setDBConnections(int connections) {
-        postgresDB.setDbMaxConnections(connections + "");
+    public boolean setMaxDBConnections(String connections){
+        return postgresDB.setDbMaxConnections(connections+"");
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 

@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
 
@@ -31,6 +33,8 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
     private int serverPort = config.getServerQueuePort();
     private String serverUser = config.getServerQueueUserName();
     private String serverPass = config.getServerQueuePass();
+    private final Logger LOGGER = Logger.getLogger(RequestHandler.class.getName()) ;
+
     private Channel senderChannel;
 
     RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO) {
@@ -85,7 +89,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                 channelHandlerContext.fireChannelRead(o);
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
             String responseMessage = "NO JSON PROVIDED";
             FullHttpResponse response = new DefaultFullHttpResponse(
                     HttpVersion.HTTP_1_1,
@@ -104,8 +108,9 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                     .correlationId(corrId)
                     .replyTo(RPC_QUEUE_REPLY_TO)
                     .build();
-            System.out.println("Sent   : " + jsonRequest.toString() + "to: " +appName+"-Request");
-            System.out.println();
+//            System.out.println("Sent   : " + jsonRequest.toString() + "to: " +appName+"-Request");
+            LOGGER.log(Level.INFO,"Sent   : " + jsonRequest.toString() + "to: " +appName+"-Request");
+//            System.out.println();
 
             ConnectionFactory connectionFactory = new ConnectionFactory();
             connectionFactory.setHost(serverHost);
@@ -120,11 +125,15 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                 
                 channel.basicPublish("", appName + "-Request", props, jsonRequest.toString().getBytes());
             }catch(IOException | TimeoutException e) {
-                e.printStackTrace();
+                e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+                
+                LOGGER.log(Level.SEVERE,e.getMessage(),e);
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+
         }
     }
 
@@ -138,6 +147,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 //        System.out.println("ALO ERORR");
         cause.printStackTrace();
+        LOGGER.log(Level.SEVERE,cause.getMessage(),cause);
         ctx.writeAndFlush(new DefaultFullHttpResponse(
                 HttpVersion.HTTP_1_1,
                 HttpResponseStatus.INTERNAL_SERVER_ERROR,
