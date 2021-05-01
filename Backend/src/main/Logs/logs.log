@@ -1,358 +1,48 @@
-May 01, 2021 4:17:59 AM NettyWebServer.NettyServer start
+May 01, 2021 4:29:30 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
-May 01, 2021 4:17:59 AM NettyWebServer.NettyServer start
+May 01, 2021 4:29:30 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8020/
-May 01, 2021 4:17:59 AM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:29:31 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:17:59 AM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:29:31 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:17:59 AM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:29:32 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:17:59 AM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:29:32 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:17:59 AM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:29:32 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:17:59 AM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:29:32 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:18:00 AM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:29:32 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:18:00 AM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:29:32 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:18:00 AM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:29:32 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 01, 2021 4:18:00 AM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:29:32 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 01, 2021 4:18:00 AM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:29:33 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 01, 2021 4:18:00 AM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:29:33 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 01, 2021 4:18:02 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"355","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},"application":"Moderator","limit":10,"page":0,"command":"CreateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CreateUserData"}to: Moderator-Request
-May 01, 2021 4:18:02 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 160b552b-0319-4243-ba86-bc4d9c58c62a, on Queue : Moderator-Request
-May 01, 2021 4:18:02 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 01, 2021 4:18:02 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateUserData
-May 01, 2021 4:18:02 AM Interface.ServiceControl$2 handleDelivery
-SEVERE: Commands.ModeratorCommands.CreateUserData
-java.lang.ClassNotFoundException: Commands.ModeratorCommands.CreateUserData
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:606)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:377)
-	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:230)
-	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
-	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 01, 2021 4:18:02 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 01, 2021 4:18:02 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 01, 2021 4:18:25 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"350","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},"application":"User","limit":10,"page":0,"command":"CreateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CreateUserData"}to: User-Request
-May 01, 2021 4:18:25 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 1608ca7c-b7dd-42f2-810a-2dfa9ba25bb5, on Queue : User-Request
-May 01, 2021 4:18:25 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 01, 2021 4:18:25 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateUserData
-May 01, 2021 4:18:25 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@7d910e6d
-May 01, 2021 4:18:25 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 1608ca7c-b7dd-42f2-810a-2dfa9ba25bb5, on Queue : User-Response
-May 01, 2021 4:18:25 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"350","Content-Type":"application/json"},"response":{"id":"37711"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},"application":"User","limit":10,"page":0,"command":"CreateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CreateUserData","status":"_200"}
-May 01, 2021 4:18:25 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 01, 2021 4:18:25 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 01, 2021 4:18:25 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"id":"37711"}
-May 01, 2021 4:18:43 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"350","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"37711"},"application":"User","limit":10,"page":0,"command":"DeleteUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"DeleteUserData"}to: User-Request
-May 01, 2021 4:18:43 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: d2b033ac-521b-4dbf-a3ae-948d6f362344, on Queue : User-Request
-May 01, 2021 4:18:43 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 01, 2021 4:18:43 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:DeleteUserData
-May 01, 2021 4:18:43 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@62984d89
-May 01, 2021 4:18:43 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.UserCommands.DeleteUserData Executed Successfully
-May 01, 2021 4:18:43 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: d2b033ac-521b-4dbf-a3ae-948d6f362344, on Queue : User-Response
-May 01, 2021 4:18:43 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"350","Content-Type":"application/json"},"response":{"record":{"rev":"_cQWkHue---","id":"users/37711","key":"37711"}},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"37711"},"application":"User","limit":10,"page":0,"command":"DeleteUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"DeleteUserData","status":"_200"}
-May 01, 2021 4:18:43 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 01, 2021 4:18:43 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 01, 2021 4:18:43 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"record":{"rev":"_cQWkHue---","id":"users/37711","key":"37711"}}
-May 01, 2021 4:18:46 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"351","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},"application":"User","limit":10,"page":0,"command":"DeleteUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"DeleteUserData"}to: User-Request
-May 01, 2021 4:18:46 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 9879649f-ca47-4a42-8c98-a48608727cdf, on Queue : User-Request
-May 01, 2021 4:18:46 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 01, 2021 4:18:46 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:DeleteUserData
-May 01, 2021 4:18:46 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@1b506347
-May 01, 2021 4:18:46 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.UserCommands.DeleteUserData Executed Successfully
-May 01, 2021 4:18:46 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 9879649f-ca47-4a42-8c98-a48608727cdf, on Queue : User-Response
-May 01, 2021 4:18:46 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"351","Content-Type":"application/json"},"response":{},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},"application":"User","limit":10,"page":0,"command":"DeleteUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"DeleteUserData","status":"_404"}
-May 01, 2021 4:18:46 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 01, 2021 4:18:46 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 01, 2021 4:18:46 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {}
-May 01, 2021 4:18:58 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"351","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},"application":"User","limit":10,"page":0,"command":"CreateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CreateUserData"}to: User-Request
-May 01, 2021 4:18:58 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 032ef5ff-f591-463d-9248-3d0551927a29, on Queue : User-Request
-May 01, 2021 4:18:58 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 01, 2021 4:18:58 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateUserData
-May 01, 2021 4:18:58 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@75a08dcf
-May 01, 2021 4:18:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 032ef5ff-f591-463d-9248-3d0551927a29, on Queue : User-Response
-May 01, 2021 4:18:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"351","Content-Type":"application/json"},"response":{"id":"37733"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},"application":"User","limit":10,"page":0,"command":"CreateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CreateUserData","status":"_200"}
-May 01, 2021 4:18:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 01, 2021 4:18:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 01, 2021 4:18:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"id":"37733"}
-May 01, 2021 4:19:08 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"348","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},"application":"User","limit":10,"page":0,"command":"GetUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"GetUserData"}to: User-Request
-May 01, 2021 4:19:08 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 523923b4-42a9-4701-b455-b482d6348247, on Queue : User-Request
-May 01, 2021 4:19:08 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 01, 2021 4:19:08 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetUserData
-May 01, 2021 4:19:08 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@7d910e6d
-May 01, 2021 4:19:08 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.UserCommands.GetUserData Executed Successfully
-May 01, 2021 4:19:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 523923b4-42a9-4701-b455-b482d6348247, on Queue : User-Response
-May 01, 2021 4:19:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"348","Content-Type":"application/json"},"response":{},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},"application":"User","limit":10,"page":0,"command":"GetUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"GetUserData","status":"_404"}
-May 01, 2021 4:19:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 01, 2021 4:19:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 01, 2021 4:19:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {}
-May 01, 2021 4:19:20 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"331","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa"},"application":"User","limit":10,"page":0,"command":"CrateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CrateUserData"}to: User-Request
-May 01, 2021 4:19:20 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: c292a28e-2413-40b7-b410-d9166ef291d7, on Queue : User-Request
-May 01, 2021 4:19:20 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 01, 2021 4:19:20 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CrateUserData
-May 01, 2021 4:19:20 AM Interface.ServiceControl$2 handleDelivery
-SEVERE: Commands.UserCommands.CrateUserData
-java.lang.ClassNotFoundException: Commands.UserCommands.CrateUserData
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:606)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:377)
-	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:230)
-	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
-	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 01, 2021 4:19:20 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:19:20 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:19:31 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"331","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa"},"application":"User","limit":10,"page":0,"command":"CrateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CrateUserData"}to: User-Request
-May 01, 2021 4:19:31 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 976beb6e-d3aa-40a6-b111-c7b8da2ff08b, on Queue : User-Request
-May 01, 2021 4:19:31 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 01, 2021 4:19:31 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CrateUserData
-May 01, 2021 4:19:31 AM Interface.ServiceControl$2 handleDelivery
-SEVERE: Commands.UserCommands.CrateUserData
-java.lang.ClassNotFoundException: Commands.UserCommands.CrateUserData
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:606)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:377)
-	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:230)
-	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
-	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 01, 2021 4:19:31 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:19:31 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:20:13 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"331","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa"},"application":"User","limit":10,"page":0,"command":"CrateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CrateUserData"}to: User-Request
-May 01, 2021 4:20:13 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 0eb05355-2dcd-426f-9f88-d4478fcaf602, on Queue : User-Request
-May 01, 2021 4:20:13 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 01, 2021 4:20:13 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CrateUserData
-May 01, 2021 4:20:13 AM Interface.ServiceControl$2 handleDelivery
-SEVERE: Commands.UserCommands.CrateUserData
-java.lang.ClassNotFoundException: Commands.UserCommands.CrateUserData
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:606)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:377)
-	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:230)
-	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
-	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 01, 2021 4:20:13 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:20:13 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:20:27 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"342","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":22},"application":"User","limit":10,"page":0,"command":"CrateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CrateUserData"}to: User-Request
-May 01, 2021 4:20:27 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: cae343a3-7ca7-4cca-b881-907ae9f45a26, on Queue : User-Request
-May 01, 2021 4:20:27 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 01, 2021 4:20:27 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CrateUserData
-May 01, 2021 4:20:27 AM Interface.ServiceControl$2 handleDelivery
-SEVERE: Commands.UserCommands.CrateUserData
-java.lang.ClassNotFoundException: Commands.UserCommands.CrateUserData
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:606)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:377)
-	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:230)
-	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
-	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 01, 2021 4:20:27 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:20:27 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:20:46 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"331","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa"},"application":"User","limit":10,"page":0,"command":"CrateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CrateUserData"}to: User-Request
-May 01, 2021 4:20:46 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 31694897-e497-41a3-b106-75271364d771, on Queue : User-Request
-May 01, 2021 4:20:46 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 01, 2021 4:20:46 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CrateUserData
-May 01, 2021 4:20:46 AM Interface.ServiceControl$2 handleDelivery
-SEVERE: Commands.UserCommands.CrateUserData
-java.lang.ClassNotFoundException: Commands.UserCommands.CrateUserData
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:606)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:377)
-	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:230)
-	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
-	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 01, 2021 4:20:46 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:20:46 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:20:58 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"332","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa"},"application":"User","limit":10,"page":0,"command":"CreateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CreateUserData"}to: User-Request
-May 01, 2021 4:20:58 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 93ffb457-a528-43b2-b26a-b11d19f46508, on Queue : User-Request
-May 01, 2021 4:20:58 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 01, 2021 4:20:58 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateUserData
-May 01, 2021 4:20:58 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@62984d89
-May 01, 2021 4:20:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 93ffb457-a528-43b2-b26a-b11d19f46508, on Queue : User-Response
-May 01, 2021 4:20:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"332","Content-Type":"application/json"},"response":{"id":"37808"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa"},"application":"User","limit":10,"page":0,"command":"CreateUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"CreateUserData","status":"_200"}
-May 01, 2021 4:20:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 01, 2021 4:20:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 01, 2021 4:20:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"id":"37808"}
-May 01, 2021 4:21:21 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"345","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},"application":"User","limit":10,"page":0,"command":"GetUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"GetUserData"}to: User-Request
-May 01, 2021 4:21:21 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: d67d5317-bb13-4816-9337-267d96133444, on Queue : User-Request
-May 01, 2021 4:21:21 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 01, 2021 4:21:21 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetUserData
-May 01, 2021 4:21:21 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@1b506347
-May 01, 2021 4:21:21 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.UserCommands.GetUserData Executed Successfully
-May 01, 2021 4:21:21 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: d67d5317-bb13-4816-9337-267d96133444, on Queue : User-Response
-May 01, 2021 4:21:21 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"345","Content-Type":"application/json"},"response":{"record":{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","_key":"37808"}},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},"application":"User","limit":10,"page":0,"command":"GetUserData","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"GetUserData","status":"_200"}
-May 01, 2021 4:21:21 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 01, 2021 4:21:21 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 01, 2021 4:21:21 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"record":{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","_key":"37808"}}
-May 01, 2021 4:21:39 AM NettyWebServer.RequestHandler transmitRequest
+May 01, 2021 4:29:36 AM NettyWebServer.RequestHandler transmitRequest
 INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"354","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},"application":"User","limit":10,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"GetUserDataPaginated"}to: User-Request
-May 01, 2021 4:21:39 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 76e40278-daeb-49b6-abe2-b72d635c0b37, on Queue : User-Request
-May 01, 2021 4:21:39 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 01, 2021 4:21:39 AM Interface.ServiceControl$2 handleDelivery
+May 01, 2021 4:29:36 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: c22ac830-a435-4bb2-a8cb-e5c6d35c24df, on Queue : User-Request
+May 01, 2021 4:29:36 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 01, 2021 4:29:36 AM Interface.ServiceControl$2 handleDelivery
 INFO: className:GetUserDataPaginated
-May 01, 2021 4:21:39 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@1b506347
-May 01, 2021 4:21:40 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 76e40278-daeb-49b6-abe2-b72d635c0b37, on Queue : User-Response
-May 01, 2021 4:21:40 AM Interface.ServiceControl$1 handleDelivery
+May 01, 2021 4:29:36 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@37562413
+May 01, 2021 4:29:36 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: c22ac830-a435-4bb2-a8cb-e5c6d35c24df, on Queue : User-Response
+May 01, 2021 4:29:36 AM Interface.ServiceControl$1 handleDelivery
 INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"354","Content-Type":"application/json"},"response":{"userDataArray":[{"_key":"25725"},{"bio":"HI TEHEREss","id":"25725","_key":"27314"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410","_key":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113","_key":"37733"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","_key":"37808"}]},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":143,"age":1242},"user_id":17,"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},"application":"User","limit":10,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATE","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":12421}},"Uri":"/","command":"GetUserDataPaginated","status":"_200"}
-May 01, 2021 4:21:40 AM Interface.ServiceControl$1 handleDelivery
+May 01, 2021 4:29:36 AM Interface.ServiceControl$1 handleDelivery
 INFO: Application    :   User
-May 01, 2021 4:21:40 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 01, 2021 4:21:40 AM Interface.ServiceControl$1 handleDelivery
+May 01, 2021 4:29:36 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 01, 2021 4:29:36 AM Interface.ServiceControl$1 handleDelivery
 INFO: Response   :   {"userDataArray":[{"_key":"25725"},{"bio":"HI TEHEREss","id":"25725","_key":"27314"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410","_key":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113","_key":"37733"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","_key":"37808"}]}

@@ -75,7 +75,6 @@ public abstract class ConcreteCommand extends Command {
             jsonBodyObject = new JSONObject(jsonString);
             message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
             HttpResponseTypes status = doCommand();
-            System.out.println(status + "STATUS");
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);
             jsonBodyObject.put("status",status);
@@ -157,7 +156,6 @@ public abstract class ConcreteCommand extends Command {
         RedisConnection.getInstance().setKey(id, data.toString());
         responseJson = response;
         LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
-        System.out.println(data + "DATAA");
         return sqlStatus(data);
         }
         catch (SQLException e) {
@@ -201,7 +199,6 @@ public abstract class ConcreteCommand extends Command {
             }
             LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
             responseJson.put(outputName, dbResponse);
-            System.out.println(dbResponse + "DBB");
             if(dbResponse==null) return HttpResponseTypes._404;
             return HttpResponseTypes._200;
         }

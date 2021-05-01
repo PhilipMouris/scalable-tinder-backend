@@ -7,10 +7,5 @@ sudo chown -R arangodb:arangodb /var/lib/arangodb3-apps
 sudo chown /etc/haproxy/haproxy.cfg
 sudo systemctl start arangodb3
 sudo haproxy -f /etc/haproxy/haproxy.cfg
-<<<<<<< HEAD
 sudo redis-server src/main/resources/redis.conf
-sudo systemctl start ceph.target
-=======
-sudo redis-server --daemonize yes
->>>>>>> e19d2841c1136831c0cabaaf2729f93cb75ced80
 sudo rabbitmq-server

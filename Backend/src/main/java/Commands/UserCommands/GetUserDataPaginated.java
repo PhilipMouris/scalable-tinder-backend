@@ -34,9 +34,6 @@ public class GetUserDataPaginated extends ConcreteCommand {
             cursor.forEachRemaining(aDocument -> {
                 System.out.println("Key: " + aDocument.getProperties());
                 UserData userData=gson.fromJson(gson.toJson(aDocument.getProperties()),UserData.class);
-                if(userData.getPreferences() !=null) {
-                    System.out.println(userData.getPreferences().age + "AGE");
-                }
                 userData.set_key(aDocument.getKey());
                 userDataList.add(userData);
             });
@@ -47,7 +44,6 @@ public class GetUserDataPaginated extends ConcreteCommand {
         JSONObject response = new JSONObject();
         response.put("userDataArray", new JSONArray(gson.toJson(userDataList)));
         responseJson = response;
-        System.out.println(response);
         return  HttpResponseTypes._200;
     }
     @Override

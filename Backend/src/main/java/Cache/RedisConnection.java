@@ -50,7 +50,6 @@ public class RedisConnection {
          }
      }
      public static RedisConnection getInstance(){
-         System.out.println(redis + "REDIS");
          return redis;
      }
 
