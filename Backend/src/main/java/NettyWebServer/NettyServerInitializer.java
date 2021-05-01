@@ -11,8 +11,10 @@ import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.http.cors.CorsConfig;
 import io.netty.handler.codec.http.cors.CorsConfigBuilder;
 import io.netty.handler.codec.http.cors.CorsHandler;
+import io.netty.handler.ssl.SslHandler;
 import org.json.JSONObject;
 
+import javax.net.ssl.SSLEngine;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -56,6 +58,7 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel arg0) {
+
         CorsConfig corsConfig = CorsConfigBuilder.forAnyOrigin()
                 .allowedRequestHeaders("X-Requested-With", "Content-Type", "Content-Length")
                 .allowedRequestMethods(HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.OPTIONS,HttpMethod.HEAD)
@@ -67,6 +70,9 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
         p.addLast(new HttpObjectAggregator(65536));
         p.addLast(new HTTPHandler());
         p.addLast("MQ", new NettyWebServer.RequestHandler(senderChannel, uuid, RPC_QUEUE_REPLY_TO, RPC_QUEUE_SEND_TO));
+        p.addLast("aggregator", new HttpObjectAggregator(8388608)); // 8MB
+        //pipeline.addLast("chunkedWriter", new ChunkedWriteHandler());
+        p.addLast("mediaHandler", new HttpStaticFileServerHandler());
     }
 
     private void establishLoadBalancerConnection() {
