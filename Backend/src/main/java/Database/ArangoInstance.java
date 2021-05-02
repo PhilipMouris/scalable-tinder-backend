@@ -159,6 +159,14 @@ import java.util.logging.Logger;
            return  new JSONArray(stringData);
         }
 
+        public String createNotificaiton(int userID,String type,String title,String body){
+            //TODO: FIND user data -> get tokens -> send with fb
+            Notification notification = new Notification(userID, type,title,body);
+            System.out.println(notification.toString() + "STRING");
+            return insert("notifications", notification);
+
+        }
+
 
 
         public void initializeDB() {
