@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +52,7 @@ public abstract class ConcreteCommand extends Command {
     protected String model;
     protected String collection;
     protected Boolean useCache=false;
+    protected Object filterParams;
     
     private final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
 
@@ -76,6 +78,7 @@ public abstract class ConcreteCommand extends Command {
             message = new Message();
             jsonBodyObject = new JSONObject(jsonString);
             message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
+            filterParams = message.getParameter("filter") ==null? new JSONObject(): message.getParameter("filter");
             HttpResponseTypes status = doCommand();
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);
@@ -200,7 +203,7 @@ public abstract class ConcreteCommand extends Command {
                 case "update":
                     dbResponse  = ArangoInstance.update(collection,parameters.get(0),parameters.get(1));
                 case "findAll":
-                    dbArrayResponse = ArangoInstance.findAll(collection,parameters.get(0),parameters.get(1),model);
+                    dbArrayResponse = ArangoInstance.findAll(collection,parameters.get(0),parameters.get(1),model, filterParams);
             }
             LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
             responseJson.put(outputName, dbResponse==null?dbArrayResponse:dbResponse);
