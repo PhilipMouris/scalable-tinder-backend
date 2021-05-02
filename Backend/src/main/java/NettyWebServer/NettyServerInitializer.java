@@ -74,7 +74,7 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
         p.addLast("MQ", new NettyWebServer.RequestHandler(senderChannel, uuid, RPC_QUEUE_REPLY_TO, RPC_QUEUE_SEND_TO));
         p.addLast("aggregator", new HttpObjectAggregator(8388608)); // 8MB
         //pipeline.addLast("chunkedWriter", new ChunkedWriteHandler());
-        p.addLast("mediaHandler", new MediaHandler());
+//        p.addLast("mediaHandler", new MediaHandler());
         p.addLast(new WebSocketServerProtocolHandler("/chat/update"));
         p.addLast(new TextWebSocketFrameHandler());
 

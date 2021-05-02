@@ -23,7 +23,6 @@ import io.netty.handler.codec.http.multipart.HttpDataFactory;
 import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder;
 import io.netty.handler.codec.http.multipart.InterfaceHttpData;
 import io.netty.util.CharsetUtil;
-
 import java.io.*;
 import java.net.URI;
 import java.util.List;
@@ -289,7 +288,7 @@ public class HttpStaticFileServerHandler extends SimpleChannelInboundHandler<Ful
     private void writeHttpData(InterfaceHttpData data, ChannelHandlerContext ctx) {
             try {
                 JSONObject json=new JSONObject();
-                String fileName=minio.uploadFile(data,"image");
+//                String fileName=minio.uploadFile((byte[])data,"image");
                 sendUploadedFileName(json, ctx);
             }
              catch(Exception e) {
