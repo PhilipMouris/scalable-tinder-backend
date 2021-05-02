@@ -22,7 +22,6 @@ public class RunBackEnd {
             run("mQinstance");
             services = new ServicesType[]{ServicesType.user,ServicesType.moderator};
             run("controller");
-            new RedisConnection();
     }
     private static int getInitialInstanceNum(ServicesType serviceName){
         Config config = Config.getInstance();
