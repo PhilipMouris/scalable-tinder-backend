@@ -1,88 +1,47 @@
 package Models;
 
 import com.arangodb.velocypack.annotations.SerializedName;
+import org.json.JSONObject;
 
 import java.io.Serializable;
 
 public class Message implements Serializable {
-    private String method;
-    private String command;
-    private int page;
+    private JSONObject parameters;
 
-    public int getPage() {
-        return page;
+    public JSONObject getParameters() {
+        return parameters;
     }
 
-    public void setPage(int page) {
-        this.page = page;
+    public void setParameters(JSONObject parameters){
+        this.parameters = parameters;
     }
 
-    public int getLimit() {
-        return limit;
+    public Object getParameter(String key){
+        if(key.contains(".")) return getParameter(key, parameters);
+        return parameters.has(key)? parameters.get(key): null;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public Object getParameter(String key, JSONObject inputParams){
+       String[] splitKeys = key.split("\\.");
+       if(!inputParams.has(splitKeys[0])) return null;
+       Object currentObject = inputParams.get(splitKeys[0]);
+       if(splitKeys.length==1) return  currentObject;
+       JSONObject newParams = new JSONObject(currentObject.toString());
+       int spliceIndex = splitKeys[0].length() + 1;
+       return getParameter(key.substring(spliceIndex), newParams);
     }
 
-    private int limit;
-
-
-    @SerializedName("userData")
-    private UserData userData;
-    private BanData banData;
-
-
-    public BanData getBanData() {
-        return banData;
+    public String getParameterValues(String[] keys){
+        String values = "";
+        for(int i =0;i<keys.length;i++){
+            values += getParameter(keys[i]) + ",";
+        }
+        return values;
     }
 
-    public void setBanData(BanData banData) {
-        this.banData = banData;
-    }
 
-    private String userID;
 
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-
-    private String bio;
-
-    public UserData getUserData() {
-        return userData;
-    }
-
-    public void setUserData(UserData userData) {
-        this.userData = userData;
-    }
-    
-
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    public String getCommand() {
-        return command;
-    }
-
-    public void setCommand(String command) {
-        this.command = command;
+    public String getStringParameters(){
+        return parameters.toString();
     }
 }

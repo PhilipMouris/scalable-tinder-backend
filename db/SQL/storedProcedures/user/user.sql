@@ -1,5 +1,4 @@
-
--- DROP TYPE IF EXISTS userPublicData;
+DROP TYPE IF EXISTS userPublicData;
 CREATE TYPE userPublicData AS(
     id INT,
 	email VARCHAR,
@@ -9,7 +8,7 @@ CREATE TYPE userPublicData AS(
 
 );
 
--- DROP TYPE IF EXISTS userProfile
+DROP TYPE IF EXISTS userProfile;
 CREATE TYPE userProfile AS(
     id INT,
 	email VARCHAR,
@@ -20,7 +19,7 @@ CREATE TYPE userProfile AS(
 );
 
 
---DROP FUNCTION IF EXISTS  uspSignUp;
+DROP FUNCTION IF EXISTS  uspSignUp;
 CREATE OR REPLACE FUNCTION uspSignUp(
 	_email VARCHAR(200),
 	"_password" VARCHAR(200),
@@ -41,7 +40,7 @@ END;$$
 
 -- SELECT * FROM uspSignUp('streakfull@gmail.com','zaq12wsx','youssef','sherif')
 
---DROP  FUNCTION  IF EXISTS  uspLOGIN
+DROP  FUNCTION  IF EXISTS  uspLOGIN;
 CREATE OR REPLACE FUNCTION uspLogin(
 	_email VARCHAR(200),
 	"_password" VARCHAR(200)
@@ -61,7 +60,7 @@ END;$$
 
 
 
---DROP  FUNCTION  IF EXISTS  uspDeleteProfile
+DROP  FUNCTION  IF EXISTS  uspDeleteProfile;
 CREATE OR REPLACE FUNCTION uspDeleteProfile(
 	_id INT
 ) RETURNS INT
@@ -82,7 +81,8 @@ END;$$
 
 
 
---DROP  FUNCTION  IF EXISTS  uspEditAccountData;
+DROP  FUNCTION  IF EXISTS  uspEditAccountData;
+
 CREATE OR REPLACE FUNCTION uspEditAccountData(
 	_id int,
 	_email VARCHAR(200),
@@ -107,7 +107,7 @@ END;$$
 
 --SELECT * FROM uspEditAccountData(18,'test@gmail.com', null,'updateddd');
 
---DROP  FUNCTION  IF EXISTS  uspEditPassword;
+DROP  FUNCTION  IF EXISTS  uspEditPassword;
 CREATE OR REPLACE FUNCTION uspEditPassword(
     _id int,
 	old_password VARCHAR(200),
@@ -129,7 +129,7 @@ END;$$
 --SELECT * FROM uspEditPassword(18,'psps','sss');
 
 
--- DROP  FUNCTION  IF EXISTS  uspViewProfile;
+DROP  FUNCTION  IF EXISTS  uspViewProfile;
 CREATE OR REPLACE FUNCTION uspViewProfile(
 	_id int
 ) RETURNS userProfile
@@ -138,7 +138,6 @@ AS $$
 DECLARE
     user_profile userProfile;
 BEGIN
-
 	SELECT id, email, first_name, last_name,is_premium From public."users" AS u
 	WHERE id = _id
 	INTO user_profile;

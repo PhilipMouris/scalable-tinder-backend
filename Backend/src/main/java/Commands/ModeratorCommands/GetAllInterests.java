@@ -1,18 +1,15 @@
 package Commands.ModeratorCommands;
-
-import Controller.ControllerAdapterHandler;
-import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
 
-public class GetAllBans extends ConcreteCommand {
+public class GetAllInterests extends ConcreteCommand {
     @Override
     public void setParameters() {
         // Name of the stored procedure
-        storedProcedure = "\"uspReadAllBans\"";
+        storedProcedure = "uspViewInterests";
         // parameters MUST BE IN ORDER of usp definition
         inputParams = new String[]{"page", "limit"};
         // Defaults to "record" Not required
-        outputName = "bans";
+        outputName = "interests";
         useCache=true;
     }
 }
