@@ -12,7 +12,7 @@ public class SignIn extends ConcreteCommand {
         String res = true + "";
         JSONObject response  = new JSONObject();
         response.put("success",res);
-        responseJson = jsonParser.parse(response.toString());
+        //responseJson = jsonParser.parse(response.toString());
         System.out.println(response);
         return HttpResponseTypes._200;
 

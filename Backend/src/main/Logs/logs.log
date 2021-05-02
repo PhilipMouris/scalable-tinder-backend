@@ -1,28 +1,28 @@
-May 01, 2021 6:27:45 PM NettyWebServer.NettyServer start
+May 01, 2021 4:08:14 PM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
-May 01, 2021 6:27:45 PM NettyWebServer.NettyServer start
+May 01, 2021 4:08:14 PM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8020/
-May 01, 2021 6:27:50 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 6:27:51 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 6:27:51 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 6:27:51 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 6:27:51 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 6:27:51 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 6:27:51 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 6:27:51 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 6:27:52 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:08:17 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 01, 2021 6:27:52 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:08:17 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 01, 2021 6:27:52 PM Interface.ServiceControl consumeFromRequestQueue
+May 01, 2021 4:08:17 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 01, 2021 6:27:52 PM Interface.ServiceControl consumeFromResponseQueue
+May 01, 2021 4:08:17 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response

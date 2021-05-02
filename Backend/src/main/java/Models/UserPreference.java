@@ -1,7 +1,7 @@
 package Models;
 
 public class UserPreference {
-    private int age;
+    public int age;
     private double location;
 
 

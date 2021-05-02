@@ -16,8 +16,9 @@ Run all Scripts in ./db/SQL in pgAdmin or posgreSQL shell
 3. If encountered 404 error when using ```yay``` run these two commands ```sudo pacman -Syy``` and ```sudo pacman -Syu``` 
 4. Run startup bash file in /Backend and mediaServerStartup in /Backend (If first time run bash minioDownload)
 5. In terminal, run "mvn install:install-file -Dfile=/home/vm/Desktop/commons-dbcp2-2.8.0-bin/commons-dbcp2-2.8.0/commons-dbcp2-2.8.0.jar -DgroupId=org.apache.commons -DartifactId=commons-dbcp2 -Dversion=2.8.0 -Dpackaging=jar"
-6. In IntelliJ, load the maven dependencies from pom.xml (By Building the project)
-7. Run "RunBackEnd.java".  
+6. In IntelliJ, load the maven dependencies from pom.xml (By Building the project) (Go To File -> Settings -> Build ... -> Build Tools -> Maven -> Check three boxes next to automatically download )
+7. 7- In Intellij , got to File -> Invalidate Caches -> Invalidate Cache and Restart
+8. Run "RunBackEnd.java".  
 
 
 To Run Arangodb web interface go to http://localhost:8529 after running bash script (Username: root, password is empty)
