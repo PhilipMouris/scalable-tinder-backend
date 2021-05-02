@@ -120,18 +120,26 @@ import java.util.logging.Logger;
                 Map<String, Object> bindVars = new HashMap<String,Object> ();
                 bindVars.put("count",limit);
                 bindVars.put("offset", (int)page * (int)limit);
-                return executeQuery(query,bindVars,model);
+                return executeQuery(query,bindVars,model,true);
 
 
             }
             catch(Exception e){
-                  return null;
+                LOGGER.log(Level.SEVERE, e.getMessage(), e);
+                return null;
             }
 
         }
 
 
-        public JSONArray executeQuery(String query, Map<String, Object> bindVars,String model) {
+        public JSONArray executeQuery(String query, Map<String, Object> bindVars,String model,boolean useCache) {
+            String id = query + ";" + bindVars.toString();
+            if(useCache) {
+                String value = RedisConnection.getInstance().getKey(id);
+                if (value != null) {
+                    return new JSONArray(value);
+                }
+            }
             List<Object> data = new ArrayList<Object>();
             Object modelObject = getInstanceObjectFromModelName(model);
             ArangoCursor<BaseDocument> cursor = arangoDB.db(dbName).query(query, bindVars, null, BaseDocument.class);
@@ -139,7 +147,11 @@ import java.util.logging.Logger;
                 Object document = gson.fromJson(gson.toJson(aDocument.getProperties()),modelObject.getClass());
                 data.add(document);
             });
-           return  new JSONArray(gson.toJson(data));
+            String stringData = gson.toJson(data);
+            if(useCache) {
+                RedisConnection.getInstance().setKey(id, stringData);
+            }
+           return  new JSONArray(stringData);
         }
 
 
@@ -203,17 +215,7 @@ import java.util.logging.Logger;
 
 
 
-//        public CategoryDBObject getCategory(String id){
-//            // System.out.println(arangoDB.db(dbName).collection("categories").getDocument(id,Arango.CategoryDBObject.class));
-//            CategoryDBObject category =arangoDB.db(dbName).collection("categories").getDocument(id, CategoryDBObject.class);
-//            return category;
-//        }
-//        public void updateCategory(String id, CategoryDBObject category){
-//            if(getCategory(id)!=null) {
-//                arangoDB.db(dbName).collection("categories").updateDocument(id, category);
-//            }
-//
-//        }
+
 
 
 
