@@ -1,28 +1,116 @@
-May 01, 2021 4:08:14 PM NettyWebServer.NettyServer start
+May 02, 2021 1:01:59 PM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
-May 01, 2021 4:08:14 PM NettyWebServer.NettyServer start
+May 02, 2021 1:01:59 PM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8020/
-May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromRequestQueue
+May 02, 2021 1:02:00 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromResponseQueue
+May 02, 2021 1:02:00 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromRequestQueue
+May 02, 2021 1:02:00 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromResponseQueue
+May 02, 2021 1:02:00 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromRequestQueue
+May 02, 2021 1:02:00 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromResponseQueue
+May 02, 2021 1:02:00 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromRequestQueue
+May 02, 2021 1:02:00 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 01, 2021 4:08:16 PM Interface.ServiceControl consumeFromResponseQueue
+May 02, 2021 1:02:00 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 01, 2021 4:08:17 PM Interface.ServiceControl consumeFromRequestQueue
+May 02, 2021 1:02:01 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 01, 2021 4:08:17 PM Interface.ServiceControl consumeFromResponseQueue
+May 02, 2021 1:02:01 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 01, 2021 4:08:17 PM Interface.ServiceControl consumeFromRequestQueue
+May 02, 2021 1:02:01 PM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 01, 2021 4:08:17 PM Interface.ServiceControl consumeFromResponseQueue
+May 02, 2021 1:02:01 PM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 02, 2021 1:02:22 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"322","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"User","limit":20000,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetUserDataPaginated"}to: User-Request
+May 02, 2021 1:02:22 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 9bd303d5-7bdd-41be-a91a-eef1ee236e67, on Queue : User-Request
+May 02, 2021 1:02:22 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 02, 2021 1:02:22 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetUserDataPaginated
+May 02, 2021 1:02:22 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@49d5b2ec
+May 02, 2021 1:02:22 PM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.GetUserDataPaginated Executed Successfully
+May 02, 2021 1:02:22 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 9bd303d5-7bdd-41be-a91a-eef1ee236e67, on Queue : User-Response
+May 02, 2021 1:02:22 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"322","Content-Type":"application/json"},"response":{"users":[{},{"bio":"HI TEHEREss","id":"25725"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"}]},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"User","limit":20000,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetUserDataPaginated","status":"_200"}
+May 02, 2021 1:02:22 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 02, 2021 1:02:22 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 02, 2021 1:02:22 PM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"users":[{},{"bio":"HI TEHEREss","id":"25725"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"}]}
+May 02, 2021 1:02:24 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"322","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"User","limit":20000,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetUserDataPaginated"}to: User-Request
+May 02, 2021 1:02:24 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: c198d130-c2ca-4405-8551-a5b20fca1ccf, on Queue : User-Request
+May 02, 2021 1:02:24 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 02, 2021 1:02:24 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetUserDataPaginated
+May 02, 2021 1:02:24 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@5c681b68
+May 02, 2021 1:02:24 PM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.GetUserDataPaginated Executed Successfully
+May 02, 2021 1:02:24 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: c198d130-c2ca-4405-8551-a5b20fca1ccf, on Queue : User-Response
+May 02, 2021 1:02:24 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"322","Content-Type":"application/json"},"response":{"users":[{},{"bio":"HI TEHEREss","id":"25725"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"}]},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"User","limit":20000,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetUserDataPaginated","status":"_200"}
+May 02, 2021 1:02:24 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 02, 2021 1:02:24 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 02, 2021 1:02:24 PM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"users":[{},{"bio":"HI TEHEREss","id":"25725"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"}]}
+May 02, 2021 1:02:25 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"322","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"User","limit":20000,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetUserDataPaginated"}to: User-Request
+May 02, 2021 1:02:25 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 2758e679-8014-4ac9-9f2d-fa28cd5d7357, on Queue : User-Request
+May 02, 2021 1:02:25 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   3
+May 02, 2021 1:02:25 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetUserDataPaginated
+May 02, 2021 1:02:25 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@1c67b8d8
+May 02, 2021 1:02:25 PM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.GetUserDataPaginated Executed Successfully
+May 02, 2021 1:02:25 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 2758e679-8014-4ac9-9f2d-fa28cd5d7357, on Queue : User-Response
+May 02, 2021 1:02:25 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"322","Content-Type":"application/json"},"response":{"users":[{},{"bio":"HI TEHEREss","id":"25725"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"}]},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"User","limit":20000,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetUserDataPaginated","status":"_200"}
+May 02, 2021 1:02:25 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 02, 2021 1:02:25 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   3
+May 02, 2021 1:02:25 PM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"users":[{},{"bio":"HI TEHEREss","id":"25725"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"}]}
+May 02, 2021 1:02:26 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"322","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"User","limit":20000,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetUserDataPaginated"}to: User-Request
+May 02, 2021 1:02:26 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 5322fd90-3747-4f3e-87d9-223ca244d36a, on Queue : User-Request
+May 02, 2021 1:02:26 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   4
+May 02, 2021 1:02:26 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetUserDataPaginated
+May 02, 2021 1:02:26 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@7af15f1c
+May 02, 2021 1:02:26 PM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.GetUserDataPaginated Executed Successfully
+May 02, 2021 1:02:26 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 5322fd90-3747-4f3e-87d9-223ca244d36a, on Queue : User-Response
+May 02, 2021 1:02:26 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"322","Content-Type":"application/json"},"response":{"users":[{},{"bio":"HI TEHEREss","id":"25725"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"}]},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"User","limit":20000,"page":0,"command":"GetUserDataPaginated","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetUserDataPaginated","status":"_200"}
+May 02, 2021 1:02:26 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 02, 2021 1:02:26 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   4
+May 02, 2021 1:02:26 PM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"users":[{},{"bio":"HI TEHEREss","id":"25725"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"27410"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"377113"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa"},{"preferences":{"location":143,"age":1242},"bio":"HI TEHEREss UPDATE2222xsa","id":"37808"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"},{"preferences":{"location":150,"age":1000},"bio":"HI Shabab"}]}

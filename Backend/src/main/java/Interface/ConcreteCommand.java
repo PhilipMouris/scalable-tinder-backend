@@ -182,6 +182,7 @@ public abstract class ConcreteCommand extends Command {
 
             responseJson = new JSONObject();
             JSONObject dbResponse = null;
+            JSONArray dbArrayResponse = null;
             switch(type){
                 case "create":
                     String key = ArangoInstance.insert(collection, parameters.get(0));
@@ -196,10 +197,12 @@ public abstract class ConcreteCommand extends Command {
                     break;
                 case "update":
                     dbResponse  = ArangoInstance.update(collection,parameters.get(0),parameters.get(1));
+                case "findAll":
+                    dbArrayResponse = ArangoInstance.findAll(collection,parameters.get(0),parameters.get(1),model);
             }
             LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
-            responseJson.put(outputName, dbResponse);
-            if(dbResponse==null) return HttpResponseTypes._404;
+            responseJson.put(outputName, dbResponse==null?dbArrayResponse:dbResponse);
+            if(dbResponse==null && dbArrayResponse==null) return HttpResponseTypes._404;
             return HttpResponseTypes._200;
         }
         catch (Exception e) {
