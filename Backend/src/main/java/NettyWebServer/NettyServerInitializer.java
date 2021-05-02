@@ -1,6 +1,6 @@
 package NettyWebServer;
 
-import Config.Config;
+import Config.*;
 import Chat.TextWebSocketFrameHandler;
 import MediaServer.*;
 import Controller.ControllerAdapterHandler;
