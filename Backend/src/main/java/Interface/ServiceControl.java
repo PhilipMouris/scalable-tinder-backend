@@ -4,6 +4,7 @@ package Interface;
 //import Cache.UserCacheController;
 //import ClientService.Client;
 
+import Cache.RedisConnection;
 import Config.Config;
 import Config.ConfigTypes;
 import Controller.Controller;
@@ -73,6 +74,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
     private String RESPONSE_QUEUE_NAME;
     private Class last_com;
     public final Logger LOGGER = Logger.getLogger(ServiceControl.class.getName()) ;
+    protected RedisConnection redis;
 
     public ServiceControl(int ID) {
         this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadsNo);
@@ -81,6 +83,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         REQUEST_QUEUE_NAME = RPC_QUEUE_NAME + REQUEST_EXTENSION;
         RESPONSE_QUEUE_NAME = RPC_QUEUE_NAME + RESPONSE_EXTENSION;
         this.ID = ID;
+        redis = new RedisConnection();
     }
 
     public MinioInstance getMinioInstance() {
@@ -246,6 +249,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 //                        init.put("RLiveObjectService", liveObjectService);
                         init.put("ArangoInstance", arangoInstance);
                         init.put("FileUploader", minioInstance);
+                        init.put("redis", redis);
 //                        init.put("ChatArangoInstance", ChatArangoInstance);
 //                        init.put("UserCacheController", userCacheController);
                         cmd.init(init);

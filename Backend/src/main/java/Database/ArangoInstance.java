@@ -12,7 +12,7 @@ import com.arangodb.util.MapBuilder;
 import com.arangodb.model.*;
 import io.netty.handler.logging.LogLevel;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
-import org.json.simple.JSONArray;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -33,6 +33,7 @@ import java.util.logging.Logger;
         private String dbUserName = conf.getArangoUserName();
         private String dbPass = conf.getArangoQueuePass();
         private String dbName = conf.getArangoDbName();
+        private RedisConnection redis;
         private final Logger LOGGER = Logger.getLogger(ArangoInstance.class.getName()) ;
         public ArangoInstance(int maxConnections) {
             gson = new Gson();
@@ -40,6 +41,10 @@ import java.util.logging.Logger;
 //            Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database connected: POST"));
 
 
+        }
+
+        public void setRedisConnection(RedisConnection redis){
+            this.redis = redis;
         }
 
         public String getDbName() {
@@ -70,18 +75,28 @@ import java.util.logging.Logger;
             
         }
 
+        private Object getInstanceObjectFromModelName(String modelName){
+            try {
+                Class modelClass = modelName == null ? null : Class.forName(String.format("Models.%s", modelName));
+                Object modelObject = modelClass == null ? null : modelClass.newInstance();
+                return modelObject;
+            }catch (Exception e){
+                LOGGER.log(Level.SEVERE, e.getMessage(), e);
+                return null;
+            }
+        }
+
         public JSONObject find(String collectionName, Object key, String modelName){
            String id = collectionName+","+(String)key;
-           String value = RedisConnection.getInstance().getKey(id);
+           String value = redis.getKey(id);
            if(value != null){
                return new JSONObject(value);
            }
             try {
-                Class modelClass = modelName == null ? null : Class.forName(String.format("Models.%s", modelName));
-                Object modelObject = modelClass == null ? null : modelClass.newInstance();
+                Object modelObject = getInstanceObjectFromModelName(modelName);
                 Object object = arangoDB.db(dbName).collection(collectionName).getDocument((String) key, modelObject.getClass());
                 JSONObject document = new JSONObject(gson.toJson(object));
-                RedisConnection.getInstance().setKey(id,document.toString());
+                redis.setKey(id,document.toString());
                 return document;
             }catch (Exception e){
                 e.printStackTrace();
@@ -102,6 +117,46 @@ import java.util.logging.Logger;
             catch(ArangoDBException e) {
                 return null;
             }
+        }
+
+        public JSONArray findAll(String collectionName,Object limit,Object page,String model) {
+            try {
+                String query = String.format("FOR doc IN %s LIMIT @offset, @count RETURN doc",collectionName);
+                Map<String, Object> bindVars = new HashMap<String,Object> ();
+                bindVars.put("count",limit);
+                bindVars.put("offset", (int)page * (int)limit);
+                return executeQuery(query,bindVars,model,true);
+
+
+            }
+            catch(Exception e){
+                LOGGER.log(Level.SEVERE, e.getMessage(), e);
+                return null;
+            }
+
+        }
+
+
+        public JSONArray executeQuery(String query, Map<String, Object> bindVars,String model,boolean useCache) {
+            String id = query + ";" + bindVars.toString();
+            if(useCache) {
+                String value = redis.getKey(id);
+                if (value != null) {
+                    return new JSONArray(value);
+                }
+            }
+            List<Object> data = new ArrayList<Object>();
+            Object modelObject = getInstanceObjectFromModelName(model);
+            ArangoCursor<BaseDocument> cursor = arangoDB.db(dbName).query(query, bindVars, null, BaseDocument.class);
+            cursor.forEachRemaining(aDocument -> {
+                Object document = gson.fromJson(gson.toJson(aDocument.getProperties()),modelObject.getClass());
+                data.add(document);
+            });
+            String stringData = gson.toJson(data);
+            if(useCache) {
+                redis.setKey(id, stringData);
+            }
+           return  new JSONArray(stringData);
         }
 
 
@@ -164,31 +219,8 @@ import java.util.logging.Logger;
         }
 
 
-        public DocumentEntity updateUserData(Object userID,Object userData){
-            JSONObject storedData = this.find("users", userID, "UserData");
-            DocumentEntity response=null;
-            System.out.println("UserData Is" + new Gson().toJson(userData));
-            if (storedData!=null){
-                System.out.println(userData);
-               response = arangoDB.db(dbName).collection("users").updateDocument((String) userID, userData.toString(), new DocumentUpdateOptions().returnNew(true));
-            }
-            else{
-//                throw error 404
-            }
-            return response;
-        }
 
-//        public CategoryDBObject getCategory(String id){
-//            // System.out.println(arangoDB.db(dbName).collection("categories").getDocument(id,Arango.CategoryDBObject.class));
-//            CategoryDBObject category =arangoDB.db(dbName).collection("categories").getDocument(id, CategoryDBObject.class);
-//            return category;
-//        }
-//        public void updateCategory(String id, CategoryDBObject category){
-//            if(getCategory(id)!=null) {
-//                arangoDB.db(dbName).collection("categories").updateDocument(id, category);
-//            }
-//
-//        }
+
 
 
 

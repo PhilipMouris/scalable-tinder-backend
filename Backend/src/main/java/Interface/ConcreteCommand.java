@@ -34,6 +34,7 @@ public abstract class ConcreteCommand extends Command {
 //    protected RLiveObjectService RLiveObjectService;
     protected ArangoInstance ArangoInstance;
     protected PostgreSQL PostgresInstance;
+    protected  RedisConnection redis;
 //    protected ChatArangoInstance ChatArangoInstance;
 //    protected UserCacheController UserCacheController;
     protected Message message;
@@ -61,6 +62,7 @@ public abstract class ConcreteCommand extends Command {
             ArangoInstance = (ArangoInstance)
                     parameters.get("ArangoInstance");
             PostgresInstance = (PostgreSQL) parameters.get("PostgresInstance");
+            redis = (RedisConnection) parameters.get("redis");
             LOGGER.log(Level.INFO,"ARANGO is "+ArangoInstance);
 //            UserCacheController = (UserCacheController)
 //                    parameters.get("UserCacheController");
@@ -137,7 +139,7 @@ public abstract class ConcreteCommand extends Command {
         try{
             String id = getSQLCommandId();
             if(useCache) {
-                String value = RedisConnection.getInstance().getKey(id);
+                String value = redis.getKey(id);
                 if(value != null){
                     responseJson.put(outputName,new JSONArray(value));
                     LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
@@ -153,7 +155,7 @@ public abstract class ConcreteCommand extends Command {
         JSONObject response = new JSONObject();
         JSONArray data = convertToJSONArray(set);
         response.put(outputName,data );
-        RedisConnection.getInstance().setKey(id, data.toString());
+        redis.setKey(id, data.toString());
         responseJson = response;
         LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
         return sqlStatus(data);
@@ -179,9 +181,10 @@ public abstract class ConcreteCommand extends Command {
                 // TODO: Required Fields & validations
                parameters.add(message.getParameter(inputParams[i]));
             }
-
+            ArangoInstance.setRedisConnection(redis);
             responseJson = new JSONObject();
             JSONObject dbResponse = null;
+            JSONArray dbArrayResponse = null;
             switch(type){
                 case "create":
                     String key = ArangoInstance.insert(collection, parameters.get(0));
@@ -196,10 +199,12 @@ public abstract class ConcreteCommand extends Command {
                     break;
                 case "update":
                     dbResponse  = ArangoInstance.update(collection,parameters.get(0),parameters.get(1));
+                case "findAll":
+                    dbArrayResponse = ArangoInstance.findAll(collection,parameters.get(0),parameters.get(1),model);
             }
             LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
-            responseJson.put(outputName, dbResponse);
-            if(dbResponse==null) return HttpResponseTypes._404;
+            responseJson.put(outputName, dbResponse==null?dbArrayResponse:dbResponse);
+            if(dbResponse==null && dbArrayResponse==null) return HttpResponseTypes._404;
             return HttpResponseTypes._200;
         }
         catch (Exception e) {
