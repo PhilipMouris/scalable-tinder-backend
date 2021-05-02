@@ -33,6 +33,7 @@ import java.util.logging.Logger;
         private String dbUserName = conf.getArangoUserName();
         private String dbPass = conf.getArangoQueuePass();
         private String dbName = conf.getArangoDbName();
+        private RedisConnection redis;
         private final Logger LOGGER = Logger.getLogger(ArangoInstance.class.getName()) ;
         public ArangoInstance(int maxConnections) {
             gson = new Gson();
@@ -40,6 +41,10 @@ import java.util.logging.Logger;
 //            Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database connected: POST"));
 
 
+        }
+
+        public void setRedisConnection(RedisConnection redis){
+            this.redis = redis;
         }
 
         public String getDbName() {
@@ -83,7 +88,7 @@ import java.util.logging.Logger;
 
         public JSONObject find(String collectionName, Object key, String modelName){
            String id = collectionName+","+(String)key;
-           String value = RedisConnection.getInstance().getKey(id);
+           String value = redis.getKey(id);
            if(value != null){
                return new JSONObject(value);
            }
@@ -91,7 +96,7 @@ import java.util.logging.Logger;
                 Object modelObject = getInstanceObjectFromModelName(modelName);
                 Object object = arangoDB.db(dbName).collection(collectionName).getDocument((String) key, modelObject.getClass());
                 JSONObject document = new JSONObject(gson.toJson(object));
-                RedisConnection.getInstance().setKey(id,document.toString());
+                redis.setKey(id,document.toString());
                 return document;
             }catch (Exception e){
                 e.printStackTrace();
@@ -135,7 +140,7 @@ import java.util.logging.Logger;
         public JSONArray executeQuery(String query, Map<String, Object> bindVars,String model,boolean useCache) {
             String id = query + ";" + bindVars.toString();
             if(useCache) {
-                String value = RedisConnection.getInstance().getKey(id);
+                String value = redis.getKey(id);
                 if (value != null) {
                     return new JSONArray(value);
                 }
@@ -149,7 +154,7 @@ import java.util.logging.Logger;
             });
             String stringData = gson.toJson(data);
             if(useCache) {
-                RedisConnection.getInstance().setKey(id, stringData);
+                redis.setKey(id, stringData);
             }
            return  new JSONArray(stringData);
         }
