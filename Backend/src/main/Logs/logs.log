@@ -1,413 +1,140 @@
-<<<<<<< HEAD
-May 02, 2021 4:09:19 PM NettyWebServer.NettyServer start
-INFO: Web Server is listening on http://127.0.0.1:8020/
-May 02, 2021 4:09:19 PM NettyWebServer.NettyServer start
+May 03, 2021 3:53:14 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
-May 02, 2021 4:09:25 PM Interface.ServiceControl consumeFromRequestQueue
+May 03, 2021 3:53:14 AM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8020/
+May 03, 2021 3:53:19 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 03, 2021 3:53:19 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 03, 2021 3:53:19 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 02, 2021 4:09:25 PM Interface.ServiceControl consumeFromResponseQueue
+May 03, 2021 3:53:19 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 02, 2021 4:09:25 PM Interface.ServiceControl consumeFromRequestQueue
+May 03, 2021 3:53:20 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 03, 2021 3:53:20 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 03, 2021 3:53:20 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 02, 2021 4:09:25 PM Interface.ServiceControl consumeFromResponseQueue
+May 03, 2021 3:53:20 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 02, 2021 4:09:25 PM Interface.ServiceControl consumeFromRequestQueue
+May 03, 2021 3:53:20 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 03, 2021 3:53:20 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='86999370fb337f7ef1a7f6d3a4376f9f18255fed', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 03, 2021 3:53:20 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 02, 2021 4:09:26 PM Interface.ServiceControl consumeFromResponseQueue
+May 03, 2021 3:53:20 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 02, 2021 4:09:26 PM Interface.ServiceControl consumeFromRequestQueue
+May 03, 2021 3:53:20 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 03, 2021 3:53:20 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 03, 2021 3:53:20 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 02, 2021 4:09:26 PM Interface.ServiceControl consumeFromResponseQueue
+May 03, 2021 3:53:20 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 02, 2021 4:09:26 PM Interface.ServiceControl consumeFromRequestQueue
+May 03, 2021 3:53:21 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 03, 2021 3:53:21 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 03, 2021 3:53:21 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 02, 2021 4:09:26 PM Interface.ServiceControl consumeFromResponseQueue
+May 03, 2021 3:53:21 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 02, 2021 4:09:26 PM Interface.ServiceControl consumeFromRequestQueue
+May 03, 2021 3:53:21 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 03, 2021 3:53:21 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 03, 2021 3:53:21 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 02, 2021 4:09:26 PM Interface.ServiceControl consumeFromResponseQueue
+May 03, 2021 3:53:21 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 02, 2021 4:16:29 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"55","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn"}to: User-Request
-May 02, 2021 4:16:29 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 096f3bc5-d456-4cb1-a6a6-8729ffec1208, on Queue : User-Request
-May 02, 2021 4:16:29 PM Interface.ServiceControl$2 handleDelivery
+May 03, 2021 3:55:15 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"123","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233"},"application":"User","userID":"50885","command":"GetUserData"},"Uri":"/","command":"GetUserData"}to: User-Request
+May 03, 2021 3:55:15 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 6c2f4b4e-d9f0-41d1-aa0a-2af2c87cd6cb, on Queue : User-Request
+May 03, 2021 3:55:15 AM Interface.ServiceControl$2 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 02, 2021 4:16:29 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:SignIn
-May 02, 2021 4:16:29 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@6e3bd4b3
-May 02, 2021 4:16:29 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 096f3bc5-d456-4cb1-a6a6-8729ffec1208, on Queue : User-Response
-May 02, 2021 4:16:29 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"55","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn","status":"_200"}
-May 02, 2021 4:16:29 PM Interface.ServiceControl$1 handleDelivery
+May 03, 2021 3:55:15 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetUserData
+May 03, 2021 3:55:15 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@5a602cf1
+May 03, 2021 3:55:15 AM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.GetUserData Executed Successfully
+May 03, 2021 3:55:15 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 6c2f4b4e-d9f0-41d1-aa0a-2af2c87cd6cb, on Queue : User-Response
+May 03, 2021 3:55:15 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"123","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233"},"application":"User","userID":"50885","command":"GetUserData"},"Uri":"/","command":"GetUserData","status":"_404"}
+May 03, 2021 3:55:15 AM Interface.ServiceControl$1 handleDelivery
 INFO: Application    :   User
-May 02, 2021 4:16:29 PM Interface.ServiceControl$1 handleDelivery
+May 03, 2021 3:55:15 AM Interface.ServiceControl$1 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 02, 2021 4:16:29 PM Interface.ServiceControl$1 handleDelivery
+May 03, 2021 3:55:15 AM Interface.ServiceControl$1 handleDelivery
 INFO: Response   :   {}
-May 02, 2021 4:18:37 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"107","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","interestinfo":{"name":"test"},"command":"CreateInterest"},"Uri":"/","command":"CreateInterest"}to: Moderator-Request
-May 02, 2021 4:18:37 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 7e7dfeb4-3010-42d3-8f0c-73a2ffbd1753, on Queue : Moderator-Request
-May 02, 2021 4:18:37 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 4:18:37 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateInterest
-May 02, 2021 4:18:37 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@6f337bf6
-May 02, 2021 4:18:37 PM org.postgresql.core.v3.ConnectionFactoryImpl log
-WARNING: SQLException occurred while connecting to localhost:5432
-org.postgresql.util.PSQLException: FATAL: database "tinderdb" does not exist
-	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2422)
-	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2555)
-	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:131)
-	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:212)
-	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
-	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:195)
-	at org.postgresql.Driver.makeConnection(Driver.java:452)
-	at org.postgresql.Driver.connect(Driver.java:254)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:189)
-	at org.apache.commons.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:123)
-	at org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:357)
-	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:918)
-	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:431)
-	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:356)
-	at org.apache.commons.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
-	at Interface.ConcreteCommand.handleSQLCommand(ConcreteCommand.java:147)
-	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:212)
-	at Interface.ConcreteCommand.execute(ConcreteCommand.java:77)
-	at Interface.Command.run(Command.java:31)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+May 03, 2021 3:56:27 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"96","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","limit":5,"page":0,"command":"GetUserDataPaginated"},"Uri":"/","command":"GetUserDataPaginated"}to: User-Request
+May 03, 2021 3:56:27 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 86da4a0c-a367-40ad-8d42-17851f70d912, on Queue : User-Request
+May 03, 2021 3:56:27 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 03, 2021 3:56:27 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetUserDataPaginated
+May 03, 2021 3:56:27 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@5b4d0d59
+May 03, 2021 3:56:28 AM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.GetUserDataPaginated Executed Successfully
+May 03, 2021 3:56:28 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 86da4a0c-a367-40ad-8d42-17851f70d912, on Queue : User-Response
+May 03, 2021 3:56:28 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"96","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"users":[{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"new bio3233","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"}]},"Hostname":"127.0.0.1:90","body":{"application":"User","limit":5,"page":0,"command":"GetUserDataPaginated"},"Uri":"/","command":"GetUserDataPaginated","status":"_200"}
+May 03, 2021 3:56:28 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 03, 2021 3:56:28 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 03, 2021 3:56:28 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"users":[{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"new bio3233","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"}]}
+May 03, 2021 3:56:59 AM NettyWebServer.RequestHandler channelRead
+SEVERE: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+org.json.JSONException: A JSONObject text must begin with '{' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:433)
+	at org.json.JSONObject.<init>(JSONObject.java:195)
+	at org.json.JSONObject.<init>(JSONObject.java:319)
+	at NettyWebServer.RequestHandler.channelRead(RequestHandler.java:63)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:108)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at NettyWebServer.HTTPHandler.channelRead(HTTPHandler.java:100)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.http.cors.CorsHandler.channelRead(CorsHandler.java:73)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1414)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:945)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:141)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysPlain(NioEventLoop.java:545)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:499)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 
-May 02, 2021 4:18:37 PM org.postgresql.Driver connect
-SEVERE: Connection error: 
-org.postgresql.util.PSQLException: FATAL: database "tinderdb" does not exist
-	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2422)
-	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2555)
-	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:131)
-	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:212)
-	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
-	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:195)
-	at org.postgresql.Driver.makeConnection(Driver.java:452)
-	at org.postgresql.Driver.connect(Driver.java:254)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:189)
-	at org.apache.commons.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:123)
-	at org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:357)
-	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:918)
-	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:431)
-	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:356)
-	at org.apache.commons.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
-	at Interface.ConcreteCommand.handleSQLCommand(ConcreteCommand.java:147)
-	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:212)
-	at Interface.ConcreteCommand.execute(ConcreteCommand.java:77)
-	at Interface.Command.run(Command.java:31)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 02, 2021 4:18:37 PM Interface.ConcreteCommand handleSQLCommand
-SEVERE: FATAL: database "tinderdb" does not exist
-org.postgresql.util.PSQLException: FATAL: database "tinderdb" does not exist
-	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2422)
-	at org.postgresql.core.v3.QueryExecutorImpl.readStartupMessages(QueryExecutorImpl.java:2555)
-	at org.postgresql.core.v3.QueryExecutorImpl.<init>(QueryExecutorImpl.java:131)
-	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:212)
-	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
-	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:195)
-	at org.postgresql.Driver.makeConnection(Driver.java:452)
-	at org.postgresql.Driver.connect(Driver.java:254)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:677)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:189)
-	at org.apache.commons.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:123)
-	at org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:357)
-	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:918)
-	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:431)
-	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:356)
-	at org.apache.commons.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
-	at Interface.ConcreteCommand.handleSQLCommand(ConcreteCommand.java:147)
-	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:212)
-	at Interface.ConcreteCommand.execute(ConcreteCommand.java:77)
-	at Interface.Command.run(Command.java:31)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 02, 2021 4:18:38 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 7e7dfeb4-3010-42d3-8f0c-73a2ffbd1753, on Queue : Moderator-Response
-May 02, 2021 4:18:38 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"107","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","interestinfo":{"name":"test"},"command":"CreateInterest"},"Uri":"/","command":"CreateInterest","status":"_500"}
-May 02, 2021 4:18:38 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-May 02, 2021 4:18:38 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 4:18:38 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {}
-May 02, 2021 4:22:38 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"107","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","interestinfo":{"name":"test"},"command":"CreateInterest"},"Uri":"/","command":"CreateInterest"}to: Moderator-Request
-May 02, 2021 4:22:38 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: ac214976-4bb0-43d6-9be7-744506e5eeed, on Queue : Moderator-Request
-May 02, 2021 4:22:38 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 02, 2021 4:22:38 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateInterest
-May 02, 2021 4:22:38 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@4c60d4b7
-May 02, 2021 4:22:39 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.ModeratorCommands.CreateInterest Executed Successfully
-May 02, 2021 4:22:39 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: ac214976-4bb0-43d6-9be7-744506e5eeed, on Queue : Moderator-Response
-May 02, 2021 4:22:39 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"107","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"interest":[{"name":"test","id":1}]},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","interestinfo":{"name":"test"},"command":"CreateInterest"},"Uri":"/","command":"CreateInterest","status":"_200"}
-May 02, 2021 4:22:39 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-May 02, 2021 4:22:39 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 02, 2021 4:22:39 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"interest":[{"name":"test","id":1}]}
-May 02, 2021 4:23:51 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"121","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","interestinfo":{"name":"updated","id":"1"},"command":"UpdateInterest"},"Uri":"/","command":"UpdateInterest"}to: Moderator-Request
-May 02, 2021 4:23:51 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 600d01d8-8066-451a-8499-2cf7b31ab5d3, on Queue : Moderator-Request
-May 02, 2021 4:23:51 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 4:23:51 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:UpdateInterest
-May 02, 2021 4:23:51 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@6f337bf6
-May 02, 2021 4:23:52 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.ModeratorCommands.UpdateInterest Executed Successfully
-May 02, 2021 4:23:52 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 600d01d8-8066-451a-8499-2cf7b31ab5d3, on Queue : Moderator-Response
-May 02, 2021 4:23:52 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"121","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"interest":[{"name":"updated","id":1}]},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","interestinfo":{"name":"updated","id":"1"},"command":"UpdateInterest"},"Uri":"/","command":"UpdateInterest","status":"_200"}
-May 02, 2021 4:23:52 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-May 02, 2021 4:23:52 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 4:23:52 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"interest":[{"name":"updated","id":1}]}
-May 02, 2021 4:24:57 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"96","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","limit":10,"page":0,"command":"GetAllInterest"},"Uri":"/","command":"GetAllInterest"}to: Moderator-Request
-May 02, 2021 4:24:57 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 52620b28-318c-4fb2-8f03-faf804e7df68, on Queue : Moderator-Request
-May 02, 2021 4:24:57 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 02, 2021 4:24:57 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetAllInterest
-May 02, 2021 4:24:57 PM Interface.ServiceControl$2 handleDelivery
-SEVERE: Commands.ModeratorCommands.GetAllInterest
-java.lang.ClassNotFoundException: Commands.ModeratorCommands.GetAllInterest
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:606)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:377)
-	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:230)
-	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
-	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 02, 2021 4:24:58 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 02, 2021 4:24:58 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 02, 2021 4:27:17 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"99","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","limit":10,"page":0,"command":"GetAllInterests"},"Uri":"/","command":"GetAllInterests"}to: Moderator-Request
-May 02, 2021 4:27:17 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: fe8c0846-9792-466d-abbd-07d546684c18, on Queue : Moderator-Request
-May 02, 2021 4:27:17 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 4:27:17 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetAllInterests
-May 02, 2021 4:27:17 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@6f337bf6
-May 02, 2021 4:27:17 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.ModeratorCommands.GetAllInterests Executed Successfully
-May 02, 2021 4:27:17 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: fe8c0846-9792-466d-abbd-07d546684c18, on Queue : Moderator-Response
-May 02, 2021 4:27:17 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"99","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"interests":[{"name":"updated","id":1}]},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","limit":10,"page":0,"command":"GetAllInterests"},"Uri":"/","command":"GetAllInterests","status":"_200"}
-May 02, 2021 4:27:17 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-May 02, 2021 4:27:17 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 02, 2021 4:27:17 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"interests":[{"name":"updated","id":1}]}
-May 02, 2021 4:28:45 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"101","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","interestinfo":{"id":1},"command":"DeleteInterest"},"Uri":"/","command":"DeleteInterest"}to: Moderator-Request
-May 02, 2021 4:28:45 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 55e5e48c-d41f-4fbc-b790-4404dff705b0, on Queue : Moderator-Request
-May 02, 2021 4:28:45 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 02, 2021 4:28:45 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:DeleteInterest
-May 02, 2021 4:28:45 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@4c60d4b7
-May 02, 2021 4:28:45 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.ModeratorCommands.DeleteInterest Executed Successfully
-May 02, 2021 4:28:45 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 55e5e48c-d41f-4fbc-b790-4404dff705b0, on Queue : Moderator-Response
-May 02, 2021 4:28:45 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"101","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"interest":[{"uspdeleteinterest":1}]},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","interestinfo":{"id":1},"command":"DeleteInterest"},"Uri":"/","command":"DeleteInterest","status":"_200"}
-May 02, 2021 4:28:45 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-May 02, 2021 4:28:45 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 4:28:45 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"interest":[{"uspdeleteinterest":1}]}
-May 02, 2021 4:28:57 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"99","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","limit":10,"page":0,"command":"GetAllInterests"},"Uri":"/","command":"GetAllInterests"}to: Moderator-Request
-May 02, 2021 4:28:57 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: e0e0b756-4272-45e9-8076-c95cba0d2156, on Queue : Moderator-Request
-May 02, 2021 4:28:57 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 02, 2021 4:28:57 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetAllInterests
-May 02, 2021 4:28:57 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@4c60d4b7
-May 02, 2021 4:28:57 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.ModeratorCommands.GetAllInterests Executed Successfully
-May 02, 2021 4:28:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: e0e0b756-4272-45e9-8076-c95cba0d2156, on Queue : Moderator-Response
-May 02, 2021 4:28:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"99","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"interests":[{"name":"updated","id":1}]},"Hostname":"127.0.0.1:90","body":{"application":"Moderator","limit":10,"page":0,"command":"GetAllInterests"},"Uri":"/","command":"GetAllInterests","status":"_200"}
-May 02, 2021 4:28:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-May 02, 2021 4:28:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 02, 2021 4:28:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"interests":[{"name":"updated","id":1}]}
-=======
-May 02, 2021 3:11:14 PM NettyWebServer.NettyServer start
-INFO: Web Server is listening on http://127.0.0.1:8021/
-May 02, 2021 3:11:14 PM NettyWebServer.NettyServer start
-INFO: Web Server is listening on http://127.0.0.1:8020/
-May 02, 2021 3:11:15 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 02, 2021 3:11:15 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='098562cd18c507f6629dc72c9576a6ba6a9ab4f2', connected=true, slaveOf='37dd7090163f0230c3bdc4eb27a412d23f4756bb', pingSentTimestamp=0, pongReceivedTimestamp=1619968274082, configEpoch=3, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968273000, configEpoch=1, flags=[MYSELF, MASTER], aliases=[RedisURI [host='localhost', port=7000]], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='d6dfbb56c0ce6ca6c5215a063953168c5944e668', connected=true, slaveOf='d82913dc4114a18027f1b311ddb3d941dcfa591b', pingSentTimestamp=0, pongReceivedTimestamp=1619968275091, configEpoch=2, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='37dd7090163f0230c3bdc4eb27a412d23f4756bb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968273674, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='d82913dc4114a18027f1b311ddb3d941dcfa591b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968273574, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='fb21fd32c29ad18fe5189d8591040bd45ab3f363', connected=true, slaveOf='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', pingSentTimestamp=0, pongReceivedTimestamp=1619968274000, configEpoch=1, flags=[SLAVE], aliases=[]]]
-May 02, 2021 3:11:15 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 02, 2021 3:11:15 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 02, 2021 3:11:16 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 02, 2021 3:11:16 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='d82913dc4114a18027f1b311ddb3d941dcfa591b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968273000, configEpoch=2, flags=[MYSELF, MASTER], aliases=[RedisURI [host='localhost', port=7001]], slot count=5462], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='37dd7090163f0230c3bdc4eb27a412d23f4756bb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275293, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='fb21fd32c29ad18fe5189d8591040bd45ab3f363', connected=true, slaveOf='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', pingSentTimestamp=0, pongReceivedTimestamp=1619968275614, configEpoch=1, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='098562cd18c507f6629dc72c9576a6ba6a9ab4f2', connected=true, slaveOf='37dd7090163f0230c3bdc4eb27a412d23f4756bb', pingSentTimestamp=0, pongReceivedTimestamp=1619968274182, configEpoch=3, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='d6dfbb56c0ce6ca6c5215a063953168c5944e668', connected=true, slaveOf='d82913dc4114a18027f1b311ddb3d941dcfa591b', pingSentTimestamp=0, pongReceivedTimestamp=1619968275120, configEpoch=2, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275714, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461]]
-May 02, 2021 3:11:16 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 02, 2021 3:11:16 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 02, 2021 3:11:16 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 02, 2021 3:11:16 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='fb21fd32c29ad18fe5189d8591040bd45ab3f363', connected=true, slaveOf='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=1, flags=[MYSELF, SLAVE], aliases=[RedisURI [host='127.0.0.1', port=7005]]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='37dd7090163f0230c3bdc4eb27a412d23f4756bb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275461, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='d82913dc4114a18027f1b311ddb3d941dcfa591b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275884, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='098562cd18c507f6629dc72c9576a6ba6a9ab4f2', connected=true, slaveOf='37dd7090163f0230c3bdc4eb27a412d23f4756bb', pingSentTimestamp=0, pongReceivedTimestamp=1619968274384, configEpoch=3, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='d6dfbb56c0ce6ca6c5215a063953168c5944e668', connected=true, slaveOf='d82913dc4114a18027f1b311ddb3d941dcfa591b', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=2, flags=[SLAVE], aliases=[]]]
-May 02, 2021 3:11:16 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 02, 2021 3:11:16 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 02, 2021 3:11:16 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 02, 2021 3:11:16 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='098562cd18c507f6629dc72c9576a6ba6a9ab4f2', connected=true, slaveOf='37dd7090163f0230c3bdc4eb27a412d23f4756bb', pingSentTimestamp=0, pongReceivedTimestamp=1619968274512, configEpoch=3, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='d82913dc4114a18027f1b311ddb3d941dcfa591b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275925, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='37dd7090163f0230c3bdc4eb27a412d23f4756bb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275613, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='fb21fd32c29ad18fe5189d8591040bd45ab3f363', connected=true, slaveOf='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=1, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='d6dfbb56c0ce6ca6c5215a063953168c5944e668', connected=true, slaveOf='d82913dc4114a18027f1b311ddb3d941dcfa591b', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=2, flags=[MYSELF, SLAVE], aliases=[RedisURI [host='localhost', port=7003]]]]
-May 02, 2021 3:11:16 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 02, 2021 3:11:16 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 02, 2021 3:11:17 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 02, 2021 3:11:17 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='098562cd18c507f6629dc72c9576a6ba6a9ab4f2', connected=true, slaveOf='37dd7090163f0230c3bdc4eb27a412d23f4756bb', pingSentTimestamp=0, pongReceivedTimestamp=1619968276495, configEpoch=3, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='d6dfbb56c0ce6ca6c5215a063953168c5944e668', connected=true, slaveOf='d82913dc4114a18027f1b311ddb3d941dcfa591b', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=2, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968276000, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='37dd7090163f0230c3bdc4eb27a412d23f4756bb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='fb21fd32c29ad18fe5189d8591040bd45ab3f363', connected=true, slaveOf='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=1, flags=[MYSELF, SLAVE], aliases=[RedisURI [host='127.0.0.1', port=7005]]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='d82913dc4114a18027f1b311ddb3d941dcfa591b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275884, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462]]
-May 02, 2021 3:11:17 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 02, 2021 3:11:17 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 02, 2021 3:11:17 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 02, 2021 3:11:17 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='37dd7090163f0230c3bdc4eb27a412d23f4756bb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=3, flags=[MYSELF, MASTER], aliases=[RedisURI [host='localhost', port=7002]], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='fb21fd32c29ad18fe5189d8591040bd45ab3f363', connected=true, slaveOf='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', pingSentTimestamp=0, pongReceivedTimestamp=1619968275824, configEpoch=1, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='d82913dc4114a18027f1b311ddb3d941dcfa591b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968275314, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='eead8cc8e4b4287d1ad0471d632da5cfc063ffd9', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1619968276000, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='d6dfbb56c0ce6ca6c5215a063953168c5944e668', connected=true, slaveOf='d82913dc4114a18027f1b311ddb3d941dcfa591b', pingSentTimestamp=0, pongReceivedTimestamp=1619968275000, configEpoch=2, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='098562cd18c507f6629dc72c9576a6ba6a9ab4f2', connected=true, slaveOf='37dd7090163f0230c3bdc4eb27a412d23f4756bb', pingSentTimestamp=0, pongReceivedTimestamp=1619968276328, configEpoch=3, flags=[SLAVE], aliases=[]]]
-May 02, 2021 3:11:17 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 02, 2021 3:11:17 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 02, 2021 3:11:20 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"317","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"Moderator","limit":20000,"page":0,"command":"GetAllBans","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetAllBans"}to: Moderator-Request
-May 02, 2021 3:11:20 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 586d8d78-4de4-48db-8711-bc40c02c4a6f, on Queue : Moderator-Request
-May 02, 2021 3:11:20 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 3:11:20 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetAllBans
-May 02, 2021 3:11:20 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@596b09af
-May 02, 2021 3:11:20 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.ModeratorCommands.GetAllBans Executed Successfully
-May 02, 2021 3:11:20 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 586d8d78-4de4-48db-8711-bc40c02c4a6f, on Queue : Moderator-Response
-May 02, 2021 3:11:20 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"317","Content-Type":"application/json"},"response":{"bans":[{"reason":" aykalam","user_id":3,"moderator_id":1,"expiry_date":"2021-04-30","created_at":"2021-04-30 18:32:30.508958","id":5},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:03.708895","id":6},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:13.592061","id":7},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:21.176492","id":9},{"reason":"NOO","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-30 18:41:35.734778","id":10},{"reason":"racist bio UPDATE","user_id":17,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-29 20:58:22.563657","id":1},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 19:44:51.477459","id":12},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 20:14:54.363886","id":13}]},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"Moderator","limit":20000,"page":0,"command":"GetAllBans","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetAllBans","status":"_200"}
-May 02, 2021 3:11:20 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-May 02, 2021 3:11:20 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 3:11:20 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"bans":[{"reason":" aykalam","user_id":3,"moderator_id":1,"expiry_date":"2021-04-30","created_at":"2021-04-30 18:32:30.508958","id":5},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:03.708895","id":6},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:13.592061","id":7},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:21.176492","id":9},{"reason":"NOO","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-30 18:41:35.734778","id":10},{"reason":"racist bio UPDATE","user_id":17,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-29 20:58:22.563657","id":1},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 19:44:51.477459","id":12},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 20:14:54.363886","id":13}]}
-May 02, 2021 3:11:21 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"317","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"Moderator","limit":20000,"page":0,"command":"GetAllBans","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetAllBans"}to: Moderator-Request
-May 02, 2021 3:11:21 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 014bdb63-8897-4868-b03d-33f557a9389f, on Queue : Moderator-Request
-May 02, 2021 3:11:21 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 02, 2021 3:11:21 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetAllBans
-May 02, 2021 3:11:21 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@6cecaa90
-May 02, 2021 3:11:21 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.ModeratorCommands.GetAllBans Executed Successfully
-May 02, 2021 3:11:21 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 014bdb63-8897-4868-b03d-33f557a9389f, on Queue : Moderator-Response
-May 02, 2021 3:11:21 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"317","Content-Type":"application/json"},"response":{"bans":[{"reason":" aykalam","user_id":3,"moderator_id":1,"expiry_date":"2021-04-30","created_at":"2021-04-30 18:32:30.508958","id":5},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:03.708895","id":6},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:13.592061","id":7},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:21.176492","id":9},{"reason":"NOO","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-30 18:41:35.734778","id":10},{"reason":"racist bio UPDATE","user_id":17,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-29 20:58:22.563657","id":1},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 19:44:51.477459","id":12},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 20:14:54.363886","id":13}]},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"Moderator","limit":20000,"page":0,"command":"GetAllBans","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetAllBans","status":"_200"}
-May 02, 2021 3:11:21 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-May 02, 2021 3:11:21 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 02, 2021 3:11:21 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"bans":[{"reason":" aykalam","user_id":3,"moderator_id":1,"expiry_date":"2021-04-30","created_at":"2021-04-30 18:32:30.508958","id":5},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:03.708895","id":6},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:13.592061","id":7},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:21.176492","id":9},{"reason":"NOO","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-30 18:41:35.734778","id":10},{"reason":"racist bio UPDATE","user_id":17,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-29 20:58:22.563657","id":1},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 19:44:51.477459","id":12},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 20:14:54.363886","id":13}]}
-May 02, 2021 3:11:22 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"317","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"Moderator","limit":20000,"page":0,"command":"GetAllBans","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetAllBans"}to: Moderator-Request
-May 02, 2021 3:11:22 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: f32566a0-205b-4938-999c-d3ab8df12784, on Queue : Moderator-Request
-May 02, 2021 3:11:22 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 3:11:22 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetAllBans
-May 02, 2021 3:11:22 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@596b09af
-May 02, 2021 3:11:22 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.ModeratorCommands.GetAllBans Executed Successfully
-May 02, 2021 3:11:22 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: f32566a0-205b-4938-999c-d3ab8df12784, on Queue : Moderator-Response
-May 02, 2021 3:11:22 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"317","Content-Type":"application/json"},"response":{"bans":[{"reason":" aykalam","user_id":3,"moderator_id":1,"expiry_date":"2021-04-30","created_at":"2021-04-30 18:32:30.508958","id":5},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:03.708895","id":6},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:13.592061","id":7},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:21.176492","id":9},{"reason":"NOO","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-30 18:41:35.734778","id":10},{"reason":"racist bio UPDATE","user_id":17,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-29 20:58:22.563657","id":1},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 19:44:51.477459","id":12},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 20:14:54.363886","id":13}]},"Hostname":"127.0.0.1:8020","body":{"userData":{"preferences":{"location":150,"age":1000},"bio":"HI Shabab","id":"17"},"application":"Moderator","limit":20000,"page":0,"command":"GetAllBans","banData":{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"9/9/2022","id":4}},"Uri":"/","command":"GetAllBans","status":"_200"}
-May 02, 2021 3:11:22 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Moderator
-May 02, 2021 3:11:22 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 02, 2021 3:11:22 PM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"bans":[{"reason":" aykalam","user_id":3,"moderator_id":1,"expiry_date":"2021-04-30","created_at":"2021-04-30 18:32:30.508958","id":5},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:03.708895","id":6},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:13.592061","id":7},{"reason":"ykalam","user_id":3,"moderator_id":1,"expiry_date":"2020-09-09","created_at":"2021-04-30 18:38:21.176492","id":9},{"reason":"NOO","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-30 18:41:35.734778","id":10},{"reason":"racist bio UPDATE","user_id":17,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-04-29 20:58:22.563657","id":1},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 19:44:51.477459","id":12},{"reason":"racist bio UPDATEs","user_id":3,"moderator_id":1,"expiry_date":"2022-09-09","created_at":"2021-05-01 20:14:54.363886","id":13}]}
->>>>>>> 9200b4f1d184a9884fe5c65bea9ea2f8d64644a6
