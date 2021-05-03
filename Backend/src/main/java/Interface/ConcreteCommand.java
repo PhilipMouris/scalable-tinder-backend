@@ -203,6 +203,7 @@ public abstract class ConcreteCommand extends Command {
                     break;
                 case "update":
                     dbResponse  = ArangoInstance.update(collection,parameters.get(0),parameters.get(1));
+                    break;
                 case "findAll":
                     dbArrayResponse = ArangoInstance.findAll(collection,parameters.get(0),parameters.get(1),model, filterParams);
             }

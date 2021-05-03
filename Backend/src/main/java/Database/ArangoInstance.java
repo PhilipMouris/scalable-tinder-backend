@@ -109,7 +109,7 @@ import java.util.logging.Logger;
         public JSONObject update(String collection,Object key,Object updateQuery){
             try {
                 JSONObject json = new JSONObject(updateQuery.toString());
-                DocumentEntity response = arangoDB.db(dbName).collection("users").updateDocument((String) key, json.toString(), new DocumentUpdateOptions().returnNew(true));
+                DocumentEntity response = arangoDB.db(dbName).collection(collection).updateDocument((String) key, json.toString(), new DocumentUpdateOptions().returnNew(true));
                 if (response == null)
                     return null;
                 JSONObject dbData = new JSONObject(gson.toJson(response));
