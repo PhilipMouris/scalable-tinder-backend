@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
-
+import org.apache.commons.io.FilenameUtils;
 public class MinioInstance {
     private Config conf = Config.getInstance();
     private String minioSecretKey = conf.getMinioSecretKey();
@@ -74,13 +74,16 @@ public class MinioInstance {
                }
                return null;
            }
-    public String uploadFile(byte[] data,String fileType){
+    public String uploadFile(byte[] data,String fileName,String fileType){
         UUID uuid = UUID.randomUUID();
-        String name = uuid.toString()+".png";
+        String name = uuid.toString();
+        String extension=FilenameUtils.getExtension(fileName);
+        name=name+"."+extension;
         try {
-            String contentType="image/png";
+            String contentType="image/"+extension;
             if(fileType.equals("video")){
-                contentType="video/mp4";
+
+                contentType="video/"+extension;
             }
 
             ObjectWriteResponse objectWriteResponse = minioClient.putObject(
@@ -154,7 +157,7 @@ public class MinioInstance {
         BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
         buf.read(byteArray, 0, byteArray.length);
         buf.close();
-        String fileName=minio.uploadFile(byteArray,"video");
+        String fileName=minio.uploadFile(byteArray,file.getName(),"video");
         System.out.println(fileName);
         byte[] downloadedFile= minio.downloadFile(fileName);
         File fileToWrite=new File("/home/vm/Desktop/Scalable/thumbsu.mp4");

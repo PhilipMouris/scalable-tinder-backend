@@ -286,7 +286,7 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
                 FileUpload dataU   = (FileUpload)data;
 
                 if(dataU.isCompleted()) {
-                    String fileName = minio.uploadFile(dataU.get(), "image");
+                    String fileName = minio.uploadFile(dataU.get(), dataU.getFilename(),"image");
                     json.put("filename",fileName);
                 }
                 sendUploadedFileName(json, ctx);
