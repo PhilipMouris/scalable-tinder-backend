@@ -47,6 +47,10 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
                 ctx.fireChannelRead(((FullHttpRequest)request).retain());
                 return;
             }
+            if (request.uri().contains("/file/upload")) {
+                ctx.fireChannelRead(((FullHttpRequest)request).retain());
+                return;
+            }
             if (HttpHeaders.is100ContinueExpected(request)) {
                 send100Continue(ctx);
             }

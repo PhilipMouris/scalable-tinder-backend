@@ -1,6 +1,7 @@
 package NettyWebServer;
 
 import Config.Config;
+import com.google.gson.JsonObject;
 import com.rabbitmq.client.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.CompositeByteBuf;
@@ -45,14 +46,20 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object o) {
-        if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)){
+        System.out.println("Exiting Channel Read");
+        if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)&&!(o instanceof JsonObject) ){
+
             channelHandlerContext.fireChannelRead(o);
             return;
         }
 
         ByteBuf buffer;
+        JSONObject body;
         if(o instanceof TextWebSocketFrame) {
             buffer = (ByteBuf) (((TextWebSocketFrame)o).content());
+        }
+        if(o instanceof JsonObject) {
+            body = ((JsonObject)o) ;
         }
         else {
             buffer = (ByteBuf) o;
@@ -60,7 +67,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
         //try and catch
         try {
-//            System.out.println(buffer.toString(CharsetUtil.UTF_8)+"ALOO");
+            System.out.println(buffer.toString(CharsetUtil.UTF_8)+"ALOO");
             JSONObject body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
             final JSONObject jsonRequest;
             final String corrId;

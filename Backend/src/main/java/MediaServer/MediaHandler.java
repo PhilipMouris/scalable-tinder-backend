@@ -1,6 +1,7 @@
 package MediaServer;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
@@ -43,7 +44,7 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
 
     private static final int THUMB_MAX_WIDTH = 100;
     private static final int THUMB_MAX_HEIGHT = 100;
-    private JsonObject response = new JsonObject();
+    private JSONObject response = new JSONObject();
 
     public MediaHandler() {
                  minio=new MinioInstance();
@@ -201,10 +202,14 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
                 if (chunk instanceof LastHttpContent) {
                     readingChunks = false;
                     reset();
+
                 }
+
             } else {
                 sendError(ctx, HttpResponseStatus.BAD_REQUEST, "Not a http request");
             }
+
+            ctx.fireChannelRead(response);
         } else {
             sendError(ctx, HttpResponseStatus.BAD_REQUEST, "Failed to decode file data");
         }
@@ -271,18 +276,24 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
                         if (data.getHttpDataType() == InterfaceHttpData.HttpDataType.Attribute) {
                             Attribute attribute = (Attribute) data;
                             try {
-                                Logger.getLogger(MediaHandler.class.getName()).log(Level.INFO,"SOUIDAN");
-                               response.add("alo",new JsonParser().parse(attribute.getString()));
+                                System.out.println(attribute.getString()+"JSON REQUEST");
+                                System.out.println(attribute.getName()+"JSON String");
+//                                Logger.getLogger(MediaHandler.class.getName()).log(Level.INFO,"SOUIDAN");
+                               response.put("request",new JsonParser().parse(attribute.getString()));
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                        }  else if(data.getHttpDataType()==InterfaceHttpData.HttpDataType.FileUpload){
+                                writeHttpData(data, ctx);
                         }
-                        writeHttpData(data, ctx);
-                        data.release();
+
+//                        data.release();
                     }
                 }
+
+
             } catch (Exception e) {
-                //e.printStackTrace();
+//                e.printStackTrace();
             }
         } else {
             sendError(ctx, HttpResponseStatus.BAD_REQUEST, "Not a multipart request");
@@ -298,14 +309,16 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
                 JsonObject final_response = new JsonObject();
                 if(dataU.isCompleted()) {
                     String fileName = minio.uploadFile(dataU.get(), "image");
-                    final_response = response.getAsJsonObject();
-                    final_response.add("filename",new JsonParser().parse(fileName));
+
+                    response.put("filename",new JsonParser().parse(fileName));
                 }
 //                sendUploadedFileName(json, ctx);
 //                System.out.println(final_response.getAsString());
-                ctx.fireChannelRead(final_response.getAsString()); //Send the response Json Command including the uploaded file aname to the next handler in the pipeline
+                System.out.println(response.toString()+"ALO");
+                 //Send the response Json Command including the uploaded file aname to the next handler in the pipeline
             }
              catch(Exception e) {
+                e.printStackTrace();
                 //responseContent.append("\tFile to be continued but should not!\r\n");
                 sendError(ctx, HttpResponseStatus.BAD_REQUEST, "Unknown error occurred");
             }
