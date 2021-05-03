@@ -65,6 +65,7 @@ public abstract class ConcreteCommand extends Command {
                     parameters.get("ArangoInstance");
             PostgresInstance = (PostgreSQL) parameters.get("PostgresInstance");
             redis = (RedisConnection) parameters.get("redis");
+            ArangoInstance.setRedisConnection(redis);
             LOGGER.log(Level.INFO,"ARANGO is "+ArangoInstance);
 //            UserCacheController = (UserCacheController)
 //                    parameters.get("UserCacheController");
@@ -184,7 +185,7 @@ public abstract class ConcreteCommand extends Command {
                 // TODO: Required Fields & validations
                parameters.add(message.getParameter(inputParams[i]));
             }
-            ArangoInstance.setRedisConnection(redis);
+
             responseJson = new JSONObject();
             JSONObject dbResponse = null;
             JSONArray dbArrayResponse = null;

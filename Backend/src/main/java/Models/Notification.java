@@ -25,7 +25,12 @@ public class Notification {
         this.body = body;
         this.createdAt = new Timestamp(new Date().getTime()).toString();
     }
-
+    public String getTitle(){
+        return title;
+    }
+    public String getBody(){
+        return body;
+    }
     public Notification(){
         this.createdAt = new Timestamp(new Date().getTime()).toString();
     }

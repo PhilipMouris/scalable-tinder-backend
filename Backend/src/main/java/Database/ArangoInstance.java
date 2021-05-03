@@ -4,6 +4,7 @@ package Database;
 import Cache.RedisConnection;
 import Config.Config;
 import Models.*;
+import Notifications.Firebase;
 import com.arangodb.ArangoCursor;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
@@ -190,7 +191,12 @@ import java.util.logging.Logger;
             //TODO: FIND user data -> get tokens -> send with fb
             Notification notification = new Notification(userID, type,title,body);
             System.out.println(notification.toString() + "STRING");
-            return insert("notifications", notification);
+            String notificationID = insert("notifications", notification);
+            JSONObject userData = find("users", ""+userID, "UserData");
+            if(userData!=null) {
+                Firebase.sendNotification(userData, notification);
+            }
+            return notificationID;
 
         }
 
