@@ -270,13 +270,13 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
                         if (data.getHttpDataType() == InterfaceHttpData.HttpDataType.Attribute) {
                             Attribute attribute = (Attribute) data;
                             try {
-                               response.add("request",new JsonParser().parse(attribute.getString()));
+                                Logger.getLogger(MediaHandler.class.getName()).log(Level.INFO,"SOUIDAN");
+                               response.add("alo",new JsonParser().parse(attribute.getString()));
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         }
                         writeHttpData(data, ctx);
-                        data.release();
                     }
                 }
             } catch (Exception e) {
@@ -291,20 +291,24 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
 
     private void writeHttpData(InterfaceHttpData data, ChannelHandlerContext ctx) {
             try {
-                JSONObject json=new JSONObject();
 //                String value = "";
                 FileUpload dataU   = (FileUpload)data;
-
+                JsonObject final_response = new JsonObject();
                 if(dataU.isCompleted()) {
-                     System.out.println(dataU.getFilename());
-                    System.out.println(dataU.getFilename());
-                    String fileName = minio.uploadFile(dataU.get(), dataU.getFilename(),"image");
+//                     System.out.println(dataU.getFilename());
+//                    System.out.println(dataU.getFilename());
+//                    String fileName = minio.uploadFile(dataU.get(), dataU.getFilename(),"image");
+//
+//                    json.put("filename",fileName);
+//                    response.get("request").getAsJsonObject().add("uploaded_filename",new JsonParser().parse(fileName));
 
-                    json.put("filename",fileName);
-                    response.get("request").getAsJsonObject().add("uploaded_filename",new JsonParser().parse(fileName));
+                    String fileName = minio.uploadFile(dataU.get(), dataU.getFilename(),"image");
+                    final_response = response.getAsJsonObject();
+                    final_response.add("filename",new JsonParser().parse(fileName));
                 }
 //                sendUploadedFileName(json, ctx);
-                ctx.fireChannelRead(response.get("request").getAsString()); //Send the response Json Command including the uploaded file aname to the next handler in the pipeline
+//                System.out.println(final_response.getAsString());
+                ctx.fireChannelRead(final_response.getAsString()); //Send the response Json Command including the uploaded file aname to the next handler in the pipeline
             }
              catch(Exception e) {
                 //responseContent.append("\tFile to be continued but should not!\r\n");

@@ -60,6 +60,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
         //try and catch
         try {
+//            System.out.println(buffer.toString(CharsetUtil.UTF_8)+"ALOO");
             JSONObject body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
             final JSONObject jsonRequest;
             final String corrId;
