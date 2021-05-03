@@ -1,4 +1,6 @@
 package MediaServer;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
@@ -41,6 +43,7 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
 
     private static final int THUMB_MAX_WIDTH = 100;
     private static final int THUMB_MAX_HEIGHT = 100;
+    private JsonObject response = new JsonObject();
 
     public MediaHandler() {
                  minio=new MinioInstance();
@@ -265,6 +268,14 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
                     //System.out.println("decoder has next");
                     InterfaceHttpData data = decoder.next();
                     if (data != null) {
+                        if (data.getHttpDataType() == InterfaceHttpData.HttpDataType.Attribute) {
+                            Attribute attribute = (Attribute) data;
+                            try {
+                               response.add("request",new JsonParser().parse(attribute.getString()));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         writeHttpData(data, ctx);
                         data.release();
                     }
@@ -287,9 +298,10 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
 
                 if(dataU.isCompleted()) {
                     String fileName = minio.uploadFile(dataU.get(), "image");
-                    json.put("filename",fileName);
+                    response.get("request").getAsJsonObject().add("uploaded_filename",new JsonParser().parse(fileName));
                 }
-                sendUploadedFileName(json, ctx);
+//                sendUploadedFileName(json, ctx);
+                ctx.fireChannelRead(response.get("request").getAsString()); //Send the response Json Command including the uploaded file aname to the next handler in the pipeline
             }
              catch(Exception e) {
                 //responseContent.append("\tFile to be continued but should not!\r\n");
