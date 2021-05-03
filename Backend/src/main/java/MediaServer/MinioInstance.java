@@ -76,9 +76,9 @@ public class MinioInstance {
            }
     public String uploadFile(byte[] data,String fileType){
         UUID uuid = UUID.randomUUID();
-        String name = uuid.toString();
+        String name = uuid.toString()+".png";
         try {
-            String contentType="image/jpeg";
+            String contentType="image/png";
             if(fileType.equals("video")){
                 contentType="video/mp4";
             }

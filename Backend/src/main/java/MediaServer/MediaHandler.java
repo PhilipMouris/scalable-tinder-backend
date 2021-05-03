@@ -1,10 +1,6 @@
 package MediaServer;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.DefaultFileRegion;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
 
 import static io.netty.handler.codec.http.HttpHeaders.Names.CONNECTION;
@@ -17,11 +13,7 @@ import static io.netty.handler.codec.http.HttpResponseStatus.NOT_FOUND;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
-import io.netty.handler.codec.http.multipart.DefaultHttpDataFactory;
-import io.netty.handler.codec.http.multipart.FileUpload;
-import io.netty.handler.codec.http.multipart.HttpDataFactory;
-import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder;
-import io.netty.handler.codec.http.multipart.InterfaceHttpData;
+import io.netty.handler.codec.http.multipart.*;
 import io.netty.util.CharsetUtil;
 import java.io.*;
 import java.net.URI;
@@ -36,7 +28,7 @@ import java.util.UUID;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-public class HttpStaticFileServerHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
+public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
 
 
     // query param used to download a file
@@ -50,18 +42,19 @@ public class HttpStaticFileServerHandler extends SimpleChannelInboundHandler<Ful
     private static final int THUMB_MAX_WIDTH = 100;
     private static final int THUMB_MAX_HEIGHT = 100;
 
-    public HttpStaticFileServerHandler() {
+    public MediaHandler() {
                  minio=new MinioInstance();
+                 System.out.println("ALO");
     }
 
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
+//    @Override
+    public void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
         // get the URL
-
+        System.out.println(" request received");
         URI uri = new URI(request.uri());
         String uriStr = uri.getPath();
 
-        System.out.println(uriStr + " request received");
+
 
         if (uriStr.contains("/file/download")) {
             serveFile(ctx, request); // user requested a file, serve it
@@ -130,7 +123,7 @@ public class HttpStaticFileServerHandler extends SimpleChannelInboundHandler<Ful
         try {
             fileLength = raf.length();
         } catch (IOException ex) {
-            Logger.getLogger(HttpStaticFileServerHandler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MediaHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         HttpResponse response = new DefaultHttpResponse(HTTP_1_1, OK);
@@ -176,6 +169,7 @@ public class HttpStaticFileServerHandler extends SimpleChannelInboundHandler<Ful
 
         // test comment
         try {
+            System.out.println("In Upload");
             decoder = new HttpPostRequestDecoder(factory, request);
             //System.out.println("decoder created");
         } catch (HttpPostRequestDecoder.ErrorDataDecoderException e1) {
@@ -241,7 +235,7 @@ public class HttpStaticFileServerHandler extends SimpleChannelInboundHandler<Ful
         if (fileName != null) {
             msg = fileName.toString();
         } else {
-            Logger.getLogger(HttpStaticFileServerHandler.class.getName()).log(
+            Logger.getLogger(MediaHandler.class.getName()).log(
                     Level.SEVERE, "uploaded file names are blank");
             status = HttpResponseStatus.BAD_REQUEST;
             contentType = "text/plain; charset=UTF-8";
@@ -288,7 +282,13 @@ public class HttpStaticFileServerHandler extends SimpleChannelInboundHandler<Ful
     private void writeHttpData(InterfaceHttpData data, ChannelHandlerContext ctx) {
             try {
                 JSONObject json=new JSONObject();
-//                String fileName=minio.uploadFile((byte[])data,"image");
+//                String value = "";
+                FileUpload dataU   = (FileUpload)data;
+
+                if(dataU.isCompleted()) {
+                    String fileName = minio.uploadFile(dataU.get(), "image");
+                    json.put("filename",fileName);
+                }
                 sendUploadedFileName(json, ctx);
             }
              catch(Exception e) {
