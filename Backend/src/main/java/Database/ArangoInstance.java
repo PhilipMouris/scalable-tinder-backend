@@ -4,12 +4,14 @@ package Database;
 import Cache.RedisConnection;
 import Config.Config;
 import Models.*;
+import Notifications.Firebase;
 import com.arangodb.ArangoCursor;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
 import com.arangodb.entity.*;
 import com.arangodb.util.MapBuilder;
 import com.arangodb.model.*;
+import com.google.gson.JsonElement;
 import io.netty.handler.logging.LogLevel;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.json.JSONArray;
@@ -119,9 +121,28 @@ import java.util.logging.Logger;
             }
         }
 
-        public JSONArray findAll(String collectionName,Object limit,Object page,String model) {
+        private String getFilterQueryString(Object filterParams){
+            String filterQueryString = "";
+            JSONObject filterJSON = (JSONObject)filterParams;
+            System.out.println(filterJSON + "FILTERSS");
+            for (String key : filterJSON.keySet()) {
+                try {
+                    Object keyValue = filterJSON.get(key);
+                    String valueOperator = keyValue instanceof String ?  "\"%s\"": "%s" ;
+                    filterQueryString += String.format("FILTER doc.%s ==",key) +String.format(valueOperator,keyValue)+ " "+ "\n";
+                }catch (Exception e){
+
+                }
+
+            }
+            return filterQueryString;
+        }
+
+        public JSONArray findAll(String collectionName,Object limit,Object page,String model, Object filterParams) {
             try {
-                String query = String.format("FOR doc IN %s LIMIT @offset, @count RETURN doc",collectionName);
+                String query = String.format("FOR doc IN %s ",collectionName);
+                query+= getFilterQueryString(filterParams);
+                query+= "LIMIT @offset, @count RETURN doc";
                 Map<String, Object> bindVars = new HashMap<String,Object> ();
                 bindVars.put("count",limit);
                 bindVars.put("offset", (int)page * (int)limit);
@@ -149,7 +170,14 @@ import java.util.logging.Logger;
             Object modelObject = getInstanceObjectFromModelName(model);
             ArangoCursor<BaseDocument> cursor = arangoDB.db(dbName).query(query, bindVars, null, BaseDocument.class);
             cursor.forEachRemaining(aDocument -> {
-                Object document = gson.fromJson(gson.toJson(aDocument.getProperties()),modelObject.getClass());
+                System.out.println(aDocument.toString() + "OKK???");
+                //System.out.println(aDocument.getProperties() + "OKKK???");
+                String jsonString = gson.toJson(aDocument.getProperties());
+                JSONObject jsonObject = new JSONObject(jsonString);
+                jsonObject.put("_key",aDocument.getKey());
+
+
+                Object document = gson.fromJson(jsonObject.toString(),modelObject.getClass());
                 data.add(document);
             });
             String stringData = gson.toJson(data);
@@ -157,6 +185,19 @@ import java.util.logging.Logger;
                 redis.setKey(id, stringData);
             }
            return  new JSONArray(stringData);
+        }
+
+        public String createNotificaiton(int userID,String type,String title,String body){
+            //TODO: FIND user data -> get tokens -> send with fb
+            Notification notification = new Notification(userID, type,title,body);
+            System.out.println(notification.toString() + "STRING");
+            String notificationID = insert("notifications", notification);
+            JSONObject userData = find("users", ""+userID, "UserData");
+            if(userData!=null) {
+                Firebase.sendNotification(userData, notification);
+            }
+            return notificationID;
+
         }
 
 
