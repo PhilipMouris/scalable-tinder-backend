@@ -74,11 +74,21 @@ public class MinioInstance {
                }
                return null;
            }
-    public String uploadFile(byte[] data,String fileName,String fileType){
+    public String uploadFile(byte[] data,String fileName){
+        String fileType="image";
         UUID uuid = UUID.randomUUID();
         String name = uuid.toString();
         String extension=FilenameUtils.getExtension(fileName);
         name=name+"."+extension;
+        switch(extension.toLowerCase()){
+            case "jpg":
+            case "png":
+            case "jpeg":
+            case "bmp": fileType="image";break;
+            case"avi":
+            case "mp4":
+            case "mkv":fileType="video";
+        }
         try {
             String contentType="image/"+extension;
             if(fileType.equals("video")){
@@ -157,7 +167,7 @@ public class MinioInstance {
         BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
         buf.read(byteArray, 0, byteArray.length);
         buf.close();
-        String fileName=minio.uploadFile(byteArray,file.getName(),"video");
+        String fileName=minio.uploadFile(byteArray,file.getName());
         System.out.println(fileName);
         byte[] downloadedFile= minio.downloadFile(fileName);
         File fileToWrite=new File("/home/vm/Desktop/Scalable/thumbsu.mp4");

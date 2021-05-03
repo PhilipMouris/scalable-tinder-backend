@@ -1,6 +1,8 @@
 package MediaServer;
+import Entities.MediaServerRequest;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
@@ -26,6 +28,8 @@ import java.util.logging.Logger;
 import javax.activation.MimetypesFileTypeMap;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import java.util.UUID;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -38,15 +42,16 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
     private MinioInstance minio;
     private HttpPostRequestDecoder decoder;
     private static final HttpDataFactory factory = new DefaultHttpDataFactory(true);
+    MediaServerRequest mediaServerRequest= new MediaServerRequest();
 
     private boolean readingChunks;
 
     private static final int THUMB_MAX_WIDTH = 100;
     private static final int THUMB_MAX_HEIGHT = 100;
-    private JsonObject response = new JsonObject();
+    private JSONObject response = new JSONObject();
 
     public MediaHandler() {
-                 minio=new MinioInstance();
+
     }
 
 //    @Override
@@ -64,7 +69,7 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
             uploadFile(ctx, request); // user requested to upload file, handle request
         } else {
             // unknown request, send error message
-            sendError(ctx, HttpResponseStatus.METHOD_NOT_ALLOWED);
+    ctx.fireChannelRead(request);
         }
 
     }
@@ -180,7 +185,7 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
             return;
         }
 
-        readingChunks = HttpHeaders.isTransferEncodingChunked(request);
+        readingChunks = HttpUtil.isTransferEncodingChunked(request);
 
         if (decoder != null) {
             if (request instanceof HttpContent) {
@@ -200,10 +205,14 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
                 if (chunk instanceof LastHttpContent) {
                     readingChunks = false;
                     reset();
+
                 }
+
             } else {
                 sendError(ctx, HttpResponseStatus.BAD_REQUEST, "Not a http request");
             }
+
+            ctx.fireChannelRead(mediaServerRequest);
         } else {
             sendError(ctx, HttpResponseStatus.BAD_REQUEST, "Failed to decode file data");
         }
@@ -270,17 +279,25 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
                         if (data.getHttpDataType() == InterfaceHttpData.HttpDataType.Attribute) {
                             Attribute attribute = (Attribute) data;
                             try {
-                                Logger.getLogger(MediaHandler.class.getName()).log(Level.INFO,"SOUIDAN");
-                               response.add("alo",new JsonParser().parse(attribute.getString()));
+                                System.out.println(attribute.getString()+"JSON REQUEST");
+                                System.out.println(attribute.getName()+"JSON String");
+//                                Logger.getLogger(MediaHandler.class.getName()).log(Level.INFO,"SOUIDAN");
+                            mediaServerRequest.setRequest(attribute.getString());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                        }  else if(data.getHttpDataType()==InterfaceHttpData.HttpDataType.FileUpload){
+                                writeHttpData(data, ctx);
                         }
-                        writeHttpData(data, ctx);
+
+//                        data.release();
+
                     }
                 }
+
+
             } catch (Exception e) {
-                //e.printStackTrace();
+//                e.printStackTrace();
             }
         } else {
             sendError(ctx, HttpResponseStatus.BAD_REQUEST, "Not a multipart request");
@@ -293,24 +310,23 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
             try {
 //                String value = "";
                 FileUpload dataU   = (FileUpload)data;
-                JsonObject final_response = new JsonObject();
                 if(dataU.isCompleted()) {
+                    mediaServerRequest.setFile(dataU.get());
+                    mediaServerRequest.setFilename(dataU.getFilename());
 //                     System.out.println(dataU.getFilename());
 //                    System.out.println(dataU.getFilename());
 //                    String fileName = minio.uploadFile(dataU.get(), dataU.getFilename(),"image");
 //
 //                    json.put("filename",fileName);
 //                    response.get("request").getAsJsonObject().add("uploaded_filename",new JsonParser().parse(fileName));
-
-                    String fileName = minio.uploadFile(dataU.get(), dataU.getFilename(),"image");
-                    final_response = response.getAsJsonObject();
-                    final_response.add("filename",new JsonParser().parse(fileName));
+                    
                 }
 //                sendUploadedFileName(json, ctx);
 //                System.out.println(final_response.getAsString());
-                ctx.fireChannelRead(final_response.getAsString()); //Send the response Json Command including the uploaded file aname to the next handler in the pipeline
+                 //Send the response Json Command including the uploaded file aname to the next handler in the pipeline
             }
              catch(Exception e) {
+                e.printStackTrace();
                 //responseContent.append("\tFile to be continued but should not!\r\n");
                 sendError(ctx, HttpResponseStatus.BAD_REQUEST, "Unknown error occurred");
             }

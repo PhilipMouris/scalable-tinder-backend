@@ -8,6 +8,8 @@ import Database.ArangoInstance;
 //import Models.ErrorLog;
 import Database.PostgreSQL;
 import Entities.HttpResponseTypes;
+import Entities.MediaServerRequest;
+import MediaServer.MinioInstance;
 import Models.Message;
 import com.arangodb.entity.DocumentEntity;
 import com.google.gson.*;
@@ -34,6 +36,7 @@ public abstract class ConcreteCommand extends Command {
 //    protected RLiveObjectService RLiveObjectService;
     protected ArangoInstance ArangoInstance;
     protected PostgreSQL PostgresInstance;
+    protected MinioInstance MinioInstance;
     protected  RedisConnection redis;
 //    protected ChatArangoInstance ChatArangoInstance;
 //    protected UserCacheController UserCacheController;
@@ -51,6 +54,7 @@ public abstract class ConcreteCommand extends Command {
     protected String model;
     protected String collection;
     protected Boolean useCache=false;
+    protected MediaServerRequest mediaServerRequest;
     
     private final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
 
@@ -62,6 +66,7 @@ public abstract class ConcreteCommand extends Command {
             ArangoInstance = (ArangoInstance)
                     parameters.get("ArangoInstance");
             PostgresInstance = (PostgreSQL) parameters.get("PostgresInstance");
+            MinioInstance=(MinioInstance) parameters.get("MinioInstance");
             redis = (RedisConnection) parameters.get("redis");
             LOGGER.log(Level.INFO,"ARANGO is "+ArangoInstance);
 //            UserCacheController = (UserCacheController)
@@ -72,10 +77,16 @@ public abstract class ConcreteCommand extends Command {
             Channel channel = (Channel) parameters.get("channel");
             AMQP.BasicProperties replyProps = (AMQP.BasicProperties) parameters.get("replyProps");
             jsonParser = new JsonParser();
-            String jsonString = (String) parameters.get("body");
             message = new Message();
-            jsonBodyObject = new JSONObject(jsonString);
-            message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
+            mediaServerRequest=((MediaServerRequest)parameters.get("mediaServerRequest"));
+            if(mediaServerRequest!=null){
+                message.setParameters(mediaServerRequest.getRequest());
+  }
+            else {
+                String jsonString = (String) parameters.get("body");
+                jsonBodyObject = new JSONObject(jsonString);
+                message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
+            }
             HttpResponseTypes status = doCommand();
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);

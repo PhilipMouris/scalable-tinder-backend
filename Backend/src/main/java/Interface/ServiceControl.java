@@ -11,6 +11,7 @@ import Controller.Controller;
 import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Entities.ErrorLog;
+import Entities.MediaServerRequest;
 import MediaServer.MinioInstance;
 import NettyWebServer.NettyServerInitializer;
 import NettyWebServer.RequestHandler;
@@ -22,6 +23,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.print.attribute.standard.Media;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 import java.io.*;
@@ -90,7 +92,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         return minioInstance;
     }
 
-    public void setFileUploader(MinioInstance minioInstance) {
+    public void setMinioInstance(MinioInstance minioInstance) {
         this.minioInstance = minioInstance;
     }
 
@@ -224,8 +226,15 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                     LOGGER.log(Level.INFO,"Responding to corrID: " + properties.getCorrelationId() + ", on Queue : " + REQUEST_QUEUE_NAME);
                     LOGGER.log(Level.INFO,"INSTANCE NUM   :   " + ID);
                     try {
+                        String message;
                         //Using Reflection to convert a command String to its appropriate class
-                        String message = new String(body, StandardCharsets.UTF_8);
+                        MediaServerRequest mediaServerRequest =MediaServerRequest.getObject(body);
+                        if(mediaServerRequest!=null){
+                            message= mediaServerRequest.getRequest().toString();
+                        }
+                        else{
+                            message = new String(body, StandardCharsets.UTF_8);
+                        }
                         JSONParser parser = new JSONParser();
                         JSONObject command = (JSONObject) parser.parse(message);
                         String className = (String) command.get("command");
@@ -246,9 +255,10 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         init.put("envelope", envelope);
                         init.put("PostgresInstance", postgresDB);
                         init.put("body", message);
+                        init.put("mediaServerRequest",mediaServerRequest);
 //                        init.put("RLiveObjectService", liveObjectService);
                         init.put("ArangoInstance", arangoInstance);
-                        init.put("FileUploader", minioInstance);
+                        init.put("MinioInstance", minioInstance);
                         init.put("redis", redis);
 //                        init.put("ChatArangoInstance", ChatArangoInstance);
 //                        init.put("UserCacheController", userCacheController);

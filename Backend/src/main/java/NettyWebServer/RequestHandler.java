@@ -1,6 +1,8 @@
 package NettyWebServer;
 
 import Config.Config;
+import Entities.MediaServerRequest;
+import com.google.gson.JsonObject;
 import com.rabbitmq.client.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.CompositeByteBuf;
@@ -45,26 +47,35 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object o) {
-        if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)){
+        System.out.println("Exiting Channel Read");
+        if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)&&!(o instanceof MediaServerRequest) ){
+
             channelHandlerContext.fireChannelRead(o);
             return;
         }
 
         ByteBuf buffer;
+        JSONObject body;
         if(o instanceof TextWebSocketFrame) {
             buffer = (ByteBuf) (((TextWebSocketFrame)o).content());
+            body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
+
+        }
+        if(o instanceof MediaServerRequest) {
+            body = ((MediaServerRequest)o).getRequest();
+            System.out.println(body+" body");
+            System.out.println(o+" Object");
         }
         else {
             buffer = (ByteBuf) o;
+            body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
         }
 
         //try and catch
         try {
-//            System.out.println(buffer.toString(CharsetUtil.UTF_8)+"ALOO");
-            JSONObject body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
             final JSONObject jsonRequest;
             final String corrId;
-            if(o instanceof TextWebSocketFrame){
+            if(o instanceof TextWebSocketFrame ||o instanceof MediaServerRequest ){
                 jsonRequest = new JSONObject();
                 jsonRequest.put("Headers", new JSONObject());
                 corrId = UUID.randomUUID().toString();
@@ -85,8 +96,12 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             }
 
             jsonRequest.put("body", body);
-
-            transmitRequest(corrId,jsonRequest,channelHandlerContext,service);
+             if(o instanceof  MediaServerRequest){
+                 transmitMediaRequest(corrId,((MediaServerRequest)o).getByteArray(),channelHandlerContext,service);
+             }
+             else{
+                 transmitRequest(corrId,jsonRequest,channelHandlerContext,service);
+                }
             if (o instanceof TextWebSocketFrame) {
                 channelHandlerContext.fireChannelRead(o);
             }
@@ -100,6 +115,43 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             channelHandlerContext.writeAndFlush(response);
         }
 
+    }
+
+    private void transmitMediaRequest(String corrId, byte[] byteArray, ChannelHandlerContext ctx, String appName) {
+        try {
+            uuid.put(corrId,ctx);
+            AMQP.BasicProperties props = new AMQP.BasicProperties
+                    .Builder()
+                    .correlationId(corrId)
+                    .replyTo(RPC_QUEUE_REPLY_TO)
+                    .build();
+//            System.out.println("Sent   : " + jsonRequest.toString() + "to: " +appName+"-Request");
+            LOGGER.log(Level.INFO,"Sent File to "+appName+"-Request");
+//            System.out.println();
+
+            ConnectionFactory connectionFactory = new ConnectionFactory();
+            connectionFactory.setHost(serverHost);
+            connectionFactory.setPort(serverPort);
+            connectionFactory.setUsername(serverUser);
+            connectionFactory.setPassword(serverPass);
+            Connection connection = null;
+            Channel channel ;
+            try {
+                connection = connectionFactory.newConnection();
+                channel = connection.createChannel();
+
+                channel.basicPublish("", appName + "-Request", props, byteArray);
+            }catch(IOException | TimeoutException e) {
+                e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+
+                LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+
+        }
     }
 
     private void transmitRequest(String corrId, JSONObject jsonRequest, ChannelHandlerContext ctx,String appName){

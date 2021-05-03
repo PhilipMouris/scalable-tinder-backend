@@ -70,9 +70,9 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
         p.addLast("encoder", new HttpResponseEncoder());
         p.addLast(new CorsHandler(corsConfig));
         p.addLast(new HttpObjectAggregator(10000000));
-        p.addLast(new MediaHandler());
-        p.addLast(new HTTPHandler());
 
+        p.addLast(new HTTPHandler());
+        p.addLast(new MediaHandler());
         p.addLast("MQ", new NettyWebServer.RequestHandler(senderChannel, uuid, RPC_QUEUE_REPLY_TO, RPC_QUEUE_SEND_TO));
         //pipeline.addLast("chunkedWriter", new ChunkedWriteHandler());
 //        p.addLast("mediaHandler", new MediaHandler());
