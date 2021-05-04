@@ -1,118 +1,110 @@
-May 03, 2021 6:43:40 AM NettyWebServer.NettyServer start
+May 04, 2021 2:00:05 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
-May 03, 2021 6:43:40 AM NettyWebServer.NettyServer start
+May 04, 2021 2:00:05 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8020/
-May 03, 2021 6:43:47 AM Cache.RedisConnection <init>
+May 04, 2021 2:00:09 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 03, 2021 6:43:47 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 03, 2021 6:43:47 AM Interface.ServiceControl consumeFromRequestQueue
+May 04, 2021 2:00:09 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 04, 2021 2:00:10 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 03, 2021 6:43:47 AM Interface.ServiceControl consumeFromResponseQueue
+May 04, 2021 2:00:10 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 03, 2021 6:43:47 AM Cache.RedisConnection <init>
+May 04, 2021 2:00:10 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 03, 2021 6:43:47 AM Cache.RedisConnection <init>
+May 04, 2021 2:00:10 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 03, 2021 6:43:47 AM Interface.ServiceControl consumeFromRequestQueue
+May 04, 2021 2:00:10 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 03, 2021 6:43:47 AM Interface.ServiceControl consumeFromResponseQueue
+May 04, 2021 2:00:10 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 03, 2021 6:43:47 AM Cache.RedisConnection <init>
+May 04, 2021 2:00:10 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 03, 2021 6:43:47 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 03, 2021 6:43:47 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 03, 2021 6:43:47 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 03, 2021 6:43:48 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 03, 2021 6:43:48 AM Cache.RedisConnection <init>
+May 04, 2021 2:00:10 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 03, 2021 6:43:48 AM Interface.ServiceControl consumeFromRequestQueue
+May 04, 2021 2:00:10 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 03, 2021 6:43:48 AM Interface.ServiceControl consumeFromResponseQueue
+May 04, 2021 2:00:10 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 03, 2021 6:43:48 AM Cache.RedisConnection <init>
+May 04, 2021 2:00:11 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 03, 2021 6:43:48 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 03, 2021 6:43:48 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 03, 2021 6:43:48 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 03, 2021 6:43:48 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 03, 2021 6:43:48 AM Cache.RedisConnection <init>
+May 04, 2021 2:00:11 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 03, 2021 6:43:48 AM Interface.ServiceControl consumeFromRequestQueue
+May 04, 2021 2:00:11 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 04, 2021 2:00:11 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 04, 2021 2:00:11 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 04, 2021 2:00:11 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 04, 2021 2:00:11 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 03, 2021 6:43:48 AM Interface.ServiceControl consumeFromResponseQueue
+May 04, 2021 2:00:11 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 03, 2021 6:44:07 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"123","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233"},"application":"User","userID":"50885","command":"GetUserData"},"Uri":"/","command":"GetUserData"}to: User-Request
-May 03, 2021 6:44:07 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 42592b58-aad2-4a86-b6da-19fe39d752e9, on Queue : User-Request
-May 03, 2021 6:44:07 AM Interface.ServiceControl$2 handleDelivery
+May 04, 2021 2:00:11 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 04, 2021 2:00:11 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 04, 2021 2:00:11 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 04, 2021 2:00:11 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 04, 2021 2:00:16 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"content-length":"144","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233","id":"12345"},"application":"Moderator","userID":"12345","command":"GetUserData"},"Uri":"/","command":"GetUserData"}to: Moderator-Request
+May 04, 2021 2:00:16 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 712989d3-7bd7-4a14-a3d4-cd99efb56bc2, on Queue : Moderator-Request
+May 04, 2021 2:00:16 AM Interface.ServiceControl$2 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 03, 2021 6:44:07 AM Interface.ServiceControl$2 handleDelivery
+May 04, 2021 2:00:16 AM Interface.ServiceControl$2 handleDelivery
 INFO: className:GetUserData
-May 03, 2021 6:44:07 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@5561197f
-May 03, 2021 6:44:08 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.UserCommands.GetUserData Executed Successfully
-May 03, 2021 6:44:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 42592b58-aad2-4a86-b6da-19fe39d752e9, on Queue : User-Response
-May 03, 2021 6:44:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"123","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233"},"application":"User","userID":"50885","command":"GetUserData"},"Uri":"/","command":"GetUserData","status":"_404"}
-May 03, 2021 6:44:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 03, 2021 6:44:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 03, 2021 6:44:08 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {}
-May 03, 2021 6:44:31 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"123","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233"},"application":"User","userID":"12345","command":"GetUserData"},"Uri":"/","command":"GetUserData"}to: User-Request
-May 03, 2021 6:44:31 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 7043c15a-1a1f-4d37-a7fe-b732ea4ad1c4, on Queue : User-Request
-May 03, 2021 6:44:31 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 03, 2021 6:44:31 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetUserData
-May 03, 2021 6:44:31 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@49b8c82b
-May 03, 2021 6:44:31 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.UserCommands.GetUserData Executed Successfully
-May 03, 2021 6:44:31 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 7043c15a-1a1f-4d37-a7fe-b732ea4ad1c4, on Queue : User-Response
-May 03, 2021 6:44:31 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"123","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233"},"application":"User","userID":"12345","command":"GetUserData"},"Uri":"/","command":"GetUserData","status":"_404"}
-May 03, 2021 6:44:31 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 03, 2021 6:44:31 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 03, 2021 6:44:31 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {}
-May 03, 2021 6:44:57 AM NettyWebServer.RequestHandler transmitRequest
+May 04, 2021 2:00:16 AM Interface.ServiceControl$2 handleDelivery
+SEVERE: Commands.ModeratorCommands.GetUserData
+java.lang.ClassNotFoundException: Commands.ModeratorCommands.GetUserData
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:606)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:168)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:377)
+	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:242)
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149)
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+May 04, 2021 2:00:17 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 04, 2021 2:00:17 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 04, 2021 2:00:29 AM NettyWebServer.RequestHandler transmitRequest
 INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233","id":"12345"},"application":"User","userID":"12345","command":"GetUserData"},"Uri":"/","command":"GetUserData"}to: User-Request
-May 03, 2021 6:44:57 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: fd101172-1ce2-4960-9981-b77005b48418, on Queue : User-Request
-May 03, 2021 6:44:57 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 03, 2021 6:44:57 AM Interface.ServiceControl$2 handleDelivery
+May 04, 2021 2:00:29 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 1c886fb9-455c-4143-a77d-981c3c499139, on Queue : User-Request
+May 04, 2021 2:00:29 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 04, 2021 2:00:29 AM Interface.ServiceControl$2 handleDelivery
 INFO: className:GetUserData
-May 03, 2021 6:44:57 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@400bbe1c
-May 03, 2021 6:44:58 AM Interface.ConcreteCommand handleNoSQLCommand
+May 04, 2021 2:00:29 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@6f577f6
+May 04, 2021 2:00:30 AM Interface.ConcreteCommand handleNoSQLCommand
 INFO: Command: Commands.UserCommands.GetUserData Executed Successfully
-May 03, 2021 6:44:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: fd101172-1ce2-4960-9981-b77005b48418, on Queue : User-Response
-May 03, 2021 6:44:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"12345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"}},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233","id":"12345"},"application":"User","userID":"12345","command":"GetUserData"},"Uri":"/","command":"GetUserData","status":"_200"}
-May 03, 2021 6:44:58 AM Interface.ServiceControl$1 handleDelivery
+May 04, 2021 2:00:30 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 1c886fb9-455c-4143-a77d-981c3c499139, on Queue : User-Response
+May 04, 2021 2:00:30 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":false,"uploadedAt":"Mon May 03 19:31:21 EET 2021","url":"11464ac2-a027-4163-8a72-9dda819e663a.png"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"12345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"}},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233","id":"12345"},"application":"User","userID":"12345","command":"GetUserData"},"Uri":"/","command":"GetUserData","status":"_200"}
+May 04, 2021 2:00:30 AM Interface.ServiceControl$1 handleDelivery
 INFO: Application    :   User
-May 03, 2021 6:44:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 03, 2021 6:44:58 AM Interface.ServiceControl$1 handleDelivery
-INFO: Response   :   {"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"12345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"}}
+May 04, 2021 2:00:30 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 04, 2021 2:00:30 AM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":false,"uploadedAt":"Mon May 03 19:31:21 EET 2021","url":"11464ac2-a027-4163-8a72-9dda819e663a.png"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"12345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"}}
+May 04, 2021 2:00:30 AM Interface.ServiceControl$1 handleDelivery
+INFO: RESPONSE FULL IS  :   DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledHeapByteBuf(ridx: 0, widx: 456, cap: 456/456))
+HTTP/1.1 200 OK
+host: 127.0.0.1:90
+x-forwarded-for: 127.0.0.1
+user-agent: insomnia/2020.5.2
+accept: */*
+content-type: application/json
+content-length: 456

@@ -22,3 +22,105 @@ Recent access records:
 Recent access records: 
 2021-25-03 06:25:48.479 [nioEventLoopGroup-4-3] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
 Recent access records: 
+2021-49-03 06:49:57.024 [nioEventLoopGroup-5-5] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-34-03 16:34:31.003 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-34-03 16:34:30.999 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-34-03 16:34:31.002 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-34-03 16:34:31.001 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-34-03 16:34:31.003 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-34-03 16:34:31.003 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-34-03 16:34:31.002 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-34-03 16:34:30.999 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-34-03 16:34:30.999 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-34-03 16:34:31.003 [AMQP Connection 127.0.0.1:5672] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - An unexpected connection driver error occured
+com.rabbitmq.client.MissedHeartbeatException: Heartbeat missing with heartbeat = 60 seconds
+	at com.rabbitmq.client.impl.AMQConnection.handleSocketTimeout(AMQConnection.java:732) ~[amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.readFrame(AMQConnection.java:651) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection.access$300(AMQConnection.java:47) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:581) [amqp-client-5.1.2.jar:5.1.2]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-13-03 18:13:55.297 [nioEventLoopGroup-4-1] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-41-03 18:41:30.971 [nioEventLoopGroup-4-7] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-18-03 19:18:35.177 [nioEventLoopGroup-5-8] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-24-03 19:24:30.679 [nioEventLoopGroup-4-4] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-43-03 19:43:43.381 [nioEventLoopGroup-4-3] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-51-03 19:51:55.474 [nioEventLoopGroup-4-6] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-01-03 20:01:16.875 [pool-40-thread-4] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - Consumer Interface.ServiceControl$2@25c2b664 (amq.ctag-eLrt2XuayZJuaOv2g5-ugg) method handleDelivery for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1) threw an exception for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1)
+java.lang.NullPointerException: Cannot invoke "io.netty.channel.ChannelHandlerContext.writeAndFlush(Object)" because "ctxRec" is null
+	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:276) ~[classes/:?]
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100) [amqp-client-5.1.2.jar:5.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-01-03 20:01:16.912 [pool-40-thread-5] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - Consumer Interface.ServiceControl$2@25c2b664 (amq.ctag-eLrt2XuayZJuaOv2g5-ugg) method handleDelivery for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1) threw an exception for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1)
+java.lang.NullPointerException: Cannot invoke "io.netty.channel.ChannelHandlerContext.writeAndFlush(Object)" because "ctxRec" is null
+	at Interface.ServiceControl$2.handleDelivery(ServiceControl.java:276) ~[classes/:?]
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100) [amqp-client-5.1.2.jar:5.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2021-10-03 20:10:49.363 [nioEventLoopGroup-5-8] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 

@@ -75,7 +75,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
         try {
             final JSONObject jsonRequest;
             final String corrId;
-            if(o instanceof TextWebSocketFrame ||o instanceof MediaServerRequest ){
+            if(o instanceof TextWebSocketFrame ){
                 jsonRequest = new JSONObject();
                 jsonRequest.put("Headers", new JSONObject());
                 corrId = UUID.randomUUID().toString();
@@ -97,7 +97,9 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
             jsonRequest.put("body", body);
              if(o instanceof  MediaServerRequest){
-                 transmitMediaRequest(corrId,((MediaServerRequest)o).getByteArray(),channelHandlerContext,service);
+                 MediaServerRequest msr= ((MediaServerRequest)o);
+                 msr.setJsonRequest(jsonRequest.toString());
+                 transmitMediaRequest(corrId,msr.getByteArray(),channelHandlerContext,service);
              }
              else{
                  transmitRequest(corrId,jsonRequest,channelHandlerContext,service);
@@ -116,7 +118,6 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
         }
 
     }
-
     private void transmitMediaRequest(String corrId, byte[] byteArray, ChannelHandlerContext ctx, String appName) {
         try {
             uuid.put(corrId,ctx);

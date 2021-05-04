@@ -148,10 +148,8 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                                 HttpVersion.HTTP_1_1,
                                 mapToStatus(status),
                                 copiedBuffer(responseJson.get("response").toString().getBytes()));
-
                         org.json.JSONObject headers = (org.json.JSONObject) responseJson.get("Headers");
                         Iterator<String> keys = headers.keys();
-
                         while (keys.hasNext()) {
                             String key = keys.next();
                             String value = (String) headers.get(key);
@@ -161,7 +159,9 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
                         response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
 
+
                         LOGGER.log(Level.INFO,"Response   :   " + responseJson.get("response"));
+                        LOGGER.log(Level.INFO,"RESPONSE FULL IS  :   " + response);
 
                         ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
                         ctxRec.writeAndFlush(response);
@@ -230,7 +230,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         //Using Reflection to convert a command String to its appropriate class
                         MediaServerRequest mediaServerRequest =MediaServerRequest.getObject(body);
                         if(mediaServerRequest!=null){
-                            message= mediaServerRequest.getRequest().toString();
+                            message= mediaServerRequest.getJsonRequest().toString();
                         }
                         else{
                             message = new String(body, StandardCharsets.UTF_8);

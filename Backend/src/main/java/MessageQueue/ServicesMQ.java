@@ -71,8 +71,6 @@ public class ServicesMQ {
             chatChannel_MQ.queueDeclare(REQUEST_CHAT_QUEUE_NAME, true, false, false, null);
             userToUserChannel_MQ.queueDeclare(REQUEST_USER_TO_USER_QUEUE_NAME,true,false,false,null);
 
-
-
             final Channel moderatorChannel_res = connection.createChannel();
             final Channel userChannel_res = connection.createChannel();
             final Channel chatChannel_res = connection.createChannel();

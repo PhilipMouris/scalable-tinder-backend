@@ -9,6 +9,8 @@ public class MediaServerRequest implements Serializable {
     private byte[] file;
     private String request;
     private String filename;
+    private String jsonRequest;
+
 
     public MediaServerRequest(byte[] file, String request, String filename) {
         this.file = file;
@@ -38,10 +40,16 @@ public class MediaServerRequest implements Serializable {
     public JSONObject getRequest() {
         return new JSONObject(request);
     }
-
+    public JSONObject getJsonRequest() {
+        return new JSONObject(jsonRequest);
+    }
     public void setRequest(String request) {
         this.request = request;
     }
+    public void setJsonRequest(String request) {
+        this.jsonRequest = request;
+    }
+
 
     public MediaServerRequest(byte[] file, String request) {
         this.file = file;
@@ -78,14 +86,8 @@ public class MediaServerRequest implements Serializable {
             return (MediaServerRequest) object;
 
         }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        catch (ClassNotFoundException ce){
-            return null;
-        }
-        catch(ClassCastException cce){
-            return null;
+        catch (Exception e) {
+
         }
         finally {
             try {

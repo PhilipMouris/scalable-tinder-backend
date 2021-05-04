@@ -75,7 +75,6 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
         p.addLast(new MediaHandler());
         p.addLast("MQ", new NettyWebServer.RequestHandler(senderChannel, uuid, RPC_QUEUE_REPLY_TO, RPC_QUEUE_SEND_TO));
         //pipeline.addLast("chunkedWriter", new ChunkedWriteHandler());
-//        p.addLast("mediaHandler", new MediaHandler());
         p.addLast(new WebSocketServerProtocolHandler("/chat/update"));
         p.addLast(new TextWebSocketFrameHandler());
 
@@ -132,13 +131,13 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
                         String responseMsg = new String(body, "UTF-8");
 
                         JSONObject responseJson = new JSONObject(responseMsg);
-
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
                                 HttpResponseStatus.OK,
                                 copiedBuffer(responseJson.get("response").toString().getBytes()));
 
                         JSONObject headers = (JSONObject) responseJson.get("Headers");
+                        System.out.println("Headers are "+headers);
                         Iterator<String> keys = headers.keys();
 
                         while (keys.hasNext()) {

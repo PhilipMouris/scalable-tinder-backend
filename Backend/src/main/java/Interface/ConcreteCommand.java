@@ -81,7 +81,8 @@ public abstract class ConcreteCommand extends Command {
             mediaServerRequest=((MediaServerRequest)parameters.get("mediaServerRequest"));
             if(mediaServerRequest!=null){
                 message.setParameters(mediaServerRequest.getRequest());
-  }
+                jsonBodyObject=new JSONObject(mediaServerRequest.getJsonRequest().toString());
+                }
             else {
                 String jsonString = (String) parameters.get("body");
                 jsonBodyObject = new JSONObject(jsonString);
@@ -210,6 +211,7 @@ public abstract class ConcreteCommand extends Command {
                     break;
                 case "update":
                     dbResponse  = ArangoInstance.update(collection,parameters.get(0),parameters.get(1));
+                    break;
                 case "findAll":
                     dbArrayResponse = ArangoInstance.findAll(collection,parameters.get(0),parameters.get(1),model);
             }

@@ -48,8 +48,8 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
                 return;
             }
             if (request.uri().contains("/file/upload")) {
-                ctx.fireChannelRead(((FullHttpRequest)request).retain());
-                return;
+//                ctx.fireChannelRead(((FullHttpRequest)request).retain());
+//                return;
             }
             if (HttpHeaders.is100ContinueExpected(request)) {
                 send100Continue(ctx);
@@ -94,14 +94,20 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
         if (msg instanceof HttpContent) {
             HttpContent httpContent = (HttpContent) msg;
             ByteBuf content = httpContent.content();
-            if(msg.toString().contains("HEAD")) {
+            if(msg.toString().contains("HEAD") || request.uri().contains("/file/upload")) {
                 FullHttpResponse response = new DefaultFullHttpResponse(
                         HttpVersion.HTTP_1_1,
                         OK,
                         copiedBuffer("ACK".getBytes()));
                 ctx.writeAndFlush(response);
+                if (request.uri().contains("/file/upload")) {
+                    ctx.fireChannelRead(((FullHttpRequest)request).retain());
+                }
             }else{
-                ctx.fireChannelRead(content);
+
+
+                    ctx.fireChannelRead(content);
+                
             }
         }
         if (msg instanceof LastHttpContent) {
