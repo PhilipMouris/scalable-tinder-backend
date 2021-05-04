@@ -15,5 +15,4 @@ public class GetUserData extends ConcreteCommand {
         inputParams= new String[]{"userData.id"};
         collection  = "users";
     }
-
 }
