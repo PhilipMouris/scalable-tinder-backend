@@ -1,0 +1,243 @@
+May 04, 2021 5:44:43 PM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8020/
+May 04, 2021 5:44:43 PM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8021/
+May 04, 2021 5:44:49 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 04, 2021 5:44:49 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='53c0f2895194714b669a32ec71ee72a445cf286e', connected=true, slaveOf='e3b3f144307738248e5c21a6c4a5456dd70c76e7', pingSentTimestamp=0, pongReceivedTimestamp=1620150286000, configEpoch=2, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='211c0dee9bdf29729afb9e6e449405b11fc391f3', connected=true, slaveOf='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', pingSentTimestamp=0, pongReceivedTimestamp=1620150287000, configEpoch=3, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150287522, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='2b8717cebb4c92e1d2c1d0a499ba448298b6e53d', connected=true, slaveOf='4262bb9498e76390e570953a494a80f99828799b', pingSentTimestamp=0, pongReceivedTimestamp=1620150287000, configEpoch=1, flags=[MYSELF, SLAVE], aliases=[RedisURI [host='127.0.0.1', port=7005]]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='4262bb9498e76390e570953a494a80f99828799b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150288072, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='e3b3f144307738248e5c21a6c4a5456dd70c76e7', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150286948, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462]]
+May 04, 2021 5:44:49 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 04, 2021 5:44:49 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 04, 2021 5:44:49 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 04, 2021 5:44:49 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150287579, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='4262bb9498e76390e570953a494a80f99828799b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150288841, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='2b8717cebb4c92e1d2c1d0a499ba448298b6e53d', connected=true, slaveOf='4262bb9498e76390e570953a494a80f99828799b', pingSentTimestamp=0, pongReceivedTimestamp=1620150288000, configEpoch=1, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='53c0f2895194714b669a32ec71ee72a445cf286e', connected=true, slaveOf='e3b3f144307738248e5c21a6c4a5456dd70c76e7', pingSentTimestamp=0, pongReceivedTimestamp=1620150289200, configEpoch=2, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='211c0dee9bdf29729afb9e6e449405b11fc391f3', connected=true, slaveOf='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', pingSentTimestamp=0, pongReceivedTimestamp=1620150287000, configEpoch=3, flags=[MYSELF, SLAVE], aliases=[RedisURI [host='localhost', port=7004]]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='e3b3f144307738248e5c21a6c4a5456dd70c76e7', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150288616, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462]]
+May 04, 2021 5:44:49 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 04, 2021 5:44:50 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 04, 2021 5:44:50 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 04, 2021 5:44:50 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='53c0f2895194714b669a32ec71ee72a445cf286e', connected=true, slaveOf='e3b3f144307738248e5c21a6c4a5456dd70c76e7', pingSentTimestamp=0, pongReceivedTimestamp=1620150288616, configEpoch=2, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='e3b3f144307738248e5c21a6c4a5456dd70c76e7', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150288000, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='2b8717cebb4c92e1d2c1d0a499ba448298b6e53d', connected=true, slaveOf='4262bb9498e76390e570953a494a80f99828799b', pingSentTimestamp=0, pongReceivedTimestamp=1620150288000, configEpoch=1, flags=[MYSELF, SLAVE], aliases=[RedisURI [host='127.0.0.1', port=7005]]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='211c0dee9bdf29729afb9e6e449405b11fc391f3', connected=true, slaveOf='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', pingSentTimestamp=0, pongReceivedTimestamp=1620150289510, configEpoch=3, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='4262bb9498e76390e570953a494a80f99828799b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150288072, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150290120, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461]]
+May 04, 2021 5:44:50 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 04, 2021 5:44:50 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 04, 2021 5:44:51 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 04, 2021 5:44:51 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150290216, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='53c0f2895194714b669a32ec71ee72a445cf286e', connected=true, slaveOf='e3b3f144307738248e5c21a6c4a5456dd70c76e7', pingSentTimestamp=0, pongReceivedTimestamp=1620150289203, configEpoch=2, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='2b8717cebb4c92e1d2c1d0a499ba448298b6e53d', connected=true, slaveOf='4262bb9498e76390e570953a494a80f99828799b', pingSentTimestamp=0, pongReceivedTimestamp=1620150289200, configEpoch=1, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='e3b3f144307738248e5c21a6c4a5456dd70c76e7', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150288000, configEpoch=2, flags=[MYSELF, MASTER], aliases=[RedisURI [host='localhost', port=7001]], slot count=5462], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='4262bb9498e76390e570953a494a80f99828799b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150290000, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='211c0dee9bdf29729afb9e6e449405b11fc391f3', connected=true, slaveOf='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', pingSentTimestamp=0, pongReceivedTimestamp=1620150290320, configEpoch=3, flags=[SLAVE], aliases=[]]]
+May 04, 2021 5:44:51 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 04, 2021 5:44:51 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 04, 2021 5:44:51 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 04, 2021 5:44:51 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='211c0dee9bdf29729afb9e6e449405b11fc391f3', connected=true, slaveOf='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', pingSentTimestamp=0, pongReceivedTimestamp=1620150290319, configEpoch=3, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150291333, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='e3b3f144307738248e5c21a6c4a5456dd70c76e7', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150291000, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='4262bb9498e76390e570953a494a80f99828799b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150290000, configEpoch=1, flags=[MYSELF, MASTER], aliases=[RedisURI [host='localhost', port=7000]], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='53c0f2895194714b669a32ec71ee72a445cf286e', connected=true, slaveOf='e3b3f144307738248e5c21a6c4a5456dd70c76e7', pingSentTimestamp=0, pongReceivedTimestamp=1620150291126, configEpoch=2, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='2b8717cebb4c92e1d2c1d0a499ba448298b6e53d', connected=true, slaveOf='4262bb9498e76390e570953a494a80f99828799b', pingSentTimestamp=0, pongReceivedTimestamp=1620150290521, configEpoch=1, flags=[SLAVE], aliases=[]]]
+May 04, 2021 5:44:51 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 04, 2021 5:44:51 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 04, 2021 5:44:52 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 04, 2021 5:44:52 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7000], nodeId='4262bb9498e76390e570953a494a80f99828799b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150291941, configEpoch=1, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7003], nodeId='53c0f2895194714b669a32ec71ee72a445cf286e', connected=true, slaveOf='e3b3f144307738248e5c21a6c4a5456dd70c76e7', pingSentTimestamp=0, pongReceivedTimestamp=1620150291000, configEpoch=2, flags=[MYSELF, SLAVE], aliases=[RedisURI [host='localhost', port=7003]]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7004], nodeId='211c0dee9bdf29729afb9e6e449405b11fc391f3', connected=true, slaveOf='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', pingSentTimestamp=0, pongReceivedTimestamp=1620150290000, configEpoch=3, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7002], nodeId='0a41cbb21ef45aae9f937797cf9e980a60ffcecb', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150290000, configEpoch=3, flags=[MASTER], aliases=[], slot count=5461], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7005], nodeId='2b8717cebb4c92e1d2c1d0a499ba448298b6e53d', connected=true, slaveOf='4262bb9498e76390e570953a494a80f99828799b', pingSentTimestamp=0, pongReceivedTimestamp=1620150290000, configEpoch=1, flags=[SLAVE], aliases=[]], RedisClusterNodeSnapshot [uri=RedisURI [host='127.0.0.1', port=7001], nodeId='e3b3f144307738248e5c21a6c4a5456dd70c76e7', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=1620150291000, configEpoch=2, flags=[MASTER], aliases=[], slot count=5462]]
+May 04, 2021 5:44:52 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 04, 2021 5:44:52 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 04, 2021 5:44:57 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8021","Content-Length":"113","Content-Type":"application/json"},"Hostname":"127.0.0.1:8021","body":{"application":"Moderator","limit":"1","page":"0","command":"GetAllBans","banData":{}},"Uri":"/","command":"GetAllBans"}to: Moderator-Request
+May 04, 2021 5:44:57 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: a341db15-c442-49bd-936d-45c111beaa94, on Queue : Moderator-Request
+May 04, 2021 5:44:57 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 04, 2021 5:44:57 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetAllBans
+May 04, 2021 5:44:57 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@5b10530e
+May 04, 2021 5:44:58 PM Interface.ConcreteCommand handleSQLCommand
+SEVERE: ERROR: function uspReadAllBans(unknown, unknown) does not exist
+  Hint: No function matches the given name and argument types. You might need to add explicit type casts.
+  Position: 15
+org.postgresql.util.PSQLException: ERROR: function uspReadAllBans(unknown, unknown) does not exist
+  Hint: No function matches the given name and argument types. You might need to add explicit type casts.
+  Position: 15
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2422)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2167)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:306)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:441)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:365)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:307)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:293)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:270)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:224)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at Interface.ConcreteCommand.handleSQLCommand(ConcreteCommand.java:158)
+	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:222)
+	at Interface.ConcreteCommand.execute(ConcreteCommand.java:83)
+	at Interface.Command.run(Command.java:31)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+May 04, 2021 5:44:58 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: a341db15-c442-49bd-936d-45c111beaa94, on Queue : Moderator-Response
+May 04, 2021 5:44:58 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8021","Content-Length":"113","Content-Type":"application/json"},"response":{},"Hostname":"127.0.0.1:8021","body":{"application":"Moderator","limit":"1","page":"0","command":"GetAllBans","banData":{}},"Uri":"/","command":"GetAllBans","status":"_500"}
+May 04, 2021 5:44:58 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   Moderator
+May 04, 2021 5:44:58 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 04, 2021 5:44:58 PM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {}
+May 04, 2021 5:45:05 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"174","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"application":"User","command":"CreateBlock","blockData":{"source_user_id":"17","created_at":"2021-05-04 21:32:36.504188","target_user_id":"18"}},"Uri":"/","command":"CreateBlock"}to: User-Request
+May 04, 2021 5:45:06 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 5bc4366e-b9dc-4ecf-bc87-20c422b71f4c, on Queue : User-Request
+May 04, 2021 5:45:06 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 04, 2021 5:45:06 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:CreateBlock
+May 04, 2021 5:45:06 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@7cf17349
+May 04, 2021 5:45:06 PM Interface.ConcreteCommand handleSQLCommand
+INFO: Command: Commands.UserCommands.CreateBlock Executed Successfully
+May 04, 2021 5:45:06 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 5bc4366e-b9dc-4ecf-bc87-20c422b71f4c, on Queue : User-Response
+May 04, 2021 5:45:06 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"174","Content-Type":"application/json"},"response":{"block":[{"source_user_id":17,"created_at":"2021-05-04 21:32:36.504188","target_user_id":18}]},"Hostname":"127.0.0.1:8020","body":{"application":"User","command":"CreateBlock","blockData":{"source_user_id":"17","created_at":"2021-05-04 21:32:36.504188","target_user_id":"18"}},"Uri":"/","command":"CreateBlock","status":"_200"}
+May 04, 2021 5:45:06 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 04, 2021 5:45:06 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 04, 2021 5:45:06 PM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"block":[{"source_user_id":17,"created_at":"2021-05-04 21:32:36.504188","target_user_id":18}]}
+May 04, 2021 5:45:31 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8021","Content-Length":"94","Content-Type":"application/json"},"Hostname":"127.0.0.1:8021","body":{"application":"Moderator","limit":"1","page":"0","command":"GetAllBans"},"Uri":"/","command":"GetAllBans"}to: Moderator-Request
+May 04, 2021 5:45:31 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: e8081e09-c325-411a-aaab-2d9da32d039a, on Queue : Moderator-Request
+May 04, 2021 5:45:31 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 04, 2021 5:45:31 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetAllBans
+May 04, 2021 5:45:31 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@46a193c9
+May 04, 2021 5:45:31 PM Interface.ConcreteCommand handleSQLCommand
+SEVERE: ERROR: function uspReadAllBans(unknown, unknown) does not exist
+  Hint: No function matches the given name and argument types. You might need to add explicit type casts.
+  Position: 15
+org.postgresql.util.PSQLException: ERROR: function uspReadAllBans(unknown, unknown) does not exist
+  Hint: No function matches the given name and argument types. You might need to add explicit type casts.
+  Position: 15
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2422)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2167)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:306)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:441)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:365)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:307)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:293)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:270)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:224)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at Interface.ConcreteCommand.handleSQLCommand(ConcreteCommand.java:158)
+	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:222)
+	at Interface.ConcreteCommand.execute(ConcreteCommand.java:83)
+	at Interface.Command.run(Command.java:31)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+May 04, 2021 5:45:31 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: e8081e09-c325-411a-aaab-2d9da32d039a, on Queue : Moderator-Response
+May 04, 2021 5:45:31 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8021","Content-Length":"94","Content-Type":"application/json"},"response":{},"Hostname":"127.0.0.1:8021","body":{"application":"Moderator","limit":"1","page":"0","command":"GetAllBans"},"Uri":"/","command":"GetAllBans","status":"_500"}
+May 04, 2021 5:45:31 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   Moderator
+May 04, 2021 5:45:31 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 04, 2021 5:45:31 PM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {}
+May 04, 2021 5:47:21 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"94","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"application":"Moderator","limit":"1","page":"0","command":"GetAllBans"},"Uri":"/","command":"GetAllBans"}to: Moderator-Request
+May 04, 2021 5:47:21 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 6a1c80b2-1a3b-4371-9589-0d21c33d097a, on Queue : Moderator-Request
+May 04, 2021 5:47:21 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 04, 2021 5:47:21 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetAllBans
+May 04, 2021 5:47:21 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@5b10530e
+May 04, 2021 5:47:21 PM Interface.ConcreteCommand handleSQLCommand
+SEVERE: ERROR: function uspReadAllBans(unknown, unknown) does not exist
+  Hint: No function matches the given name and argument types. You might need to add explicit type casts.
+  Position: 15
+org.postgresql.util.PSQLException: ERROR: function uspReadAllBans(unknown, unknown) does not exist
+  Hint: No function matches the given name and argument types. You might need to add explicit type casts.
+  Position: 15
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2422)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2167)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:306)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:441)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:365)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:307)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:293)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:270)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:224)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at Interface.ConcreteCommand.handleSQLCommand(ConcreteCommand.java:158)
+	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:222)
+	at Interface.ConcreteCommand.execute(ConcreteCommand.java:83)
+	at Interface.Command.run(Command.java:31)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+May 04, 2021 5:47:21 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 6a1c80b2-1a3b-4371-9589-0d21c33d097a, on Queue : Moderator-Response
+May 04, 2021 5:47:21 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"Moderator","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"94","Content-Type":"application/json"},"response":{},"Hostname":"127.0.0.1:8020","body":{"application":"Moderator","limit":"1","page":"0","command":"GetAllBans"},"Uri":"/","command":"GetAllBans","status":"_500"}
+May 04, 2021 5:47:21 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   Moderator
+May 04, 2021 5:47:21 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 04, 2021 5:47:21 PM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {}
+May 04, 2021 5:47:47 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"92","Content-Type":"application/json"},"Hostname":"127.0.0.1:8020","body":{"application":"User","limit":"1","page":"0","command":"ReadAllBlocks"},"Uri":"/","command":"ReadAllBlocks"}to: User-Request
+May 04, 2021 5:47:47 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 46c409c1-5895-4ac1-9d4f-b8453b44ec01, on Queue : User-Request
+May 04, 2021 5:47:47 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 04, 2021 5:47:47 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:ReadAllBlocks
+May 04, 2021 5:47:47 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@69f48e6d
+May 04, 2021 5:47:47 PM Interface.ConcreteCommand handleSQLCommand
+INFO: Command: Commands.UserCommands.ReadAllBlocks Executed Successfully
+May 04, 2021 5:47:47 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 46c409c1-5895-4ac1-9d4f-b8453b44ec01, on Queue : User-Response
+May 04, 2021 5:47:47 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"Accept":"*/*","User-Agent":"insomnia/2020.5.2","Host":"127.0.0.1:8020","Content-Length":"92","Content-Type":"application/json"},"response":{"block":[{"source_user_id":19,"created_at":"2021-05-04 17:43:27.520838","target_user_id":18}]},"Hostname":"127.0.0.1:8020","body":{"application":"User","limit":"1","page":"0","command":"ReadAllBlocks"},"Uri":"/","command":"ReadAllBlocks","status":"_200"}
+May 04, 2021 5:47:47 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 04, 2021 5:47:47 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 04, 2021 5:47:48 PM Interface.ServiceControl$1 handleDelivery
+INFO: Response   :   {"block":[{"source_user_id":19,"created_at":"2021-05-04 17:43:27.520838","target_user_id":18}]}
