@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 May 04, 2021 2:00:05 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
 May 04, 2021 2:00:05 AM NettyWebServer.NettyServer start
@@ -108,3 +109,5 @@ user-agent: insomnia/2020.5.2
 accept: */*
 content-type: application/json
 content-length: 456
+=======
+>>>>>>> 44b1f904530889d9ad34eebcd8716ccd01d8b8b2

@@ -19,6 +19,7 @@ public class UserData {
     private List<String> videos;
     private List<UserInterest> interests;
     private UserPreference preferences;
+    private String[] firebaseTokens;
 
     public String getBirthDate() {
         return birthDate;
@@ -58,6 +59,10 @@ public class UserData {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public String[] getFirebaseTokens(){
+        return firebaseTokens;
     }
 
 
