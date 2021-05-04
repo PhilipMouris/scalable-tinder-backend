@@ -4,6 +4,7 @@ package Config;
 
 import Controller.ControllerAdapterHandler;
 
+import java.awt.*;
 import java.io.*;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -25,6 +26,7 @@ public class Config {
     private final Properties postgresqlConfig = new Properties();
     private final Properties redisConfig = new Properties();
     private final Properties loggerConfig = new Properties();
+    private final Properties firebaseConfig = new Properties();
 
     private final String arangoPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/arango.conf";
     private final String minioPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/minio.conf";
@@ -37,7 +39,7 @@ public class Config {
     private final String postgresqlPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/postgresql.conf";
     private final String redisPath = "Backend/src/main/resources/redisEnv.conf";
     private final String loggerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/logger.conf";
-
+    private final String fireBasePath = "Backend/src/main/resources/firebase.conf";
     private final String arangoUserName="root";
     private final String arangoPass="";
 
@@ -52,6 +54,10 @@ public class Config {
 
     public Properties getRedisConfig() {
         return redisConfig;
+    }
+
+    public Properties getFirebaseConfig() {
+        return firebaseConfig;
     }
 
 
@@ -70,6 +76,7 @@ public class Config {
         loadConfig(postgresqlConfig,postgresqlPath);
         loadConfig(redisConfig, redisPath);
         loadConfig(loggerConfig,loggerPath);
+        loadConfig(firebaseConfig,fireBasePath);
         
 //        readSystemVariables(loadBalancerConfig,"load_balancer_rabbitmq_host");
     }
