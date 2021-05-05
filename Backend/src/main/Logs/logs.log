@@ -1,192 +1,81 @@
-May 05, 2021 6:44:31 AM NettyWebServer.NettyServer start
+May 05, 2021 6:49:03 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
-May 05, 2021 6:44:31 AM NettyWebServer.NettyServer start
+May 05, 2021 6:49:03 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8020/
-May 05, 2021 6:44:32 AM Cache.RedisConnection <init>
+May 05, 2021 6:49:04 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 05, 2021 6:44:32 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 05, 2021 6:44:32 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 05, 2021 6:44:32 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 05, 2021 6:44:33 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 05, 2021 6:44:33 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 05, 2021 6:44:33 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 05, 2021 6:44:33 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 05, 2021 6:44:33 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 05, 2021 6:44:33 AM Cache.RedisConnection <init>
+May 05, 2021 6:49:04 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='86999370fb337f7ef1a7f6d3a4376f9f18255fed', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 05, 2021 6:44:33 AM Interface.ServiceControl consumeFromRequestQueue
+May 05, 2021 6:49:04 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 05, 2021 6:44:33 AM Interface.ServiceControl consumeFromResponseQueue
+May 05, 2021 6:49:04 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 05, 2021 6:44:33 AM Cache.RedisConnection <init>
+May 05, 2021 6:49:05 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 05, 2021 6:44:33 AM Cache.RedisConnection <init>
+May 05, 2021 6:49:05 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 05, 2021 6:49:05 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 05, 2021 6:49:05 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 05, 2021 6:49:05 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 05, 2021 6:49:05 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 05, 2021 6:44:33 AM Interface.ServiceControl consumeFromRequestQueue
+May 05, 2021 6:49:05 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 05, 2021 6:44:33 AM Interface.ServiceControl consumeFromResponseQueue
+May 05, 2021 6:49:05 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 05, 2021 6:44:34 AM Cache.RedisConnection <init>
+May 05, 2021 6:49:05 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 05, 2021 6:44:34 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 05, 2021 6:44:34 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 05, 2021 6:44:34 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 05, 2021 6:44:34 AM Cache.RedisConnection <init>
+May 05, 2021 6:49:05 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 05, 2021 6:49:05 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 05, 2021 6:49:05 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 05, 2021 6:49:05 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 05, 2021 6:44:34 AM Cache.RedisConnection <init>
+May 05, 2021 6:49:05 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 05, 2021 6:44:34 AM Interface.ServiceControl consumeFromRequestQueue
+May 05, 2021 6:49:05 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 05, 2021 6:44:34 AM Interface.ServiceControl consumeFromResponseQueue
+May 05, 2021 6:49:05 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 05, 2021 6:44:45 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile"}to: User-Request
-May 05, 2021 6:44:45 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: e84d79f6-efe6-41c0-81b9-bc9da31c4252, on Queue : User-Request
-May 05, 2021 6:44:45 AM Interface.ServiceControl$2 handleDelivery
+May 05, 2021 6:49:06 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 05, 2021 6:49:06 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 05, 2021 6:49:06 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 05, 2021 6:49:06 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 05, 2021 6:49:32 AM NettyWebServer.RequestHandler transmitMediaRequest
+INFO: Sent File to User-Request
+May 05, 2021 6:49:32 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 85a6f633-3cab-450a-b159-60693241bf16, on Queue : User-Request
+May 05, 2021 6:49:32 AM Interface.ServiceControl$2 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 05, 2021 6:44:45 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:DownloadFile
-May 05, 2021 6:44:45 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@1952a993
-May 05, 2021 6:44:46 AM Commands.UserCommands.DownloadFile doCommand
-SEVERE: Cannot invoke "java.util.List.contains(Object)" because the return value of "Models.UserData.getVideos()" is null
-java.lang.NullPointerException: Cannot invoke "java.util.List.contains(Object)" because the return value of "Models.UserData.getVideos()" is null
-	at Commands.UserCommands.DownloadFile.doCommand(DownloadFile.java:28)
-	at Interface.ConcreteCommand.execute(ConcreteCommand.java:100)
-	at Interface.Command.run(Command.java:31)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 05, 2021 6:44:46 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: e84d79f6-efe6-41c0-81b9-bc9da31c4252, on Queue : User-Response
-May 05, 2021 6:44:46 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile","status":"_500"}
-May 05, 2021 6:44:46 AM Interface.ServiceControl$1 handleDelivery
+May 05, 2021 6:49:32 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:UploadVideo
+May 05, 2021 6:49:32 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@3a3d238f
+May 05, 2021 6:49:33 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 85a6f633-3cab-450a-b159-60693241bf16, on Queue : User-Response
+May 05, 2021 6:49:33 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"2638812","host":"127.0.0.1:90","content-type":"multipart/form-data; boundary=X-INSOMNIA-BOUNDARY","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":false,"uploadedAt":"Tue May 04 05:33:48 EET 2021","url":"6f951d34-63f5-4c34-b786-4712fbf6c134.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:42:27 EET 2021","url":"a45fa13f-c096-4ba0-ad5d-036a8c514659.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:56:25 EET 2021","url":"afd8517c-1097-41fa-b5f0-0c79cace628f.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:58:19 EET 2021","url":"7eea7413-5d57-4477-b7fa-1ea0b6606952.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:59:00 EET 2021","url":"edbcbef5-8c32-440b-8a76-7c7cb5272290.png"},{"isMain":false,"uploadedAt":"Tue May 04 06:10:45 EET 2021","url":"af0a6f2c-90b7-426a-afee-d51b94029074.png"},{"isMain":false,"uploadedAt":"Wed May 05 06:03:08 EET 2021","url":"f0eac2c4-2a83-4823-83d0-ebed6a4f41f2.png"},{"isMain":false,"uploadedAt":"Wed May 05 06:32:02 EET 2021","url":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4"}],"_rev":"_cRpaEO----","bio":"new bio3233","videos":["3a2fcb78-ed79-4718-a71c-fab156841c91.mp4"],"_key":"12345","birthDate":"1998/01/01","links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"location":{"lng":2.2,"addressName":"address","lat":2.2},"_id":"users/12345","id":"12345","interests":[{"interestID":"sdfsd","name":"sports"}]}},"Hostname":"127.0.0.1:90","body":{"userData":{"isMain":false,"id":"12345"},"application":"User","command":"UploadVideo"},"Uri":"/file/upload","command":"UploadVideo","status":"_200"}
+May 05, 2021 6:49:33 AM Interface.ServiceControl$1 handleDelivery
 INFO: Application    :   User
-May 05, 2021 6:44:46 AM Interface.ServiceControl$1 handleDelivery
+May 05, 2021 6:49:33 AM Interface.ServiceControl$1 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 05, 2021 6:44:46 AM Interface.ServiceControl$1 handleDelivery
-INFO: RESPONSE JSON IS {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile","status":"_500"}
-May 05, 2021 6:44:46 AM Interface.ServiceControl$1 handleDelivery
-INFO: RESPONSE :DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledHeapByteBuf(ridx: 0, widx: 2, cap: 2/2))
-HTTP/1.1 400 Bad Request
-host: 127.0.0.1:90
-x-forwarded-for: 127.0.0.1
-user-agent: insomnia/2020.5.2
-accept: */*
-content-type: application/json
-content-length: 2
-May 05, 2021 6:46:12 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"157","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233","videos":[],"id":"12345"},"application":"User","userID":"12345","command":"UpdateUserData"},"Uri":"/","command":"UpdateUserData"}to: User-Request
-May 05, 2021 6:46:12 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 484583dd-3561-42ef-8dc6-0e46866a2842, on Queue : User-Request
-May 05, 2021 6:46:12 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 05, 2021 6:46:12 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:UpdateUserData
-May 05, 2021 6:46:12 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@4bc65ea7
-May 05, 2021 6:46:12 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.UserCommands.UpdateUserData Executed Successfully
-May 05, 2021 6:46:12 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 484583dd-3561-42ef-8dc6-0e46866a2842, on Queue : User-Response
-May 05, 2021 6:46:12 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"157","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":false,"uploadedAt":"Tue May 04 05:33:48 EET 2021","url":"6f951d34-63f5-4c34-b786-4712fbf6c134.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:42:27 EET 2021","url":"a45fa13f-c096-4ba0-ad5d-036a8c514659.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:56:25 EET 2021","url":"afd8517c-1097-41fa-b5f0-0c79cace628f.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:58:19 EET 2021","url":"7eea7413-5d57-4477-b7fa-1ea0b6606952.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:59:00 EET 2021","url":"edbcbef5-8c32-440b-8a76-7c7cb5272290.png"},{"isMain":false,"uploadedAt":"Tue May 04 06:10:45 EET 2021","url":"af0a6f2c-90b7-426a-afee-d51b94029074.png"},{"isMain":false,"uploadedAt":"Wed May 05 06:03:08 EET 2021","url":"f0eac2c4-2a83-4823-83d0-ebed6a4f41f2.png"},{"isMain":false,"uploadedAt":"Wed May 05 06:32:02 EET 2021","url":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4"}],"_rev":"_cRpXACi---","bio":"new bio3233","videos":[],"_key":"12345","birthDate":"1998/01/01","links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"location":{"lng":2.2,"addressName":"address","lat":2.2},"_id":"users/12345","id":"12345","interests":[{"interestID":"sdfsd","name":"sports"}]}},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233","videos":[],"id":"12345"},"application":"User","userID":"12345","command":"UpdateUserData"},"Uri":"/","command":"UpdateUserData","status":"_200"}
-May 05, 2021 6:46:12 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 05, 2021 6:46:12 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 05, 2021 6:46:12 AM Interface.ServiceControl$1 handleDelivery
-INFO: RESPONSE JSON IS {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"157","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":false,"uploadedAt":"Tue May 04 05:33:48 EET 2021","url":"6f951d34-63f5-4c34-b786-4712fbf6c134.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:42:27 EET 2021","url":"a45fa13f-c096-4ba0-ad5d-036a8c514659.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:56:25 EET 2021","url":"afd8517c-1097-41fa-b5f0-0c79cace628f.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:58:19 EET 2021","url":"7eea7413-5d57-4477-b7fa-1ea0b6606952.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:59:00 EET 2021","url":"edbcbef5-8c32-440b-8a76-7c7cb5272290.png"},{"isMain":false,"uploadedAt":"Tue May 04 06:10:45 EET 2021","url":"af0a6f2c-90b7-426a-afee-d51b94029074.png"},{"isMain":false,"uploadedAt":"Wed May 05 06:03:08 EET 2021","url":"f0eac2c4-2a83-4823-83d0-ebed6a4f41f2.png"},{"isMain":false,"uploadedAt":"Wed May 05 06:32:02 EET 2021","url":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4"}],"_rev":"_cRpXACi---","bio":"new bio3233","videos":[],"_key":"12345","birthDate":"1998/01/01","links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"location":{"lng":2.2,"addressName":"address","lat":2.2},"_id":"users/12345","id":"12345","interests":[{"interestID":"sdfsd","name":"sports"}]}},"Hostname":"127.0.0.1:90","body":{"userData":{"bio":"new bio3233","videos":[],"id":"12345"},"application":"User","userID":"12345","command":"UpdateUserData"},"Uri":"/","command":"UpdateUserData","status":"_200"}
-May 05, 2021 6:46:12 AM Interface.ServiceControl$1 handleDelivery
-INFO: RESPONSE :DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledHeapByteBuf(ridx: 0, widx: 1286, cap: 1286/1286))
+May 05, 2021 6:49:33 AM Interface.ServiceControl$1 handleDelivery
+INFO: RESPONSE JSON IS {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"2638812","host":"127.0.0.1:90","content-type":"multipart/form-data; boundary=X-INSOMNIA-BOUNDARY","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":false,"uploadedAt":"Tue May 04 05:33:48 EET 2021","url":"6f951d34-63f5-4c34-b786-4712fbf6c134.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:42:27 EET 2021","url":"a45fa13f-c096-4ba0-ad5d-036a8c514659.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:56:25 EET 2021","url":"afd8517c-1097-41fa-b5f0-0c79cace628f.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:58:19 EET 2021","url":"7eea7413-5d57-4477-b7fa-1ea0b6606952.png"},{"isMain":false,"uploadedAt":"Tue May 04 05:59:00 EET 2021","url":"edbcbef5-8c32-440b-8a76-7c7cb5272290.png"},{"isMain":false,"uploadedAt":"Tue May 04 06:10:45 EET 2021","url":"af0a6f2c-90b7-426a-afee-d51b94029074.png"},{"isMain":false,"uploadedAt":"Wed May 05 06:03:08 EET 2021","url":"f0eac2c4-2a83-4823-83d0-ebed6a4f41f2.png"},{"isMain":false,"uploadedAt":"Wed May 05 06:32:02 EET 2021","url":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4"}],"_rev":"_cRpaEO----","bio":"new bio3233","videos":["3a2fcb78-ed79-4718-a71c-fab156841c91.mp4"],"_key":"12345","birthDate":"1998/01/01","links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"location":{"lng":2.2,"addressName":"address","lat":2.2},"_id":"users/12345","id":"12345","interests":[{"interestID":"sdfsd","name":"sports"}]}},"Hostname":"127.0.0.1:90","body":{"userData":{"isMain":false,"id":"12345"},"application":"User","command":"UploadVideo"},"Uri":"/file/upload","command":"UploadVideo","status":"_200"}
+May 05, 2021 6:49:33 AM Interface.ServiceControl$1 handleDelivery
+INFO: RESPONSE :DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledHeapByteBuf(ridx: 0, widx: 1328, cap: 1328/1328))
 HTTP/1.1 200 OK
 host: 127.0.0.1:90
 x-forwarded-for: 127.0.0.1
 user-agent: insomnia/2020.5.2
 accept: */*
 content-type: application/json
-content-length: 1286
-May 05, 2021 6:46:19 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile"}to: User-Request
-May 05, 2021 6:46:19 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 7cafc35e-4618-48b3-9046-ca541d2fc802, on Queue : User-Request
-May 05, 2021 6:46:19 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 05, 2021 6:46:19 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:DownloadFile
-May 05, 2021 6:46:19 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@7e339c22
-May 05, 2021 6:46:26 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"140","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"123456","command":"DownloadFile"},"Uri":"/","command":"DownloadFile"}to: User-Request
-May 05, 2021 6:46:26 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 32a91f76-d448-48b4-bd20-12177bb2f2d3, on Queue : User-Request
-May 05, 2021 6:46:26 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 05, 2021 6:46:26 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:DownloadFile
-May 05, 2021 6:46:26 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@71cafb66
-May 05, 2021 6:46:26 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 32a91f76-d448-48b4-bd20-12177bb2f2d3, on Queue : User-Response
-May 05, 2021 6:46:26 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"140","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"123456","command":"DownloadFile"},"Uri":"/","command":"DownloadFile","status":"_404"}
-May 05, 2021 6:46:26 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 05, 2021 6:46:26 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 05, 2021 6:46:26 AM Interface.ServiceControl$1 handleDelivery
-INFO: RESPONSE JSON IS {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"140","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f9-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"123456","command":"DownloadFile"},"Uri":"/","command":"DownloadFile","status":"_404"}
-May 05, 2021 6:46:26 AM Interface.ServiceControl$1 handleDelivery
-INFO: RESPONSE :DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledHeapByteBuf(ridx: 0, widx: 2, cap: 2/2))
-HTTP/1.1 404 Not Found
-host: 127.0.0.1:90
-x-forwarded-for: 127.0.0.1
-user-agent: insomnia/2020.5.2
-accept: */*
-content-type: application/json
-content-length: 2
-May 05, 2021 6:46:34 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f8-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile"}to: User-Request
-May 05, 2021 6:46:34 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: eb809ead-c12e-4a4b-8964-3cef6c871206, on Queue : User-Request
-May 05, 2021 6:46:34 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 05, 2021 6:46:34 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:DownloadFile
-May 05, 2021 6:46:34 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@1952a993
-May 05, 2021 6:46:34 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: eb809ead-c12e-4a4b-8964-3cef6c871206, on Queue : User-Response
-May 05, 2021 6:46:34 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f8-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile","status":"_404"}
-May 05, 2021 6:46:34 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 05, 2021 6:46:34 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 05, 2021 6:46:34 AM Interface.ServiceControl$1 handleDelivery
-INFO: RESPONSE JSON IS {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"139","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f8-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile","status":"_404"}
-May 05, 2021 6:46:34 AM Interface.ServiceControl$1 handleDelivery
-INFO: RESPONSE :DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: UnpooledHeapByteBuf(ridx: 0, widx: 2, cap: 2/2))
-HTTP/1.1 404 Not Found
-host: 127.0.0.1:90
-x-forwarded-for: 127.0.0.1
-user-agent: insomnia/2020.5.2
-accept: */*
-content-type: application/json
-content-length: 2
+content-length: 1328
