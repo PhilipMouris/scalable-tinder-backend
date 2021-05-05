@@ -132,6 +132,7 @@ public class MinioInstance {
                             .bucket(minioBucketName)
                             .object(name)
                             .build());
+
             return stream.readAllBytes();
         }
             // Read data from stream
@@ -162,15 +163,8 @@ public class MinioInstance {
             throws IOException, NoSuchAlgorithmException, InvalidKeyException {
 
         MinioInstance minio=new MinioInstance();
-        File file=new File("/home/vm/Desktop/Scalable/video.mp4");
-        byte [] byteArray= new byte[(int) file.length()];
-        BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
-        buf.read(byteArray, 0, byteArray.length);
-        buf.close();
-        String fileName=minio.uploadFile(byteArray,file.getName());
-        System.out.println(fileName);
-        byte[] downloadedFile= minio.downloadFile(fileName);
-        File fileToWrite=new File("/home/vm/Desktop/Scalable/thumbsu.mp4");
+        byte[] downloadedFile= minio.downloadFile("f0eac2c4-2a83-4823-83d0-ebed6a4f41f2.png");
+        File fileToWrite=new File("/home/vm/Desktop/Scalable/test");
         FileOutputStream fos = new FileOutputStream(fileToWrite); 
         try  {
             fos.write(downloadedFile);

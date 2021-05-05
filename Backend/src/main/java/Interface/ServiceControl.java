@@ -12,17 +12,24 @@ import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Entities.ErrorLog;
 import Entities.MediaServerRequest;
+import Entities.MediaServerResponse;
+import MediaServer.MediaHandler;
 import MediaServer.MinioInstance;
 import NettyWebServer.NettyServerInitializer;
 import NettyWebServer.RequestHandler;
 import com.rabbitmq.client.*;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.DefaultFileRegion;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.logging.LogLevel;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.print.attribute.standard.Media;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
@@ -44,6 +51,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
+import static io.netty.handler.codec.http.HttpHeaders.Names.CONNECTION;
+import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
+import static io.netty.handler.codec.http.HttpResponseStatus.*;
+import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 public abstract class ServiceControl {    // This class is responsible for Managing Each Service (Application) Fully (Queue (Reuqest/Response), Controller etc.)
 
@@ -136,14 +147,75 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         //Using Reflection to convert a command String to its appropriate class
 //                        Channel receiver = REQUEST_CHANNEL_MAP.get(RESPONSE_MAIN_QUEUE_NAME);
 
+                         MediaServerResponse msr=MediaServerResponse.getObject(body);
+                         if(msr!=null){
+                           body=msr.getResponseJson().toString().getBytes("UTF-8");
+                             String responseMsg = new String(body, StandardCharsets.UTF_8);
+
+                             org.json.JSONObject responseJson = new org.json.JSONObject(responseMsg);
+                             System.out.println(responseJson);
+                             String status=responseJson.get("status").toString() ;
+                             byte[] fileByteArray = msr.getFile();
+                             File file=new File(msr.getFileName());
+
+                             FileOutputStream fos = null;
+                             try {
+                                 fos = new FileOutputStream(file);
+                                 fos.write(fileByteArray);
+                             }
+                             catch(Exception e){
+                                 e.printStackTrace();
+                             }
+
+
+                             RandomAccessFile raf;
+
+                             try {
+                                 raf = new RandomAccessFile(file, "r");
+                             } catch (FileNotFoundException fnfe) {
+                                 return;
+                             }
+
+                             long fileLength = 0;
+                             try {
+                                 fileLength = raf.length();
+                             } catch (IOException ex) {
+                                 Logger.getLogger(MediaHandler.class.getName()).log(Level.SEVERE, null, ex);
+                             }
+
+                             HttpResponse response = new DefaultHttpResponse(HTTP_1_1, mapToStatus(status));
+                             org.json.JSONObject headers = (org.json.JSONObject) responseJson.get("Headers");
+                             Iterator<String> keys = headers.keys();
+                             while (keys.hasNext()) {
+                                 String key = keys.next();
+                                 String value = (String) headers.get(key);
+                                 response.headers().set(key, value);
+                             }
+                             HttpUtil.setContentLength(response, fileLength);
+                             setContentTypeHeader(response,file);
+                             ChannelHandlerContext ctx = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
+
+                             // Write the initial line and the header.
+                             ctx.write(response);
+                             ChannelFuture sendFileFuture;
+                             DefaultFileRegion defaultRegion = new DefaultFileRegion(raf.getChannel(), 0, fileLength);
+                             sendFileFuture = ctx.write(defaultRegion);
+                             // Write the end marker
+                             ChannelFuture lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT);
+                             ctx.close();
+                             // Write the content.
+
+                             file.delete();
+                         }
+                         else{
                         LOGGER.log(Level.INFO,"Responding to corrID: "+ properties.getCorrelationId() +  ", on Queue : " + RESPONSE_QUEUE_NAME);
                         LOGGER.log(Level.INFO,"Request    :   " + new String(body, "UTF-8"));
                         LOGGER.log(Level.INFO,"Application    :   " + RPC_QUEUE_NAME);
                         LOGGER.log(Level.INFO,"INSTANCE NUM   :   " + ID);
-                        String responseMsg = new String(body, "UTF-8");
-
+                        String responseMsg = new String(body, StandardCharsets.UTF_8);
                         org.json.JSONObject responseJson = new org.json.JSONObject(responseMsg);
                         String status=responseJson.get("status").toString() ;
+                        LOGGER.log(Level.INFO,"RESPONSE JSON IS "+responseJson);
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
                                 mapToStatus(status),
@@ -155,17 +227,13 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                             String value = (String) headers.get(key);
                             response.headers().set(key, value);
                         }
-
                         response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
                         response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
-
-
-                        LOGGER.log(Level.INFO,"Response   :   " + responseJson.get("response"));
-                        LOGGER.log(Level.INFO,"RESPONSE FULL IS  :   " + response);
-
+                        LOGGER.log(Level.INFO,"RESPONSE :"+response);
                         ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
                         ctxRec.writeAndFlush(response);
                         ctxRec.close();
+                         }
 
                     } catch (RuntimeException| IOException e) {
                         FullHttpResponse response = new DefaultFullHttpResponse(
@@ -175,6 +243,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 
                         response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
                         response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
+
                         ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
                         ctxRec.writeAndFlush(response);
                         ctxRec.close();
@@ -449,4 +518,15 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 //
 //    }
 
+    private static void setContentTypeHeader(HttpResponse response, File file) {
+        MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
+        mimeTypesMap.addMimeTypes("image png tif jpg jpeg bmp");
+        mimeTypesMap.addMimeTypes("text/plain txt");
+        mimeTypesMap.addMimeTypes("video/mp4 mp4");
+        mimeTypesMap.addMimeTypes("application/pdf pdf");
+
+        String mimeType = mimeTypesMap.getContentType(file);
+
+        response.headers().set(CONTENT_TYPE, mimeType);
+    }
 }

@@ -47,9 +47,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object o) {
-        System.out.println("Exiting Channel Read");
         if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)&&!(o instanceof MediaServerRequest) ){
-
             channelHandlerContext.fireChannelRead(o);
             return;
         }
@@ -63,8 +61,6 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
         }
         if(o instanceof MediaServerRequest) {
             body = ((MediaServerRequest)o).getRequest();
-            System.out.println(body+" body");
-            System.out.println(o+" Object");
         }
         else {
             buffer = (ByteBuf) o;
@@ -87,14 +83,6 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             jsonRequest.put("command", body.get("command"));
             String service = (String) body.get("application");
             jsonRequest.put("application", service);
-
-            if (body.has("image")){
-//                String imageName = ImageWriter.write((String) body.get("image"));
-                body.remove("image");
-                body.put("imageUrl", "ALO");
-//                System.out.println("Image Name : " + imageName);
-            }
-
             jsonRequest.put("body", body);
              if(o instanceof  MediaServerRequest){
                  MediaServerRequest msr= ((MediaServerRequest)o);

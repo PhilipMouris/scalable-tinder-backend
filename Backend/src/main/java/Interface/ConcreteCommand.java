@@ -9,6 +9,7 @@ import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Entities.HttpResponseTypes;
 import Entities.MediaServerRequest;
+import Entities.MediaServerResponse;
 import MediaServer.MinioInstance;
 import Models.Message;
 import com.arangodb.entity.DocumentEntity;
@@ -20,6 +21,8 @@ import org.json.HTTP;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.ResultSet;
@@ -57,6 +60,7 @@ public abstract class ConcreteCommand extends Command {
     protected Boolean useCache=false;
     protected MediaServerRequest mediaServerRequest;
     protected Object filterParams;
+    protected  byte [] file;
 
     private final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
 
@@ -97,6 +101,13 @@ public abstract class ConcreteCommand extends Command {
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);
             jsonBodyObject.put("status",status);
+            if(responseJson.has("isFile")&&(boolean)responseJson.get("isFile")==true){
+
+                MediaServerResponse msr=new MediaServerResponse(file,jsonBodyObject.toString(),(String)message.getParameter("fileName"));
+                channel.basicPublish("", replyProps.getReplyTo(), replyProps, msr.getByteArray());
+            }
+
+            else
             channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
