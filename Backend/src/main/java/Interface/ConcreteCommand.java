@@ -54,6 +54,7 @@ public abstract class ConcreteCommand extends Command {
     protected Boolean useCache=false;
     protected Object filterParams;
     protected Object sortParams;
+    protected HttpResponseTypes status;
 
     protected final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
 
@@ -82,7 +83,7 @@ public abstract class ConcreteCommand extends Command {
             message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
             filterParams = message.getParameter("filter") ==null? new JSONObject(): message.getParameter("filter");
             sortParams = message.getParameter("sort") ==null? new JSONObject(): message.getParameter("sort");
-            HttpResponseTypes status = doCommand();
+            status = doCommand();
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);
             jsonBodyObject.put("status",status);
