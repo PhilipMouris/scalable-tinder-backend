@@ -53,8 +53,9 @@ public abstract class ConcreteCommand extends Command {
     protected String collection;
     protected Boolean useCache=false;
     protected Object filterParams;
-    
-    private final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
+    protected Object sortParams;
+
+    protected final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
 
     @Override
     protected void execute() {
@@ -80,6 +81,7 @@ public abstract class ConcreteCommand extends Command {
             jsonBodyObject = new JSONObject(jsonString);
             message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
             filterParams = message.getParameter("filter") ==null? new JSONObject(): message.getParameter("filter");
+            sortParams = message.getParameter("sort") ==null? new JSONObject(): message.getParameter("sort");
             HttpResponseTypes status = doCommand();
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);
@@ -206,6 +208,9 @@ public abstract class ConcreteCommand extends Command {
                     break;
                 case "findAll":
                     dbArrayResponse = ArangoInstance.findAll(collection,parameters.get(0),parameters.get(1),model, filterParams);
+                    break;
+                case "generateRecom":
+                    dbArrayResponse = ArangoInstance.generateRecom(collection,parameters.get(0),parameters.get(1),model, filterParams,parameters.get(2),parameters.get(3),parameters.get(4),parameters.get(5),parameters.get(6),parameters.get(7));
             }
             LOGGER.log(Level.INFO,"Command: "+ this.getClass().getName()+" Executed Successfully");
             responseJson.put(outputName, dbResponse==null?dbArrayResponse:dbResponse);
