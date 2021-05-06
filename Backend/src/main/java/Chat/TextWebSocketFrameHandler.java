@@ -1,6 +1,8 @@
 package Chat;
 
+import Database.ArangoInstance;
 import NettyWebServer.HTTPHandler;
+import com.google.gson.Gson;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -32,12 +34,20 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
         JSONObject messageBody = new JSONObject(msg.text());
-        String toUserId = messageBody.getJSONObject("body").getString("toUserId");
+        Object chat = ArangoInstance.dbInstance.db("tinderDB").collection("chats").getDocument(messageBody.getJSONObject("chatData").getString("id"), Class.forName(String.format("Models.%s", "Chat")).newInstance().getClass());
+        if (chat == null) {
+            ctx.writeAndFlush(new TextWebSocketFrame("Chat does not exist"));
+            return;
+        }
+        JSONObject jsonChat = new JSONObject((new Gson()).toJson(chat));
+        String fromUserId = messageBody.getJSONObject("chatData").getJSONObject("message").getString("sourceUserId");
+        String toUserId = fromUserId.equals(jsonChat.getString("userAId")) ?
+                jsonChat.getString("userBId"): jsonChat.getString("userAId");
         Channel channel = webSocketMap.get(toUserId);
         if (channel == null || !channel.isActive()) {
             ctx.writeAndFlush(new TextWebSocketFrame("Not Online"));
         } else {
-            channel.writeAndFlush(new TextWebSocketFrame(messageBody.getJSONObject("body").toString()));
+            channel.writeAndFlush(new TextWebSocketFrame(messageBody.getJSONObject("chatData").getJSONObject("message").toString()));
         }
     }
 
@@ -45,7 +55,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
         if (null != msg && !(msg instanceof FullHttpRequest)) {
             ByteBuf buffer = (ByteBuf) (((TextWebSocketFrame)msg).content());
             JSONObject messageBody = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
-            String userId = messageBody.getJSONObject("body").getString("fromUserId");
+            String userId = messageBody.getJSONObject("chatData").getJSONObject("message").getString("sourceUserId");
             webSocketMap.put(userId, ctx.channel());
         }
         super.channelRead(ctx, msg);

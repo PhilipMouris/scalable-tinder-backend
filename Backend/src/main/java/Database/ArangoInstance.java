@@ -28,7 +28,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
     public class ArangoInstance {
-
+        public static ArangoDB dbInstance;
         private Config conf = Config.getInstance();
         private Gson gson;
         private ArangoDB arangoDB;
@@ -41,7 +41,7 @@ import java.util.logging.Logger;
             gson = new Gson();
             arangoDB = new ArangoDB.Builder().host(conf.getArangoHost(), conf.getArangoPort()).user(dbUserName).maxConnections(maxConnections).build();
 //            Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database connected: POST"));
-
+           dbInstance = arangoDB;
 
         }
 
