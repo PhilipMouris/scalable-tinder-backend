@@ -109,6 +109,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             case "_200":return HttpResponseStatus.OK;
             case "_404":return HttpResponseStatus.NOT_FOUND;
             case "_400":return HttpResponseStatus.BAD_REQUEST;
+            case "_401":return HttpResponseStatus.UNAUTHORIZED;
             case "_500":return HttpResponseStatus.BAD_REQUEST;
             default:return HttpResponseStatus.ACCEPTED;
         }
