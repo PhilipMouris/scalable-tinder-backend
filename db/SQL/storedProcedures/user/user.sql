@@ -62,7 +62,7 @@ BEGIN
 END;$$
 ;
 
--- SELECT * FROM uspLogin('streakfull@gmail.com', 'zaq12wsxz');
+-- SELECT * FROM uspLogin('streakfull@gmail.com');
 
 
 
