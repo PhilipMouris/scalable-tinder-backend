@@ -18,6 +18,13 @@ CREATE TYPE userProfile AS(
 
 );
 
+DROP TYPE IF EXISTS userAuthenticationData;
+CREATE TYPE userAuthenticationData AS(
+    id INT,
+	email VARCHAR,
+	password VARCHAR
+);
+
 
 DROP FUNCTION IF EXISTS  uspSignUp;
 CREATE OR REPLACE FUNCTION uspSignUp(
@@ -40,23 +47,22 @@ END;$$
 
 -- SELECT * FROM uspSignUp('streakfull@gmail.com','zaq12wsx','youssef','sherif')
 
-DROP  FUNCTION  IF EXISTS  uspLOGIN;
+DROP  FUNCTION  IF EXISTS  uspLogin;
 CREATE OR REPLACE FUNCTION uspLogin(
-	_email VARCHAR(200),
-	"_password" VARCHAR(200)
-) RETURNS userPublicData
+	_email VARCHAR(200)
+) RETURNS userAuthenticationData
 LANGUAGE 'plpgsql'
 AS $$
 DECLARE
-    authenticated_user userPublicData;
+    authenticated_user userAuthenticationData;
 BEGIN
-	SELECT id, email, first_name, last_name From public."users" AS u WHERE u.email = _email AND u.password="_password"
+	SELECT id, email, password From public."users" AS u WHERE u.email = _email
 	INTO authenticated_user;
 	RETURN authenticated_user;
 END;$$
 ;
 
--- SELECT * FROM uspLogin('streakfull@gmail.com', 'zaq12wsxz');
+-- SELECT * FROM uspLogin('streakfull@gmail.com');
 
 
 
