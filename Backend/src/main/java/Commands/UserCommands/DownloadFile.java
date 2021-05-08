@@ -31,13 +31,13 @@ public class DownloadFile extends ConcreteCommand {
                     }
                 }
                 if(!found) {    // Filename was not found in videos or pictures of that user
-                    return HttpResponseTypes._404; // Should be 401 unauthroized when we implement authorizations and add its Res type
+                    return HttpResponseTypes._401; // Should be 401 unauthroized when we implement authorizations and add its Res type
                 }
             }
 
             byte[] fileToSend = MinioInstance.downloadFile(fileName);
             if(fileToSend.length==0)
-                return HttpResponseTypes._404; // File not found
+                return HttpResponseTypes._401; // File not found
             JSONObject res = new JSONObject();
             res.put("isFile", true);
             responseJson = res;

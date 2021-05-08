@@ -1,0 +1,120 @@
+May 08, 2021 6:52:08 AM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8021/
+May 08, 2021 6:52:08 AM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8020/
+May 08, 2021 6:52:10 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 08, 2021 6:52:10 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 08, 2021 6:52:10 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 08, 2021 6:52:10 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 08, 2021 6:52:10 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 08, 2021 6:52:10 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 08, 2021 6:52:10 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 08, 2021 6:52:10 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 08, 2021 6:52:11 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 08, 2021 6:52:11 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 08, 2021 6:52:11 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 08, 2021 6:52:11 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 08, 2021 6:52:11 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 08, 2021 6:52:11 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='86999370fb337f7ef1a7f6d3a4376f9f18255fed', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 08, 2021 6:52:11 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 08, 2021 6:52:11 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 08, 2021 6:52:12 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 08, 2021 6:52:12 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 08, 2021 6:52:12 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 08, 2021 6:52:12 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 08, 2021 6:52:12 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 08, 2021 6:52:12 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 08, 2021 6:52:12 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 08, 2021 6:52:12 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 08, 2021 6:52:13 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 08, 2021 6:52:13 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 08, 2021 6:52:13 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Chat-Request
+May 08, 2021 6:52:13 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Chat-Response
+May 08, 2021 6:52:16 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"131","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","email":"alsouidan@gmail.com"},"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn"}to: User-Request
+May 08, 2021 6:52:16 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 62993530-0b3e-49ad-9975-3dcf63aba4db, on Queue : User-Request
+May 08, 2021 6:52:16 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 08, 2021 6:52:16 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:SignIn
+May 08, 2021 6:52:16 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@47b2f6c0
+May 08, 2021 6:52:17 AM Interface.ConcreteCommand handleSQLCommand
+INFO: Command: Commands.UserCommands.SignIn Executed Successfully
+May 08, 2021 6:52:21 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 62993530-0b3e-49ad-9975-3dcf63aba4db, on Queue : User-Response
+May 08, 2021 6:52:21 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"131","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg"},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","email":"alsouidan@gmail.com"},"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn","status":"_200"}
+May 08, 2021 6:52:21 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 08, 2021 6:52:21 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 08, 2021 6:52:38 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"96","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","limit":5,"page":0,"command":"GetUserDataPaginated"},"Uri":"/","command":"GetUserDataPaginated"}to: User-Request
+May 08, 2021 6:52:38 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 0d0b6f63-9c6f-4520-93ba-99df438840dc, on Queue : User-Request
+May 08, 2021 6:52:38 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 08, 2021 6:52:38 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetUserDataPaginated
+May 08, 2021 6:52:38 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@198bf036
+May 08, 2021 6:52:40 AM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.GetUserDataPaginated Executed Successfully
+May 08, 2021 6:52:40 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 0d0b6f63-9c6f-4520-93ba-99df438840dc, on Queue : User-Response
+May 08, 2021 6:52:40 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"96","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"users":[{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"new bio3233","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"50885","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"56199","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"56201","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"56203","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"56205","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"}]},"Hostname":"127.0.0.1:90","body":{"application":"User","limit":5,"page":0,"command":"GetUserDataPaginated"},"Uri":"/","command":"GetUserDataPaginated","status":"_200"}
+May 08, 2021 6:52:40 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 08, 2021 6:52:40 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   2
+May 08, 2021 6:53:27 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"96","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"User","limit":5,"page":0,"command":"GetUserDataPaginated"},"Uri":"/","command":"GetUserDataPaginated"}to: User-Request
+May 08, 2021 6:53:27 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: a6f971c3-0440-44a0-856b-d532e5a85d0c, on Queue : User-Request
+May 08, 2021 6:53:27 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   3
+May 08, 2021 6:53:27 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetUserDataPaginated
+May 08, 2021 6:53:27 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@1d495a53
+May 08, 2021 6:53:27 AM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.GetUserDataPaginated Executed Successfully
+May 08, 2021 6:53:27 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: a6f971c3-0440-44a0-856b-d532e5a85d0c, on Queue : User-Response
+May 08, 2021 6:53:27 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"96","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"users":[{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"new bio3233","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"50885","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"56199","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"56201","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"56203","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"},{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","_key":"56205","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01"}]},"Hostname":"127.0.0.1:90","body":{"application":"User","limit":5,"page":0,"command":"GetUserDataPaginated"},"Uri":"/","command":"GetUserDataPaginated","status":"_200"}
+May 08, 2021 6:53:27 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 08, 2021 6:53:27 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   3
