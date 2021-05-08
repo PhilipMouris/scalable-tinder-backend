@@ -85,6 +85,22 @@ BEGIN
 END;$$
 ;
 
+ CREATE OR REPLACE FUNCTION "uspCheckIfUsersMatched"(first_user_id int, second_user_id int)
+ RETURNS TABLE(id int,source_user_id int,target_user_id int,type interaction_type,created_at timestamp)
+ LANGUAGE 'plpgsql'
+ AS $$
+ BEGIN
+ 	RETURN QUERY
+ 	SELECT * from public.interactions
+ 	WHERE (public.interactions.source_user_id = first_user_id AND
+ 		   public.interactions.target_user_id = second_user_id AND
+ 		   NOT public.interactions.type = 'dislike') OR
+ 		   (public.interactions.source_user_id = second_user_id AND
+ 		   public.interactions.target_user_id = first_user_id AND
+ 		   NOT public.interactions.type = 'dislike');
+ END;$$
+ ;
+
 ------------ REPORTS PROCEDURES
 
 -- DROP TYPE IF Exists reportData; 

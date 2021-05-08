@@ -28,7 +28,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
     public class ArangoInstance {
-
+        public static ArangoDB dbInstance;
         private Config conf = Config.getInstance();
         private Gson gson;
         private ArangoDB arangoDB;
@@ -41,7 +41,7 @@ import java.util.logging.Logger;
             gson = new Gson();
             arangoDB = new ArangoDB.Builder().host(conf.getArangoHost(), conf.getArangoPort()).user(dbUserName).maxConnections(maxConnections).build();
 //            Client.channel.writeAndFlush(new ErrorLog(LogLevel.INFO,"Database connected: POST"));
-
+           dbInstance = arangoDB;
 
         }
 
@@ -137,7 +137,6 @@ import java.util.logging.Logger;
             }
             return filterQueryString;
         }
-
         public JSONArray findAll(String collectionName,Object limit,Object page,String model, Object filterParams) {
             try {
                 String query = String.format("FOR doc IN %s ",collectionName);
@@ -147,8 +146,48 @@ import java.util.logging.Logger;
                 bindVars.put("count",limit);
                 bindVars.put("offset", (int)page * (int)limit);
                 return executeQuery(query,bindVars,model,true);
-
-
+            }
+            catch(Exception e) {
+                LOGGER.log(Level.SEVERE, e.getMessage(), e);
+                return null;
+            }
+        }
+        public JSONArray generateRecom(String collectionName,
+                                       Object limit,
+                                       Object page,
+                                       String model,
+                                       Object filterParams,
+                                       Object lat,
+                                       Object lng,
+                                       Object radius,
+                                       Object age,
+                                       Object ageRange,
+                                       Object interests) {
+            try {
+                String query = String.format("FOR doc IN %s ",collectionName);
+                query+=" LET distance = DISTANCE(doc.location.lat, doc.location.lng, "+lat+", "+ lng+") ";
+//                query+=" LET age = DATE_DIFF(DATE_NOW(), doc.birthDate, \"years\")";
+                query+=" FILTER"+interests + "ANY IN (doc.interests[*].name)[**]  ";
+                query+=" FILTER age < "+ ((Integer)age+(Integer)ageRange);
+                query+=" FILTER age > "+ ((Integer)age-(Integer)ageRange);;
+                query+=" FILTER distance < "+ radius;
+                query+=" SORT distance";
+                query+= " LIMIT @offset, @count RETURN doc";
+                Map<String, Object> bindVars = new HashMap<String,Object> ();
+                bindVars.put("count",limit);
+                bindVars.put("offset", (int)page * (int)limit);
+                JSONArray record = executeQuery(query,bindVars,model,true);
+                System.out.println(query);
+                System.out.println(record);
+                if(record.length()>0)
+                    return executeQuery(query,bindVars,model,true);
+                else{
+                    query = String.format("FOR doc IN %s ",collectionName);
+                    query+=" LET distance = DISTANCE(doc.location.lat, doc.location.lng, "+lat+", "+ lng+") ";
+                    query+=" SORT distance";
+                    query+= " LIMIT @offset, @count RETURN doc";
+                    return executeQuery(query,bindVars,model,true);
+                }
             }
             catch(Exception e){
                 LOGGER.log(Level.SEVERE, e.getMessage(), e);
@@ -156,7 +195,6 @@ import java.util.logging.Logger;
             }
 
         }
-
 
         public JSONArray executeQuery(String query, Map<String, Object> bindVars,String model,boolean useCache) {
             String id = query + ";" + bindVars.toString();

@@ -3,6 +3,11 @@ package NettyWebServer;
 import Config.Config;
 import Entities.MediaServerRequest;
 import com.google.gson.JsonObject;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
+import com.auth0.jwt.JWT;
 import com.rabbitmq.client.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.CompositeByteBuf;
@@ -85,7 +90,9 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             String service = (String) body.get("application");
             jsonRequest.put("application", service);
             jsonRequest.put("body", body);
-             if(o instanceof  MediaServerRequest){
+            authenticate(channelHandlerContext, jsonRequest);
+
+            if(o instanceof  MediaServerRequest){
                  MediaServerRequest msr= ((MediaServerRequest)o);
                  msr.setJsonRequest(jsonRequest.toString());
                  transmitMediaRequest(corrId,msr.getByteArray(),channelHandlerContext,service);
@@ -93,7 +100,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
              else{
                  transmitRequest(corrId,jsonRequest,channelHandlerContext,service);
                 }
-            if (o instanceof TextWebSocketFrame) {
+             if (o instanceof TextWebSocketFrame) {
                 channelHandlerContext.fireChannelRead(o);
             }
         } catch (JSONException e) {
@@ -197,6 +204,31 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                 HttpResponseStatus.INTERNAL_SERVER_ERROR,
                 copiedBuffer(cause.getMessage().getBytes())
         ));
+    }
+
+    public void authenticate(ChannelHandlerContext channelHandlerContext, JSONObject jsonRequest) {
+        if (jsonRequest.getString("command").equals("SignIn")
+            || jsonRequest.getString("command").equals("SignUp")
+            || jsonRequest.getString("command").equals("UpdateChat"))
+            return;
+        try {
+            Algorithm algorithm = Algorithm.HMAC256("secret");
+            JWTVerifier verifier = JWT.require(algorithm)
+                    .withIssuer("auth0")
+                    .build(); //Reusable verifier instance
+            DecodedJWT jwt = verifier.verify(jsonRequest.getJSONObject("Headers").getString("authorization"));
+        } catch(JWTVerificationException | JSONException exception) {
+            JSONObject jsonResponse = new JSONObject();
+            jsonResponse.put("error", "Permission denied, you need to sign in");
+            FullHttpResponse unauthorizedResponse = new DefaultFullHttpResponse(
+                    HttpVersion.HTTP_1_1,
+                    HttpResponseStatus.UNAUTHORIZED,
+                    copiedBuffer(jsonResponse.toString().getBytes()));
+            unauthorizedResponse.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
+            unauthorizedResponse.headers().set(HttpHeaderNames.CONTENT_LENGTH, unauthorizedResponse.content().readableBytes());
+            channelHandlerContext.writeAndFlush(unauthorizedResponse);
+            channelHandlerContext.close();
+        }
     }
 
 }

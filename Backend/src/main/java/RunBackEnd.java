@@ -20,7 +20,7 @@ public class RunBackEnd {
             ports = new int[]{8020,8021};
             run("server");
             run("mQinstance");
-            services = new ServicesType[]{ServicesType.user,ServicesType.moderator};
+            services = new ServicesType[]{ServicesType.user,ServicesType.moderator, ServicesType.chat};
             run("controller");
     }
     private static int getInitialInstanceNum(ServicesType serviceName){

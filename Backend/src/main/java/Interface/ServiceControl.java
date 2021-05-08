@@ -121,6 +121,8 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         switch (status){
             case "_200":return HttpResponseStatus.OK;
             case "_404":return HttpResponseStatus.NOT_FOUND;
+            case "_400":return HttpResponseStatus.BAD_REQUEST;
+            case "_401":return HttpResponseStatus.UNAUTHORIZED;
             case "_500":return HttpResponseStatus.BAD_REQUEST;
             default:return HttpResponseStatus.ACCEPTED;
         }
@@ -214,6 +216,8 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         LOGGER.log(Level.INFO,"INSTANCE NUM   :   " + ID);
                         String responseMsg = new String(body, StandardCharsets.UTF_8);
                         org.json.JSONObject responseJson = new org.json.JSONObject(responseMsg);
+                        if(responseJson.getString("command").equals("UpdateChat"))
+                            return;
                         String status=responseJson.get("status").toString() ;
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
