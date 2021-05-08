@@ -176,7 +176,6 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
 
         // test comment
         try {
-            System.out.println("In Upload");
             decoder = new HttpPostRequestDecoder(factory, request);
             //System.out.println("decoder created");
         } catch (HttpPostRequestDecoder.ErrorDataDecoderException e1) {
@@ -279,8 +278,7 @@ public class MediaHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
                         if (data.getHttpDataType() == InterfaceHttpData.HttpDataType.Attribute) {
                             Attribute attribute = (Attribute) data;
                             try {
-                                System.out.println(attribute.getString()+"JSON REQUEST");
-                                System.out.println(attribute.getName()+"JSON String");
+
 //                                Logger.getLogger(MediaHandler.class.getName()).log(Level.INFO,"SOUIDAN");
                             mediaServerRequest.setRequest(attribute.getString());
                             } catch (IOException e) {

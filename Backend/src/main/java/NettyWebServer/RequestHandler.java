@@ -65,6 +65,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
         else {
             buffer = (ByteBuf) o;
             body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
+
         }
 
         //try and catch

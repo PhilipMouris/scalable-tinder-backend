@@ -39,17 +39,12 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
 //        System.out.println(msg);
         if(msg instanceof HttpServletRequest){
             HttpServletRequest req=(HttpServletRequest) msg;
-            System.out.println("IP is "+req.getRemoteAddr());
         }
         if (msg instanceof HttpRequest) {
             HttpRequest request = this.request = (HttpRequest) msg;
             if (request.uri().contains("/chat/update")) {
                 ctx.fireChannelRead(((FullHttpRequest)request).retain());
                 return;
-            }
-            if (request.uri().contains("/file/upload")) {
-//                ctx.fireChannelRead(((FullHttpRequest)request).retain());
-//                return;
             }
             if (HttpHeaders.is100ContinueExpected(request)) {
                 send100Continue(ctx);
@@ -102,12 +97,10 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
                 ctx.writeAndFlush(response);
                 if (request.uri().contains("/file/upload")) {
                     ctx.fireChannelRead(((FullHttpRequest)request).retain());
+//                    ctx.fireChannelRead(content);
                 }
             }else{
-
-
                     ctx.fireChannelRead(content);
-                
             }
         }
         if (msg instanceof LastHttpContent) {
@@ -154,7 +147,6 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-//        System.out.println("ALO");
 //        cause.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         
         FullHttpResponse response = new DefaultFullHttpResponse(

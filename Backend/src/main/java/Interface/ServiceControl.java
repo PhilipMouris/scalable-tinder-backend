@@ -148,7 +148,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 //                        Channel receiver = REQUEST_CHANNEL_MAP.get(RESPONSE_MAIN_QUEUE_NAME);
 
                          MediaServerResponse msr=MediaServerResponse.getObject(body);
-                         if(msr!=null){
+                         if(msr!=null){   // If a download command
                            body=msr.getResponseJson().toString().getBytes("UTF-8");
                              String responseMsg = new String(body, StandardCharsets.UTF_8);
 
@@ -207,7 +207,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 
                              file.delete();
                          }
-                         else{
+                         else{   // If a normal command's response
                         LOGGER.log(Level.INFO,"Responding to corrID: "+ properties.getCorrelationId() +  ", on Queue : " + RESPONSE_QUEUE_NAME);
                         LOGGER.log(Level.INFO,"Request    :   " + new String(body, "UTF-8"));
                         LOGGER.log(Level.INFO,"Application    :   " + RPC_QUEUE_NAME);
@@ -215,7 +215,6 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         String responseMsg = new String(body, StandardCharsets.UTF_8);
                         org.json.JSONObject responseJson = new org.json.JSONObject(responseMsg);
                         String status=responseJson.get("status").toString() ;
-                        LOGGER.log(Level.INFO,"RESPONSE JSON IS "+responseJson);
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
                                 mapToStatus(status),
@@ -224,12 +223,15 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         Iterator<String> keys = headers.keys();
                         while (keys.hasNext()) {
                             String key = keys.next();
+                            if(key.toLowerCase().contains("content")){
+                                continue;
+                            }
                             String value = (String) headers.get(key);
                             response.headers().set(key, value);
                         }
                         response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
                         response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
-                        LOGGER.log(Level.INFO,"RESPONSE :"+response);
+                        response.headers().set(HttpHeaderNames.CONNECTION,HttpHeaderValues.KEEP_ALIVE);
                         ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
                         ctxRec.writeAndFlush(response);
                         ctxRec.close();
@@ -303,6 +305,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         }
                         else{
                             message = new String(body, StandardCharsets.UTF_8);
+
                         }
                         JSONParser parser = new JSONParser();
                         JSONObject command = (JSONObject) parser.parse(message);

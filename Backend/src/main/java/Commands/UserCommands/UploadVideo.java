@@ -3,10 +3,7 @@ package Commands.UserCommands;
 import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
 import Models.UserData;
-import Models.UserPicture;
 import org.json.JSONObject;
-
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

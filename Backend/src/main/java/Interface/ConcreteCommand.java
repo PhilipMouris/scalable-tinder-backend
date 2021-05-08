@@ -95,20 +95,17 @@ public abstract class ConcreteCommand extends Command {
                 jsonBodyObject = new JSONObject(jsonString);
                 message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
             }
-
             filterParams = message.getParameter("filter") ==null? new JSONObject(): message.getParameter("filter");
             HttpResponseTypes status = doCommand();
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);
             jsonBodyObject.put("status",status);
             if(responseJson.has("isFile")&&(boolean)responseJson.get("isFile")==true){
-
                 MediaServerResponse msr=new MediaServerResponse(file,jsonBodyObject.toString(),(String)message.getParameter("fileName"));
                 channel.basicPublish("", replyProps.getReplyTo(), replyProps, msr.getByteArray());
             }
-
             else
-            channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
+                channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
 //            StringWriter errors = new StringWriter();
