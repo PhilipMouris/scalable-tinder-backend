@@ -20,8 +20,10 @@ import io.netty.util.CharsetUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.StringTokenizer;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
@@ -231,4 +233,15 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+    public static String getClientIpAddress(HttpServletRequest request) {
+        String xForwardedForHeader = request.getHeader("X-Forwarded-For");
+        if (xForwardedForHeader == null) {
+            return request.getRemoteAddr();
+        } else {
+            // As of https://en.wikipedia.org/wiki/X-Forwarded-For
+            // The general format of the field is: X-Forwarded-For: client, proxy1, proxy2 ...
+            // we only want the client
+            return new StringTokenizer(xForwardedForHeader, ",").nextToken().trim();
+        }
+    }
 }

@@ -80,7 +80,7 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
             }
             fullRequest.put("Parameters",paramJson);
             String requestId = UUID.randomUUID().toString();
-
+            
             ctx.channel().attr(AttributeKey.valueOf("REQUEST")).set(fullRequest);
             ctx.channel().attr(AttributeKey.valueOf("CORRID")).set(requestId);
 
@@ -159,6 +159,16 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
         ctx.write(response);
 //        ctx.close();
     }
-
+    public static String getClientIpAddress(HttpServletRequest request) {
+        String xForwardedForHeader = request.getHeader("X-Forwarded-For");
+        if (xForwardedForHeader == null) {
+            return request.getRemoteAddr();
+        } else {
+            // As of https://en.wikipedia.org/wiki/X-Forwarded-For
+            // The general format of the field is: X-Forwarded-For: client, proxy1, proxy2 ...
+            // we only want the client
+            return new StringTokenizer(xForwardedForHeader, ",").nextToken().trim();
+        }
+    }
 }
 

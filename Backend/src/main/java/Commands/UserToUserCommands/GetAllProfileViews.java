@@ -1,4 +1,4 @@
-package Commands.UserCommands;
+package Commands.UserToUserCommands;
 
 import Interface.ConcreteCommand;
 
@@ -10,5 +10,6 @@ public class GetAllProfileViews extends ConcreteCommand {
         inputParams = new String[]{"limit", "page"};
         collection = "profileViews";
         outputName = "profileViews";
+        useCache=true;
     }
 }

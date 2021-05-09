@@ -1,8 +1,8 @@
-package Commands.UserCommands;
+package Commands.UserToUserCommands;
 import Controller.ControllerAdapterHandler;
 import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
-public class ReadTargetBlocks extends ConcreteCommand {
+public class GetTargetBlocks extends ConcreteCommand {
     @Override
     public void setParameters() {
         storedProcedure = "\"uspReadTargetBlocks\"";

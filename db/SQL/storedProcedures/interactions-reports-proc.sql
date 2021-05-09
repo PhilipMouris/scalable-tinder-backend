@@ -153,7 +153,7 @@ BEGIN
 	(SELECT Max(v)FROM (VALUES (i2.created_at), (i1.created_at) ) AS value(v)) AS "created_at"
 	FROM interactions as i1,interactions as i2
 	WHERE i1.source_user_id=i2.target_user_id AND i1.target_user_id=i2.source_user_id 
-	AND i1.target_user_id=user_id
+	AND i1.target_user_id=user_id AND ((i1.type='like' or i1.type='super_like') AND (i2.type='like' or i2.type='super_like'))
 	ORDER BY created_at DESC;
 END;$$
 ;

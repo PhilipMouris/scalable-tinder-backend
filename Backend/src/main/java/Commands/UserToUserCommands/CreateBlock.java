@@ -1,4 +1,4 @@
-package Commands.UserCommands;
+package Commands.UserToUserCommands;
 
 import Controller.ControllerAdapterHandler;
 import Entities.HttpResponseTypes;

@@ -1,15 +1,17 @@
-package Commands.UserCommands;
+package Commands.UserToUserCommands;
 
 import Controller.ControllerAdapterHandler;
 import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
 
-public class ReadAllBlocks extends  ConcreteCommand{
+
+public class GetAllReports extends ConcreteCommand{
     @Override
     public void setParameters() {
-        storedProcedure = "\"uspReadAllBlocks\"";
+        storedProcedure = "uspViewReported";
         inputParams = new String[]{"page","limit"};
-        outputName = "block";
+        outputName = "reports";
         useCache=true;
     }
+
 }
