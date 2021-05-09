@@ -1,7 +1,8 @@
 package NettyWebServer;
 
-import Config.Config;
+import Config.*;
 import Chat.TextWebSocketFrameHandler;
+import MediaServer.*;
 import Controller.ControllerAdapterHandler;
 import com.rabbitmq.client.*;
 import io.netty.channel.ChannelHandlerContext;
@@ -15,6 +16,7 @@ import io.netty.handler.codec.http.cors.CorsHandler;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import org.json.JSONObject;
 
+import javax.net.ssl.SSLEngine;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -58,6 +60,7 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel arg0) {
+
         CorsConfig corsConfig = CorsConfigBuilder.forAnyOrigin()
                 .allowedRequestHeaders("X-Requested-With", "Content-Type", "Content-Length")
                 .allowedRequestMethods(HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.OPTIONS,HttpMethod.HEAD)
@@ -66,11 +69,15 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
         p.addLast("decoder", new HttpRequestDecoder());
         p.addLast("encoder", new HttpResponseEncoder());
         p.addLast(new CorsHandler(corsConfig));
-        p.addLast(new HttpObjectAggregator(65536));
+        p.addLast(new HttpObjectAggregator(10000000));
+
         p.addLast(new HTTPHandler());
+        p.addLast(new MediaHandler());
         p.addLast("MQ", new NettyWebServer.RequestHandler(senderChannel, uuid, RPC_QUEUE_REPLY_TO, RPC_QUEUE_SEND_TO));
+        //pipeline.addLast("chunkedWriter", new ChunkedWriteHandler());
         p.addLast(new WebSocketServerProtocolHandler("/chat/update"));
         p.addLast(new TextWebSocketFrameHandler());
+
     }
 
     private void establishLoadBalancerConnection() {
@@ -124,13 +131,13 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
                         String responseMsg = new String(body, "UTF-8");
 
                         JSONObject responseJson = new JSONObject(responseMsg);
-
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
                                 HttpResponseStatus.OK,
                                 copiedBuffer(responseJson.get("response").toString().getBytes()));
 
                         JSONObject headers = (JSONObject) responseJson.get("Headers");
+                        System.out.println("Headers are "+headers);
                         Iterator<String> keys = headers.keys();
 
                         while (keys.hasNext()) {

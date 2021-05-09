@@ -8,6 +8,9 @@ import Database.ArangoInstance;
 //import Models.ErrorLog;
 import Database.PostgreSQL;
 import Entities.HttpResponseTypes;
+import Entities.MediaServerRequest;
+import Entities.MediaServerResponse;
+import MediaServer.MinioInstance;
 import Models.Message;
 import com.arangodb.entity.DocumentEntity;
 import com.google.gson.*;
@@ -18,6 +21,8 @@ import org.json.HTTP;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.sql.ResultSet;
@@ -35,6 +40,7 @@ public abstract class ConcreteCommand extends Command {
 //    protected RLiveObjectService RLiveObjectService;
     protected ArangoInstance ArangoInstance;
     protected PostgreSQL PostgresInstance;
+    protected MinioInstance MinioInstance;
     protected  RedisConnection redis;
 //    protected ChatArangoInstance ChatArangoInstance;
 //    protected UserCacheController UserCacheController;
@@ -52,11 +58,14 @@ public abstract class ConcreteCommand extends Command {
     protected String model;
     protected String collection;
     protected Boolean useCache=false;
+    protected MediaServerRequest mediaServerRequest;
     protected Object filterParams;
+    protected  byte [] file;
+
+    private final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
     protected Object sortParams;
     protected HttpResponseTypes status;
 
-    protected final Logger LOGGER = Logger.getLogger(ConcreteCommand.class.getName()) ;
 
     @Override
     protected void execute() {
@@ -66,6 +75,7 @@ public abstract class ConcreteCommand extends Command {
             ArangoInstance = (ArangoInstance)
                     parameters.get("ArangoInstance");
             PostgresInstance = (PostgreSQL) parameters.get("PostgresInstance");
+            MinioInstance=(MinioInstance) parameters.get("MinioInstance");
             redis = (RedisConnection) parameters.get("redis");
             ArangoInstance.setRedisConnection(redis);
             LOGGER.log(Level.INFO,"ARANGO is "+ArangoInstance);
@@ -77,17 +87,29 @@ public abstract class ConcreteCommand extends Command {
             Channel channel = (Channel) parameters.get("channel");
             AMQP.BasicProperties replyProps = (AMQP.BasicProperties) parameters.get("replyProps");
             jsonParser = new JsonParser();
-            String jsonString = (String) parameters.get("body");
             message = new Message();
-            jsonBodyObject = new JSONObject(jsonString);
-            message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
+            mediaServerRequest=((MediaServerRequest)parameters.get("mediaServerRequest"));
+            if(mediaServerRequest!=null){
+                message.setParameters(mediaServerRequest.getRequest());
+                jsonBodyObject=new JSONObject(mediaServerRequest.getJsonRequest().toString());
+                }
+            else {
+                String jsonString = (String) parameters.get("body");
+                jsonBodyObject = new JSONObject(jsonString);
+                message.setParameters(new JSONObject(jsonBodyObject.get("body").toString()));
+            }
             filterParams = message.getParameter("filter") ==null? new JSONObject(): message.getParameter("filter");
             sortParams = message.getParameter("sort") ==null? new JSONObject(): message.getParameter("sort");
             status = doCommand();
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);
             jsonBodyObject.put("status",status);
-            channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
+            if(responseJson.has("isFile")&&(boolean)responseJson.get("isFile")==true){
+                MediaServerResponse msr=new MediaServerResponse(file,jsonBodyObject.toString(),(String)message.getParameter("fileName"));
+                channel.basicPublish("", replyProps.getReplyTo(), replyProps, msr.getByteArray());
+            }
+            else
+                channel.basicPublish("", replyProps.getReplyTo(), replyProps, jsonBodyObject.toString().getBytes("UTF-8"));;
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
 //            StringWriter errors = new StringWriter();

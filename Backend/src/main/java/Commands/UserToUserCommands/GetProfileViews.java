@@ -1,4 +1,4 @@
-package Commands.UserCommands;
+package Commands.UserToUserCommands;
 
 import Interface.ConcreteCommand;
 
@@ -9,6 +9,7 @@ public class GetProfileViews extends ConcreteCommand {
         model = "ProfileViews";
         inputParams= new String[]{"profileViewsData.id"};
         collection  = "profileViews";
+        useCache=true;
     }
 
 }

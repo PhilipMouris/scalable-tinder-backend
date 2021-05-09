@@ -32,13 +32,13 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
         ctx.fireChannelReadComplete();
     }
 
+    
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         JSONObject fullRequest = new JSONObject();
 //        System.out.println(msg);
         if(msg instanceof HttpServletRequest){
             HttpServletRequest req=(HttpServletRequest) msg;
-            System.out.println("IP is "+req.getRemoteAddr());
         }
         if (msg instanceof HttpRequest) {
             HttpRequest request = this.request = (HttpRequest) msg;
@@ -80,7 +80,7 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
             }
             fullRequest.put("Parameters",paramJson);
             String requestId = UUID.randomUUID().toString();
-
+            
             ctx.channel().attr(AttributeKey.valueOf("REQUEST")).set(fullRequest);
             ctx.channel().attr(AttributeKey.valueOf("CORRID")).set(requestId);
 
@@ -89,14 +89,18 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
         if (msg instanceof HttpContent) {
             HttpContent httpContent = (HttpContent) msg;
             ByteBuf content = httpContent.content();
-            if(msg.toString().contains("HEAD")) {
+            if(msg.toString().contains("HEAD") || request.uri().contains("/file/upload")) {
                 FullHttpResponse response = new DefaultFullHttpResponse(
                         HttpVersion.HTTP_1_1,
                         OK,
                         copiedBuffer("ACK".getBytes()));
                 ctx.writeAndFlush(response);
+                if (request.uri().contains("/file/upload")) {
+                    ctx.fireChannelRead(((FullHttpRequest)request).retain());
+//                    ctx.fireChannelRead(content);
+                }
             }else{
-                ctx.fireChannelRead(content);
+                    ctx.fireChannelRead(content);
             }
         }
         if (msg instanceof LastHttpContent) {
@@ -143,7 +147,6 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-//        System.out.println("ALO");
 //        cause.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         
         FullHttpResponse response = new DefaultFullHttpResponse(
@@ -156,6 +159,16 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
         ctx.write(response);
 //        ctx.close();
     }
-
+    public static String getClientIpAddress(HttpServletRequest request) {
+        String xForwardedForHeader = request.getHeader("X-Forwarded-For");
+        if (xForwardedForHeader == null) {
+            return request.getRemoteAddr();
+        } else {
+            // As of https://en.wikipedia.org/wiki/X-Forwarded-For
+            // The general format of the field is: X-Forwarded-For: client, proxy1, proxy2 ...
+            // we only want the client
+            return new StringTokenizer(xForwardedForHeader, ",").nextToken().trim();
+        }
+    }
 }
 

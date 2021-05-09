@@ -1,10 +1,10 @@
-
 DROP TYPE IF EXISTS userPublicData;
 CREATE TYPE userPublicData AS(
     id INT,
 	email VARCHAR,
 	first_name VARCHAR,
 	last_name VARCHAR
+
 
 );
 
@@ -86,7 +86,9 @@ END;$$
 
 
 
+
 DROP  FUNCTION  IF EXISTS  uspEditAccountData;
+
 CREATE OR REPLACE FUNCTION uspEditAccountData(
 	_id int,
 	_email VARCHAR(200),

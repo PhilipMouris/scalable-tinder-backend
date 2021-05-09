@@ -1,13 +1,14 @@
-package Commands.UserCommands;
+package Commands.UserToUserCommands;
 
 import Controller.ControllerAdapterHandler;
 import Entities.HttpResponseTypes;
 import Interface.ConcreteCommand;
-public class ReadSourceBlocks extends ConcreteCommand {
+
+public class GetAllBlocks extends  ConcreteCommand{
     @Override
     public void setParameters() {
-        storedProcedure = "\"uspReadSourceBlocks\"";
-        inputParams = new String[]{"blockData.source_user_id"};
+        storedProcedure = "\"uspReadAllBlocks\"";
+        inputParams = new String[]{"page","limit"};
         outputName = "block";
         useCache=true;
     }
