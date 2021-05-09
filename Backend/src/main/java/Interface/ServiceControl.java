@@ -216,7 +216,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         LOGGER.log(Level.INFO,"INSTANCE NUM   :   " + ID);
                         String responseMsg = new String(body, StandardCharsets.UTF_8);
                         org.json.JSONObject responseJson = new org.json.JSONObject(responseMsg);
-                        if(responseJson.getString("command").equals("UpdateChat"))
+                        if(responseJson.getString("command").equals("UpdateChat")||responseJson.getString("command").equals("UploadMedia"))
                             return;
                         String status=responseJson.get("status").toString() ;
                         FullHttpResponse response = new DefaultFullHttpResponse(
