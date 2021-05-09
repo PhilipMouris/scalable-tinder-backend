@@ -102,6 +102,10 @@ public class ControllerAdapterHandler extends ChannelInboundHandlerAdapter {
                     result = service.update_command(param, path);
                     responseMessage = "COMMAND UPDATED";
                     break;
+                case "update_class":
+                    result = service.update_class(param, path);
+                    responseMessage = "Class UPDATED";
+                    break;
 
                 default: {
                     responseMessage = "Unknown Command";
