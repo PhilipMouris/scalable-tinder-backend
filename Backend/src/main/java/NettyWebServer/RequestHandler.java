@@ -212,7 +212,8 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
         if (jsonRequest.getString("command").equals("SignIn")
             || jsonRequest.getString("command").equals("SignUp")
             || jsonRequest.getString("command").equals("UpdateChat")
-            || jsonRequest.getString("command").equals("UploadMedia"))
+            || jsonRequest.getString("command").equals("UploadMedia")
+            )
             return;
         try {
             Algorithm algorithm = Algorithm.HMAC256("secret");

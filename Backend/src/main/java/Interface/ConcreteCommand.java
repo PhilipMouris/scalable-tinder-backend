@@ -163,7 +163,7 @@ public abstract class ConcreteCommand extends Command {
         if(data.getJSONObject(0).length() ==0 ) return HttpResponseTypes._404;
         return HttpResponseTypes._200;
     }
-    private HttpResponseTypes handleSQLCommand() {
+    protected HttpResponseTypes handleSQLCommand() {
         if(storedProcedure==null && customQuery==null) return null;
         try{
             String id = getSQLCommandId();
