@@ -38,7 +38,7 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
 
     private String loadBalancerHost = config.getLoadBalancerQueueHost();
     private int loadBalancerPort = config.getLoadBalancerQueuePort();
-    private String loadBalancerUser = config.getLoadBalancerQueueUserName();
+    private String loadBalancerUser = config.getLoadBalancerQueueUserName();                  
     private String loadBalancerPass = config.getLoadBalancerQueuePass();
     private String RPC_QUEUE_SEND_TO = config.getLoadBalancerQueueName();
 

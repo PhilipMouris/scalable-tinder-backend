@@ -11,6 +11,7 @@ import com.auth0.jwt.JWT;
 import com.rabbitmq.client.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.CompositeByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.*;
@@ -19,6 +20,7 @@ import io.netty.util.AttributeKey;
 import io.netty.util.CharsetUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
+import io.netty.buffer.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -43,20 +45,31 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
     private String serverUser = config.getServerQueueUserName();
     private String serverPass = config.getServerQueuePass();
     private final Logger LOGGER = Logger.getLogger(RequestHandler.class.getName()) ;
+    private boolean isTesting = false;
 
     private Channel senderChannel;
 
-    RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO) {
+    public RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO) {
         this.uuid = uuid;
         this.RPC_QUEUE_REPLY_TO = RPC_QUEUE_REPLY_TO;
         this.RPC_QUEUE_SEND_TO = RPC_QUEUE_SEND_TO;
     }
 
+    public RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO,boolean isTesting) {
+        this.uuid = uuid;
+        this.RPC_QUEUE_REPLY_TO = RPC_QUEUE_REPLY_TO;
+        this.RPC_QUEUE_SEND_TO = RPC_QUEUE_SEND_TO;
+        this.isTesting = isTesting;
+    }
+
+
+
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object o) {
+
         if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)&&!(o instanceof MediaServerRequest) ){
             channelHandlerContext.fireChannelRead(o);
-            return;
+            if(!isTesting) return;
         }
 
         ByteBuf buffer;
@@ -77,6 +90,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
         //try and catch
         try {
+            System.out.println("INSIDE CATCH");
             final JSONObject jsonRequest;
             final String corrId;
             if(o instanceof TextWebSocketFrame ){
@@ -93,7 +107,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             jsonRequest.put("application", service);
             jsonRequest.put("body", body);
             authenticate(channelHandlerContext, jsonRequest);
-
+            System.out.println(jsonRequest + "JSONN");
             if(o instanceof  MediaServerRequest){
                  MediaServerRequest msr= ((MediaServerRequest)o);
                  msr.setJsonRequest(jsonRequest.toString());
@@ -106,6 +120,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                 channelHandlerContext.fireChannelRead(o);
             }
         } catch (JSONException e) {
+            System.out.println(e + "EEEE");
             e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
             String responseMessage = "NO JSON PROVIDED";
             FullHttpResponse response = new DefaultFullHttpResponse(
