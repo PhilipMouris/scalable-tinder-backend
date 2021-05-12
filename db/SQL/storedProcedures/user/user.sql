@@ -111,6 +111,11 @@ END;$$
 ;
 
 
+
+
+
+
+
 --SELECT * FROM uspEditAccountData(18,'test@gmail.com', null,'updateddd');
 
 DROP  FUNCTION  IF EXISTS  uspEditPassword;
@@ -148,6 +153,25 @@ BEGIN
 	WHERE id = _id
 	INTO user_profile;
 	RETURN user_profile;
+END;$$
+;
+
+
+DROP  FUNCTION  IF EXISTS  uspSetUserPremium;
+
+CREATE OR REPLACE FUNCTION uspSetUserPremium(
+	_id int
+) RETURNS userProfile
+LANGUAGE 'plpgsql'
+AS $$
+DECLARE
+    updated_user userProfile;
+BEGIN
+	UPDATE public.users AS u SET
+	 is_premium = true
+	 WHERE u.id = _id
+	 RETURNING id, email, first_name, last_name,is_premium INTO updated_user;
+	 RETURN updated_user;
 END;$$
 ;
 

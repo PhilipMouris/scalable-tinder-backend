@@ -18,11 +18,13 @@ import java.util.logging.Logger;
 public class Firebase {
     private static Properties config = Config.getInstance().getFirebaseConfig();
     private static String key = config.getProperty("auth");
+    private static String sendNotifications = config.getProperty("sendNotifications");
     private static final Logger LOGGER = Logger.getLogger(RedisConnection.class.getName());
 
 
     public static void sendNotification(JSONObject userJSON, Notification notification) {
         try {
+            if(sendNotifications.equals("false")) return;
             UserData userData = new Gson().fromJson(userJSON.toString(), UserData.class);
             String[] firebaseTokens = userData.getFirebaseTokens();
             if (firebaseTokens == null || firebaseTokens.length == 0) return;

@@ -162,3 +162,19 @@ END;$$
 
 -- Testing Interaction Procedures
 SELECT * FROM "uspSeeMatchesChronological"(2)
+
+
+DROP FUNCTION IF EXISTS checkUserPremiumMirrorInteraction;
+CREATE OR REPLACE FUNCTION checkUserPremiumMirrorInteraction(source_id int, target_id int)
+RETURNS TABLE(source_user_id int, target_user_id int , is_source_premium boolean,is_target_premium boolean, "type" interaction_type)
+LANGUAGE 'plpgsql'
+AS $$
+BEGIN
+	RETURN QUERY
+	SELECT i.source_user_id,i.target_user_id,u.is_premium AS is_source_premium, u2.is_premium AS is_target_premium, i.type from public.interactions i
+	INNER JOIN "users" u ON i.source_user_id = u.id
+	INNER JOIN "users" u2 ON i.target_user_id = u2.id
+	WHERE i.target_user_id = source_id AND i.source_user_id = target_id
+	AND (i.type='like' or i.type='super_like')
+	AND u.is_premium = true;
+END;$$
