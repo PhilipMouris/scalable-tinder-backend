@@ -1,148 +1,234 @@
-May 09, 2021 5:20:48 AM NettyWebServer.NettyServer start
+May 09, 2021 6:42:23 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8020/
-May 09, 2021 5:20:48 AM NettyWebServer.NettyServer start
+May 09, 2021 6:42:23 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
-May 09, 2021 5:20:54 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:30 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 09, 2021 5:20:54 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 09, 2021 5:20:54 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 09, 2021 5:20:54 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 09, 2021 5:20:54 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 09, 2021 5:20:54 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:30 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='86999370fb337f7ef1a7f6d3a4376f9f18255fed', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 09, 2021 5:20:54 AM Interface.ServiceControl consumeFromRequestQueue
+May 09, 2021 6:42:30 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 09, 2021 5:20:54 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 09, 2021 5:20:55 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:30 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 09, 2021 5:20:55 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:30 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 09, 2021 5:20:55 AM Interface.ServiceControl consumeFromRequestQueue
+May 09, 2021 6:42:30 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 09, 2021 5:20:55 AM Interface.ServiceControl consumeFromResponseQueue
+May 09, 2021 6:42:30 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 09, 2021 5:20:55 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:30 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 09, 2021 6:42:31 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 09, 2021 5:20:55 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:31 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 09, 2021 6:42:31 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 09, 2021 6:42:31 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 09, 2021 6:42:31 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 09, 2021 6:42:31 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 09, 2021 5:20:55 AM Interface.ServiceControl consumeFromRequestQueue
+May 09, 2021 6:42:31 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 09, 2021 5:20:55 AM Interface.ServiceControl consumeFromResponseQueue
+May 09, 2021 6:42:31 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 09, 2021 5:20:55 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:31 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 09, 2021 5:20:55 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 09, 2021 5:20:55 AM Interface.ServiceControl consumeFromRequestQueue
+May 09, 2021 6:42:31 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 09, 2021 6:42:31 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 09, 2021 5:20:55 AM Interface.ServiceControl consumeFromResponseQueue
+May 09, 2021 6:42:31 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 09, 2021 5:20:56 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:31 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 09, 2021 5:20:56 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 09, 2021 5:20:56 AM Interface.ServiceControl consumeFromRequestQueue
+May 09, 2021 6:42:31 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 09, 2021 6:42:31 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 09, 2021 5:20:56 AM Interface.ServiceControl consumeFromResponseQueue
+May 09, 2021 6:42:31 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 09, 2021 5:20:56 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:32 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 09, 2021 5:20:56 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:32 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='86999370fb337f7ef1a7f6d3a4376f9f18255fed', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 09, 2021 5:20:56 AM Interface.ServiceControl consumeFromRequestQueue
+May 09, 2021 6:42:32 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Chat-Request
-May 09, 2021 5:20:56 AM Interface.ServiceControl consumeFromResponseQueue
+May 09, 2021 6:42:32 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Chat-Response
-May 09, 2021 5:20:56 AM Cache.RedisConnection <init>
+May 09, 2021 6:42:32 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 09, 2021 5:20:56 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='007a0e275328c1d2b2ccd8ea5463c025a3c9b2ec', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 09, 2021 5:20:56 AM Interface.ServiceControl consumeFromRequestQueue
+May 09, 2021 6:42:32 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 09, 2021 6:42:32 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : UserToUser-Request
-May 09, 2021 5:20:56 AM Interface.ServiceControl consumeFromResponseQueue
+May 09, 2021 6:42:32 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : UserToUser-Response
-May 09, 2021 5:22:04 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9","content-length":"97","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"id":1},"application":"UserToUser","command":"GetMatches"},"Uri":"/","command":"GetMatches"}to: UserToUser-Request
-May 09, 2021 5:22:04 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 5d6b335f-2189-4269-bb13-4ac16fbf048d, on Queue : UserToUser-Request
-May 09, 2021 5:22:04 AM Interface.ServiceControl$2 handleDelivery
+May 09, 2021 6:43:12 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"170","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"UserToUser","interactionData":{"source_user_id":20,"target_user_id":17,"type":"super_like"},"command":"CreateInteraction"},"Uri":"/","command":"CreateInteraction"}to: UserToUser-Request
+May 09, 2021 6:43:12 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 72b54e94-341f-4daa-af3b-76952ba2d0c4, on Queue : UserToUser-Request
+May 09, 2021 6:43:12 AM Interface.ServiceControl$2 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 09, 2021 5:22:04 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetMatches
-May 09, 2021 5:22:04 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@429a9c45
-May 09, 2021 5:22:05 AM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.UserToUserCommands.GetMatches Executed Successfully
-May 09, 2021 5:22:05 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 5d6b335f-2189-4269-bb13-4ac16fbf048d, on Queue : UserToUser-Response
-May 09, 2021 5:22:05 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9","content-length":"97","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"matches":[{"user_2_id":1,"user_1_id":16,"int_1_id":1,"int_2_type":"like","int_2_id":6,"int_1_type":"like","created_at":"2021-04-25 14:03:53.254663"}]},"Hostname":"127.0.0.1:90","body":{"userData":{"id":1},"application":"UserToUser","command":"GetMatches"},"Uri":"/","command":"GetMatches","status":"_200"}
-May 09, 2021 5:22:05 AM Interface.ServiceControl$1 handleDelivery
+May 09, 2021 6:43:12 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:CreateInteraction
+May 09, 2021 6:43:12 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@2b59d5e0
+May 09, 2021 6:43:14 AM Interface.ConcreteCommand handleSQLCommand
+SEVERE: ERROR: insert or update on table "interactions" violates foreign key constraint "interactions_source_user_id_fkey"
+  Detail: Key (source_user_id)=(20) is not present in table "users".
+  Where: SQL statement "insert into public.interactions(source_user_id,target_user_id,"type") 
+		values (source_user_id,target_user_id,_type)	
+	returning *"
+PL/pgSQL function uspcreateinteraction(integer,integer,interaction_type) line 5 at SQL statement
+org.postgresql.util.PSQLException: ERROR: insert or update on table "interactions" violates foreign key constraint "interactions_source_user_id_fkey"
+  Detail: Key (source_user_id)=(20) is not present in table "users".
+  Where: SQL statement "insert into public.interactions(source_user_id,target_user_id,"type") 
+		values (source_user_id,target_user_id,_type)	
+	returning *"
+PL/pgSQL function uspcreateinteraction(integer,integer,interaction_type) line 5 at SQL statement
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2422)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2167)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:306)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:441)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:365)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:307)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:293)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:270)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:224)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at Interface.ConcreteCommand.handleSQLCommand(ConcreteCommand.java:183)
+	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:250)
+	at Interface.ConcreteCommand.execute(ConcreteCommand.java:103)
+	at Interface.Command.run(Command.java:31)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+May 09, 2021 6:43:14 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 72b54e94-341f-4daa-af3b-76952ba2d0c4, on Queue : UserToUser-Response
+May 09, 2021 6:43:14 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"170","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"application":"UserToUser","interactionData":{"source_user_id":20,"target_user_id":17,"type":"super_like"},"command":"CreateInteraction"},"Uri":"/","command":"CreateInteraction","status":"_500"}
+May 09, 2021 6:43:14 AM Interface.ServiceControl$1 handleDelivery
 INFO: Application    :   UserToUser
-May 09, 2021 5:22:05 AM Interface.ServiceControl$1 handleDelivery
+May 09, 2021 6:43:14 AM Interface.ServiceControl$1 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 09, 2021 5:22:13 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"131","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","email":"alsouidan@gmail.com"},"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn"}to: User-Request
-May 09, 2021 5:22:13 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 996f5db5-b4b7-4503-8d0e-f44aab9b051c, on Queue : User-Request
-May 09, 2021 5:22:13 AM Interface.ServiceControl$2 handleDelivery
+May 09, 2021 6:43:42 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"170","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"UserToUser","interactionData":{"source_user_id":20,"target_user_id":17,"type":"super_like"},"command":"CreateInteraction"},"Uri":"/","command":"CreateInteraction"}to: UserToUser-Request
+May 09, 2021 6:43:42 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 8ba53df1-709b-4dc0-90fd-a9d5a496fe7f, on Queue : UserToUser-Request
+May 09, 2021 6:43:42 AM Interface.ServiceControl$2 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 09, 2021 5:22:13 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:SignIn
-May 09, 2021 5:22:13 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@69d47af4
-May 09, 2021 5:22:13 AM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.UserCommands.SignIn Executed Successfully
-May 09, 2021 5:22:14 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 996f5db5-b4b7-4503-8d0e-f44aab9b051c, on Queue : User-Response
-May 09, 2021 5:22:14 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"131","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg"},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","email":"alsouidan@gmail.com"},"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn","status":"_200"}
-May 09, 2021 5:22:14 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 09, 2021 5:22:14 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 09, 2021 5:22:23 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4uggUzI1NiJ9","content-length":"97","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"id":1},"application":"UserToUser","command":"GetMatches"},"Uri":"/","command":"GetMatches"}to: UserToUser-Request
-May 09, 2021 5:22:23 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 9373549d-e168-43fa-8564-9a0398ebb6b8, on Queue : UserToUser-Request
-May 09, 2021 5:22:23 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 09, 2021 5:22:23 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetMatches
-May 09, 2021 5:22:23 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@429a9c45
-May 09, 2021 5:22:23 AM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.UserToUserCommands.GetMatches Executed Successfully
-May 09, 2021 5:22:23 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 9373549d-e168-43fa-8564-9a0398ebb6b8, on Queue : UserToUser-Response
-May 09, 2021 5:22:23 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4uggUzI1NiJ9","content-length":"97","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"matches":[{"user_2_id":1,"user_1_id":16,"int_1_id":1,"int_2_type":"like","int_2_id":6,"int_1_type":"like","created_at":"2021-04-25 14:03:53.254663"}]},"Hostname":"127.0.0.1:90","body":{"userData":{"id":1},"application":"UserToUser","command":"GetMatches"},"Uri":"/","command":"GetMatches","status":"_200"}
-May 09, 2021 5:22:23 AM Interface.ServiceControl$1 handleDelivery
+May 09, 2021 6:43:42 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:CreateInteraction
+May 09, 2021 6:43:42 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@2b59d5e0
+May 09, 2021 6:43:42 AM Interface.ConcreteCommand handleSQLCommand
+SEVERE: ERROR: insert or update on table "interactions" violates foreign key constraint "interactions_source_user_id_fkey"
+  Detail: Key (source_user_id)=(20) is not present in table "users".
+  Where: SQL statement "insert into public.interactions(source_user_id,target_user_id,"type") 
+		values (source_user_id,target_user_id,_type)	
+	returning *"
+PL/pgSQL function uspcreateinteraction(integer,integer,interaction_type) line 5 at SQL statement
+org.postgresql.util.PSQLException: ERROR: insert or update on table "interactions" violates foreign key constraint "interactions_source_user_id_fkey"
+  Detail: Key (source_user_id)=(20) is not present in table "users".
+  Where: SQL statement "insert into public.interactions(source_user_id,target_user_id,"type") 
+		values (source_user_id,target_user_id,_type)	
+	returning *"
+PL/pgSQL function uspcreateinteraction(integer,integer,interaction_type) line 5 at SQL statement
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2422)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2167)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:306)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:441)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:365)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:307)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:293)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:270)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:224)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at org.apache.commons.dbcp2.DelegatingStatement.executeQuery(DelegatingStatement.java:329)
+	at Interface.ConcreteCommand.handleSQLCommand(ConcreteCommand.java:183)
+	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:250)
+	at Interface.ConcreteCommand.execute(ConcreteCommand.java:103)
+	at Interface.Command.run(Command.java:31)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+May 09, 2021 6:43:42 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 8ba53df1-709b-4dc0-90fd-a9d5a496fe7f, on Queue : UserToUser-Response
+May 09, 2021 6:43:42 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"170","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"application":"UserToUser","interactionData":{"source_user_id":20,"target_user_id":17,"type":"super_like"},"command":"CreateInteraction"},"Uri":"/","command":"CreateInteraction","status":"_500"}
+May 09, 2021 6:43:42 AM Interface.ServiceControl$1 handleDelivery
 INFO: Application    :   UserToUser
-May 09, 2021 5:22:23 AM Interface.ServiceControl$1 handleDelivery
+May 09, 2021 6:43:42 AM Interface.ServiceControl$1 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 09, 2021 5:22:27 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"97","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"id":1},"application":"UserToUser","command":"GetMatches"},"Uri":"/","command":"GetMatches"}to: UserToUser-Request
-May 09, 2021 5:22:27 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 84fa7211-9b0d-41b8-a85c-d56fd1f35afd, on Queue : UserToUser-Request
-May 09, 2021 5:22:27 AM Interface.ServiceControl$2 handleDelivery
+May 09, 2021 6:44:08 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"170","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"UserToUser","interactionData":{"source_user_id":21,"target_user_id":17,"type":"super_like"},"command":"CreateInteraction"},"Uri":"/","command":"CreateInteraction"}to: UserToUser-Request
+May 09, 2021 6:44:08 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 451b84dc-72fb-4c02-b12a-ae53f5c6f1e0, on Queue : UserToUser-Request
+May 09, 2021 6:44:08 AM Interface.ServiceControl$2 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 09, 2021 5:22:27 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetMatches
-May 09, 2021 5:22:27 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@429a9c45
-May 09, 2021 5:22:27 AM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.UserToUserCommands.GetMatches Executed Successfully
-May 09, 2021 5:22:27 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 84fa7211-9b0d-41b8-a85c-d56fd1f35afd, on Queue : UserToUser-Response
-May 09, 2021 5:22:27 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"97","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"matches":[{"user_2_id":1,"user_1_id":16,"int_1_id":1,"int_2_type":"like","int_2_id":6,"int_1_type":"like","created_at":"2021-04-25 14:03:53.254663"}]},"Hostname":"127.0.0.1:90","body":{"userData":{"id":1},"application":"UserToUser","command":"GetMatches"},"Uri":"/","command":"GetMatches","status":"_200"}
-May 09, 2021 5:22:27 AM Interface.ServiceControl$1 handleDelivery
+May 09, 2021 6:44:08 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:CreateInteraction
+May 09, 2021 6:44:08 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@2b59d5e0
+May 09, 2021 6:44:09 AM Interface.ConcreteCommand handleSQLCommand
+INFO: Command: Commands.UserToUserCommands.CreateInteraction Executed Successfully
+May 09, 2021 6:44:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 451b84dc-72fb-4c02-b12a-ae53f5c6f1e0, on Queue : UserToUser-Response
+May 09, 2021 6:44:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"170","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"interaction":[{"source_user_id":21,"created_at":"2021-05-09 06:44:08.647744","id":16,"target_user_id":17,"type":"super_like"}]},"Hostname":"127.0.0.1:90","body":{"application":"UserToUser","interactionData":{"source_user_id":21,"target_user_id":17,"type":"super_like"},"command":"CreateInteraction"},"Uri":"/","command":"CreateInteraction","status":"_200"}
+May 09, 2021 6:44:09 AM Interface.ServiceControl$1 handleDelivery
 INFO: Application    :   UserToUser
-May 09, 2021 5:22:27 AM Interface.ServiceControl$1 handleDelivery
+May 09, 2021 6:44:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 09, 2021 6:44:17 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"170","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"UserToUser","interactionData":{"source_user_id":17,"target_user_id":21,"type":"super_like"},"command":"CreateInteraction"},"Uri":"/","command":"CreateInteraction"}to: UserToUser-Request
+May 09, 2021 6:44:17 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 10952fb9-f6e6-4112-b4e3-04417f5a5c65, on Queue : UserToUser-Request
+May 09, 2021 6:44:17 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 09, 2021 6:44:17 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:CreateInteraction
+May 09, 2021 6:44:17 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@2b59d5e0
+May 09, 2021 6:44:17 AM Interface.ConcreteCommand handleSQLCommand
+INFO: Command: Commands.UserToUserCommands.CreateInteraction Executed Successfully
+May 09, 2021 6:44:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 10952fb9-f6e6-4112-b4e3-04417f5a5c65, on Queue : UserToUser-Response
+May 09, 2021 6:44:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"170","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"interaction":[{"source_user_id":17,"created_at":"2021-05-09 06:44:17.507784","id":17,"target_user_id":21,"type":"super_like"}]},"Hostname":"127.0.0.1:90","body":{"application":"UserToUser","interactionData":{"source_user_id":17,"target_user_id":21,"type":"super_like"},"command":"CreateInteraction"},"Uri":"/","command":"CreateInteraction","status":"_200"}
+May 09, 2021 6:44:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   UserToUser
+May 09, 2021 6:44:17 AM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 09, 2021 6:44:25 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"98","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"id":21},"application":"UserToUser","command":"GetMatches"},"Uri":"/","command":"GetMatches"}to: UserToUser-Request
+May 09, 2021 6:44:25 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 6e82deb9-21d4-46ba-a1e6-df4becadefb7, on Queue : UserToUser-Request
+May 09, 2021 6:44:25 AM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+May 09, 2021 6:44:25 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:GetMatches
+May 09, 2021 6:44:25 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@2b59d5e0
+May 09, 2021 6:44:25 AM Interface.ConcreteCommand handleSQLCommand
+INFO: Command: Commands.UserToUserCommands.GetMatches Executed Successfully
+May 09, 2021 6:44:25 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 6e82deb9-21d4-46ba-a1e6-df4becadefb7, on Queue : UserToUser-Response
+May 09, 2021 6:44:25 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"UserToUser","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjF9.y18fMdEDGSPMo4WuX2MiwiyGWLHpemT-wqrY4rE4ugg","content-length":"98","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"matches":[{"user_2_id":21,"user_1_id":17,"int_1_id":17,"int_2_type":"super_like","int_2_id":16,"int_1_type":"super_like","created_at":"2021-05-09 06:44:17.507784"}]},"Hostname":"127.0.0.1:90","body":{"userData":{"id":21},"application":"UserToUser","command":"GetMatches"},"Uri":"/","command":"GetMatches","status":"_200"}
+May 09, 2021 6:44:25 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   UserToUser
+May 09, 2021 6:44:25 AM Interface.ServiceControl$1 handleDelivery
 INFO: INSTANCE NUM   :   1
