@@ -3,6 +3,7 @@ package tests;
 
 import Config.Config;
 import Controller.Controller;
+import Database.PostgreSQL;
 import Entities.ServicesType;
 import Interface.ServiceControl;
 import MessageQueue.ServicesMQ;
@@ -71,11 +72,18 @@ public class TestServer {
         }
     }
 
+    public void initializeDB(){
+        System.out.println("HEERRR???");
+        PostgreSQL db = new PostgreSQL();
+        db.populateDB();
+    }
+
     public TestServer() {
         //new NettyServer(8020);
         new ServicesMQ();
         if(!isInitialized){
             initialize();
+            initializeDB();
         isInitialized = true;
         }
 

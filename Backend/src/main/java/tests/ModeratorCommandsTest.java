@@ -1,3 +1,5 @@
+package tests;
+
 import Config.Config;
 import MediaServer.MediaHandler;
 import NettyWebServer.HTTPHandler;
