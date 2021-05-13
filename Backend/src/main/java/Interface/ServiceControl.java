@@ -16,11 +16,8 @@ import Entities.MediaServerResponse;
 import MediaServer.MediaHandler;
 import MediaServer.MinioInstance;
 import NettyWebServer.NettyServerInitializer;
-import NettyWebServer.RequestHandler;
 import com.rabbitmq.client.*;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.DefaultFileRegion;
 import io.netty.handler.codec.http.*;
@@ -30,12 +27,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import javax.activation.MimetypesFileTypeMap;
-import javax.print.attribute.standard.Media;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 import java.io.*;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
@@ -51,9 +45,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
-import static io.netty.handler.codec.http.HttpHeaders.Names.CONNECTION;
 import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
-import static io.netty.handler.codec.http.HttpResponseStatus.*;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 public abstract class ServiceControl {    // This class is responsible for Managing Each Service (Application) Fully (Queue (Reuqest/Response), Controller etc.)
@@ -333,7 +325,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         init.put("envelope", envelope);
                         init.put("PostgresInstance", postgresDB);
                         init.put("body", message);
-                        //init.put("mediaServerRequest",mediaServerRequest);
+                        init.put("mediaServerRequest",mediaServerRequest);
 //                        init.put("RLiveObjectService", liveObjectService);
                         init.put("ArangoInstance", arangoInstance);
                         init.put("MinioInstance", minioInstance);
@@ -343,7 +335,6 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         cmd.init(init);
                         executor.submit(cmd);
                     } catch (RuntimeException | ParseException | ClassNotFoundException | IllegalAccessException | InstantiationException e) {
-                        LOGGER.log(Level.INFO, "50000");
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
                                 HttpResponseStatus.BAD_REQUEST,

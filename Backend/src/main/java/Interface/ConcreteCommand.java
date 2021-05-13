@@ -4,35 +4,29 @@ package Interface;
 //import ClientService.Client;
 import Cache.RedisConnection;
 import Database.ArangoInstance;
-//import Database.ChatArangoInstance;
-//import Models.ErrorLog;
 import Database.PostgreSQL;
 import Entities.HttpResponseTypes;
 import Entities.MediaServerRequest;
 import Entities.MediaServerResponse;
 import MediaServer.MinioInstance;
 import Models.Message;
-import com.arangodb.entity.DocumentEntity;
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Envelope;
-import org.json.HTTP;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+//import Database.ChatArangoInstance;
+//import Models.ErrorLog;
 
 public abstract class ConcreteCommand extends Command {
 
@@ -99,7 +93,6 @@ public abstract class ConcreteCommand extends Command {
             }
             filterParams = message.getParameter("filter") ==null? new JSONObject(): message.getParameter("filter");
             sortParams = message.getParameter("sort") ==null? new JSONObject(): message.getParameter("sort");
-            LOGGER.log(Level.INFO,"BEFORE COMMAND");
             status = doCommand();
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);

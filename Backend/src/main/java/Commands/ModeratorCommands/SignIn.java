@@ -26,7 +26,6 @@ public class SignIn extends ConcreteCommand {
         String hashedPassword = responseJson.getJSONArray("moderator").getJSONObject(0).getString("password");
         String plainTextPassword = (String) message.getParameter("moderatorData.password");
         BCrypt.Result result = BCrypt.verifyer().verify(plainTextPassword.toCharArray(), hashedPassword);
-        System.out.println(result + "OKKKK"+ result.verified + result.details);
         if (result.verified) {
             Algorithm algorithm = Algorithm.HMAC256("secret");
             String token = JWT.create()

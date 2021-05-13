@@ -2,16 +2,17 @@ package NettyWebServer;
 
 import Config.Config;
 import Entities.MediaServerRequest;
-import com.google.gson.JsonObject;
+import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.auth0.jwt.JWT;
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.CompositeByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.*;
@@ -20,7 +21,6 @@ import io.netty.util.AttributeKey;
 import io.netty.util.CharsetUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
-import io.netty.buffer.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -90,7 +90,6 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
 
         //try and catch
         try {
-            System.out.println("INSIDE CATCH");
             final JSONObject jsonRequest;
             final String corrId;
             if(o instanceof TextWebSocketFrame ){
@@ -107,7 +106,6 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             jsonRequest.put("application", service);
             jsonRequest.put("body", body);
             authenticate(channelHandlerContext, jsonRequest);
-            System.out.println(jsonRequest + "JSONN");
             if(o instanceof  MediaServerRequest){
                  MediaServerRequest msr= ((MediaServerRequest)o);
                  msr.setJsonRequest(jsonRequest.toString());
@@ -120,7 +118,6 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                 channelHandlerContext.fireChannelRead(o);
             }
         } catch (JSONException e) {
-            System.out.println(e + "EEEE");
             e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
             String responseMessage = "NO JSON PROVIDED";
             FullHttpResponse response = new DefaultFullHttpResponse(
@@ -195,15 +192,13 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                 System.out.print(jsonRequest + "REQUEST")  ;
             }catch(IOException | TimeoutException e) {
 
-                e.printStackTrace();
                 e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
                 
                 LOGGER.log(Level.SEVERE,e.getMessage(),e);
             }
 
         } catch (Exception e) {
-       
-            e.printStackTrace();
+
             e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
 

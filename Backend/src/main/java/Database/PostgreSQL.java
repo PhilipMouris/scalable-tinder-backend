@@ -6,7 +6,6 @@ import org.apache.commons.pool2.ObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -242,7 +241,6 @@ public class PostgreSQL {
 
         }
         catch(Exception e){
-            System.out.println("HEREEE");
             e.printStackTrace();
         }
         finally {
