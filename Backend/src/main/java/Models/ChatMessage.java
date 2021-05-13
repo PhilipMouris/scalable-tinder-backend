@@ -16,6 +16,10 @@ public class ChatMessage {
         this.createdAt =  new Timestamp(new Date().getTime()).toString();
     }
 
+    public ChatMessage(){
+        super();
+    }
+
     public String getSourceUserId() {
         return sourceUserId;
     }

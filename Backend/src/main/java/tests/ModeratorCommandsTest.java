@@ -174,7 +174,7 @@ public class ModeratorCommandsTest {
         moderatorData.put("password","123456789");
         body.put("moderatorData", moderatorData);
         expected.put("error","Invalid Credentials");
-        testHelpers.testErrorCommand("SignIn","Moderator","error",body,expected,false,401);
+        testHelpers.testObjectCommand("SignIn","Moderator","error",body,expected,false,401);
 
     }
 
@@ -187,7 +187,7 @@ public class ModeratorCommandsTest {
         moderatorData.put("email","hussein.badr@gmail.com");
         moderatorData.put("password","12345678");
         body.put("moderatorData", moderatorData);
-        testHelpers.testErrorCommand("SignIn","Moderator","token",body,expected,false,200);
+        testHelpers.testObjectCommand("SignIn","Moderator","token",body,expected,false,200);
 
     }
 

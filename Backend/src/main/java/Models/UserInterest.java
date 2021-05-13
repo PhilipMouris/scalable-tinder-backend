@@ -9,4 +9,8 @@ public class UserInterest {
         this.interestID = interestID;
         this.name = name;
     }
+
+    public UserInterest(){
+        super();
+    }
 }

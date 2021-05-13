@@ -9,4 +9,8 @@ public class UserPreference {
         this.age = age;
         this.location = location;
     }
+
+    public UserPreference(){
+        super();
+    }
 }

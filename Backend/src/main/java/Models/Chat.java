@@ -26,6 +26,10 @@ public class Chat {
         this.createdAt =  new Timestamp(new Date().getTime()).toString();
     }
 
+    public Chat(){
+        super();
+    }
+
     public String getId() {
         return id;
     }

@@ -17,6 +17,10 @@ public class ProfileViews {
         this.viewers = viewers;
         this.viewedUser = viewedUser;
     }
+
+    public ProfileViews(){
+        super();
+    }
     //private String createdAt;
 
 

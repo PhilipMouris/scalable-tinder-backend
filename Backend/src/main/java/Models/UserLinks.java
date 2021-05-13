@@ -12,4 +12,8 @@ public class UserLinks {
         this.twitter = twitter;
         this.spotify = spotify;
     }
+
+    public UserLinks(){
+        super();
+    }
 }

@@ -10,4 +10,8 @@ public class UserLocation {
         this.lat = lat;
         this.addressName = addressName;
     }
+
+    public UserLocation(){
+        super();
+    }
 }

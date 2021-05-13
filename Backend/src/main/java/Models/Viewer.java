@@ -8,4 +8,8 @@ public class Viewer {
         this.createdAt = createdAt;
         this.viewerID = viewerID;
     }
+
+    public Viewer(){
+        super();
+    }
 }

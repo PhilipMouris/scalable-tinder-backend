@@ -40,4 +40,7 @@ public class UserPicture {
         this.isMain = isMain;
         this.uploadedAt =  new Timestamp(new Date().getTime()).toString();
     }
+
+   
+
 }

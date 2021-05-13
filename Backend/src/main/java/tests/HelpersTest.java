@@ -13,13 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
-
-import org.awaitility.*;
 
 import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.*;
@@ -100,8 +96,9 @@ public class HelpersTest {
     private JSONObject readResponse(int status){
         FullHttpResponse httpResponse = channel.readOutbound();
         HttpResponseStatus received = httpResponse.status();
-        assertEquals(received.code(),status);
         String httpResponseContent = httpResponse.content().toString(Charset.defaultCharset());
+        System.out.println(httpResponseContent + "CONTENT");
+        assertEquals(received.code(),status);
         return new JSONObject(httpResponseContent);
     }
 
@@ -140,7 +137,7 @@ public class HelpersTest {
            return response;
 
     }
-    public JSONObject testErrorCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected, boolean strictMatch,int status ){
+    public JSONObject testObjectCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected, boolean strictMatch,int status ){
         sendRequest(commandName,application,body);
         JSONObject response = readResponse(status);
         System.out.println(response + "RESPONSE");
