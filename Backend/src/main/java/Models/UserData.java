@@ -113,4 +113,17 @@ public class UserData {
     public void setPreferences(UserPreference preferences) {
         this.preferences = preferences;
     }
+
+    public UserData(String _key,Gender gender,String bio,String birthDate,UserLocation location,UserLinks links,List<UserInterest> interests,UserPreference preferences){
+        this._key = _key;
+        this.gender = gender;
+        this.bio = bio;
+        this.birthDate = birthDate;
+        this.location = location;
+        this.links = links;
+        this.interests = interests;
+        this.preferences = preferences;
+
+    }
+
 }

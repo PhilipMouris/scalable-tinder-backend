@@ -1,38 +1,9 @@
 package tests;
 
-import Config.Config;
-import MediaServer.MediaHandler;
-import NettyWebServer.HTTPHandler;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.embedded.EmbeddedChannel;
-import io.netty.handler.codec.http.*;
-import io.netty.handler.codec.http.cors.CorsConfig;
-import io.netty.handler.codec.http.cors.CorsConfigBuilder;
-import io.netty.handler.codec.http.cors.CorsHandler;
-import io.netty.util.CharsetUtil;
-import jdk.jfr.ContentType;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
-import tests.HelpersTest;
-
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.concurrent.TimeoutException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ModeratorCommandsTest {
     HelpersTest testHelpers = new HelpersTest();
@@ -90,8 +61,8 @@ public class ModeratorCommandsTest {
         JSONObject body = new JSONObject();
         JSONObject expected = new JSONObject();
         JSONObject interestInfo = new JSONObject();
-        interestInfo.put("id",1);
-        expected.put("uspdeleteinterest",1);
+        interestInfo.put("id",16);
+        expected.put("uspdeleteinterest",16);
         body.put("interestinfo",interestInfo);
         testHelpers.testCommand("DeleteInterest","Moderator","interest",body,expected,false,200);
     }
@@ -124,7 +95,7 @@ public class ModeratorCommandsTest {
         JSONObject body = new JSONObject();
         JSONObject expected = new JSONObject();
         body.put("page",0);
-        body.put("limit",10);
+        body.put("limit",12);
         testHelpers.testListCommand("GetAllNotifications","Moderator","notifications",body,expected,false,200);
 
     }
@@ -255,9 +226,9 @@ public class ModeratorCommandsTest {
         JSONObject expected = new JSONObject();
         JSONObject interestinfo = new JSONObject();
         String name = "updatedName";
-        interestinfo.put("id",5);
+        interestinfo.put("id",15);
         interestinfo.put ("name",name);
-        expected.put("id",5);
+        expected.put("id",15);
         expected.put("name",name);
         body.put("interestinfo",interestinfo);
         testHelpers.testCommand("UpdateInterest","Moderator","interest",body,expected,false,200);

@@ -1,10 +1,20 @@
 package Models;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class ChatMessage {
     private String sourceUserId;
     private String text;
     private String media;
     private String createdAt;
+
+    public ChatMessage(String sourceUserId, String text, String media) {
+        this.sourceUserId = sourceUserId;
+        this.text = text;
+        this.media = media;
+        this.createdAt =  new Timestamp(new Date().getTime()).toString();
+    }
 
     public String getSourceUserId() {
         return sourceUserId;

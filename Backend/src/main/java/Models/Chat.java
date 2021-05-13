@@ -1,10 +1,9 @@
 package Models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
            
@@ -18,6 +17,14 @@ public class Chat {
     private String userBId;
     private List<ChatMessage> messages;
     private String createdAt;
+
+    public Chat(String _key, String userAId, String userBId, List<ChatMessage> messages) {
+        this._key = _key;
+        this.userAId = userAId;
+        this.userBId = userBId;
+        this.messages = messages;
+        this.createdAt =  new Timestamp(new Date().getTime()).toString();
+    }
 
     public String getId() {
         return id;

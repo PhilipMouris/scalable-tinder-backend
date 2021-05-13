@@ -3,29 +3,25 @@ package tests;
 
 import Config.Config;
 import Controller.Controller;
+import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Entities.ServicesType;
 import Interface.ServiceControl;
 import MessageQueue.ServicesMQ;
 import NettyWebServer.HTTPHandler;
-import NettyWebServer.NettyServer;
 import NettyWebServer.NettyServerInitializer;
-import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.embedded.EmbeddedChannel;
-import io.netty.handler.codec.http.*;
+import io.netty.handler.codec.http.HttpMethod;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpRequestDecoder;
+import io.netty.handler.codec.http.HttpResponseDecoder;
 import io.netty.handler.codec.http.cors.CorsConfig;
 import io.netty.handler.codec.http.cors.CorsConfigBuilder;
 import io.netty.handler.codec.http.cors.CorsHandler;
-import org.json.simple.JSONObject;
 
-
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.logging.Level;
 
 public class TestServer {
     public static boolean isInitialized = false;
@@ -75,6 +71,10 @@ public class TestServer {
     public void initializeDB(){
         PostgreSQL db = new PostgreSQL();
         db.populateDB();
+        ArangoInstance arangoInstance = new ArangoInstance(200);
+        arangoInstance.dropDB();
+        arangoInstance.initializeDB();
+        arangoInstance.populateDB();
     }
 
     public TestServer() {
@@ -84,6 +84,7 @@ public class TestServer {
             initialize();
             initializeDB();
         isInitialized = true;
+      
         }
 
         CorsConfig corsConfig = CorsConfigBuilder.forAnyOrigin()

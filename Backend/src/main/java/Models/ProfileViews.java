@@ -11,6 +11,12 @@ public class ProfileViews {
     private String _key;
     private List<Viewer> viewers;
     private String viewedUser;
+
+    public ProfileViews(String _key, List<Viewer> viewers, String viewedUser) {
+        this._key = _key;
+        this.viewers = viewers;
+        this.viewedUser = viewedUser;
+    }
     //private String createdAt;
 
 
