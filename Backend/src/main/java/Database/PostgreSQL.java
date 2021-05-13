@@ -227,4 +227,19 @@ public class PostgreSQL {
 //    }
 
 
+    public void populateDB(){
+        try {
+           Connection dbConn = this.getDataSource().getConnection();
+           dbConn.setAutoCommit(true);
+           Statement query = dbConn.createStatement();
+           query.setPoolable(true);
+
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
 }

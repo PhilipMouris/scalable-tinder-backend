@@ -1,5 +1,3 @@
-package tests;
-
 import Config.Config;
 import MediaServer.MediaHandler;
 import NettyWebServer.HTTPHandler;
@@ -22,6 +20,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import tests.HelpersTest;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -37,30 +36,19 @@ public class ModeratorCommandsTest {
 
     @Test
     @DisplayName("TESTING")
-    public void testOK(){
+    public void testCreateCommand(){
             JSONObject body = new JSONObject();
             JSONObject expected = new JSONObject();
-             expected.put("error","Permission denied, you need to sign in");
-              testHelpers.testCommand("CreateUserInteraction","UserToUser",body,expected);
+             String reason = "Ban reason";
+             int userID = 6;
+             String expiryDate="9/9/2022";
+             JSONObject banData = new JSONObject();
+             banData.put("reason",reason);
+             banData.put("user_id",userID);
+             banData.put("expiry_date", expiryDate);
+             banData.put("moderator_id",1);
+             body.put("banData",banData);
+             testHelpers.testCommand("CreateBan","Moderator","ban",body,expected);
 
-//            ByteBuf bbuf = Unpooled.copiedBuffer( body.toJSONString(), StandardCharsets.UTF_8);
-//            FullHttpRequest request = new DefaultFullHttpRequest(
-//                    HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8020",bbuf);
-//            request.headers().add("Content-Type","application/json");
-//
-//
-//
-//            Boolean test = channel.writeInbound(request);
-//            System.out.println(test + "TEST???");
-//            System.out.println(channel.outboundMessages().size() + "SIZE");
-//            FullHttpResponse httpResponse = channel.readOutbound();
-//            channel.checkException();
-//            System.out.println(httpResponse + "RESPONSE");
-//            String httpResponseContent = httpResponse.content()
-//                    .toString(Charset.defaultCharset());
-//            System.out.println(httpResponseContent + "RESPONSE");
-
-
-        //assertEquals(20,20,"OKKK");
     }
 }

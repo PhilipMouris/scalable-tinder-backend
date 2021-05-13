@@ -192,13 +192,18 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                 channel = connection.createChannel();
                 
                 channel.basicPublish("", appName + "-Request", props, jsonRequest.toString().getBytes());
+                System.out.print(jsonRequest + "REQUEST")  ;
             }catch(IOException | TimeoutException e) {
+
+                e.printStackTrace();
                 e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
                 
                 LOGGER.log(Level.SEVERE,e.getMessage(),e);
             }
 
         } catch (Exception e) {
+       
+            e.printStackTrace();
             e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
 

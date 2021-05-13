@@ -69,7 +69,6 @@ public abstract class ConcreteCommand extends Command {
 
     @Override
     protected void execute() {
-
         try {
             TreeMap<String, Object> parameters = data;
             ArangoInstance = (ArangoInstance)
@@ -100,6 +99,7 @@ public abstract class ConcreteCommand extends Command {
             }
             filterParams = message.getParameter("filter") ==null? new JSONObject(): message.getParameter("filter");
             sortParams = message.getParameter("sort") ==null? new JSONObject(): message.getParameter("sort");
+            LOGGER.log(Level.INFO,"BEFORE COMMAND");
             status = doCommand();
             doCustomCommand();
             jsonBodyObject.put("response", responseJson);

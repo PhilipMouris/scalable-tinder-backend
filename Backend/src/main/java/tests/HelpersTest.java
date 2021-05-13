@@ -1,5 +1,7 @@
 package tests;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.embedded.EmbeddedChannel;
@@ -10,18 +12,30 @@ import org.junit.jupiter.api.Test;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 
+import org.awaitility.*;
+
+import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HelpersTest {
     TestServer server;
     EmbeddedChannel channel;
+    String token;
 
     public HelpersTest(){
         server = new TestServer();
         channel = server.getChannel();
+        Algorithm algorithm = Algorithm.HMAC256("secret");
+        token = JWT.create()
+                .withClaim("moderatorId", 16)
+                .withIssuer("auth0")
+                .sign(algorithm);
     }
 
     public TestServer getTestServer(){
@@ -47,6 +61,29 @@ public class HelpersTest {
     }
 
     public void sendRequest(String commandName, String application, JSONObject body){
+        body.put("command",commandName);
+        body.put("application",application);
+        ByteBuf bbuf = Unpooled.copiedBuffer( body.toString(), StandardCharsets.UTF_8);
+        FullHttpRequest request = new DefaultFullHttpRequest(
+                HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8020",bbuf);
+        request.headers().add("Content-Type","application/json");
+        request.headers().add("authorization",token);
+        System.out.println(body + "OKK");
+        requestSent(request);
+        await().atMost(2, TimeUnit.SECONDS).until(threadsFinished());
+        responseReceived();
+
+    }
+
+    private Callable<Boolean> threadsFinished() {
+        return new Callable<Boolean>() {
+            public Boolean call(){
+                return channel.outboundMessages().size() >0;
+            }
+        };
+    }
+
+    public void sendRequest(String commandName, String application, JSONObject body,boolean sendToken){
         body.put("command",commandName);
         body.put("application",application);
         System.out.println(body.toString() + "OKK??");
@@ -82,7 +119,7 @@ public class HelpersTest {
     }
 
 
-    public void testCommand(String commandName,String application,JSONObject body,JSONObject expected, boolean strictMatch ){
+    public void testCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected, boolean strictMatch ){
            sendRequest(commandName,application,body);
            JSONObject response = readResponse();
            compareResponses(response,expected, strictMatch);
@@ -90,10 +127,11 @@ public class HelpersTest {
 
     }
 
-    public void testCommand(String commandName,String application,JSONObject body,JSONObject expected ){
+    public void testCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected ){
         sendRequest(commandName,application,body);
         JSONObject response = readResponse();
-        compareResponses(response,expected, false);
+        System.out.println(response + "RESPONSEEE");
+        //compareResponses(response,expected, false);
 
 
     }

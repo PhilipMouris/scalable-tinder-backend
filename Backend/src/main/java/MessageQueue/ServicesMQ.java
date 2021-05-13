@@ -79,7 +79,6 @@ public class ServicesMQ {
             moderatorChannel_res.queueDeclare(RESPONSE_MODERATOR_QUEUE_NAME, true, false, false, null);
             chatChannel_res.queueDeclare(RESPONSE_CHAT_QUEUE_NAME, true, false, false, null);
             userToUserChannel_res.queueDeclare(RESPONSE_USER_TO_USER_QUEUE_NAME,true,false,false,null);
-
         } catch (IOException | TimeoutException e) {
             e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
         }
