@@ -156,7 +156,7 @@ public class SqlScripts {
             "\n" +
             "\tINSERT INTO public.moderators(\n" +
             "\temail, password)\n" +
-            "\tVALUES ( 'hussein.badr@gmail.com', 123456789);\n" +
+            "\tVALUES ( 'hussein.badr@gmail.com', '$2a$12$W5/J6mREYFuQoVxPUEgkUOt050wgiu/i.uKKEjLp6d3eb/83UprMa');\n" +
             "\tINSERT INTO public.moderators(\n" +
             "\temail, password)\n" +
             "\tVALUES ( 'youssef.sameh@gmail.com', 123456789);\n" +
@@ -309,6 +309,14 @@ public class SqlScripts {
             "\tINSERT INTO public.bans(\n" +
             "\tmoderator_id, user_id, reason, expiry_date)\n" +
             "\tVALUES (1, 17, 'racist bio', '2021-09-09 13:48:27.110024');\n" +
+            "\t\n" +
+            "\tINSERT INTO public.bans(\n" +
+            "\tmoderator_id, user_id, reason, expiry_date)\n" +
+            "\tVALUES (1, 12, 'racist bio_2', '2021-09-09 13:48:27.110024');\n" +
+            "\t\n" +
+            "\tINSERT INTO public.bans(\n" +
+            "\tmoderator_id, user_id, reason, expiry_date)\n" +
+            "\tVALUES (1, 12, 'racist bio_3', '2021-09-09 13:48:27.110024');\n" +
             "\t\n" +
             "----------------------------------------------------------------------------------------------------\n" +
             "\n" +

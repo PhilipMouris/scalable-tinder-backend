@@ -6,6 +6,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.embedded.EmbeddedChannel;
 import io.netty.handler.codec.http.*;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,6 +28,7 @@ public class HelpersTest {
     TestServer server;
     EmbeddedChannel channel;
     String token;
+
 
     public HelpersTest(){
         server = new TestServer();
@@ -68,9 +70,8 @@ public class HelpersTest {
                 HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8020",bbuf);
         request.headers().add("Content-Type","application/json");
         request.headers().add("authorization",token);
-        System.out.println(body + "OKK");
         requestSent(request);
-        await().atMost(2, TimeUnit.SECONDS).until(threadsFinished());
+        await().atMost(5, TimeUnit.SECONDS).until(threadsFinished());
         responseReceived();
 
     }
@@ -86,7 +87,6 @@ public class HelpersTest {
     public void sendRequest(String commandName, String application, JSONObject body,boolean sendToken){
         body.put("command",commandName);
         body.put("application",application);
-        System.out.println(body.toString() + "OKK??");
         ByteBuf bbuf = Unpooled.copiedBuffer( body.toString(), StandardCharsets.UTF_8);
         FullHttpRequest request = new DefaultFullHttpRequest(
                 HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8020",bbuf);
@@ -95,9 +95,12 @@ public class HelpersTest {
         responseReceived();
 
     }
-
-    private JSONObject readResponse(){
+    @Test
+    @DisplayName("Reading and comparing HTTP status")
+    private JSONObject readResponse(int status){
         FullHttpResponse httpResponse = channel.readOutbound();
+        HttpResponseStatus received = httpResponse.status();
+        assertEquals(received.code(),status);
         String httpResponseContent = httpResponse.content().toString(Charset.defaultCharset());
         return new JSONObject(httpResponseContent);
     }
@@ -106,33 +109,71 @@ public class HelpersTest {
     @DisplayName("Compare Responses")
     public void compareResponses(JSONObject response,JSONObject expected, boolean strictMatch){
          Iterator<String> expectedKeys = expected.keys();
-         //
-         //if(strictMatch)
+         int expectedKeyLength = 0;
+         int receivedKeyLength = 0;
          while(expectedKeys.hasNext()){
+             expectedKeyLength +=1;
              String expectedKey = expectedKeys.next();
+             System.out.println("Comparing: "+ expectedKey);
              assertTrue(response.has(expectedKey));
              Object expectedValue = expected.get(expectedKey);
              Object receivedValue = response.get(expectedKey);
              assertTrue(expectedValue.equals((receivedValue)));
 
          }
+        if(strictMatch) {
+            Iterator<String> receivedKeys = response.keys();
+            while(receivedKeys.hasNext()){
+                receivedKeys.next();
+                receivedKeyLength +=1;
+            }
+            assertEquals(expectedKeyLength,receivedKeyLength);
+        }
     }
 
 
-    public void testCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected, boolean strictMatch ){
+    public JSONObject testCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected, boolean strictMatch,int status ){
            sendRequest(commandName,application,body);
-           JSONObject response = readResponse();
-           compareResponses(response,expected, strictMatch);
-
+           JSONObject response = readResponse(status);
+           System.out.println(response + "RESPONSE");
+           compareResponses(response.getJSONArray(outputName).getJSONObject(0),expected, strictMatch);
+           return response;
 
     }
-
-    public void testCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected ){
+    public JSONObject testErrorCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected, boolean strictMatch,int status ){
         sendRequest(commandName,application,body);
-        JSONObject response = readResponse();
-        System.out.println(response + "RESPONSEEE");
-        //compareResponses(response,expected, false);
-
+        JSONObject response = readResponse(status);
+        System.out.println(response + "RESPONSE");
+        compareResponses(response,expected, strictMatch);
+        return response;
 
     }
+    @Test
+    public JSONArray testListCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected, boolean strictMatch,int status ){
+        sendRequest(commandName,application,body);
+        int limit = body.getInt("limit");
+        JSONObject response = readResponse(status);
+        JSONArray responseArray = response.getJSONArray(outputName);
+        System.out.println(response + "RESPONSE");
+        assertTrue(responseArray.length()<=limit);
+        compareResponses(responseArray.getJSONObject(0),expected, strictMatch);
+        return responseArray;
+
+    }
+
+    @Test
+    public void forAllArrayHolds(JSONArray array, JSONObject properties){
+        Iterator<String> expectedKeys;
+        for(int i =0;i<array.length();i++){
+           expectedKeys =  properties.keys();
+          while (expectedKeys.hasNext()) {
+              String key = expectedKeys.next();
+             Object received = array.getJSONObject(i).get(key);
+             Object expected = properties.get(key);
+             assertTrue(received.equals(expected));
+          }
+      }
+    }
+
+
 }
