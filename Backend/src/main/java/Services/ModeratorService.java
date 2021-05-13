@@ -54,6 +54,7 @@ public class ModeratorService extends ServiceControl {
 
     @Override
     public boolean setMaxDBConnections(String connections){
+        arangoInstance.setMaxDBConnections(Integer.parseInt(connections));
         return postgresDB.setDbMaxConnections(connections+"");
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
