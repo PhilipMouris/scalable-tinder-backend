@@ -7,7 +7,6 @@ public class SqlScripts {
             "  FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = current_schema()) LOOP\n" +
             "    EXECUTE 'DROP TABLE ' || quote_ident(r.tablename) || ' CASCADE';\n" +
             "  END LOOP;\n" +
-            "  DROP TYPE IF EXISTS interaction_type;\n" +
             "END $$;\n"    ;
 
     public static String createTablesScript = "CREATE TABLE users(\n" +
@@ -30,7 +29,12 @@ public class SqlScripts {
             "CREATE TABLE INTERESTS(\"id\" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,\n" +
             "\"name\" NCHAR(200) NOT NULL\n" +
             ");\n" +
-            "CREATE TYPE interaction_type AS ENUM('like', 'dislike','super_like');\n" +
+            "DO $$ BEGIN\n" +
+            "  CREATE TYPE interaction_type AS ENUM('like', 'dislike','super_like');\n" +
+            "EXCEPTION\n" +
+            "    WHEN duplicate_object THEN null;\n" +
+            "END $$;\n" +
+            "\n" +
             "CREATE TABLE interactions(\n" +
             "\"id\" int PRIMARY KEY GENERATED ALWAYS AS IDENTITY,\n" +
             "source_user_id int REFERENCES users(\"id\") ON DELETE CASCADE NOT NULL,\n" +
@@ -64,8 +68,7 @@ public class SqlScripts {
             "reason varchar(400),\n" +
             "created_at timestamp DEFAULT current_timestamp,\n" +
             "expiry_date date NOT NULL\n" +
-            ");"    ;
-
+            ");";
 
     public  static  String inserStionScript = "\n" +
             "BEGIN;\n" +

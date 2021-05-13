@@ -73,7 +73,6 @@ public class TestServer {
     }
 
     public void initializeDB(){
-        System.out.println("HEERRR???");
         PostgreSQL db = new PostgreSQL();
         db.populateDB();
     }
