@@ -9,7 +9,7 @@ public class GetAllBlocks extends  ConcreteCommand{
     public void setParameters() {
         storedProcedure = "\"uspReadAllBlocks\"";
         inputParams = new String[]{"page","limit"};
-        outputName = "block";
+        outputName = "blocks";
         useCache=true;
     }
 }

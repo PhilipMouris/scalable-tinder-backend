@@ -7,6 +7,7 @@ CREATE TYPE interactionData AS(
 	type interaction_type,
 	created_at timestamp	
 );
+-- ---- INTERACTIONS PROCEDURES
 
 CREATE OR REPLACE FUNCTION "uspReadInteraction"(interaction_id int) 
 RETURNS TABLE(id int,source_user_id int,target_user_id int,type interaction_type,created_at timestamp)
@@ -15,7 +16,7 @@ AS $$
 BEGIN
 	RETURN QUERY
 	SELECT * from public.interactions
-	WHERE public.interactions.id = uspReadInteraction.interaction_id;
+	WHERE public.interactions.id = interaction_id;
 END;$$
 ;
 
@@ -37,7 +38,7 @@ AS $$
 BEGIN
 	RETURN QUERY
 	SELECT * from public.interactions
-	WHERE public.interactions.source_user_id=uspReadUserSourceInteractions.source_id
+	WHERE public.interactions.source_user_id=source_id
 	LIMIT "limit" OFFSET page*"limit";
 END;$$
 ;
@@ -49,26 +50,26 @@ AS $$
 BEGIN
 	RETURN QUERY
 	SELECT * from public.interactions
-	WHERE public.interactions.target_user_id=uspReadUserTargetInteractions.target_id
+	WHERE public.interactions.target_user_id=target_id
 	LIMIT "limit" OFFSET page*"limit";
 END;$$
 ;
 
 CREATE OR REPLACE FUNCTION "uspUpdateInteraction"(
-	id integer,
-	source_user_id int DEFAULT NULL,
-	target_user_id int DEFAULT NULL,
-	type interaction_type DEFAULT NULL)
+	int_id integer,
+	source_id int DEFAULT NULL,
+	target_id int DEFAULT NULL,
+	int_type interaction_type DEFAULT NULL)
 	RETURNS interactionData
     LANGUAGE 'plpgsql'
 AS $$
 DECLARE updated_interaction interactionData;
 BEGIN
     UPDATE interactions
-       SET source_user_id      = COALESCE(uspUpdateInteraction.source_user_id, interactions.source_user_id),
-           target_user_id      = COALESCE(uspUpdateInteraction.target_user_id, interactions.target_user_id),
-           "type"              = COALESCE(uspUpdateInteraction.type, interactions.type)
-     WHERE interactions.id = uspUpdateInteraction.id
+       SET source_user_id      = COALESCE(source_id, interactions.source_user_id),
+           target_user_id      = COALESCE(target_id, interactions.target_user_id),
+           "type"              = COALESCE(int_type, interactions.type)
+     WHERE interactions.id = int_id
      RETURNING * INTO updated_interaction;
 	 RETURN updated_interaction;
 END;$$
@@ -78,10 +79,13 @@ CREATE OR REPLACE FUNCTION "uspDeleteInteraction"(interaction_id int)
 RETURNS int
 LANGUAGE 'plpgsql'
 AS $$
+DECLARE
+	deleted_id INT;
 BEGIN
-	DELETE FROM public.interactions 
-	WHERE public.interactions.id = interaction_id;
-	RETURN interaction_id;
+	DELETE FROM public.interactions as i
+	WHERE i.id = interaction_id
+	RETURNING i.id INTO deleted_id;
+	RETURN deleted_id;
 END;$$
 ;
 
@@ -113,16 +117,16 @@ END;$$
 -- );
 
 CREATE OR REPLACE FUNCTION "uspUpdateReport"(
-	id integer,
-	reason varchar(400) DEFAULT NULL)
+	report_id integer,
+	updated_reason varchar(400) DEFAULT NULL)
 	RETURNS reportData
     LANGUAGE 'plpgsql'
 AS $$
 DECLARE updated_report reportData;
 BEGIN
     UPDATE reports
-       SET reason = COALESCE(uspUpdateReport.reason, reports.reason)
-     WHERE reports.id = uspUpdateReport.id
+       SET reason = COALESCE(updated_reason, reports.reason)
+     WHERE reports.id = report_id
 	 RETURNING * INTO updated_report;
      RETURN updated_report;
 END;$$
@@ -132,10 +136,13 @@ CREATE OR REPLACE FUNCTION "uspDeleteReport"(report_id int)
 RETURNS int
 LANGUAGE 'plpgsql'
 AS $$
+DECLARE
+	deleted_id INT;
 BEGIN
-	DELETE FROM public.reports 
-	WHERE public.reports.id = report_id;
-	RETURN report_id;
+	DELETE FROM public.reports as r
+	WHERE r.id = report_id
+	RETURNING r.id into deleted_id; 
+	RETURN deleted_id;
 END;$$
 ;
 
@@ -161,7 +168,7 @@ END;$$
 
 
 -- Testing Interaction Procedures
-SELECT * FROM "uspSeeMatchesChronological"(2)
+SELECT * FROM "uspSeeMatchesChronological"(2);
 
 
 DROP FUNCTION IF EXISTS checkUserPremiumMirrorInteraction;
