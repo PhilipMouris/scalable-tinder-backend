@@ -199,7 +199,7 @@ public class PostgreSQL {
     public boolean setDbMaxConnections (String maxConnections ){
         DB_MAX_CONNECTIONS =maxConnections;
         try {
-            setConnection();
+            this.setConnection();
             return true;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -225,6 +225,28 @@ public class PostgreSQL {
 //        Matcher matcher = pattern.matcher(DB_URL);
 //        return matcher.matches();
 //    }
+
+    Connection dbConn;
+    public void populateDB(){
+
+        try {
+           initSource();
+           dbConn = this.getDataSource().getConnection();
+           dbConn.setAutoCommit(true);
+           Statement query = dbConn.createStatement();
+           query.setPoolable(true);
+           query.executeUpdate(SqlScripts.dropScript);
+           query.executeUpdate(SqlScripts.createTablesScript);
+           query.executeUpdate(SqlScripts.inserStionScript);
+
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+           this.disconnect(null, null,dbConn);
+        }
+    }
 
 
 }

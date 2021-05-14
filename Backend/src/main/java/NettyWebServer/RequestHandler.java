@@ -2,13 +2,15 @@ package NettyWebServer;
 
 import Config.Config;
 import Entities.MediaServerRequest;
-import com.google.gson.JsonObject;
+import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.auth0.jwt.JWT;
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.CompositeByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -43,20 +45,31 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
     private String serverUser = config.getServerQueueUserName();
     private String serverPass = config.getServerQueuePass();
     private final Logger LOGGER = Logger.getLogger(RequestHandler.class.getName()) ;
+    private boolean isTesting = false;
 
     private Channel senderChannel;
 
-    RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO) {
+    public RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO) {
         this.uuid = uuid;
         this.RPC_QUEUE_REPLY_TO = RPC_QUEUE_REPLY_TO;
         this.RPC_QUEUE_SEND_TO = RPC_QUEUE_SEND_TO;
     }
 
+    public RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO,boolean isTesting) {
+        this.uuid = uuid;
+        this.RPC_QUEUE_REPLY_TO = RPC_QUEUE_REPLY_TO;
+        this.RPC_QUEUE_SEND_TO = RPC_QUEUE_SEND_TO;
+        this.isTesting = isTesting;
+    }
+
+
+
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object o) {
+
         if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)&&!(o instanceof MediaServerRequest) ){
             channelHandlerContext.fireChannelRead(o);
-            return;
+            if(!isTesting) return;
         }
 
         ByteBuf buffer;
@@ -93,7 +106,6 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             jsonRequest.put("application", service);
             jsonRequest.put("body", body);
             authenticate(channelHandlerContext, jsonRequest);
-
             if(o instanceof  MediaServerRequest){
                  MediaServerRequest msr= ((MediaServerRequest)o);
                  msr.setJsonRequest(jsonRequest.toString());
@@ -177,13 +189,16 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                 channel = connection.createChannel();
                 
                 channel.basicPublish("", appName + "-Request", props, jsonRequest.toString().getBytes());
+                System.out.print(jsonRequest + "REQUEST")  ;
             }catch(IOException | TimeoutException e) {
+
                 e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
                 
                 LOGGER.log(Level.SEVERE,e.getMessage(),e);
             }
 
         } catch (Exception e) {
+
             e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
 
