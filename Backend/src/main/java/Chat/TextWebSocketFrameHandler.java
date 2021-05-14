@@ -1,5 +1,6 @@
 package Chat;
 
+import Cache.RedisConnection;
 import Database.ArangoInstance;
 import NettyWebServer.HTTPHandler;
 import com.google.gson.Gson;
@@ -48,6 +49,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
         if (channel == null || !channel.isActive()) {
             String message =  messageBody.getJSONObject("chatData").getJSONObject("message").toString();
+            arangoInstance.setRedisConnection(new RedisConnection());
             this.arangoInstance.createNotificaiton(Integer.parseInt(toUserId),
                     "messageReceived",
                     "Message received",

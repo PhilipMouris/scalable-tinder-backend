@@ -79,7 +79,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
 
         }
-        if(o instanceof MediaServerRequest) {
+        else if(o instanceof MediaServerRequest) {
             body = ((MediaServerRequest)o).getRequest();
         }
         else {
@@ -187,13 +187,13 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             try {
                 connection = connectionFactory.newConnection();
                 channel = connection.createChannel();
-                
+
                 channel.basicPublish("", appName + "-Request", props, jsonRequest.toString().getBytes());
                 System.out.print(jsonRequest + "REQUEST")  ;
             }catch(IOException | TimeoutException e) {
 
                 e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
-                
+
                 LOGGER.log(Level.SEVERE,e.getMessage(),e);
             }
 
