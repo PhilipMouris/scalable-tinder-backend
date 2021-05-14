@@ -35,6 +35,7 @@ import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.TreeMap;
@@ -408,12 +409,49 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 
     //TODO CHECK IF FILE EXISTS FIRST IF THERE THEN LOG AN ERROR
     public boolean add_command(String commandName, String source_code) {
+        String full_java_path = "";
+        String full_target_path = "";
+        String class_path = "";
+        if(commandName.contains(".")){
+            class_path = commandName;
+        }  else{
+            class_path = "Commands."+RPC_QUEUE_NAME+"Commands."+commandName;
+        }
+        System.out.println(class_path);
+        try {
+            String root_path = new File(".").getCanonicalPath()+"/Backend";
+
+            full_target_path = root_path+"/target/classes";
+            full_java_path = root_path;
+            full_java_path +="/src/main/java";
+            String[] splitted_2 =   class_path.split("\\.");
+            System.out.println(Arrays.toString(splitted_2));
+            for(String s:splitted_2){
+                full_target_path+= "/"+s;
+                full_java_path += "/"+s;
+
+            }
+            System.out.println(full_java_path);
+            System.out.println(full_target_path);
+            if(!new File(full_java_path).getParentFile().exists()||!new File(full_target_path).getParentFile().exists()){
+                LOGGER.log(Level.SEVERE,"DIRECTORY DOESN'T EXISTS");
+                return false;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            return false;
+        }
+
         FileWriter fileWriter;
         try {
 
             // Save source in .java file.
-            File root = new File("/home/vm/Desktop/scalable-tinder/Backend/target/classes/Commands/" + RPC_QUEUE_NAME + "Commands"); // On Windows running on C:\, this is C:\java.
-            File sourceFile = new File(root, commandName+".java");
+            
+            File root = new File(full_java_path); // On Windows running on C:\, this is C:\java.
+            File sourceFile = new File(full_target_path+".java");
+            File javaFile = new File(full_java_path+".java");
             if (sourceFile.exists()) {
                 LOGGER.log(Level.SEVERE,commandName + " Already Exists please use update");
 //                Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, commandName + " Already exists please use update"));
@@ -421,6 +459,8 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             }
             sourceFile.getParentFile().mkdirs();
             Files.write(sourceFile.toPath(), source_code.getBytes(StandardCharsets.UTF_8));
+            javaFile.getParentFile().mkdirs();
+            Files.write(javaFile.toPath(), source_code.getBytes(StandardCharsets.UTF_8));
 
             // Compile source file.
             JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
@@ -440,12 +480,54 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         }
 
     }
+    public boolean update_class(String className,String sourceCode){
+        return update_command(className,sourceCode);
+    }
 
     public boolean delete_command(String commandName) {
+        String full_java_path = "";
+        String full_target_path = "";
+        String class_path = "";
+        if(commandName.contains(".")){
+            class_path = commandName;
+        }  else{
+            class_path = "Commands."+RPC_QUEUE_NAME+"Commands."+commandName;
+        }
+        System.out.println(class_path);
         try {
-            if(!Files.deleteIfExists(Paths.get("/home/vm/Desktop/scalable-tinder/Backend/target/classes/Commands/" + RPC_QUEUE_NAME + "Commands/" + commandName + ".class"))){
+            String root_path = new File(".").getCanonicalPath()+"/Backend";
+
+            full_target_path = root_path+"/target/classes";
+            full_java_path = root_path;
+            full_java_path +="/src/main/java";
+            String[] splitted_2 =   class_path.split("\\.");
+            System.out.println(Arrays.toString(splitted_2));
+            for(String s:splitted_2){
+                full_target_path+= "/"+s;
+                full_java_path += "/"+s;
+
+            }
+            System.out.println(full_java_path);
+            System.out.println(full_target_path);
+            if(!new File(full_java_path).getParentFile().exists()||!new File(full_target_path).getParentFile().exists()){
+                LOGGER.log(Level.SEVERE,"DIRECTORY DOESN'T EXISTS");
+                return false;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            return false;
+        }
+        try {
+            if(!Files.deleteIfExists(Paths.get( full_target_path+ ".class"))){
                 LOGGER.log(Level.SEVERE,"No such file/directory exists");
                 
+                return false;
+            }
+            if(!Files.deleteIfExists(Paths.get( full_java_path+ ".java"))){
+                LOGGER.log(Level.SEVERE,"No such file/directory exists");
+
                 return false;
             }
             last_com=null;
