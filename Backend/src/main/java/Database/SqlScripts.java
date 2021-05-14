@@ -76,7 +76,7 @@ public class SqlScripts {
             "\n" +
             "\tINSERT INTO public.users(\n" +
             "\temail, password, is_banned, is_premium, credit_card_token, first_name, last_name)\n" +
-            "\tVALUES ('ariannagrande@gmail.com', 123456789, false, false, NULL, 'Arianna', 'Grande');\n" +
+            "\tVALUES ('ariannagrande@gmail.com', '$2a$12$W5/J6mREYFuQoVxPUEgkUOt050wgiu/i.uKKEjLp6d3eb/83UprMa', false, false, NULL, 'Arianna', 'Grande');\n" +
             "\t\n" +
             "\tINSERT INTO public.users(\n" +
             "\temail, password, is_banned, is_premium, credit_card_token, first_name, last_name)\n" +

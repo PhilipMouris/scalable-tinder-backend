@@ -112,6 +112,7 @@ public class HelpersTest {
              expectedKeyLength +=1;
              String expectedKey = expectedKeys.next();
              System.out.println("Comparing: "+ expectedKey);
+             System.out.println(response + "KEYYY");
              assertTrue(response.has(expectedKey));
              Object expectedValue = expected.get(expectedKey);
              Object receivedValue = response.get(expectedKey);
@@ -137,10 +138,26 @@ public class HelpersTest {
            return response;
 
     }
+    public JSONObject testCommandNoReponse(String commandName,String application,String outputName,JSONObject body,JSONObject expected, boolean strictMatch,int status ){
+        sendRequest(commandName,application,body);
+        JSONObject response = readResponse(status);
+//        System.out.println(response + "RESPONSE");
+//        compareResponses(response.getJSONArray(outputName).getJSONObject(0),expected, strictMatch);
+        return response;
+
+    }
     public JSONObject testObjectCommand(String commandName,String application,String outputName,JSONObject body,JSONObject expected, boolean strictMatch,int status ){
         sendRequest(commandName,application,body);
         JSONObject response = readResponse(status);
         System.out.println(response + "RESPONSE");
+        compareResponses(response,expected, strictMatch);
+        return response;
+
+    }
+
+    public JSONObject testObjectCommandWithOutput(String commandName,String application,String outputName, JSONObject body,JSONObject expected, boolean strictMatch,int status ){
+        sendRequest(commandName,application,body);
+        JSONObject response = readResponse(status).getJSONObject(outputName);
         compareResponses(response,expected, strictMatch);
         return response;
 

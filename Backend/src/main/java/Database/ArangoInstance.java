@@ -367,6 +367,13 @@ public class ArangoInstance {
                      JSONObject object = new JSONObject(gson.toJson(notification,Notification.class).toString());
                      insert("notifications",object);
                  }
+            int userID = 5;
+            String type = "message";
+            String title = faker.lorem().word();
+            String body = faker.lorem().sentence(7);
+            Notification notification = new Notification(userID,type,title,body);
+            JSONObject object = new JSONObject(gson.toJson(notification,Notification.class).toString());
+            insert("notifications",object);
         }
 
 
