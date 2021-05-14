@@ -1,5 +1,6 @@
 package Chat;
 
+import Cache.RedisConnection;
 import Database.ArangoInstance;
 import NettyWebServer.HTTPHandler;
 import com.google.gson.Gson;
@@ -21,6 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>{
     
     private static ConcurrentHashMap<String, Channel> webSocketMap = new ConcurrentHashMap<>();
+    private ArangoInstance arangoInstance = new ArangoInstance(20);
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
@@ -44,7 +46,15 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
         String toUserId = fromUserId.equals(jsonChat.getString("userAId")) ?
                 jsonChat.getString("userBId"): jsonChat.getString("userAId");
         Channel channel = webSocketMap.get(toUserId);
+
         if (channel == null || !channel.isActive()) {
+            String message =  messageBody.getJSONObject("chatData").getJSONObject("message").toString();
+            arangoInstance.setRedisConnection(new RedisConnection());
+            this.arangoInstance.createNotificaiton(Integer.parseInt(toUserId),
+                    "messageReceived",
+                    "Message received",
+                    message
+            );
             ctx.writeAndFlush(new TextWebSocketFrame("Not Online"));
         } else {
             channel.writeAndFlush(new TextWebSocketFrame(messageBody.getJSONObject("chatData").getJSONObject("message").toString()));

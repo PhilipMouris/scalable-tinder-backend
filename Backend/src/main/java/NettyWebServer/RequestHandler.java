@@ -1,12 +1,16 @@
 package NettyWebServer;
 
 import Config.Config;
+import Entities.MediaServerRequest;
+import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.auth0.jwt.JWT;
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.CompositeByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -18,8 +22,10 @@ import io.netty.util.CharsetUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.StringTokenizer;
 import java.util.UUID;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
@@ -39,35 +45,54 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
     private String serverUser = config.getServerQueueUserName();
     private String serverPass = config.getServerQueuePass();
     private final Logger LOGGER = Logger.getLogger(RequestHandler.class.getName()) ;
+    private boolean isTesting = false;
 
     private Channel senderChannel;
 
-    RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO) {
+    public RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO) {
         this.uuid = uuid;
         this.RPC_QUEUE_REPLY_TO = RPC_QUEUE_REPLY_TO;
         this.RPC_QUEUE_SEND_TO = RPC_QUEUE_SEND_TO;
     }
 
+    public RequestHandler(Channel channel, HashMap<String, ChannelHandlerContext> uuid, String RPC_QUEUE_REPLY_TO, String RPC_QUEUE_SEND_TO,boolean isTesting) {
+        this.uuid = uuid;
+        this.RPC_QUEUE_REPLY_TO = RPC_QUEUE_REPLY_TO;
+        this.RPC_QUEUE_SEND_TO = RPC_QUEUE_SEND_TO;
+        this.isTesting = isTesting;
+    }
+
+
+
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object o) {
-        if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)){
+
+        if(!(o instanceof CompositeByteBuf) && !(o instanceof TextWebSocketFrame)&&!(o instanceof MediaServerRequest) ){
             channelHandlerContext.fireChannelRead(o);
-            return;
+            if(!isTesting) return;
         }
+
         ByteBuf buffer;
+        JSONObject body;
         if(o instanceof TextWebSocketFrame) {
             buffer = (ByteBuf) (((TextWebSocketFrame)o).content());
+            body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
+
+        }
+        else if(o instanceof MediaServerRequest) {
+            body = ((MediaServerRequest)o).getRequest();
         }
         else {
             buffer = (ByteBuf) o;
+            body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
+
         }
 
         //try and catch
         try {
-            JSONObject body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
             final JSONObject jsonRequest;
             final String corrId;
-            if(o instanceof TextWebSocketFrame){
+            if(o instanceof TextWebSocketFrame ){
                 jsonRequest = new JSONObject();
                 jsonRequest.put("Headers", new JSONObject());
                 corrId = UUID.randomUUID().toString();
@@ -79,20 +104,17 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             jsonRequest.put("command", body.get("command"));
             String service = (String) body.get("application");
             jsonRequest.put("application", service);
-
-            if (body.has("image")){
-//                String imageName = ImageWriter.write((String) body.get("image"));
-                body.remove("image");
-                body.put("imageUrl", "ALO");
-//                System.out.println("Image Name : " + imageName);
-            }
-
             jsonRequest.put("body", body);
-
             authenticate(channelHandlerContext, jsonRequest);
-
-            transmitRequest(corrId,jsonRequest,channelHandlerContext,service);
-            if (o instanceof TextWebSocketFrame) {
+            if(o instanceof  MediaServerRequest){
+                 MediaServerRequest msr= ((MediaServerRequest)o);
+                 msr.setJsonRequest(jsonRequest.toString());
+                 transmitMediaRequest(corrId,msr.getByteArray(),channelHandlerContext,service);
+             }
+             else{
+                 transmitRequest(corrId,jsonRequest,channelHandlerContext,service);
+                }
+             if (o instanceof TextWebSocketFrame) {
                 channelHandlerContext.fireChannelRead(o);
             }
         } catch (JSONException e) {
@@ -105,6 +127,42 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             channelHandlerContext.writeAndFlush(response);
         }
 
+    }
+    private void transmitMediaRequest(String corrId, byte[] byteArray, ChannelHandlerContext ctx, String appName) {
+        try {
+            uuid.put(corrId,ctx);
+            AMQP.BasicProperties props = new AMQP.BasicProperties
+                    .Builder()
+                    .correlationId(corrId)
+                    .replyTo(RPC_QUEUE_REPLY_TO)
+                    .build();
+//            System.out.println("Sent   : " + jsonRequest.toString() + "to: " +appName+"-Request");
+            LOGGER.log(Level.INFO,"Sent File to "+appName+"-Request");
+//            System.out.println();
+
+            ConnectionFactory connectionFactory = new ConnectionFactory();
+            connectionFactory.setHost(serverHost);
+            connectionFactory.setPort(serverPort);
+            connectionFactory.setUsername(serverUser);
+            connectionFactory.setPassword(serverPass);
+            Connection connection = null;
+            Channel channel ;
+            try {
+                connection = connectionFactory.newConnection();
+                channel = connection.createChannel();
+
+                channel.basicPublish("", appName + "-Request", props, byteArray);
+            }catch(IOException | TimeoutException e) {
+                e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+
+                LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
+            LOGGER.log(Level.SEVERE,e.getMessage(),e);
+
+        }
     }
 
     private void transmitRequest(String corrId, JSONObject jsonRequest, ChannelHandlerContext ctx,String appName){
@@ -129,15 +187,18 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             try {
                 connection = connectionFactory.newConnection();
                 channel = connection.createChannel();
-                
+
                 channel.basicPublish("", appName + "-Request", props, jsonRequest.toString().getBytes());
+                System.out.print(jsonRequest + "REQUEST")  ;
             }catch(IOException | TimeoutException e) {
+
                 e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
-                
+
                 LOGGER.log(Level.SEVERE,e.getMessage(),e);
             }
 
         } catch (Exception e) {
+
             e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
 
@@ -165,7 +226,9 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
     public void authenticate(ChannelHandlerContext channelHandlerContext, JSONObject jsonRequest) {
         if (jsonRequest.getString("command").equals("SignIn")
             || jsonRequest.getString("command").equals("SignUp")
-            || jsonRequest.getString("command").equals("UpdateChat"))
+            || jsonRequest.getString("command").equals("UpdateChat")
+            || jsonRequest.getString("command").equals("UploadMedia")
+            )
             return;
         try {
             Algorithm algorithm = Algorithm.HMAC256("secret");
@@ -187,4 +250,15 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+    public static String getClientIpAddress(HttpServletRequest request) {
+        String xForwardedForHeader = request.getHeader("X-Forwarded-For");
+        if (xForwardedForHeader == null) {
+            return request.getRemoteAddr();
+        } else {
+            // As of https://en.wikipedia.org/wiki/X-Forwarded-For
+            // The general format of the field is: X-Forwarded-For: client, proxy1, proxy2 ...
+            // we only want the client
+            return new StringTokenizer(xForwardedForHeader, ",").nextToken().trim();
+        }
+    }
 }

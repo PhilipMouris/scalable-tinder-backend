@@ -15,4 +15,6 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 *.log
 redis/
-Logs/
+**/redis/
+logs/
+target/

@@ -11,22 +11,25 @@ import Controller.Controller;
 import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Entities.ErrorLog;
+import Entities.MediaServerRequest;
+import Entities.MediaServerResponse;
+import MediaServer.MediaHandler;
 import MediaServer.MinioInstance;
 import NettyWebServer.NettyServerInitializer;
-import NettyWebServer.RequestHandler;
 import com.rabbitmq.client.*;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.DefaultFileRegion;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.logging.LogLevel;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 import java.io.*;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
@@ -43,6 +46,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static io.netty.buffer.Unpooled.copiedBuffer;
+import static io.netty.handler.codec.http.HttpHeaders.Names.CONTENT_TYPE;
+import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 public abstract class ServiceControl {    // This class is responsible for Managing Each Service (Application) Fully (Queue (Reuqest/Response), Controller etc.)
 
@@ -91,7 +96,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         return minioInstance;
     }
 
-    public void setFileUploader(MinioInstance minioInstance) {
+    public void setMinioInstance(MinioInstance minioInstance) {
         this.minioInstance = minioInstance;
     }
 
@@ -137,38 +142,98 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         //Using Reflection to convert a command String to its appropriate class
 //                        Channel receiver = REQUEST_CHANNEL_MAP.get(RESPONSE_MAIN_QUEUE_NAME);
 
+                         MediaServerResponse msr=MediaServerResponse.getObject(body);
+                         if(msr!=null){   // If a download command
+                           body=msr.getResponseJson().toString().getBytes("UTF-8");
+                             String responseMsg = new String(body, StandardCharsets.UTF_8);
+
+                             org.json.JSONObject responseJson = new org.json.JSONObject(responseMsg);
+                             System.out.println(responseJson);
+                             String status=responseJson.get("status").toString() ;
+                             byte[] fileByteArray = msr.getFile();
+                             File file=new File(msr.getFileName());
+
+                             FileOutputStream fos = null;
+                             try {
+                                 fos = new FileOutputStream(file);
+                                 fos.write(fileByteArray);
+                             }
+                             catch(Exception e){
+                                 e.printStackTrace();
+                             }
+
+
+                             RandomAccessFile raf;
+
+                             try {
+                                 raf = new RandomAccessFile(file, "r");
+                             } catch (FileNotFoundException fnfe) {
+                                 return;
+                             }
+
+                             long fileLength = 0;
+                             try {
+                                 fileLength = raf.length();
+                             } catch (IOException ex) {
+                                 Logger.getLogger(MediaHandler.class.getName()).log(Level.SEVERE, null, ex);
+                             }
+
+                             HttpResponse response = new DefaultHttpResponse(HTTP_1_1, mapToStatus(status));
+                             org.json.JSONObject headers = (org.json.JSONObject) responseJson.get("Headers");
+                             Iterator<String> keys = headers.keys();
+                             while (keys.hasNext()) {
+                                 String key = keys.next();
+                                 String value = (String) headers.get(key);
+                                 response.headers().set(key, value);
+                             }
+                             HttpUtil.setContentLength(response, fileLength);
+                             setContentTypeHeader(response,file);
+                             ChannelHandlerContext ctx = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
+
+                             // Write the initial line and the header.
+                             ctx.write(response);
+                             ChannelFuture sendFileFuture;
+                             DefaultFileRegion defaultRegion = new DefaultFileRegion(raf.getChannel(), 0, fileLength);
+                             sendFileFuture = ctx.write(defaultRegion);
+                             // Write the end marker
+                             ChannelFuture lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT);
+                             ctx.close();
+                             // Write the content.
+
+                             file.delete();
+                         }
+                         else{   // If a normal command's response
                         LOGGER.log(Level.INFO,"Responding to corrID: "+ properties.getCorrelationId() +  ", on Queue : " + RESPONSE_QUEUE_NAME);
                         LOGGER.log(Level.INFO,"Request    :   " + new String(body, "UTF-8"));
                         LOGGER.log(Level.INFO,"Application    :   " + RPC_QUEUE_NAME);
                         LOGGER.log(Level.INFO,"INSTANCE NUM   :   " + ID);
-                        String responseMsg = new String(body, "UTF-8");
-
+                        String responseMsg = new String(body, StandardCharsets.UTF_8);
                         org.json.JSONObject responseJson = new org.json.JSONObject(responseMsg);
-                        if(responseJson.getString("command").equals("UpdateChat"))
+                        if(responseJson.getString("command").equals("UpdateChat")||responseJson.getString("command").equals("UploadMedia"))
                             return;
                         String status=responseJson.get("status").toString() ;
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
                                 mapToStatus(status),
                                 copiedBuffer(responseJson.get("response").toString().getBytes()));
-
                         org.json.JSONObject headers = (org.json.JSONObject) responseJson.get("Headers");
                         Iterator<String> keys = headers.keys();
-
                         while (keys.hasNext()) {
                             String key = keys.next();
+                            if(key.toLowerCase().contains("content")){
+                                continue;
+                            }
                             String value = (String) headers.get(key);
                             response.headers().set(key, value);
                         }
-
                         response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
                         response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
-
-                        LOGGER.log(Level.INFO,"Response   :   " + responseJson.get("response"));
-
+                        response.headers().set(HttpHeaderNames.CONNECTION,HttpHeaderValues.KEEP_ALIVE);
+                        //System.out.println(NettyServerInitializer.getUuid().remove(properties.getCorrelationId()));
                         ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
                         ctxRec.writeAndFlush(response);
                         ctxRec.close();
+                         }
 
                     } catch (RuntimeException| IOException e) {
                         FullHttpResponse response = new DefaultFullHttpResponse(
@@ -178,6 +243,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 
                         response.headers().set(HttpHeaderNames.CONTENT_TYPE, "application/json");
                         response.headers().set(HttpHeaderNames.CONTENT_LENGTH, response.content().readableBytes());
+
                         ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
                         ctxRec.writeAndFlush(response);
                         ctxRec.close();
@@ -217,6 +283,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 //
 //            Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, " [x] Awaiting RPC requests on Queue : " + RPC_QUEUE_NAME));
             LOGGER.log(Level.INFO," [x] Awaiting RPC requests on Queue : " + REQUEST_QUEUE_NAME);
+       
             requestConsumer = new DefaultConsumer(requestQueueChannel) {
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
@@ -229,13 +296,22 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                     LOGGER.log(Level.INFO,"Responding to corrID: " + properties.getCorrelationId() + ", on Queue : " + REQUEST_QUEUE_NAME);
                     LOGGER.log(Level.INFO,"INSTANCE NUM   :   " + ID);
                     try {
+                        String message;
                         //Using Reflection to convert a command String to its appropriate class
-                        String message = new String(body, StandardCharsets.UTF_8);
+                        MediaServerRequest mediaServerRequest =MediaServerRequest.getObject(body);
+                        if(mediaServerRequest !=null){
+                            message= mediaServerRequest.getJsonRequest().toString();
+                        }
+                        else{
+                            message = new String(body, StandardCharsets.UTF_8);
+                        }
+
                         JSONParser parser = new JSONParser();
                         JSONObject command = (JSONObject) parser.parse(message);
                         String className = (String) command.get("command");
                         LOGGER.log(Level.INFO,"className:"+className);
                         last_com = Class.forName("Commands."+RPC_QUEUE_NAME + "Commands." + className);
+                        //
 //                        ClassLoader parentLoader = com.getClassLoader();
 //                        File dir= new File("/home/vm/Desktop/scalable-tinder/Backend/target/classes");
 //                        URLClassLoader loader1 = new URLClassLoader(
@@ -243,7 +319,6 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 //                        Class com2 = loader1.loadClass("Commands."+RPC_QUEUE_NAME+"Commands."+className);
 
                         Command cmd = (Command) last_com.newInstance();
-
                         TreeMap<String, Object> init = new TreeMap<>();
                         init.put("channel", requestQueueChannel);
                         init.put("properties", properties);
@@ -251,9 +326,10 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         init.put("envelope", envelope);
                         init.put("PostgresInstance", postgresDB);
                         init.put("body", message);
+                        init.put("mediaServerRequest",mediaServerRequest);
 //                        init.put("RLiveObjectService", liveObjectService);
                         init.put("ArangoInstance", arangoInstance);
-                        init.put("FileUploader", minioInstance);
+                        init.put("MinioInstance", minioInstance);
                         init.put("redis", redis);
 //                        init.put("ChatArangoInstance", ChatArangoInstance);
 //                        init.put("UserCacheController", userCacheController);
@@ -270,7 +346,6 @@ public abstract class ServiceControl {    // This class is responsible for Manag
                         ChannelHandlerContext ctxRec = NettyServerInitializer.getUuid().remove(properties.getCorrelationId());
                         ctxRec.writeAndFlush(response);
                         ctxRec.close();
-                        LOGGER.log(Level.SEVERE,e.getMessage(),e);
                         StringWriter errors = new StringWriter();
                         e.printStackTrace(new PrintWriter(errors));
                         Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
@@ -525,4 +600,15 @@ public abstract class ServiceControl {    // This class is responsible for Manag
 //
 //    }
 
+    private static void setContentTypeHeader(HttpResponse response, File file) {
+        MimetypesFileTypeMap mimeTypesMap = new MimetypesFileTypeMap();
+        mimeTypesMap.addMimeTypes("image png tif jpg jpeg bmp");
+        mimeTypesMap.addMimeTypes("text/plain txt");
+        mimeTypesMap.addMimeTypes("video/mp4 mp4");
+        mimeTypesMap.addMimeTypes("application/pdf pdf");
+
+        String mimeType = mimeTypesMap.getContentType(file);
+
+        response.headers().set(CONTENT_TYPE, mimeType);
+    }
 }

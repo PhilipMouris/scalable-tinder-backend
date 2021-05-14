@@ -37,9 +37,11 @@ public class Config {
     private final String servicePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/service.conf";
     private final String nettyServerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/web.server.conf";
     private final String postgresqlPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/postgresql.conf";
-    private final String redisPath = "Backend/src/main/resources/redisEnv.conf";
+    //private final String redisPath = "Backend/src/main/resources/redisEnv.conf";
+    private final String redisPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/redisEnv.conf";
     private final String loggerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/logger.conf";
-    private final String fireBasePath = "Backend/src/main/resources/firebase.conf";
+//
+    private final String fireBasePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/firebase.conf";
     private final String arangoUserName="root";
     private final String arangoPass="";
 
