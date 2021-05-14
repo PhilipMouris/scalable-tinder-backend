@@ -66,7 +66,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             body = new JSONObject(buffer.toString(CharsetUtil.UTF_8));
 
         }
-        if(o instanceof MediaServerRequest) {
+        else if(o instanceof MediaServerRequest) {
             body = ((MediaServerRequest)o).getRequest();
         }
         else {
