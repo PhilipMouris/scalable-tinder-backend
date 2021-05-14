@@ -1,254 +1,88 @@
-May 14, 2021 1:23:23 AM NettyWebServer.NettyServer start
-INFO: Web Server is listening on http://127.0.0.1:8021/
-May 14, 2021 1:23:23 AM NettyWebServer.NettyServer start
+May 14, 2021 3:59:01 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8020/
-May 14, 2021 1:23:24 AM Cache.RedisConnection <init>
+May 14, 2021 3:59:01 AM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8021/
+May 14, 2021 3:59:04 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 14, 2021 1:23:24 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='6cd869ab036cf7dc27c78e57f72861b60a96a219', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:23:24 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 14, 2021 1:23:24 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 14, 2021 1:23:25 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 1:23:25 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='1df6db7bf0f448511693185ea609458e70914e74', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:23:25 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 14, 2021 1:23:25 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 14, 2021 1:23:25 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 1:23:25 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='aaf5ea5b6aee51d1253895c292b45cba670e3b59', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:23:25 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 14, 2021 1:23:25 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 14, 2021 1:23:25 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 1:23:25 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='aaf5ea5b6aee51d1253895c292b45cba670e3b59', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:23:25 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 14, 2021 1:23:25 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 14, 2021 1:23:26 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 1:23:26 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='aaf5ea5b6aee51d1253895c292b45cba670e3b59', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:23:26 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 14, 2021 1:23:26 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 14, 2021 1:23:26 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 1:23:26 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='1df6db7bf0f448511693185ea609458e70914e74', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:23:26 AM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 14, 2021 1:23:26 AM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 14, 2021 1:23:26 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 1:23:26 AM Cache.RedisConnection <init>
+May 14, 2021 3:59:04 AM Cache.RedisConnection <init>
 INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='9af60e7c0b3fe80d7e7f5b9c2d31e817718a6f1c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:23:26 AM Interface.ServiceControl consumeFromRequestQueue
+May 14, 2021 3:59:04 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 14, 2021 3:59:04 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 14, 2021 3:59:04 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 14, 2021 3:59:04 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='6cd869ab036cf7dc27c78e57f72861b60a96a219', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 14, 2021 3:59:04 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 14, 2021 3:59:04 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 14, 2021 3:59:04 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 14, 2021 3:59:04 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='b61354432bf126ebd182767d218fec8f58b815a0', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 14, 2021 3:59:04 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 14, 2021 3:59:04 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 14, 2021 3:59:04 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 14, 2021 3:59:04 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='6cd869ab036cf7dc27c78e57f72861b60a96a219', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 14, 2021 3:59:04 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+May 14, 2021 3:59:04 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+May 14, 2021 3:59:05 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 14, 2021 3:59:05 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='9af60e7c0b3fe80d7e7f5b9c2d31e817718a6f1c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 14, 2021 3:59:05 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 14, 2021 3:59:05 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 14, 2021 3:59:05 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 14, 2021 3:59:05 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='b61354432bf126ebd182767d218fec8f58b815a0', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 14, 2021 3:59:05 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+May 14, 2021 3:59:05 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+May 14, 2021 3:59:05 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+May 14, 2021 3:59:05 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='aaf5ea5b6aee51d1253895c292b45cba670e3b59', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 14, 2021 3:59:05 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : Chat-Request
-May 14, 2021 1:23:26 AM Interface.ServiceControl consumeFromResponseQueue
+May 14, 2021 3:59:05 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : Chat-Response
-May 14, 2021 1:23:27 AM Cache.RedisConnection <init>
+May 14, 2021 3:59:05 AM Cache.RedisConnection <init>
 INFO: Connected to Redis Cluster
-May 14, 2021 1:23:27 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='6cd869ab036cf7dc27c78e57f72861b60a96a219', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:23:27 AM Interface.ServiceControl consumeFromRequestQueue
+May 14, 2021 3:59:05 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='9af60e7c0b3fe80d7e7f5b9c2d31e817718a6f1c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+May 14, 2021 3:59:05 AM Interface.ServiceControl consumeFromRequestQueue
 INFO:  [x] Awaiting RPC requests on Queue : UserToUser-Request
-May 14, 2021 1:23:27 AM Interface.ServiceControl consumeFromResponseQueue
+May 14, 2021 3:59:05 AM Interface.ServiceControl consumeFromResponseQueue
 INFO:  [x] Awaiting RPC RESPONSES on Queue : UserToUser-Response
-May 14, 2021 1:25:16 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Chat","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjN9.5g1Whkyd5_6spSp3KUBdWv836L45b-psdkE6il3e6yE","content-length":"176","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","userBId":"1","messages":[],"userAId":"16"},"command":"CreateChat"},"Uri":"/","command":"CreateChat"}to: Chat-Request
-May 14, 2021 1:25:16 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 33242389-48b7-4a41-93d5-ef4b9a9c3e35, on Queue : Chat-Request
-May 14, 2021 1:25:16 AM Interface.ServiceControl$2 handleDelivery
+May 14, 2021 3:59:09 AM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjN9.5g1Whkyd5_6spSp3KUBdWv836L45b-psdkE6il3e6yE","content-length":"94","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"id":"96010"},"application":"User","command":"UpdateLocation"},"Uri":"/","command":"UpdateLocation"}to: User-Request
+May 14, 2021 3:59:09 AM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: 674500e6-c93a-4eb7-8e77-f0f769e1c7ee, on Queue : User-Request
+May 14, 2021 3:59:09 AM Interface.ServiceControl$2 handleDelivery
 INFO: INSTANCE NUM   :   1
-May 14, 2021 1:25:16 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateChat
-May 14, 2021 1:25:16 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@53f5dec9
-May 14, 2021 1:25:17 AM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.ChatCommands.CreateChat Executed Successfully
-May 14, 2021 1:25:17 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 33242389-48b7-4a41-93d5-ef4b9a9c3e35, on Queue : Chat-Response
-May 14, 2021 1:25:17 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Chat","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjN9.5g1Whkyd5_6spSp3KUBdWv836L45b-psdkE6il3e6yE","content-length":"176","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"id":"95011"},"Hostname":"127.0.0.1:90","body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","userBId":"1","messages":[],"userAId":"16"},"command":"CreateChat"},"Uri":"/","command":"CreateChat","status":"_200"}
-May 14, 2021 1:25:17 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Chat
-May 14, 2021 1:25:17 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:25:53 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"application":"Chat","Headers":{},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"94189","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"}},"command":"UpdateChat"},"command":"UpdateChat"}to: Chat-Request
-May 14, 2021 1:25:53 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: b3f334c1-dc7f-4e51-8946-78cf187c1eff, on Queue : Chat-Request
-May 14, 2021 1:25:53 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:25:53 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:UpdateChat
-May 14, 2021 1:25:53 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@53f5dec9
-May 14, 2021 1:25:53 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.UpdateChat Executed Successfully
-May 14, 2021 1:25:53 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: b3f334c1-dc7f-4e51-8946-78cf187c1eff, on Queue : Chat-Response
-May 14, 2021 1:25:53 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"application":"Chat","Headers":{},"response":{},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"94189","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"}},"command":"UpdateChat"},"command":"UpdateChat","status":"_404"}
-May 14, 2021 1:25:53 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Chat
-May 14, 2021 1:25:53 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:26:17 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"application":"Chat","Headers":{},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"95011","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"}},"command":"UpdateChat"},"command":"UpdateChat"}to: Chat-Request
-May 14, 2021 1:26:17 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: f7bc1cbd-49f4-4d3f-bfc4-a3bf07c45b41, on Queue : Chat-Request
-May 14, 2021 1:26:17 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:26:17 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:UpdateChat
-May 14, 2021 1:26:17 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@53f5dec9
-May 14, 2021 1:26:17 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.UpdateChat Executed Successfully
-May 14, 2021 1:26:17 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.UpdateChat Executed Successfully
-May 14, 2021 1:26:17 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: f7bc1cbd-49f4-4d3f-bfc4-a3bf07c45b41, on Queue : Chat-Response
-May 14, 2021 1:26:17 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"application":"Chat","Headers":{},"response":{"chat":{"createdAt":"2021-07-16T19:20:30.45+01:00","_rev":"_cUf5NNy---","userBId":"1","messages":[{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"}],"_id":"chats/95011","userAId":"16","id":"95011","_key":"95011"}},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"95011","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"}},"command":"UpdateChat"},"command":"UpdateChat","status":"_200"}
-May 14, 2021 1:26:17 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Chat
-May 14, 2021 1:26:17 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:26:17 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 1:26:17 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='6cd869ab036cf7dc27c78e57f72861b60a96a219', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:26:25 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"application":"Chat","Headers":{},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"95011","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"}},"command":"UpdateChat"},"command":"UpdateChat"}to: Chat-Request
-May 14, 2021 1:26:25 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 10e81efc-c23f-4587-a271-53de0aaea897, on Queue : Chat-Request
-May 14, 2021 1:26:25 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:26:25 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:UpdateChat
-May 14, 2021 1:26:25 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@53f5dec9
-May 14, 2021 1:26:25 AM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 1:26:25 AM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='1df6db7bf0f448511693185ea609458e70914e74', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 1:26:25 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.UpdateChat Executed Successfully
-May 14, 2021 1:26:25 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.UpdateChat Executed Successfully
-May 14, 2021 1:26:25 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 10e81efc-c23f-4587-a271-53de0aaea897, on Queue : Chat-Response
-May 14, 2021 1:26:25 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"application":"Chat","Headers":{},"response":{"chat":{"createdAt":"2021-07-16T19:20:30.45+01:00","_rev":"_cUf5U3C---","userBId":"1","messages":[{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"},{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"}],"_id":"chats/95011","userAId":"16","id":"95011","_key":"95011"}},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"95011","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"}},"command":"UpdateChat"},"command":"UpdateChat","status":"_200"}
-May 14, 2021 1:26:25 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Chat
-May 14, 2021 1:26:25 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:26:42 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"application":"Chat","Headers":{},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"95011","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"16","text":"pong","media":"http://photo.com"}},"command":"UploadMedia"},"command":"UploadMedia"}to: Chat-Request
-May 14, 2021 1:26:42 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 88770838-1ad9-47d9-b4c7-2e9618a9778b, on Queue : Chat-Request
-May 14, 2021 1:26:42 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:26:42 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:UploadMedia
-May 14, 2021 1:26:42 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@53f5dec9
-May 14, 2021 1:26:42 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.UploadMedia Executed Successfully
-May 14, 2021 1:26:42 AM Commands.ChatCommands.UploadMedia doCustomCommand
-SEVERE: Cannot invoke "Entities.MediaServerRequest.getFile()" because "this.mediaServerRequest" is null
-java.lang.NullPointerException: Cannot invoke "Entities.MediaServerRequest.getFile()" because "this.mediaServerRequest" is null
-	at Commands.ChatCommands.UploadMedia.doCustomCommand(UploadMedia.java:28)
-	at Interface.ConcreteCommand.execute(ConcreteCommand.java:104)
-	at Interface.Command.run(Command.java:31)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-
-May 14, 2021 1:26:42 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 88770838-1ad9-47d9-b4c7-2e9618a9778b, on Queue : Chat-Response
-May 14, 2021 1:26:42 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"application":"Chat","Headers":{},"response":{"chat":{"createdAt":"2021-07-16T19:20:30.45+01:00","userBId":"1","messages":[{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"},{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"}],"id":"95011","userAId":"16","_key":"95011"}},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"95011","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"16","text":"pong","media":"http://photo.com"}},"command":"UploadMedia"},"command":"UploadMedia","status":"_500"}
-May 14, 2021 1:26:42 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Chat
-May 14, 2021 1:26:42 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:27:11 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"application":"Chat","Headers":{},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"95011","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"16","text":"pong","media":"http://photo.com"}},"command":"UpdateChat"},"command":"UpdateChat"}to: Chat-Request
-May 14, 2021 1:27:11 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 4279b47f-e36a-4934-baa9-1145d23fdc5d, on Queue : Chat-Request
-May 14, 2021 1:27:11 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:27:11 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:UpdateChat
-May 14, 2021 1:27:11 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@53f5dec9
-May 14, 2021 1:27:11 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.UpdateChat Executed Successfully
-May 14, 2021 1:27:11 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.UpdateChat Executed Successfully
-May 14, 2021 1:27:11 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 4279b47f-e36a-4934-baa9-1145d23fdc5d, on Queue : Chat-Response
-May 14, 2021 1:27:11 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"application":"Chat","Headers":{},"response":{"chat":{"createdAt":"2021-07-16T19:20:30.45+01:00","_rev":"_cUf6CRa---","userBId":"1","messages":[{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"},{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"},{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"16","text":"pong","media":"http://photo.com"}],"_id":"chats/95011","userAId":"16","id":"95011","_key":"95011"}},"body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","id":"95011","message":{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"16","text":"pong","media":"http://photo.com"}},"command":"UpdateChat"},"command":"UpdateChat","status":"_200"}
-May 14, 2021 1:27:11 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Chat
-May 14, 2021 1:27:11 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:27:57 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Chat","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjN9.5g1Whkyd5_6spSp3KUBdWv836L45b-psdkE6il3e6yE","content-length":"190","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","userBId":"1","messages":[],"id":"95011","userAId":"16"},"command":"GetChat"},"Uri":"/","command":"GetChat"}to: Chat-Request
-May 14, 2021 1:27:57 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: c48ed751-9cf2-4b62-bb44-6ab6b427980b, on Queue : Chat-Request
-May 14, 2021 1:27:57 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:27:57 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:GetChat
-May 14, 2021 1:27:57 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@53f5dec9
-May 14, 2021 1:27:57 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.GetChat Executed Successfully
-May 14, 2021 1:27:57 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: c48ed751-9cf2-4b62-bb44-6ab6b427980b, on Queue : Chat-Response
-May 14, 2021 1:27:57 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Chat","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjN9.5g1Whkyd5_6spSp3KUBdWv836L45b-psdkE6il3e6yE","content-length":"190","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"chat":{"createdAt":"2021-07-16T19:20:30.45+01:00","userBId":"1","messages":[{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"},{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"1","text":"ping","media":"http://photo.com"},{"createdAt":"2021-07-16T19:20:30.45+01:00","sourceUserId":"16","text":"pong","media":"http://photo.com"}],"id":"95011","userAId":"16","_key":"95011"}},"Hostname":"127.0.0.1:90","body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","userBId":"1","messages":[],"id":"95011","userAId":"16"},"command":"GetChat"},"Uri":"/","command":"GetChat","status":"_200"}
-May 14, 2021 1:27:57 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Chat
-May 14, 2021 1:27:57 AM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:28:06 AM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"Chat","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjN9.5g1Whkyd5_6spSp3KUBdWv836L45b-psdkE6il3e6yE","content-length":"193","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","userBId":"1","messages":[],"id":"95011","userAId":"16"},"command":"DeleteChat"},"Uri":"/","command":"DeleteChat"}to: Chat-Request
-May 14, 2021 1:28:06 AM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 7c765409-c0e1-430f-910d-f23b0432099f, on Queue : Chat-Request
-May 14, 2021 1:28:06 AM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 1:28:06 AM Interface.ServiceControl$2 handleDelivery
-INFO: className:DeleteChat
-May 14, 2021 1:28:06 AM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@53f5dec9
-May 14, 2021 1:28:06 AM Interface.ConcreteCommand handleNoSQLCommand
-INFO: Command: Commands.ChatCommands.DeleteChat Executed Successfully
-May 14, 2021 1:28:06 AM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 7c765409-c0e1-430f-910d-f23b0432099f, on Queue : Chat-Response
-May 14, 2021 1:28:06 AM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"Chat","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjN9.5g1Whkyd5_6spSp3KUBdWv836L45b-psdkE6il3e6yE","content-length":"193","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"chat":{"rev":"_cUf6CRa---","id":"chats/95011","key":"95011"}},"Hostname":"127.0.0.1:90","body":{"application":"Chat","chatData":{"createdAt":"2021-07-16T19:20:30.45+01:00","userBId":"1","messages":[],"id":"95011","userAId":"16"},"command":"DeleteChat"},"Uri":"/","command":"DeleteChat","status":"_200"}
-May 14, 2021 1:28:06 AM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   Chat
-May 14, 2021 1:28:06 AM Interface.ServiceControl$1 handleDelivery
+May 14, 2021 3:59:09 AM Interface.ServiceControl$2 handleDelivery
+INFO: className:UpdateLocation
+May 14, 2021 3:59:09 AM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@63f94f74
+May 14, 2021 3:59:09 AM Interface.ConcreteCommand handleNoSQLCommand
+INFO: Command: Commands.UserCommands.UpdateLocation Executed Successfully
+May 14, 2021 3:59:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: 674500e6-c93a-4eb7-8e77-f0f769e1c7ee, on Queue : User-Response
+May 14, 2021 3:59:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjN9.5g1Whkyd5_6spSp3KUBdWv836L45b-psdkE6il3e6yE","content-length":"94","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"_rev":"_cUiFKbu---","bio":"bio","video":["df.com"],"_key":"96010","birthDate":"1998/01/01","links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"location":{"lng":"31.2852","addressName":"Cairo, Egypt","lat":"30.0778"},"_id":"users/96010","id":"96010","interests":[{"interestID":"sdfsd","name":"sports"}],"email":"alsouida2n@gmail.com"}},"Hostname":"127.0.0.1:90","body":{"userData":{"id":"96010"},"application":"User","command":"UpdateLocation"},"Uri":"/","command":"UpdateLocation","status":"_200"}
+May 14, 2021 3:59:09 AM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+May 14, 2021 3:59:09 AM Interface.ServiceControl$1 handleDelivery
 INFO: INSTANCE NUM   :   1

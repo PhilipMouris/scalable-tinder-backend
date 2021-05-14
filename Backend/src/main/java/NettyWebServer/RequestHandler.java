@@ -93,7 +93,7 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             jsonRequest.put("application", service);
             jsonRequest.put("body", body);
             authenticate(channelHandlerContext, jsonRequest);
-
+            
             if(o instanceof  MediaServerRequest){
                  MediaServerRequest msr= ((MediaServerRequest)o);
                  msr.setJsonRequest(jsonRequest.toString());
