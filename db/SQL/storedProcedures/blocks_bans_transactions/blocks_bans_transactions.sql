@@ -52,14 +52,14 @@ BEGIN
 END;$$
 ;
 DROP FUNCTION IF EXISTS "uspReadAllBans";
-CREATE OR REPLACE FUNCTION "uspReadAllBans"(page int,"limit" int) RETURNS TABLE(id int,moderator_id int,user_id int,reason varchar,expiry_date date,page int,"limit" int)
+CREATE OR REPLACE FUNCTION "uspReadAllBans"(in_page int,"in_limit" int) RETURNS TABLE(id int,moderator_id int,user_id int,reason varchar,expiry_date date)
 LANGUAGE 'plpgsql'
 AS $$
 BEGIN
 	RETURN QUERY
 	SELECT bans.id,bans.moderator_id,bans.user_id,bans.reason,bans.expiry_date from public.bans
-	LIMIT "limit"
-	OFFSET page*"limit";
+	LIMIT "in_limit"
+	OFFSET in_page*"in_limit";
 END;$$
 ;
 DROP FUNCTION IF EXISTS "uspReadUserBans";

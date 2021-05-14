@@ -8,26 +8,20 @@ import Notifications.Firebase;
 import com.arangodb.ArangoCursor;
 import com.arangodb.ArangoDB;
 import com.arangodb.ArangoDBException;
-import com.arangodb.entity.*;
-import com.arangodb.util.MapBuilder;
-import com.arangodb.model.*;
-import com.google.gson.JsonElement;
-import io.netty.handler.logging.LogLevel;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
+import com.arangodb.entity.BaseDocument;
+import com.arangodb.entity.DocumentDeleteEntity;
+import com.arangodb.entity.DocumentEntity;
+import com.arangodb.model.DocumentUpdateOptions;
+import com.github.javafaker.Faker;
+import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import com.google.gson.Gson;
 
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-    public class ArangoInstance {
+public class ArangoInstance {
         public static ArangoDB dbInstance;
         private Config conf = Config.getInstance();
         private Gson gson;
@@ -36,6 +30,8 @@ import java.util.logging.Logger;
         private String dbPass = conf.getArangoQueuePass();
         private String dbName = conf.getArangoDbName();
         private RedisConnection redis;
+        Faker faker = new Faker();
+        ArrayList<UserInterest> interestsPopulation = new ArrayList<>();
         private final Logger LOGGER = Logger.getLogger(ArangoInstance.class.getName()) ;
         public ArangoInstance(int maxConnections) {
             gson = new Gson();
@@ -315,6 +311,120 @@ import java.util.logging.Logger;
 //              arangoInstance.dropDB();
               arangoInstance.initializeDB();
         }
+
+
+        public void populateInterests(){
+            interestsPopulation.add(new UserInterest("1","Surfing"));
+            interestsPopulation.add(new UserInterest("2","Volunteering"));
+            interestsPopulation.add(new UserInterest("3","Tea"));
+            interestsPopulation.add(new UserInterest("4","Politics"));
+            interestsPopulation.add(new UserInterest("5","Art"));
+            interestsPopulation.add(new UserInterest("6","Instagram"));
+            interestsPopulation.add(new UserInterest("7","Spirituality"));
+            interestsPopulation.add(new UserInterest("11","Cycling"));
+            interestsPopulation.add(new UserInterest("12","Foodie"));
+            interestsPopulation.add(new UserInterest("13","Astrology"));
+        }
+                             
+        public void createUsers(){
+            for(int i =1;i<=19;i++){
+                double lng = Double.parseDouble(faker.address().longitude());
+                double lat = Double.parseDouble(faker.address().latitude());
+                String address = faker.address().fullAddress();
+                UserLocation location = new UserLocation(lng,lat,address);
+                String facebook = faker.internet().url();
+                String instagram = faker.internet().url();
+                String twitter = faker.internet().url();
+                String spotify = faker.internet().url();
+                UserLinks links = new UserLinks(facebook,instagram,twitter,spotify);
+                ArrayList<UserInterest> interests = new ArrayList<UserInterest>();
+                int interest1Index = faker.number().numberBetween(0,interestsPopulation.size());
+                int interest2Index = faker.number().numberBetween(0,interestsPopulation.size());
+                interests.add(interestsPopulation.get(interest1Index));
+                interests.add(interestsPopulation.get(interest2Index));
+                int age = faker.number().numberBetween(10,60);
+                double locationPref = faker.number().randomDouble(2,10,150);
+                UserPreference  preference = new UserPreference(age,locationPref);
+                Gender gender = i%2==0?Gender.MALE : Gender.FEMALE;
+                String bio = faker.lorem().sentence(10);
+                String birthDate =  new Timestamp(new Date().getTime()).toString();
+                String key = ""+i;
+                UserData userData = new UserData(key,gender,bio,birthDate,location,links,interests,preference);
+                insert("users",new JSONObject(gson.toJson(userData,UserData.class).toString()));
+
+                //UserLocation location = new UserLocation()
+                //UserData userData = new UserData() ;
+            }
+        }
+
+        public void createNotifications(){
+                 for(int i =0;i<100;i++){
+                     int userID = faker.number().numberBetween(1,19);
+                     String type = "message";
+                     String title = faker.lorem().word();
+                     String body = faker.lorem().sentence(7);
+                     Notification notification = new Notification(userID,type,title,body);
+                     JSONObject object = new JSONObject(gson.toJson(notification,Notification.class).toString());
+                     insert("notifications",object);
+                 }
+            int userID = 5;
+            String type = "message";
+            String title = faker.lorem().word();
+            String body = faker.lorem().sentence(7);
+            Notification notification = new Notification(userID,type,title,body);
+            JSONObject object = new JSONObject(gson.toJson(notification,Notification.class).toString());
+            insert("notifications",object);
+        }
+
+
+        public void createProfileViews(){
+           for(int i =1;i<=19;i++){
+               int viewersCount = faker.number().numberBetween(1,6);
+               ArrayList<Viewer> viewers = new ArrayList<Viewer>();
+               for(int j =0;j<viewersCount;j++){
+                   int viewerID = faker.number().numberBetween(1,19);
+                   if(viewerID != i){
+                       Viewer viewer = new Viewer(new Timestamp(new Date().getTime()).toString(),""+viewerID);
+                       viewers.add(viewer);
+
+                   }
+               }
+               String key = "" +i;
+               ProfileViews profileView = new ProfileViews(key,viewers,""+i);
+               JSONObject object = new JSONObject(gson.toJson(profileView,ProfileViews.class).toString());
+
+               insert("profileViews",object);
+           }
+        }
+
+        public void createChats(){
+            for(int i=1;i<=18;i+=2){
+                String sourceUser = ""+i;
+                String targetUser = ""+(i+1);
+                ArrayList<ChatMessage> messages = new ArrayList<>();
+                int messageCount = faker.number().numberBetween(5,20);
+                for(int j =0;j<messageCount;j++){
+                    String text = faker.lorem().sentence(8);
+                    String id = faker.random().nextBoolean()? sourceUser:targetUser;
+                    ChatMessage message = new ChatMessage(id,text,null);
+                    messages.add(message);
+                }
+               
+                String key = ""+i;
+                Chat chat = new Chat(key,sourceUser,targetUser,messages);
+                JSONObject object = new JSONObject(gson.toJson(chat,Chat.class).toString());
+                insert("chats",object);
+            }
+        }
+        
+        public void populateDB(){
+            populateInterests();
+            createUsers();
+            createNotifications();
+            createProfileViews();
+            createChats();
+        }
+
 
 
 

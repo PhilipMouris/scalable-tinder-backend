@@ -28,15 +28,14 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
     private final Logger LOGGER = Logger.getLogger(HTTPHandler.class.getName()) ;
 
     public void channelReadComplete(ChannelHandlerContext ctx) {
+
         ctx.flush();
         ctx.fireChannelReadComplete();
     }
 
-    
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         JSONObject fullRequest = new JSONObject();
-//        System.out.println(msg);
         if(msg instanceof HttpServletRequest){
             HttpServletRequest req=(HttpServletRequest) msg;
         }
@@ -49,7 +48,6 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
             if (HttpHeaders.is100ContinueExpected(request)) {
                 send100Continue(ctx);
             }
-
             fullRequest.put("Version",request.protocolVersion());
             fullRequest.put("Hostname",request.headers().get(HttpHeaderNames.HOST, "unknown"));
             fullRequest.put("Uri",request.uri());
@@ -148,7 +146,6 @@ public class HTTPHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 //        cause.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);
-        
         FullHttpResponse response = new DefaultFullHttpResponse(
                 HTTP_1_1, OK,
                 Unpooled.copiedBuffer("Not KeepAlive", CharsetUtil.UTF_8));
