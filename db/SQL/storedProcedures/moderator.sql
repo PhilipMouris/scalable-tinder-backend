@@ -3,6 +3,14 @@ CREATE TYPE moderatorInfo AS(
 	"id" INT,
 	email VARCHAR(200)
 );
+
+-- DROP TYPE IF EXISTS moderatorAuthenticationInfo;
+CREATE TYPE moderatorAuthenticationInfo AS(
+    id INT,
+	email VARCHAR,
+	password VARCHAR
+);
+
 -- DROP FUNCTION  IF Exists uspModSignUp;
 CREATE OR REPLACE FUNCTION uspModSignUp(
     _email VARCHAR,
@@ -22,20 +30,19 @@ END; $$
 
 -- DROP  FUNCTION  IF EXISTS  uspModLogin;
 CREATE OR REPLACE FUNCTION uspModLogin(
-	_email VARCHAR(200),
-	"_password" VARCHAR(200)
-) RETURNS moderatorInfo
+	_email VARCHAR(200)
+) RETURNS moderatorAuthenticationInfo
 LANGUAGE 'plpgsql'
 AS $$
 DECLARE
-    authenticated_moderator moderatorInfo;
+    authenticated_moderator moderatorAuthenticationInfo;
 BEGIN
-	SELECT "id", email From public.moderators AS m WHERE m.email = _email AND m.password="_password"
+	SELECT "id", email, password From public.moderators AS m WHERE m.email = _email
 	INTO authenticated_moderator;
 	RETURN authenticated_moderator;
 END;$$
 ;
--- SELECT * FROM uspModLogin('linaeweis2@gmail.com', 'lina');
+-- SELECT * FROM uspModLogin('linaeweis2@gmail.com');
 
 -- DROP  FUNCTION  IF EXISTS  uspDeleteMod;
 CREATE OR REPLACE FUNCTION uspDeleteMod(
