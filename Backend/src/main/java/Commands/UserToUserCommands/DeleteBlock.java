@@ -7,8 +7,8 @@ public class DeleteBlock extends ConcreteCommand{
     @Override
     public void setParameters() {
         storedProcedure = "\"uspDeleteBlock\"";
-        inputParams = new String[]{"blockData.source_user_id",
-                "blockData.target_user_id"};
+        inputParams = new String[]{"blockData.in_source",
+                "blockData.in_target"};
         outputName = "block";
     }
 }

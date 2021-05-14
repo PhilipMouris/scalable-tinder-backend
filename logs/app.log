@@ -6,3 +6,23 @@ Recent access records:
 Recent access records: 
 2021-45-09 06:45:31.639 [nioEventLoopGroup-4-8] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
 Recent access records: 
+2021-51-14 03:51:30.247 [lettuce-epollEventLoop-17-4] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-23-14 04:23:39.340 [nioEventLoopGroup-4-1] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-31-14 04:31:04.766 [nioEventLoopGroup-5-3] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-33-14 04:33:21.490 [nioEventLoopGroup-5-6] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-46-14 04:46:52.621 [nioEventLoopGroup-5-6] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-43-14 06:43:51.859 [nioEventLoopGroup-5-3] ERROR io.netty.util.ResourceLeakDetector - LEAK: ByteBuf.release() was not called before it's garbage-collected. See http://netty.io/wiki/reference-counted-objects.html for more information.
+Recent access records: 
+2021-49-14 06:49:54.000 [pool-55-thread-4] ERROR com.rabbitmq.client.impl.ForgivingExceptionHandler - Consumer Interface.ServiceControl$1@24cd494a (amq.ctag-ydjQqFjwxxkscSjb8G_RbA) method handleDelivery for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1) threw an exception for channel AMQChannel(amqp://guest@127.0.0.1:5672/,1)
+java.lang.NullPointerException: Cannot invoke "io.netty.channel.ChannelHandlerContext.writeAndFlush(Object)" because "ctxRec" is null
+	at Interface.ServiceControl$1.handleDelivery(ServiceControl.java:247) ~[classes/:?]
+	at com.rabbitmq.client.impl.ConsumerDispatcher$5.run(ConsumerDispatcher.java:149) [amqp-client-5.1.2.jar:5.1.2]
+	at com.rabbitmq.client.impl.ConsumerWorkService$WorkPoolRunnable.run(ConsumerWorkService.java:100) [amqp-client-5.1.2.jar:5.1.2]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
