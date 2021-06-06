@@ -1,5 +1,8 @@
 # Scalable Tinder
+## To Run DockerFiles of Application
 
+1- Make Sure you're in "Backend" directory
+2- Run sudo docker-compose up --force-recreate
 ## To Run the Full Application:
 
 
