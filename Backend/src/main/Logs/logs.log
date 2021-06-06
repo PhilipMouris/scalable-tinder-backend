@@ -1,1 +1,68 @@
-
+Jun 06, 2021 1:16:13 AM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8021/
+Jun 06, 2021 1:16:13 AM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8020/
+Jun 06, 2021 1:16:15 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 1:16:15 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='c71104dc32198fc0334b8dc63b05b55a8a996648', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 1:16:15 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+Jun 06, 2021 1:16:15 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+Jun 06, 2021 1:16:15 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 1:16:15 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='ed7aa0677529a1689cf40e330293ec18a1b4c423', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 1:16:15 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+Jun 06, 2021 1:16:15 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+Jun 06, 2021 1:16:15 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 1:16:15 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='c71104dc32198fc0334b8dc63b05b55a8a996648', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 1:16:15 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+Jun 06, 2021 1:16:15 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+Jun 06, 2021 1:16:16 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 1:16:16 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='c71104dc32198fc0334b8dc63b05b55a8a996648', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 1:16:16 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+Jun 06, 2021 1:16:16 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+Jun 06, 2021 1:16:16 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 1:16:16 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='6fcc26801d16261808c3500cab2831e9e2b83a17', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 1:16:16 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+Jun 06, 2021 1:16:16 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+Jun 06, 2021 1:16:16 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 1:16:16 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='c71104dc32198fc0334b8dc63b05b55a8a996648', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 1:16:16 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+Jun 06, 2021 1:16:16 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+Jun 06, 2021 1:16:16 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 1:16:16 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='530319954f232aa986c4910fa315ac6453c66e8d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 1:16:16 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Chat-Request
+Jun 06, 2021 1:16:17 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Chat-Response
+Jun 06, 2021 1:16:17 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 1:16:17 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='9e32bff14259f4a8f84dcc2e442742e4c4fb8d3c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 1:16:17 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : UserToUser-Request
+Jun 06, 2021 1:16:17 AM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : UserToUser-Response

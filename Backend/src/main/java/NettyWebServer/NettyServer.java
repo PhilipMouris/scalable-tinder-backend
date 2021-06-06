@@ -50,7 +50,7 @@ public class NettyServer {
     }
 
     public static void main(String[] args) {
-        int[] ports = new int[]{8020,8021};
+        int[] ports = new int[]{8080};
         for(int port :ports){
             NettyServer s = new NettyServer(port);
             new Thread(() -> {
