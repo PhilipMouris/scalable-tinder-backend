@@ -28,23 +28,23 @@ public class Config {
     private final Properties loggerConfig = new Properties();
     private final Properties firebaseConfig = new Properties();
 
-    private final String arangoPath = "Backend/src/main/resources/arango.conf";
-    private final String minioPath = "Backend/src/main/resources/minio.conf";
-    private final String controllerPath = "Backend/src/main/resources/controller.conf";
-    private final String loadBalancerPath = "Backend/src/main/resources/load.balancer.conf";
-    private final String mediaServerPath = "Backend/src/main/resources/media.server.conf";
-    private final String servicesMQPath = "Backend/src/main/resources/mq.instance.conf";
-    private final String servicePath = "Backend/src/main/resources/service.conf";
-    private final String nettyServerPath = "Backend/src/main/resources/web.server.conf";
-    private final String postgresqlPath = "Backend/src/main/resources/postgresql.conf";
-    //private final String redisPath = "Backend/src/main/resources/redisEnv.conf";
-    private final String redisPath = "Backend/src/main/resources/redisEnv.conf";
-    private final String loggerPath = "Backend/src/main/resources/logger.conf";
+    private final String arangoPath = "src/main/resources/arango.conf";
+    private final String minioPath = "src/main/resources/minio.conf";
+    private final String controllerPath = "src/main/resources/controller.conf";
+    private final String loadBalancerPath = "src/main/resources/load.balancer.conf";
+    private final String mediaServerPath = "src/main/resources/media.server.conf";
+    private final String servicesMQPath = "src/main/resources/mq.instance.conf";
+    private final String servicePath = "src/main/resources/service.conf";
+    private final String nettyServerPath = "src/main/resources/web.server.conf";
+    private final String postgresqlPath = "src/main/resources/postgresql.conf";
+    //private final String redisPath = "src/main/resources/redisEnv.conf";
+    private final String redisPath = "src/main/resources/redisEnv.conf";
+    private final String loggerPath = "src/main/resources/logger.conf";
 //
-    private final String fireBasePath = "Backend/src/main/resources/firebase.conf";
+    private final String fireBasePath = "src/main/resources/firebase.conf";
     private final String arangoUserName="root";
     private final String arangoPass="";
-
+    private String root_path = "";
 
     public Properties getArangoConfig() {
         return arangoConfig;
@@ -67,7 +67,11 @@ public class Config {
 
 
     private Config() {
-
+        if(System.getProperty("user.dir").contains("Backend")){
+            root_path=System.getProperty("user.dir");
+        }else{
+            root_path = System.getProperty("user.dir")+"/Backend";
+        }
         loadConfig(arangoConfig, arangoPath);
         loadConfig(minioConfig,minioPath)   ;
         loadConfig(controllerConfig, controllerPath);
@@ -86,7 +90,7 @@ public class Config {
 
     private void loadConfig(Properties config, String path){
         try {
-            FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"/"+path);
+            FileInputStream file = new FileInputStream(root_path+"/"+path);
             config.load(file);
             file.close();
         } catch (IOException e) {
@@ -347,9 +351,9 @@ public class Config {
     public String getPostgresqlInitConn() {return postgresqlConfig.getProperty("postgresql_init_db");}
 
     //  Logger Configs
-    public String getLoggerPath() {return loggerConfig.getProperty("logger_path");}
+    public String getLoggerPath() {return root_path+"/"+loggerConfig.getProperty("logger_path");}
 
-    public String getLoggerPropsPath() {return loggerConfig.getProperty("logger_props_path");}
+    public String getLoggerPropsPath() {return root_path+"/"+loggerConfig.getProperty("logger_props_path");}
 
 
 

@@ -3,7 +3,6 @@ package NettyWebServer;
 import Config.*;
 import Chat.TextWebSocketFrameHandler;
 import MediaServer.*;
-import Controller.ControllerAdapterHandler;
 import com.rabbitmq.client.*;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
@@ -16,7 +15,7 @@ import io.netty.handler.codec.http.cors.CorsHandler;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import org.json.JSONObject;
 
-import javax.net.ssl.SSLEngine;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;

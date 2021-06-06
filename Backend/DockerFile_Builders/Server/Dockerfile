@@ -16,14 +16,19 @@ ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 # ----
 # Install project dependencies and keep sources
 # make source folder
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/src/app/Backend
+WORKDIR /usr/src/app/Backend
 # install maven dependency packages (keep in image)
-COPY ./pom.xml /usr/src/app
+COPY ./pom.xml /usr/src/app/Backend
+RUN mvn clean
 RUN mvn -T 1C install && rm -rf target
 # copy other source files (keep in image)
-COPY src/main/java/NettyWebServer /usr/src/app/Backend/src/main/java/NettyWebServer
-COPY src/main/resources /usr/src/app/Backend/src/main/resources
+# COPY src/main/java/NettyWebServer /usr/src/app/Backend/src/main/java/NettyWebServer
+# COPY src/main/java/Chat /usr/src/app/Backend/src/main/java/Chat
+# COPY src/main/java/Config /usr/src/app/Backend/src/main/java/Config
+# COPY src/main/java/MediaServer /usr/src/app/Backend/src/main/java/MediaServer
+# COPY src/main/resources /usr/src/app/Backend/src/main/resources
+COPY src /usr/src/app/Backend/src
 RUN mvn compile
 RUN mvn package
 ENTRYPOINT ["mvn","exec:java","-D","exec.mainClass=NettyWebServer.NettyServer"]
