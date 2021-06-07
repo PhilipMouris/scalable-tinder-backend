@@ -1,4 +1,9 @@
 # Scalable Tinder
+## To Build DockerImage for Server
+1- Make sure you're inside "Backend" Directory
+2- sudo docker build -f DockerFile_Builders/Server/Dockerfile -t server:14.0 .
+3- Now the Docker Image is built, can make sure by running (docker images)
+4- To run the image, (sudo docker run server:14.0)
 
 ## To Run the Full Application:
 
