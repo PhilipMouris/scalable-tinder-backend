@@ -35,3 +35,35 @@ services:
       context: .
       dockerfile: DockerFile_Builders/RabbitMQ/Dockerfile
 
+  user_service:
+    depends_on:
+      - "rabbitmq_queues"
+    links:
+      - "rabbitmq_queues"
+    build:
+      context: .
+      dockerfile: DockerFile_Builders/Services/User/Dockerfile
+  moderator_service:
+    depends_on:
+      - "rabbitmq_queues"
+    links:
+      - "rabbitmq_queues"
+    build:
+      context: .
+      dockerfile: DockerFile_Builders/Services/Moderator/Dockerfile
+  user_to_user_service:
+    depends_on:
+      - "rabbitmq_queues"
+    links:
+      - "rabbitmq_queues"
+    build:
+      context: .
+      dockerfile: DockerFile_Builders/Services/UserToUser/Dockerfile
+  chat_service:
+    depends_on:
+      - "rabbitmq_queues"
+    links:
+      - "rabbitmq_queues"
+    build:
+      context: .
+      dockerfile: DockerFile_Builders/Services/Chat/Dockerfile
