@@ -1,304 +1,225 @@
-May 14, 2021 8:50:23 PM NettyWebServer.NettyServer start
+Jun 06, 2021 2:58:36 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8020/
-May 14, 2021 8:50:23 PM NettyWebServer.NettyServer start
+Jun 06, 2021 2:58:36 AM NettyWebServer.NettyServer start
 INFO: Web Server is listening on http://127.0.0.1:8021/
-May 14, 2021 8:50:31 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 8:50:31 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 8:50:31 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 14, 2021 8:50:31 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 14, 2021 8:50:32 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 8:50:32 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='295492a37c42b897eb0ff6a9b4c2dfbf88e0ba3d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 8:50:32 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 14, 2021 8:50:32 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 14, 2021 8:50:32 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 8:50:32 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='86999370fb337f7ef1a7f6d3a4376f9f18255fed', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 8:50:32 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 14, 2021 8:50:32 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 14, 2021 8:50:32 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 8:50:32 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 8:50:32 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : User-Request
-May 14, 2021 8:50:32 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
-May 14, 2021 8:50:32 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 8:50:32 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='86999370fb337f7ef1a7f6d3a4376f9f18255fed', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 8:50:32 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 14, 2021 8:50:32 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 14, 2021 8:50:33 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 8:50:33 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 8:50:33 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
-May 14, 2021 8:50:33 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
-May 14, 2021 8:50:33 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 8:50:33 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='4e529bdedada5a7b4c8c434f50f2c05ae563363e', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 8:50:33 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : Chat-Request
-May 14, 2021 8:50:33 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : Chat-Response
-May 14, 2021 8:50:33 PM Cache.RedisConnection <init>
-INFO: Connected to Redis Cluster
-May 14, 2021 8:50:33 PM Cache.RedisConnection <init>
-INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='fae9e02bed1479574defe6185ab143b0a7dc6d8c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
-May 14, 2021 8:50:33 PM Interface.ServiceControl consumeFromRequestQueue
-INFO:  [x] Awaiting RPC requests on Queue : UserToUser-Request
-May 14, 2021 8:50:33 PM Interface.ServiceControl consumeFromResponseQueue
-INFO:  [x] Awaiting RPC RESPONSES on Queue : UserToUser-Response
-May 14, 2021 8:50:50 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"178","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","last_name":"Souidan","first_name":"Ali","email":"alsouidan@gmail.com"},"application":"User","command":"SignUp"},"Uri":"/","command":"SignUp"}to: User-Request
-May 14, 2021 8:50:50 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: f0d4afb3-1fb3-46d0-87da-d394f8225e53, on Queue : User-Request
-May 14, 2021 8:50:50 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 8:50:50 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:SignUp
-May 14, 2021 8:50:50 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@67a593fa
-May 14, 2021 8:50:55 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.UserCommands.SignUp Executed Successfully
-May 14, 2021 8:50:55 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: f0d4afb3-1fb3-46d0-87da-d394f8225e53, on Queue : User-Response
-May 14, 2021 8:50:55 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"178","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"user":[{"last_name":"Souidan","id":20,"first_name":"Ali","email":"alsouidan@gmail.com"}]},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","last_name":"Souidan","first_name":"Ali","email":"alsouidan@gmail.com"},"application":"User","command":"SignUp"},"Uri":"/","command":"SignUp","status":"_200"}
-May 14, 2021 8:50:55 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:50:55 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 8:50:59 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"131","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","email":"alsouidan@gmail.com"},"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn"}to: User-Request
-May 14, 2021 8:51:00 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 6de112a9-f0f3-40af-ac1d-a1b8b13f82b5, on Queue : User-Request
-May 14, 2021 8:51:00 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 14, 2021 8:51:00 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:SignIn
-May 14, 2021 8:51:00 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@459717eb
-May 14, 2021 8:51:00 PM Interface.ConcreteCommand handleSQLCommand
-INFO: Command: Commands.UserCommands.SignIn Executed Successfully
-May 14, 2021 8:51:01 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 6de112a9-f0f3-40af-ac1d-a1b8b13f82b5, on Queue : User-Response
-May 14, 2021 8:51:01 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"131","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI"},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","email":"alsouidan@gmail.com"},"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn","status":"_200"}
-May 14, 2021 8:51:01 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:51:01 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 14, 2021 8:51:27 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"138","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile"}to: User-Request
-May 14, 2021 8:51:27 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: ec97eb9f-a39a-4052-82cb-ce02a5ddc89d, on Queue : User-Request
-May 14, 2021 8:51:27 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 14, 2021 8:51:27 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:DownloadFile
-May 14, 2021 8:51:27 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@34ee5a48
-May 14, 2021 8:51:28 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: ec97eb9f-a39a-4052-82cb-ce02a5ddc89d, on Queue : User-Response
-May 14, 2021 8:51:28 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"138","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile","status":"_404"}
-May 14, 2021 8:51:28 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:51:28 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 14, 2021 8:51:43 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"138","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile"}to: User-Request
-May 14, 2021 8:51:43 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: f0236122-06d0-459e-8b0e-c91955e65573, on Queue : User-Request
-May 14, 2021 8:51:43 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 14, 2021 8:51:43 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:DownloadFile
-May 14, 2021 8:51:43 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@4660d1e
-May 14, 2021 8:51:43 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: f0236122-06d0-459e-8b0e-c91955e65573, on Queue : User-Response
-May 14, 2021 8:51:43 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"138","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"fileName":"f24724f-6525-4e0f-ad9e-3e7c5517a439.mp4","application":"User","userID":"12345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile","status":"_404"}
-May 14, 2021 8:51:43 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:51:43 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 14, 2021 8:52:03 PM NettyWebServer.RequestHandler transmitMediaRequest
-INFO: Sent File to User-Request
-May 14, 2021 8:52:03 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: a89dfbb3-7ce7-4e0d-b471-91e236ea9c02, on Queue : User-Request
-May 14, 2021 8:52:03 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 8:52:03 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:UploadVideo
-May 14, 2021 8:52:03 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@67a593fa
-May 14, 2021 8:52:04 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: a89dfbb3-7ce7-4e0d-b471-91e236ea9c02, on Queue : User-Response
-May 14, 2021 8:52:04 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"2638812","host":"127.0.0.1:90","content-type":"multipart/form-data; boundary=X-INSOMNIA-BOUNDARY","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"userData":{"isMain":false,"id":"12345"},"application":"User","command":"UploadVideo"},"Uri":"/file/upload","command":"UploadVideo","status":"_404"}
-May 14, 2021 8:52:04 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:52:04 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 8:52:14 PM NettyWebServer.RequestHandler transmitMediaRequest
-INFO: Sent File to User-Request
-May 14, 2021 8:52:14 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: ae9897ea-1db5-4eef-86f8-65b451673bff, on Queue : User-Request
-May 14, 2021 8:52:14 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 14, 2021 8:52:14 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:UploadVideo
-May 14, 2021 8:52:14 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@459717eb
-May 14, 2021 8:52:14 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: ae9897ea-1db5-4eef-86f8-65b451673bff, on Queue : User-Response
-May 14, 2021 8:52:14 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"2638812","host":"127.0.0.1:90","content-type":"multipart/form-data; boundary=X-INSOMNIA-BOUNDARY","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"userData":{"isMain":false,"id":"12345"},"application":"User","command":"UploadVideo"},"Uri":"/file/upload","command":"UploadVideo","status":"_404"}
-May 14, 2021 8:52:14 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:52:14 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 14, 2021 8:52:56 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"653","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","video":["df.com"],"_key":"12345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData"}to: User-Request
-May 14, 2021 8:52:56 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 0e6b5a0e-5e20-410c-b786-7f66abfbd68f, on Queue : User-Request
-May 14, 2021 8:52:56 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 14, 2021 8:52:56 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateUserData
-May 14, 2021 8:52:56 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@34ee5a48
-May 14, 2021 8:52:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 0e6b5a0e-5e20-410c-b786-7f66abfbd68f, on Queue : User-Response
-May 14, 2021 8:52:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"653","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"id":"12345"},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"id":"edfjws","video":["df.com"],"_key":"12345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData","status":"_200"}
-May 14, 2021 8:52:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:52:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 14, 2021 8:53:05 PM NettyWebServer.RequestHandler transmitMediaRequest
-INFO: Sent File to User-Request
-May 14, 2021 8:53:05 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 5fca5e23-4789-4dab-9790-e0e4b4b7ee42, on Queue : User-Request
-May 14, 2021 8:53:05 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 14, 2021 8:53:05 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:UploadVideo
-May 14, 2021 8:53:05 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@4660d1e
-May 14, 2021 8:53:05 PM Commands.UserCommands.UploadVideo doCommand
-SEVERE: Cannot invoke "java.util.List.add(Object)" because the return value of "Models.UserData.getVideos()" is null
-java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because the return value of "Models.UserData.getVideos()" is null
-	at Commands.UserCommands.UploadVideo.doCommand(UploadVideo.java:23)
-	at Interface.ConcreteCommand.execute(ConcreteCommand.java:96)
-	at Interface.Command.run(Command.java:31)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+Jun 06, 2021 2:58:36 AM MessageQueue.ServicesMQ establishAllQueues
+SEVERE: Connection refused
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:60)
+	at com.rabbitmq.client.impl.recovery.RecoveryAwareAMQConnectionFactory.newConnection(RecoveryAwareAMQConnectionFactory.java:62)
+	at com.rabbitmq.client.impl.recovery.AutorecoveringConnection.init(AutorecoveringConnection.java:99)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:948)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:907)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:865)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1018)
+	at MessageQueue.ServicesMQ.establishAllQueues(ServicesMQ.java:60)
+	at MessageQueue.ServicesMQ.<init>(ServicesMQ.java:47)
+	at RunBackEnd.lambda$run$3(RunBackEnd.java:57)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 
-May 14, 2021 8:53:05 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 5fca5e23-4789-4dab-9790-e0e4b4b7ee42, on Queue : User-Response
-May 14, 2021 8:53:05 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"2638812","host":"127.0.0.1:90","content-type":"multipart/form-data; boundary=X-INSOMNIA-BOUNDARY","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"userData":{"isMain":false,"id":"12345"},"application":"User","command":"UploadVideo"},"Uri":"/file/upload","command":"UploadVideo","status":"_500"}
-May 14, 2021 8:53:05 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:53:05 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 14, 2021 8:53:56 PM NettyWebServer.RequestHandler transmitMediaRequest
-INFO: Sent File to User-Request
-May 14, 2021 8:53:57 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 99b8aa0f-8437-4107-b3c7-f8f5bc20a07c, on Queue : User-Request
-May 14, 2021 8:53:57 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 8:53:57 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:UploadVideo
-May 14, 2021 8:53:57 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@67a593fa
-May 14, 2021 8:53:57 PM Commands.UserCommands.UploadVideo doCommand
-SEVERE: Cannot invoke "java.util.List.add(Object)" because the return value of "Models.UserData.getVideos()" is null
-java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because the return value of "Models.UserData.getVideos()" is null
-	at Commands.UserCommands.UploadVideo.doCommand(UploadVideo.java:23)
-	at Interface.ConcreteCommand.execute(ConcreteCommand.java:96)
-	at Interface.Command.run(Command.java:31)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+Jun 06, 2021 2:58:38 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 2:58:38 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='c71104dc32198fc0334b8dc63b05b55a8a996648', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 2:58:38 AM Interface.ServiceControl consumeFromRequestQueue
+SEVERE: Connection refused
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:60)
+	at com.rabbitmq.client.impl.recovery.RecoveryAwareAMQConnectionFactory.newConnection(RecoveryAwareAMQConnectionFactory.java:62)
+	at com.rabbitmq.client.impl.recovery.AutorecoveringConnection.init(AutorecoveringConnection.java:99)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:948)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:907)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:865)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1018)
+	at Interface.ServiceControl.consumeFromRequestQueue(ServiceControl.java:277)
+	at Interface.ServiceControl.start(ServiceControl.java:108)
+	at RunBackEnd.lambda$run$1(RunBackEnd.java:65)
 	at java.base/java.lang.Thread.run(Thread.java:832)
 
-May 14, 2021 8:53:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 99b8aa0f-8437-4107-b3c7-f8f5bc20a07c, on Queue : User-Response
-May 14, 2021 8:53:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"2638812","host":"127.0.0.1:90","content-type":"multipart/form-data; boundary=X-INSOMNIA-BOUNDARY","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"userData":{"isMain":false,"id":"12345"},"application":"User","command":"UploadVideo"},"Uri":"/file/upload","command":"UploadVideo","status":"_500"}
-May 14, 2021 8:53:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:53:57 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   1
-May 14, 2021 8:54:32 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"655","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"videos":["df.com"],"id":"edfjws","_key":"123345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData"}to: User-Request
-May 14, 2021 8:54:32 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 14ce7115-f223-45e7-92fe-2f4d35a7cdd3, on Queue : User-Request
-May 14, 2021 8:54:32 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 14, 2021 8:54:32 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:CreateUserData
-May 14, 2021 8:54:32 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@459717eb
-May 14, 2021 8:54:32 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 14ce7115-f223-45e7-92fe-2f4d35a7cdd3, on Queue : User-Response
-May 14, 2021 8:54:32 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"655","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"id":"123345"},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"videos":["df.com"],"id":"edfjws","_key":"123345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData","status":"_200"}
-May 14, 2021 8:54:32 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:54:32 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   2
-May 14, 2021 8:54:46 PM NettyWebServer.RequestHandler transmitMediaRequest
-INFO: Sent File to User-Request
-May 14, 2021 8:54:46 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: 674349c0-dfc9-4b92-b175-cce6bf017056, on Queue : User-Request
-May 14, 2021 8:54:46 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 14, 2021 8:54:46 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:UploadVideo
-May 14, 2021 8:54:46 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@34ee5a48
-May 14, 2021 8:54:47 PM Interface.ServiceControl$1 handleDelivery
-INFO: Responding to corrID: 674349c0-dfc9-4b92-b175-cce6bf017056, on Queue : User-Response
-May 14, 2021 8:54:47 PM Interface.ServiceControl$1 handleDelivery
-INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"2638813","host":"127.0.0.1:90","content-type":"multipart/form-data; boundary=X-INSOMNIA-BOUNDARY","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"_rev":"_cUu5Igu---","bio":"bio","videos":["df.com","31a1adac-9133-462c-b485-2d872cdb5869.mp4"],"_key":"123345","birthDate":"1998/01/01","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"_id":"users/123345","id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"email":"alsouida2n@gmail.com"}},"Hostname":"127.0.0.1:90","body":{"userData":{"isMain":false,"id":"123345"},"application":"User","command":"UploadVideo"},"Uri":"/file/upload","command":"UploadVideo","status":"_200"}
-May 14, 2021 8:54:47 PM Interface.ServiceControl$1 handleDelivery
-INFO: Application    :   User
-May 14, 2021 8:54:47 PM Interface.ServiceControl$1 handleDelivery
-INFO: INSTANCE NUM   :   3
-May 14, 2021 8:55:14 PM NettyWebServer.RequestHandler transmitRequest
-INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"140","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"fileName":"31a1adac-9133-462c-b485-2d872cdb5869.mp4","application":"User","userID":"123345","command":"DownloadFile"},"Uri":"/","command":"DownloadFile"}to: User-Request
-May 14, 2021 8:55:14 PM Interface.ServiceControl$2 handleDelivery
-INFO: Responding to corrID: dfb64f5c-88e2-4497-b965-2fe8c7398645, on Queue : User-Request
-May 14, 2021 8:55:14 PM Interface.ServiceControl$2 handleDelivery
-INFO: INSTANCE NUM   :   4
-May 14, 2021 8:55:14 PM Interface.ServiceControl$2 handleDelivery
-INFO: className:DownloadFile
-May 14, 2021 8:55:14 PM Interface.ConcreteCommand execute
-INFO: ARANGO is Database.ArangoInstance@4660d1e
+Jun 06, 2021 2:58:38 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 2:58:38 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='9e32bff14259f4a8f84dcc2e442742e4c4fb8d3c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 2:58:38 AM Interface.ServiceControl consumeFromRequestQueue
+SEVERE: Connection refused
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:60)
+	at com.rabbitmq.client.impl.recovery.RecoveryAwareAMQConnectionFactory.newConnection(RecoveryAwareAMQConnectionFactory.java:62)
+	at com.rabbitmq.client.impl.recovery.AutorecoveringConnection.init(AutorecoveringConnection.java:99)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:948)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:907)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:865)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1018)
+	at Interface.ServiceControl.consumeFromRequestQueue(ServiceControl.java:277)
+	at Interface.ServiceControl.start(ServiceControl.java:108)
+	at RunBackEnd.lambda$run$1(RunBackEnd.java:65)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='9e32bff14259f4a8f84dcc2e442742e4c4fb8d3c', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 2:58:39 AM Interface.ServiceControl consumeFromRequestQueue
+SEVERE: Connection refused
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:60)
+	at com.rabbitmq.client.impl.recovery.RecoveryAwareAMQConnectionFactory.newConnection(RecoveryAwareAMQConnectionFactory.java:62)
+	at com.rabbitmq.client.impl.recovery.AutorecoveringConnection.init(AutorecoveringConnection.java:99)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:948)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:907)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:865)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1018)
+	at Interface.ServiceControl.consumeFromRequestQueue(ServiceControl.java:277)
+	at Interface.ServiceControl.start(ServiceControl.java:108)
+	at RunBackEnd.lambda$run$1(RunBackEnd.java:65)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='c71104dc32198fc0334b8dc63b05b55a8a996648', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 2:58:39 AM Interface.ServiceControl consumeFromRequestQueue
+SEVERE: Connection refused
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:60)
+	at com.rabbitmq.client.impl.recovery.RecoveryAwareAMQConnectionFactory.newConnection(RecoveryAwareAMQConnectionFactory.java:62)
+	at com.rabbitmq.client.impl.recovery.AutorecoveringConnection.init(AutorecoveringConnection.java:99)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:948)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:907)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:865)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1018)
+	at Interface.ServiceControl.consumeFromRequestQueue(ServiceControl.java:277)
+	at Interface.ServiceControl.start(ServiceControl.java:108)
+	at RunBackEnd.lambda$run$1(RunBackEnd.java:65)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='530319954f232aa986c4910fa315ac6453c66e8d', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 2:58:39 AM Interface.ServiceControl consumeFromRequestQueue
+SEVERE: Connection refused
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:60)
+	at com.rabbitmq.client.impl.recovery.RecoveryAwareAMQConnectionFactory.newConnection(RecoveryAwareAMQConnectionFactory.java:62)
+	at com.rabbitmq.client.impl.recovery.AutorecoveringConnection.init(AutorecoveringConnection.java:99)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:948)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:907)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:865)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1018)
+	at Interface.ServiceControl.consumeFromRequestQueue(ServiceControl.java:277)
+	at Interface.ServiceControl.start(ServiceControl.java:108)
+	at RunBackEnd.lambda$run$1(RunBackEnd.java:65)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='c71104dc32198fc0334b8dc63b05b55a8a996648', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 2:58:39 AM Interface.ServiceControl consumeFromRequestQueue
+SEVERE: Connection refused
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:60)
+	at com.rabbitmq.client.impl.recovery.RecoveryAwareAMQConnectionFactory.newConnection(RecoveryAwareAMQConnectionFactory.java:62)
+	at com.rabbitmq.client.impl.recovery.AutorecoveringConnection.init(AutorecoveringConnection.java:99)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:948)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:907)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:865)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1018)
+	at Interface.ServiceControl.consumeFromRequestQueue(ServiceControl.java:277)
+	at Interface.ServiceControl.start(ServiceControl.java:108)
+	at RunBackEnd.lambda$run$1(RunBackEnd.java:65)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 2:58:39 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='ed7aa0677529a1689cf40e330293ec18a1b4c423', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 2:58:40 AM Interface.ServiceControl consumeFromRequestQueue
+SEVERE: Connection refused
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:60)
+	at com.rabbitmq.client.impl.recovery.RecoveryAwareAMQConnectionFactory.newConnection(RecoveryAwareAMQConnectionFactory.java:62)
+	at com.rabbitmq.client.impl.recovery.AutorecoveringConnection.init(AutorecoveringConnection.java:99)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:948)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:907)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:865)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1018)
+	at Interface.ServiceControl.consumeFromRequestQueue(ServiceControl.java:277)
+	at Interface.ServiceControl.start(ServiceControl.java:108)
+	at RunBackEnd.lambda$run$1(RunBackEnd.java:65)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+Jun 06, 2021 2:58:40 AM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 06, 2021 2:58:40 AM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='6fcc26801d16261808c3500cab2831e9e2b83a17', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 06, 2021 2:58:40 AM Interface.ServiceControl consumeFromRequestQueue
+SEVERE: Connection refused
+java.net.ConnectException: Connection refused
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:660)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:542)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at com.rabbitmq.client.impl.SocketFrameHandlerFactory.create(SocketFrameHandlerFactory.java:60)
+	at com.rabbitmq.client.impl.recovery.RecoveryAwareAMQConnectionFactory.newConnection(RecoveryAwareAMQConnectionFactory.java:62)
+	at com.rabbitmq.client.impl.recovery.AutorecoveringConnection.init(AutorecoveringConnection.java:99)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:948)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:907)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:865)
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1018)
+	at Interface.ServiceControl.consumeFromRequestQueue(ServiceControl.java:277)
+	at Interface.ServiceControl.start(ServiceControl.java:108)
+	at RunBackEnd.lambda$run$1(RunBackEnd.java:65)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
