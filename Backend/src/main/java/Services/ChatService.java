@@ -53,7 +53,7 @@ public class ChatService extends ServiceControl{
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 
-//    public static void main(String[] args) {
-//        new ChatService().start();
-//    }
+    public static void main(String[] args) {
+        new ChatService(0).start();
+    }
 }

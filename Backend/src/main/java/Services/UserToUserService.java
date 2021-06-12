@@ -52,9 +52,9 @@ public class UserToUserService extends ServiceControl {
 //        ChatArangoInstance.setMaxDBConnections(maxDBConnections);
     }
 
-//    public static void main(String[] argv) {
-//        new UserService();
-//    }
+    public static void main(String[] argv) {
+        new UserToUserService(0).start();
+    }
 
 }
 
