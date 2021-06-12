@@ -42,9 +42,6 @@ public class Config {
     private final String loggerPath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/logger.conf";
 //
     private final String fireBasePath = "/home/vm/Desktop/scalable-tinder/Backend/src/main/resources/firebase.conf";
-    private final String arangoUserName="root";
-    private final String arangoPass="";
-
 
     public Properties getArangoConfig() {
         return arangoConfig;
