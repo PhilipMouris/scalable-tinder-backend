@@ -1,69 +1,144 @@
 version: "3.9"
 services:
+    redis0:
+      build:
+        context: .
+        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+        args:
+          PORT_CONFIG: 7000
+          PORT_BUS_CONFIG: 8100
+      network_mode: "host"
 
-  server:
-    build:
-      context: .
-      dockerfile: ./DockerFile_Builders/Server/Dockerfile
-    ports:
-      - "8021:8080"
+    redis1:
+      build:
+        context: .
+        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+        args:
+          PORT_CONFIG: 7001
+          PORT_BUS_CONFIG: 8101
+      network_mode: "host"
 
-  rabbitmq_server: # login guest:guest
-    image: rabbitmq:3-management
-    ports:
-      - "4369:4369"
-      - "5671:5671"
-      - "5672:5672"
-      - "25672:25672"
-      - "15671:15671"
-      - "15672:15672"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:15672"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-  rabbitmq_queues:
-    depends_on:
-      - "rabbitmq_server"
-    links:
-      - "rabbitmq_server"
-    environment:
-      - HOSTNAMERABBIT=rabbitmq_server
-    restart: on-failure
-    
-    build:
-      context: .
-      dockerfile: DockerFile_Builders/RabbitMQ/Dockerfile
+    redis2:
+      build:
+        context: .
+        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+        args:
+          PORT_CONFIG: 7002
+          PORT_BUS_CONFIG: 8102
+      network_mode: "host"
 
-  user_service:
-    depends_on:
-      - "rabbitmq_queues"
-    links:
-      - "rabbitmq_queues"
-    build:
-      context: .
-      dockerfile: DockerFile_Builders/Services/User/Dockerfile
-  moderator_service:
-    depends_on:
-      - "rabbitmq_queues"
-    links:
-      - "rabbitmq_queues"
-    build:
-      context: .
-      dockerfile: DockerFile_Builders/Services/Moderator/Dockerfile
-  user_to_user_service:
-    depends_on:
-      - "rabbitmq_queues"
-    links:
-      - "rabbitmq_queues"
-    build:
-      context: .
-      dockerfile: DockerFile_Builders/Services/UserToUser/Dockerfile
-  chat_service:
-    depends_on:
-      - "rabbitmq_queues"
-    links:
-      - "rabbitmq_queues"
-    build:
-      context: .
-      dockerfile: DockerFile_Builders/Services/Chat/Dockerfile
+    redis3:
+      build:
+        context: .
+        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+        args:
+          PORT_CONFIG: 7003
+          PORT_BUS_CONFIG: 8103
+      network_mode: "host"
+
+    redis4:
+      build:
+        context: .
+        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+        args:
+          PORT_CONFIG: 7004
+          PORT_BUS_CONFIG: 8104
+      network_mode: "host"
+
+    redis5:
+      build:
+        context: .
+        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+        args:
+          PORT_CONFIG: 7005
+          PORT_BUS_CONFIG: 8105
+      network_mode: "host"
+
+
+    redis-cluster:
+      tty: true
+      build:
+        context: .
+        dockerfile: ./DockerFile_Builders/Redis/Dockerfile
+      #hostname: redis-server
+      depends_on:
+        - redis1
+        - redis2
+        - redis3
+        - redis4
+        - redis5
+      network_mode: "host"
+    server:
+      build:
+        context: .
+        dockerfile: ./DockerFile_Builders/Server/Dockerfile
+      ports:
+        - "8021:8080"
+
+    rabbitmq_server: # login guest:guest
+      image: rabbitmq:3-management
+      ports:
+        - "4369:4369"
+        - "5671:5671"
+        - "5672:5672"
+        - "25672:25672"
+        - "15671:15671"
+        - "15672:15672"
+      healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:15672"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+    rabbitmq_queues:
+      depends_on:
+        - "rabbitmq_server"
+      links:
+        - "rabbitmq_server"
+      environment:
+        - HOSTNAMERABBIT=rabbitmq_server
+      restart: on-failure
+
+      build:
+        context: .
+        dockerfile: DockerFile_Builders/RabbitMQ/Dockerfile
+
+    user_service:
+      depends_on:
+        - "rabbitmq_queues"
+        - "redis-cluster"
+      links:
+        - "rabbitmq_queues"
+        - "redis-cluster"
+      build:
+        context: .
+        dockerfile: DockerFile_Builders/Services/User/Dockerfile
+    moderator_service:
+      depends_on:
+        - "rabbitmq_queues"
+        - "redis-cluster"
+      links:
+        - "rabbitmq_queues"
+        - "redis-cluster"
+      build:
+        context: .
+        dockerfile: DockerFile_Builders/Services/Moderator/Dockerfile
+    user_to_user_service:
+      depends_on:
+        - "rabbitmq_queues"
+        - "redis-cluster"
+      links:
+        - "rabbitmq_queues"
+        - "redis-cluster"
+      build:
+        context: .
+        dockerfile: DockerFile_Builders/Services/UserToUser/Dockerfile
+    chat_service:
+      depends_on:
+        - "rabbitmq_queues"
+        - "redis-cluster"
+      links:
+        - "rabbitmq_queues"
+        - "redis-cluster"
+      build:
+        context: .
+        dockerfile: DockerFile_Builders/Services/Chat/Dockerfile
