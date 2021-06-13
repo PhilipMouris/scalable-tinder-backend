@@ -1,271 +1,273 @@
 version: "3.9"
 services:
-    redis0:
-      build:
-        context: .
-        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
-        args:
-          PORT_CONFIG: 7000
-          PORT_BUS_CONFIG: 8100
-      network_mode: "host"
-
-    redis1:
-      build:
-        context: .
-        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
-        args:
-          PORT_CONFIG: 7001
-          PORT_BUS_CONFIG: 8101
-      network_mode: "host"
-
-    redis2:
-      build:
-        context: .
-        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
-        args:
-          PORT_CONFIG: 7002
-          PORT_BUS_CONFIG: 8102
-      network_mode: "host"
-
-    redis3:
-      build:
-        context: .
-        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
-        args:
-          PORT_CONFIG: 7003
-          PORT_BUS_CONFIG: 8103
-      network_mode: "host"
-
-    redis4:
-      build:
-        context: .
-        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
-        args:
-          PORT_CONFIG: 7004
-          PORT_BUS_CONFIG: 8104
-      network_mode: "host"
-
-    redis5:
-      build:
-        context: .
-        dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
-        args:
-          PORT_CONFIG: 7005
-          PORT_BUS_CONFIG: 8105
-      network_mode: "host"
-
-
-    redis-cluster:
-      tty: true
-      build:
-        context: .
-        dockerfile: ./DockerFile_Builders/Redis/Dockerfile
-      #hostname: redis-server
-      depends_on:
-        - redis1
-        - redis2
-        - redis3
-        - redis4
-        - redis5
-      network_mode: "host"
-    server:
-      build:
-        context: .
-        dockerfile: ./DockerFile_Builders/Server/Dockerfile
-      ports:
-        - "8021:8080"
-
-    rabbitmq_server: # login guest:guest
-      image: rabbitmq:3-management
-      ports:
-        - "4369:4369"
-        - "5671:5671"
-        - "5672:5672"
-        - "25672:25672"
-        - "15671:15671"
-        - "15672:15672"
-      healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:15672"]
-        interval: 30s
-        timeout: 10s
-        retries: 5
-    rabbitmq_queues:
-      depends_on:
-        - "rabbitmq_server"
-      links:
-        - "rabbitmq_server"
-      environment:
-        - HOSTNAMERABBIT=rabbitmq_server
-      restart: on-failure
-
-      build:
-        context: .
-        dockerfile: DockerFile_Builders/RabbitMQ/Dockerfile
-
-    user_service:
-      depends_on:
-        - "rabbitmq_queues"
-        - "redis-cluster"
-      links:
-        - "rabbitmq_queues"
-        - "redis-cluster"
-      build:
-        context: .
-        dockerfile: DockerFile_Builders/Services/User/Dockerfile
-    moderator_service:
-      depends_on:
-        - "rabbitmq_queues"
-        - "redis-cluster"
-      links:
-        - "rabbitmq_queues"
-        - "redis-cluster"
-      build:
-        context: .
-        dockerfile: DockerFile_Builders/Services/Moderator/Dockerfile
-    user_to_user_service:
-      depends_on:
-        - "rabbitmq_queues"
-        - "redis-cluster"
-      links:
-        - "rabbitmq_queues"
-        - "redis-cluster"
-      build:
-        context: .
-        dockerfile: DockerFile_Builders/Services/UserToUser/Dockerfile
-    chat_service:
-      depends_on:
-        - "rabbitmq_queues"
-        - "redis-cluster"
-      links:
-        - "rabbitmq_queues"
-        - "redis-cluster"
-      build:
-        context: .
-        dockerfile: DockerFile_Builders/Services/Chat/Dockerfile
-    postgres_db_container:
-        image: postgres:latest
-        volumes:
-          - ./initDB.sql:/docker-entrypoint-initdb.d/initDB.sql
-        environment:
-          POSTGRES_PASSWORD: rootpassword
-        expose:
-          - "5432"
+    # redis0:
+    #   build:
+    #     context: .
+    #     dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+    #     args:
+    #       PORT_CONFIG: 7000
+    #       PORT_BUS_CONFIG: 8100
+    #   network_mode: "host"
+    #
+    # redis1:
+    #   build:
+    #     context: .
+    #     dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+    #     args:
+    #       PORT_CONFIG: 7001
+    #       PORT_BUS_CONFIG: 8101
+    #   network_mode: "host"
+    #
+    # redis2:
+    #   build:
+    #     context: .
+    #     dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+    #     args:
+    #       PORT_CONFIG: 7002
+    #       PORT_BUS_CONFIG: 8102
+    #   network_mode: "host"
+    #
+    # redis3:
+    #   build:
+    #     context: .
+    #     dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+    #     args:
+    #       PORT_CONFIG: 7003
+    #       PORT_BUS_CONFIG: 8103
+    #   network_mode: "host"
+    #
+    # redis4:
+    #   build:
+    #     context: .
+    #     dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+    #     args:
+    #       PORT_CONFIG: 7004
+    #       PORT_BUS_CONFIG: 8104
+    #   network_mode: "host"
+    #
+    # redis5:
+    #   build:
+    #     context: .
+    #     dockerfile: ./DockerFile_Builders/Redis/Dockerfile-base
+    #     args:
+    #       PORT_CONFIG: 7005
+    #       PORT_BUS_CONFIG: 8105
+    #   network_mode: "host"
+    #
+    #
+    # redis-cluster:
+    #   tty: true
+    #   build:
+    #     context: .
+    #     dockerfile: ./DockerFile_Builders/Redis/Dockerfile
+    #   #hostname: redis-server
+    #   depends_on:
+    #     - redis1
+    #     - redis2
+    #     - redis3
+    #     - redis4
+    #     - redis5
+    #   network_mode: "host"
+    # server:
+    #   build:
+    #     context: .
+    #     dockerfile: ./DockerFile_Builders/Server/Dockerfile
+    #   ports:
+    #     - "8021:8080"
+    #
+    # rabbitmq_server: # login guest:guest
+    #   image: rabbitmq:3-management
+    #   ports:
+    #     - "4369:4369"
+    #     - "5671:5671"
+    #     - "5672:5672"
+    #     - "25672:25672"
+    #     - "15671:15671"
+    #     - "15672:15672"
+    #   healthcheck:
+    #     test: ["CMD", "curl", "-f", "http://localhost:15672"]
+    #     interval: 30s
+    #     timeout: 10s
+    #     retries: 5
+    # rabbitmq_queues:
+    #   depends_on:
+    #     - "rabbitmq_server"
+    #   links:
+    #     - "rabbitmq_server"
+    #   environment:
+    #     - HOSTNAMERABBIT=rabbitmq_server
+    #   restart: on-failure
+    #
+    #   build:
+    #     context: .
+    #     dockerfile: DockerFile_Builders/RabbitMQ/Dockerfile
+    #
+    # user_service:
+    #   depends_on:
+    #     - "rabbitmq_queues"
+    #     - "redis-cluster"
+    #   links:
+    #     - "rabbitmq_queues"
+    #     - "redis-cluster"
+    #   build:
+    #     context: .
+    #     dockerfile: DockerFile_Builders/Services/User/Dockerfile
+    # moderator_service:
+    #   depends_on:
+    #     - "rabbitmq_queues"
+    #     - "redis-cluster"
+    #   links:
+    #     - "rabbitmq_queues"
+    #     - "redis-cluster"
+    #   build:
+    #     context: .
+    #     dockerfile: DockerFile_Builders/Services/Moderator/Dockerfile
+    # user_to_user_service:
+    #   depends_on:
+    #     - "rabbitmq_queues"
+    #     - "redis-cluster"
+    #   links:
+    #     - "rabbitmq_queues"
+    #     - "redis-cluster"
+    #   build:
+    #     context: .
+    #     dockerfile: DockerFile_Builders/Services/UserToUser/Dockerfile
+    # chat_service:
+    #   depends_on:
+    #     - "rabbitmq_queues"
+    #     - "redis-cluster"
+    #   links:
+    #     - "rabbitmq_queues"
+    #     - "redis-cluster"
+    #   build:
+    #     context: .
+    #     dockerfile: DockerFile_Builders/Services/Chat/Dockerfile
+    # postgres_db_container:
+    #     image: postgres:latest
+    #     volumes:
+    #       - ./initDB.sql:/docker-entrypoint-initdb.d/initDB.sql
+    #     environment:
+    #       POSTGRES_PASSWORD: rootpassword
+    #     expose:
+    #       - "5432"
     arangodb_db_container:
       image: arangodb:latest
+      build:
+        context: .
+        dockerfile: DockerFile_Builders/ArangoDB/Dockerfile
       environment:
         ARANGO_ROOT_PASSWORD: rootpassword
         ARANGO_DB: tinderDB
-        ARANGODB_USERNAME: user
+        ARANGODB_USERNAME: root
         ARANGODB_PASSWORD: rootpassword
         ARANGODB_COL1: userData
         ARANGODB_COL2: chats
         ARANGODB_COL3: profileViews
         ARANGODB_COL4: notifications
-      ports:
-        - "8530"
       expose:
-        - "8530"
+        - "8529"
       volumes:
         - arangodb_data_container:/var/lib/arangodb3
         - arangodb_apps_data_container:/var/lib/arangodb3-apps
-        - ./arango-dump/dump:/docker-entrypoint-initdb.d/dumps
+        # - ./arangoInitDB.sh:/docker-entrypoint-initdb.d/arangoInitDB.sh
+      command: arangod
   # starts 4 docker containers running minio server instances.
   # using nginx reverse proxy, load balancing, you can access
   # it through port 9000.
-    minio1:
-      image: minio/minio:RELEASE.2021-06-09T18-51-39Z
-      hostname: minio1
-      volumes:
-        - data1-1:/data1
-        - data1-2:/data2
-      expose:
-        - "9000"
-      environment:
-        MINIO_ROOT_USER: minioadmin
-        MINIO_ROOT_PASSWORD: minioadmin
-      command: server http://minio{1...4}/data{1...2}
-      healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-        interval: 30s
-        timeout: 20s
-        retries: 3
-
-    minio2:
-      image: minio/minio:RELEASE.2021-06-09T18-51-39Z
-      hostname: minio2
-      volumes:
-        - data2-1:/data1
-        - data2-2:/data2
-      expose:
-        - "9000"
-      environment:
-        MINIO_ROOT_USER: minioadmin
-        MINIO_ROOT_PASSWORD: minioadmin
-      command: server http://minio{1...4}/data{1...2}
-      healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-        interval: 30s
-        timeout: 20s
-        retries: 3
-
-    minio3:
-      image: minio/minio:RELEASE.2021-06-09T18-51-39Z
-      hostname: minio3
-      volumes:
-        - data3-1:/data1
-        - data3-2:/data2
-      expose:
-        - "9000"
-      environment:
-        MINIO_ROOT_USER: minioadmin
-        MINIO_ROOT_PASSWORD: minioadmin
-      command: server http://minio{1...4}/data{1...2}
-      healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-        interval: 30s
-        timeout: 20s
-        retries: 3
-
-    minio4:
-      image: minio/minio:RELEASE.2021-06-09T18-51-39Z
-      hostname: minio4
-      volumes:
-        - data4-1:/data1
-        - data4-2:/data2
-      expose:
-        - "9000"
-      environment:
-        MINIO_ROOT_USER: minioadmin
-        MINIO_ROOT_PASSWORD: minioadmin
-      command: server http://minio{1...4}/data{1...2}
-      healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-        interval: 30s
-        timeout: 20s
-        retries: 3
-
-  ## By default this config uses default local driver,
-  ## For custom volumes replace with volume driver configuration.
-    nginx:
-      image: nginx:1.19.2-alpine
-      hostname: nginx
-      volumes:
-        - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      ports:
-        - "9000:9000"
-      depends_on:
-        - minio1
-        - minio2
-        - minio3
-        - minio4
+  #   minio1:
+  #     image: minio/minio:RELEASE.2021-06-09T18-51-39Z
+  #     hostname: minio1
+  #     volumes:
+  #       - data1-1:/data1
+  #       - data1-2:/data2
+  #     expose:
+  #       - "9000"
+  #     environment:
+  #       MINIO_ROOT_USER: minioadmin
+  #       MINIO_ROOT_PASSWORD: minioadmin
+  #     command: server http://minio{1...4}/data{1...2}
+  #     healthcheck:
+  #       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+  #       interval: 30s
+  #       timeout: 20s
+  #       retries: 3
+  #
+  #   minio2:
+  #     image: minio/minio:RELEASE.2021-06-09T18-51-39Z
+  #     hostname: minio2
+  #     volumes:
+  #       - data2-1:/data1
+  #       - data2-2:/data2
+  #     expose:
+  #       - "9000"
+  #     environment:
+  #       MINIO_ROOT_USER: minioadmin
+  #       MINIO_ROOT_PASSWORD: minioadmin
+  #     command: server http://minio{1...4}/data{1...2}
+  #     healthcheck:
+  #       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+  #       interval: 30s
+  #       timeout: 20s
+  #       retries: 3
+  #
+  #   minio3:
+  #     image: minio/minio:RELEASE.2021-06-09T18-51-39Z
+  #     hostname: minio3
+  #     volumes:
+  #       - data3-1:/data1
+  #       - data3-2:/data2
+  #     expose:
+  #       - "9000"
+  #     environment:
+  #       MINIO_ROOT_USER: minioadmin
+  #       MINIO_ROOT_PASSWORD: minioadmin
+  #     command: server http://minio{1...4}/data{1...2}
+  #     healthcheck:
+  #       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+  #       interval: 30s
+  #       timeout: 20s
+  #       retries: 3
+  #
+  #   minio4:
+  #     image: minio/minio:RELEASE.2021-06-09T18-51-39Z
+  #     hostname: minio4
+  #     volumes:
+  #       - data4-1:/data1
+  #       - data4-2:/data2
+  #     expose:
+  #       - "9000"
+  #     environment:
+  #       MINIO_ROOT_USER: minioadmin
+  #       MINIO_ROOT_PASSWORD: minioadmin
+  #     command: server http://minio{1...4}/data{1...2}
+  #     healthcheck:
+  #       test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+  #       interval: 30s
+  #       timeout: 20s
+  #       retries: 3
+  #
+  # ## By default this config uses default local driver,
+  # ## For custom volumes replace with volume driver configuration.
+  #   nginx:
+  #     image: nginx:1.19.2-alpine
+  #     hostname: nginx
+  #     volumes:
+  #       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #     ports:
+  #       - "9000:9000"
+  #     depends_on:
+  #       - minio1
+  #       - minio2
+  #       - minio3
+  #       - minio4
 volumes:
   arangodb_data_container:
   arangodb_apps_data_container:
-  data1-1:
-  data1-2:
-  data2-1:
-  data2-2:
-  data3-1:
-  data3-2:
-  data4-1:
-  data4-2:
+  # data1-1:
+  # data1-2:
+  # data2-1:
+  # data2-2:
+  # data3-1:
+  # data3-2:
+  # data4-1:
+  # data4-2:
