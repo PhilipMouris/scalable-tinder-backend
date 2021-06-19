@@ -90,6 +90,7 @@ public abstract class ServiceControl {    // This class is responsible for Manag
         RESPONSE_QUEUE_NAME = RPC_QUEUE_NAME + RESPONSE_EXTENSION;
         this.ID = ID;
         redis = new RedisConnection();
+        executor.execute(new Controller(this,ID));
     }
 
     public MinioInstance getMinioInstance() {
@@ -379,8 +380,8 @@ public abstract class ServiceControl {    // This class is responsible for Manag
     public boolean resume() {
         try {
             requestConsumerTag = requestQueueChannel.basicConsume(REQUEST_QUEUE_NAME, false, requestConsumer);
-            responseConsumerTag =responseQueueChannel.basicConsume(RESPONSE_QUEUE_NAME, false, responseConsumer);
-            return true;
+//            responseConsumerTag =responseQueueChannel.basicConsume(RESPONSE_QUEUE_NAME, false, responseConsumer);
+
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
             StringWriter errors = new StringWriter();
@@ -388,13 +389,14 @@ public abstract class ServiceControl {    // This class is responsible for Manag
             Controller.channel.writeAndFlush(new ErrorLog(LogLevel.ERROR, errors.toString()));
             return false;
         }
+        return true;
 //        Controller.channel.writeAndFlush(new ErrorLog(LogLevel.INFO, "Service Resumed"));
     }
 
     public boolean freeze() {
         try {
             requestQueueChannel.basicCancel(requestConsumerTag);
-            responseQueueChannel.basicCancel(responseConsumerTag);
+//            responseQueueChannel.basicCancel(responseConsumerTag);
             return true;
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE,e.getMessage(),e);
