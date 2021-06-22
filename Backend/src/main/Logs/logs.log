@@ -1,1 +1,8 @@
-
+Jun 19, 2021 1:43:25 AM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : UserToUser-Request
+Jun 19, 2021 1:43:29 AM Controller.Controller sendResponse
+INFO: ERROR
+Jun 19, 2021 1:44:20 AM Controller.Controller sendResponse
+INFO: SERVICE RESUMED
+Jun 19, 2021 1:44:27 AM Controller.Controller sendResponse
+INFO: SERVICE FROZE
