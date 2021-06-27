@@ -2,6 +2,7 @@
 //import Controller.Controller;
 import Cache.RedisConnection;
 import Config.Config;
+import Interface.ServiceBuilder;
 import Interface.ServiceControl;
 import MessageQueue.ServicesMQ;
 import Entities.ServicesType;
@@ -57,10 +58,13 @@ public class RunBackEnd {
                     ServicesMQ mQinstance = new ServicesMQ();
                     break;
                 case "controller":
-                    Controller c = new Controller();
+                    ServiceBuilder builder = new ServiceBuilder();
+                    int base_port = 12000;
+                    int count = 0;
                     for(ServicesType type:services) {
                         for(int i =0;i<getInitialInstanceNum(type);i++) {
-                            ServiceControl s = c.initService(type);
+                            ServiceControl s =   builder.build(type,base_port+count) ;
+                            count ++;
                             new Thread(() -> {
                                 s.start();
                             }).start();
@@ -71,15 +75,7 @@ public class RunBackEnd {
                             }
                         }
                     }
-                    new Thread(() -> {
-                        c.start();
-                    }).start();
-                    try {
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();c.LOGGER.log(Level.SEVERE,e.getMessage(),e);
-                    }
-                    //c.initDBs();
+//                    c.initDBs();
 //                    c.startServices();
 
                     break;
