@@ -1,1 +1,218 @@
+Jun 27, 2021 9:21:18 PM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8021/
+Jun 27, 2021 9:21:18 PM NettyWebServer.NettyServer start
+INFO: Web Server is listening on http://127.0.0.1:8020/
+Jun 27, 2021 9:21:39 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 27, 2021 9:21:39 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='460eb57bca54e9d8d746461f95708c6f419c98b0', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 27, 2021 9:21:39 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+Jun 27, 2021 9:21:39 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+Jun 27, 2021 9:21:39 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 27, 2021 9:21:39 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='5b7f2e1cc322d6815e11eda531ec7ffae3c3810b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 27, 2021 9:21:39 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+Jun 27, 2021 9:21:39 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+Jun 27, 2021 9:21:39 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 27, 2021 9:21:39 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7002], nodeId='3fbf7debe768d2e324d48a3ae09c11362e21b052', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 27, 2021 9:21:39 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+Jun 27, 2021 9:21:39 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+Jun 27, 2021 9:21:40 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 27, 2021 9:21:40 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7001], nodeId='5b7f2e1cc322d6815e11eda531ec7ffae3c3810b', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 27, 2021 9:21:40 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : User-Request
+Jun 27, 2021 9:21:40 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : User-Response
+Jun 27, 2021 9:21:40 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 27, 2021 9:21:40 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7000], nodeId='c4839d6f42eab5070e5bf63a584dccaeab38e6bf', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 27, 2021 9:21:40 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+Jun 27, 2021 9:21:40 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+Jun 27, 2021 9:21:40 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 27, 2021 9:21:40 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='460eb57bca54e9d8d746461f95708c6f419c98b0', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 27, 2021 9:21:40 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Moderator-Request
+Jun 27, 2021 9:21:40 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Moderator-Response
+Jun 27, 2021 9:21:40 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 27, 2021 9:21:40 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7004], nodeId='ad6a32a98c277f84863532af36611fa29f7cfdf7', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 27, 2021 9:21:40 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : Chat-Request
+Jun 27, 2021 9:21:40 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : Chat-Response
+Jun 27, 2021 9:21:41 PM Cache.RedisConnection <init>
+INFO: Connected to Redis Cluster
+Jun 27, 2021 9:21:41 PM Cache.RedisConnection <init>
+INFO: Partitions [RedisClusterNodeSnapshot [uri=RedisURI [host='localhost', port=7003], nodeId='460eb57bca54e9d8d746461f95708c6f419c98b0', connected=true, slaveOf='null', pingSentTimestamp=0, pongReceivedTimestamp=0, configEpoch=0, flags=[MYSELF, MASTER], aliases=[]]]
+Jun 27, 2021 9:21:41 PM Interface.ServiceControl consumeFromRequestQueue
+INFO:  [x] Awaiting RPC requests on Queue : UserToUser-Request
+Jun 27, 2021 9:21:41 PM Interface.ServiceControl consumeFromResponseQueue
+INFO:  [x] Awaiting RPC RESPONSES on Queue : UserToUser-Response
+Jun 27, 2021 9:22:48 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"131","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","email":"alsouidan@gmail.com"},"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn"}to: User-Request
+Jun 27, 2021 9:22:48 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: ae1e31ad-30e3-4646-973c-50276e93d89f, on Queue : User-Request
+Jun 27, 2021 9:22:48 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+Jun 27, 2021 9:22:48 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:SignIn
+Jun 27, 2021 9:22:49 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@7e47dd7f
+Jun 27, 2021 9:22:50 PM Interface.ConcreteCommand handleSQLCommand
+INFO: Command: Commands.UserCommands.SignIn Executed Successfully
+Jun 27, 2021 9:22:54 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: ae1e31ad-30e3-4646-973c-50276e93d89f, on Queue : User-Response
+Jun 27, 2021 9:22:54 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"content-length":"131","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI"},"Hostname":"127.0.0.1:90","body":{"userData":{"password":"test","email":"alsouidan@gmail.com"},"application":"User","command":"SignIn"},"Uri":"/","command":"SignIn","status":"_200"}
+Jun 27, 2021 9:22:54 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+Jun 27, 2021 9:22:54 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+Jun 27, 2021 9:23:39 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"655","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"videos":["df.com"],"id":"edfjws","_key":"123345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData"}to: User-Request
+Jun 27, 2021 9:23:39 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: d2c0fb80-d260-497d-8900-8c5ce26dfae5, on Queue : User-Request
+Jun 27, 2021 9:23:39 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   2
+Jun 27, 2021 9:23:39 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:CreateUserData
+Jun 27, 2021 9:23:39 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@212e3576
+Jun 27, 2021 9:23:40 PM Interface.ConcreteCommand handleNoSQLCommand
+SEVERE: Response: 409, Error: 1210 - unique constraint violated - in index primary of type primary over '_key'; conflicting key: 123345
+com.arangodb.ArangoDBException: Response: 409, Error: 1210 - unique constraint violated - in index primary of type primary over '_key'; conflicting key: 123345
+	at com.arangodb.internal.util.ResponseUtils.checkError(ResponseUtils.java:52)
+	at com.arangodb.internal.velocystream.VstCommunication.checkError(VstCommunication.java:141)
+	at com.arangodb.internal.velocystream.VstCommunicationSync.execute(VstCommunicationSync.java:130)
+	at com.arangodb.internal.velocystream.VstCommunicationSync.execute(VstCommunicationSync.java:44)
+	at com.arangodb.internal.velocystream.VstCommunication.execute(VstCommunication.java:135)
+	at com.arangodb.internal.velocystream.VstProtocol.execute(VstProtocol.java:46)
+	at com.arangodb.internal.ArangoExecutorSync.execute(ArangoExecutorSync.java:71)
+	at com.arangodb.internal.ArangoExecutorSync.execute(ArangoExecutorSync.java:61)
+	at com.arangodb.internal.ArangoCollectionImpl.insertDocument(ArangoCollectionImpl.java:56)
+	at com.arangodb.internal.ArangoCollectionImpl.insertDocument(ArangoCollectionImpl.java:49)
+	at Database.ArangoInstance.insert(ArangoInstance.java:62)
+	at Interface.ConcreteCommand.handleNoSQLCommand(ConcreteCommand.java:212)
+	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:244)
+	at Interface.ConcreteCommand.execute(ConcreteCommand.java:96)
+	at Interface.Command.run(Command.java:31)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
 
+Jun 27, 2021 9:23:40 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: d2c0fb80-d260-497d-8900-8c5ce26dfae5, on Queue : User-Response
+Jun 27, 2021 9:23:40 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"655","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"videos":["df.com"],"id":"edfjws","_key":"123345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData","status":"_500"}
+Jun 27, 2021 9:23:40 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+Jun 27, 2021 9:23:40 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   2
+Jun 27, 2021 9:23:53 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"655","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"videos":["df.com"],"id":"edfjws","_key":"123345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData"}to: User-Request
+Jun 27, 2021 9:23:53 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: a4000170-d71b-406a-a070-622ecfe688ec, on Queue : User-Request
+Jun 27, 2021 9:23:53 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   3
+Jun 27, 2021 9:23:53 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:CreateUserData
+Jun 27, 2021 9:23:53 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@2a82d2bb
+Jun 27, 2021 9:23:53 PM Interface.ConcreteCommand handleNoSQLCommand
+SEVERE: Response: 409, Error: 1210 - unique constraint violated - in index primary of type primary over '_key'; conflicting key: 123345
+com.arangodb.ArangoDBException: Response: 409, Error: 1210 - unique constraint violated - in index primary of type primary over '_key'; conflicting key: 123345
+	at com.arangodb.internal.util.ResponseUtils.checkError(ResponseUtils.java:52)
+	at com.arangodb.internal.velocystream.VstCommunication.checkError(VstCommunication.java:141)
+	at com.arangodb.internal.velocystream.VstCommunicationSync.execute(VstCommunicationSync.java:130)
+	at com.arangodb.internal.velocystream.VstCommunicationSync.execute(VstCommunicationSync.java:44)
+	at com.arangodb.internal.velocystream.VstCommunication.execute(VstCommunication.java:135)
+	at com.arangodb.internal.velocystream.VstProtocol.execute(VstProtocol.java:46)
+	at com.arangodb.internal.ArangoExecutorSync.execute(ArangoExecutorSync.java:71)
+	at com.arangodb.internal.ArangoExecutorSync.execute(ArangoExecutorSync.java:61)
+	at com.arangodb.internal.ArangoCollectionImpl.insertDocument(ArangoCollectionImpl.java:56)
+	at com.arangodb.internal.ArangoCollectionImpl.insertDocument(ArangoCollectionImpl.java:49)
+	at Database.ArangoInstance.insert(ArangoInstance.java:62)
+	at Interface.ConcreteCommand.handleNoSQLCommand(ConcreteCommand.java:212)
+	at Interface.ConcreteCommand.doCommand(ConcreteCommand.java:244)
+	at Interface.ConcreteCommand.execute(ConcreteCommand.java:96)
+	at Interface.Command.run(Command.java:31)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+
+Jun 27, 2021 9:23:53 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: a4000170-d71b-406a-a070-622ecfe688ec, on Queue : User-Response
+Jun 27, 2021 9:23:53 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"655","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"videos":["df.com"],"id":"edfjws","_key":"123345","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData","status":"_500"}
+Jun 27, 2021 9:23:53 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+Jun 27, 2021 9:23:53 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   3
+Jun 27, 2021 9:24:06 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"657","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"videos":["df.com"],"id":"edfjws","_key":"12331145","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData"}to: User-Request
+Jun 27, 2021 9:24:07 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: dbbea567-7f57-403a-8bd1-12dba3827d08, on Queue : User-Request
+Jun 27, 2021 9:24:07 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   4
+Jun 27, 2021 9:24:07 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:CreateUserData
+Jun 27, 2021 9:24:07 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@dfabf7c
+Jun 27, 2021 9:24:07 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: dbbea567-7f57-403a-8bd1-12dba3827d08, on Queue : User-Response
+Jun 27, 2021 9:24:07 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"657","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"id":"12331145"},"Hostname":"127.0.0.1:90","body":{"userData":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"bio":"bio","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"videos":["df.com"],"id":"edfjws","_key":"12331145","interests":[{"interestID":"sdfsd","name":"sports"}],"birthDate":"1998/01/01","email":"alsouida2n@gmail.com"},"application":"User","command":"CreateUserData"},"Uri":"/","command":"CreateUserData","status":"_200"}
+Jun 27, 2021 9:24:07 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+Jun 27, 2021 9:24:07 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   4
+Jun 27, 2021 9:24:34 PM NettyWebServer.RequestHandler transmitMediaRequest
+INFO: Sent File to User-Request
+Jun 27, 2021 9:24:34 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: df085d49-918d-493e-9fdf-d6f089759110, on Queue : User-Request
+Jun 27, 2021 9:24:34 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   1
+Jun 27, 2021 9:24:34 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:UploadVideo
+Jun 27, 2021 9:24:34 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@7e47dd7f
+Jun 27, 2021 9:24:36 PM Interface.ServiceControl$1 handleDelivery
+INFO: Responding to corrID: df085d49-918d-493e-9fdf-d6f089759110, on Queue : User-Response
+Jun 27, 2021 9:24:36 PM Interface.ServiceControl$1 handleDelivery
+INFO: Request    :   {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"2638815","host":"127.0.0.1:90","content-type":"multipart/form-data; boundary=X-INSOMNIA-BOUNDARY","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"response":{"record":{"preferences":{"location":2.2,"age":23},"gender":"MALE","profilePictures":[{"isMain":true,"uploadedAt":"2021-04-28T00:34:47.576Z","url":"test.com"}],"_rev":"_ci5sPQa---","bio":"bio","videos":["df.com","e8c51230-8c31-4a2f-a3d5-305dd88cd7c4.mp4"],"_key":"12331145","birthDate":"1998/01/01","location":{"lng":2.2,"addressName":"address","lat":2.2},"links":{"facebook":"fb.com","spotify":"spotify.com","instagram":"instagram.com"},"_id":"users/12331145","id":"edfjws","interests":[{"interestID":"sdfsd","name":"sports"}],"email":"alsouida2n@gmail.com"}},"Hostname":"127.0.0.1:90","body":{"userData":{"isMain":false,"id":"12331145"},"application":"User","command":"UploadVideo"},"Uri":"/file/upload","command":"UploadVideo","status":"_200"}
+Jun 27, 2021 9:24:36 PM Interface.ServiceControl$1 handleDelivery
+INFO: Application    :   User
+Jun 27, 2021 9:24:36 PM Interface.ServiceControl$1 handleDelivery
+INFO: INSTANCE NUM   :   1
+Jun 27, 2021 9:25:39 PM NettyWebServer.RequestHandler transmitRequest
+INFO: Sent   : {"Parameters":{},"application":"User","Version":"HTTP/1.1","Headers":{"authorization":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCIsInVzZXJJZCI6MjB9.FXsfUPIB48CQSR5g-A2aJqFEuNDdYdAix86Y35xtiWI","content-length":"142","host":"127.0.0.1:90","content-type":"application/json","x-forwarded-for":"127.0.0.1","user-agent":"insomnia/2020.5.2","accept":"*/*"},"Hostname":"127.0.0.1:90","body":{"fileName":"e8c51230-8c31-4a2f-a3d5-305dd88cd7c4.mp4","application":"User","userID":"12331145","command":"DownloadFile"},"Uri":"/","command":"DownloadFile"}to: User-Request
+Jun 27, 2021 9:25:40 PM Interface.ServiceControl$2 handleDelivery
+INFO: Responding to corrID: e31359d3-e129-426e-83bb-a75df11b6c01, on Queue : User-Request
+Jun 27, 2021 9:25:40 PM Interface.ServiceControl$2 handleDelivery
+INFO: INSTANCE NUM   :   2
+Jun 27, 2021 9:25:40 PM Interface.ServiceControl$2 handleDelivery
+INFO: className:DownloadFile
+Jun 27, 2021 9:25:40 PM Interface.ConcreteCommand execute
+INFO: ARANGO is Database.ArangoInstance@212e3576
