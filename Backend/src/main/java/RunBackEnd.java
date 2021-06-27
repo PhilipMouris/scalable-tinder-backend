@@ -79,7 +79,7 @@ public class RunBackEnd {
                     } catch (InterruptedException e) {
                         e.printStackTrace();c.LOGGER.log(Level.SEVERE,e.getMessage(),e);
                     }
-//                    c.initDBs();
+                    //c.initDBs();
 //                    c.startServices();
 
                     break;

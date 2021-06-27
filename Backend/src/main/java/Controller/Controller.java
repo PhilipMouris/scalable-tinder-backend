@@ -71,9 +71,9 @@ public class Controller {
         main_logger.initialize();
     }
     public void initDBs(){
-//        for(String service : availableServices.keySet()){
-//            availableServices.get(service).initDB();
-//        }
+    //    for(String service : availableServices.keySet()){
+    //        availableServices.get(service).initDB();
+    //    }
     }
     public static void sendResponse(ChannelHandlerContext ctx,String responseMsg,boolean isError){
         JsonParser jsonParser = new JsonParser();

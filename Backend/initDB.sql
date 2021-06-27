@@ -209,6 +209,24 @@ CREATE TYPE public.userpublicdata AS (
 
 ALTER TYPE public.userpublicdata OWNER TO postgres;
 
+
+--
+-- Name: moderatorauthenticationinfo; Type: TYPE; Schema: public; Owner: postgres
+--
+
+
+CREATE TYPE public.moderatorauthenticationinfo AS(
+    id INT,
+	email VARCHAR,
+	password VARCHAR
+);
+
+
+ALTER TYPE public.moderatorauthenticationinfo OWNER TO postgres;
+
+
+
+
 --
 -- Name: uspCreateBan(integer, integer, character varying, date); Type: FUNCTION; Schema: public; Owner: postgres
 --
@@ -224,6 +242,8 @@ BEGIN
 	RETURN temp_data;
 END;
 $$;
+
+
 
 
 ALTER FUNCTION public."uspCreateBan"(mod_id integer, user_id integer, in_reason character varying, in_expiry_date date) OWNER TO postgres;
@@ -949,22 +969,26 @@ END;$$;
 ALTER FUNCTION public.usplogin(_email character varying) OWNER TO postgres;
 
 --
--- Name: uspmodlogin(character varying, character varying); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: uspmodlogin(character varying); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION public.uspmodlogin(_email character varying, _password character varying) RETURNS public.moderatorinfo
-    LANGUAGE plpgsql
-    AS $$
+CREATE FUNCTION public.uspmodlogin(
+	_email VARCHAR(200)
+) RETURNS public.moderatorAuthenticationInfo
+LANGUAGE 'plpgsql'
+AS $$
 DECLARE
-    authenticated_moderator moderatorInfo;
+    authenticated_moderator public.moderatorAuthenticationInfo;
 BEGIN
-	SELECT "id", email From public.moderators AS m WHERE m.email = _email AND m.password="_password"
+	SELECT "id", email, password From public.moderators AS m WHERE m.email = _email
 	INTO authenticated_moderator;
 	RETURN authenticated_moderator;
-END;$$;
+END;$$
+;
 
 
-ALTER FUNCTION public.uspmodlogin(_email character varying, _password character varying) OWNER TO postgres;
+ALTER FUNCTION public.uspmodlogin(_email character varying) OWNER TO postgres;
+
 
 --
 -- Name: uspmodsignup(character varying, character varying); Type: FUNCTION; Schema: public; Owner: postgres
