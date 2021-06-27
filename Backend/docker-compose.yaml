@@ -182,7 +182,7 @@ services:
           ARANGO_ROOT_PASSWORD: rootpassword
           ARANGO_DB: tinderDB
           ARANGODB_USERNAME: root
-          ARANGODB_PASSWORD: 
+          ARANGODB_PASSWORD: rootpassword
           ARANGODB_COL1: userData
           ARANGODB_COL2: chats
           ARANGODB_COL3: profileViews
