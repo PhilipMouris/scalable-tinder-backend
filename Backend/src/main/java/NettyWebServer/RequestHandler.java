@@ -232,6 +232,9 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                         if(responseJson.getString("command").equals("UpdateChat")||responseJson.getString("command").equals("UploadMedia"))
                             return;
                         String status=responseJson.get("status").toString() ;
+                        LOGGER.log(Level.INFO,"Application    :   " + responseJson + "12345678");
+                        LOGGER.log(Level.INFO,"Application    :   " + responseMsg +  "12345678");
+                        
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
                                 mapToStatus(status),

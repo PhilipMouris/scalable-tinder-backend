@@ -12,7 +12,7 @@ public class GetUserDataPaginated extends ConcreteCommand {
         type = "findAll";
         model = "UserData";
         inputParams = new String[]{"limit","page"};
-        collection  = "users";
+        collection  = "userData";
         outputName="users";
         useCache=true;
     }
