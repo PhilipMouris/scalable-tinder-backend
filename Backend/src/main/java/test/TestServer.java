@@ -1,11 +1,11 @@
-package tests;
+package test;
 
 
 import Config.Config;
-import Controller.Controller;
 import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Entities.ServicesType;
+import Interface.ServiceBuilder;
 import Interface.ServiceControl;
 import MessageQueue.ServicesMQ;
 import NettyWebServer.HTTPHandler;
@@ -27,7 +27,7 @@ public class TestServer {
     public static boolean isInitialized = false;
     public static ServicesType[] services = new ServicesType[]{ServicesType.user,ServicesType.moderator, ServicesType.chat,ServicesType.user_to_user};
     private EmbeddedChannel channel;
-
+    private ServiceBuilder builder=new ServiceBuilder();
     public EmbeddedChannel getChannel(){
         return channel;
     }
@@ -48,23 +48,11 @@ public class TestServer {
     }
 
     public void initialize(){
-        Controller c = new Controller();
+        int count=0;
+        int base_port = 12000;
         for(ServicesType type:services) {
-            for(int i =0;i<getInitialInstanceNum(type);i++) {
-                ServiceControl s = c.initService(type);
-               Thread t =  new Thread(() -> {
-                    s.start();
-                });
-               t.start();
-               try {
-                   t.join();
-                   t.setDaemon(false);
-                   Thread.sleep(200);
-               }catch(Exception e){
-                   e.printStackTrace();
-               }
-              
-            }
+           ServiceControl tempService= builder.build(type,base_port+count++);
+           tempService.start();
         }
     }
 

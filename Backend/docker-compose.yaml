@@ -144,34 +144,55 @@ services:
         dockerfile: DockerFile_Builders/Services/Chat/Dockerfile
     postgres_db_container:
         image: postgres:latest
-        volumes:
-          - ./initDB.sql:/docker-entrypoint-initdb.d/initDB.sql
+        volumes: 
+          - ./finalInitDB.sql:/docker-entrypoint-initdb.d/finalInitDB.sql
         environment:
-          POSTGRES_PASSWORD: rootpassword
+          POSTGRES_PASSWORD: vm
           POSTGRES_DB: tinderDB
         expose:
           - "5432"
+    # arangodb_db_container:
+    #   image: arangodb:latest
+    #   build:
+    #     context: .
+    #     dockerfile: DockerFile_Builders/ArangoDB/Dockerfile
+    #   environment:
+    #     ARANGO_ROOT_PASSWORD: rootpassword
+    #     ARANGO_DB: tinderDB
+    #     ARANGODB_USERNAME: root
+    #     ARANGODB_PASSWORD: rootpassword
+    #     ARANGODB_COL1: userData
+    #     ARANGODB_COL2: chats
+    #     ARANGODB_COL3: profileViews
+    #     ARANGODB_COL4: notifications
+    #   expose:
+    #     - "8529"
+    #   # volumes:
+    #   #   - arangodb_data_container:/var/lib/arangodb3
+    #   #   - arangodb_apps_data_container:/var/lib/arangodb3-apps
+    #   #   - ./arangoInitDB.sh:/docker-entrypoint-initdb.d/arangoInitDB.sh
+    #   # command: arangod
+
     arangodb_db_container:
-      image: arangodb:latest
-      build:
-        context: .
-        dockerfile: DockerFile_Builders/ArangoDB/Dockerfile
-      environment:
-        ARANGO_ROOT_PASSWORD: rootpassword
-        ARANGO_DB: tinderDB
-        ARANGODB_USERNAME: root
-        ARANGODB_PASSWORD: rootpassword
-        ARANGODB_COL1: userData
-        ARANGODB_COL2: chats
-        ARANGODB_COL3: profileViews
-        ARANGODB_COL4: notifications
-      expose:
-        - "8529"
-      # volumes:
-      #   - arangodb_data_container:/var/lib/arangodb3
-      #   - arangodb_apps_data_container:/var/lib/arangodb3-apps
-      #   - ./arangoInitDB.sh:/docker-entrypoint-initdb.d/arangoInitDB.sh
-      # command: arangod
+        image: arangodb
+        build:
+          context: .
+          dockerfile: DockerFile_Builders/ArangoDB/Dockerfile
+        environment:
+          ARANGO_ROOT_PASSWORD: rootpassword
+          ARANGO_DB: tinderDB
+          ARANGODB_USERNAME: root
+          ARANGODB_PASSWORD: rootpassword
+          ARANGODB_COL1: users
+          ARANGODB_COL2: chats
+          ARANGODB_COL3: profileViews
+          ARANGODB_COL4: notifications
+        expose:
+            - "8529"
+        volumes:
+          - arangodb_data_container:/var/lib/arangodb3
+          - arangodb_apps_data_container:/var/lib/arangodb3-apps
+        command: arangod
 
     minio1:
       image: minio/minio:RELEASE.2021-06-09T18-51-39Z
@@ -260,8 +281,8 @@ services:
         - minio3
         - minio4
 volumes:
-  # arangodb_data_container:
-  # arangodb_apps_data_container:
+  arangodb_data_container:
+  arangodb_apps_data_container:
   data1-1:
   data1-2:
   data2-1:
