@@ -6,6 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
-        run: lcd Backend && docker-compose up -d
+        run: cd Backend && docker-compose up -d
       - name: Test
         run: docker exec -it backend_server mvn test
