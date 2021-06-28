@@ -6,6 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
-        run: cd Backend && docker-compose down && docker volume prune && docker-compose up -d --build --force-recreate
+        run: cd Backend && docker-compose down && docker volume prune && y && docker-compose up -d --build --force-recreate
       - name: Test
-        run: docker exec -it $(docker ps -aqf "name=backend_server") mvn test
+        run: docker exec -i $(docker ps -aqf "name=backend_server") mvn test
