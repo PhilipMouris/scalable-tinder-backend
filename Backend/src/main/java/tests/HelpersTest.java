@@ -47,7 +47,9 @@ public class HelpersTest {
     @Test
     @DisplayName("Request Sent")
     public void requestSent(FullHttpRequest request){
+        System.out.println("INISSENT IS: ");
         Boolean isSent = channel.writeInbound(request);
+        System.out.println("ISSENT IS: "+isSent);
         assertTrue(isSent);
     }
 
@@ -63,7 +65,7 @@ public class HelpersTest {
         body.put("application",application);
         ByteBuf bbuf = Unpooled.copiedBuffer( body.toString(), StandardCharsets.UTF_8);
         FullHttpRequest request = new DefaultFullHttpRequest(
-                HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8021",bbuf);
+                HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8020",bbuf);
         request.headers().add("Content-Type","application/json");
         request.headers().add("authorization",token);
         requestSent(request);
@@ -74,6 +76,7 @@ public class HelpersTest {
 
     private Callable<Boolean> threadsFinished() {
         return new Callable<Boolean>() {
+            
             public Boolean call(){
                 return channel.outboundMessages().size() >0;
             }
@@ -85,7 +88,7 @@ public class HelpersTest {
         body.put("application",application);
         ByteBuf bbuf = Unpooled.copiedBuffer( body.toString(), StandardCharsets.UTF_8);
         FullHttpRequest request = new DefaultFullHttpRequest(
-                HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8021",bbuf);
+                HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8020",bbuf);
         request.headers().add("Content-Type","application/json");
         requestSent(request);
         responseReceived();
