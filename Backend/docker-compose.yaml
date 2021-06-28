@@ -145,7 +145,7 @@ services:
     postgres_db_container:
         image: postgres:latest
         volumes: 
-          - ./newInitDB.sql:/docker-entrypoint-initdb.d/initDB.sql
+          - ./newInitDB.sql:/docker-entrypoint-initdb.d/newInitDB.sql
         environment:
           POSTGRES_PASSWORD: vm
           POSTGRES_DB: tinderDB
