@@ -63,7 +63,7 @@ public class HelpersTest {
         body.put("application",application);
         ByteBuf bbuf = Unpooled.copiedBuffer( body.toString(), StandardCharsets.UTF_8);
         FullHttpRequest request = new DefaultFullHttpRequest(
-                HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8020",bbuf);
+                HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8021",bbuf);
         request.headers().add("Content-Type","application/json");
         request.headers().add("authorization",token);
         requestSent(request);
@@ -85,7 +85,7 @@ public class HelpersTest {
         body.put("application",application);
         ByteBuf bbuf = Unpooled.copiedBuffer( body.toString(), StandardCharsets.UTF_8);
         FullHttpRequest request = new DefaultFullHttpRequest(
-                HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8020",bbuf);
+                HttpVersion.HTTP_1_1, HttpMethod.POST, "http://127.0.0.1:8021",bbuf);
         request.headers().add("Content-Type","application/json");
         requestSent(request);
         responseReceived();

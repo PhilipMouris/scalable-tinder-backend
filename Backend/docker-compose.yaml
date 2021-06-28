@@ -144,10 +144,10 @@ services:
         dockerfile: DockerFile_Builders/Services/Chat/Dockerfile
     postgres_db_container:
         image: postgres:latest
-        volumes:
+        volumes: 
           - ./initDB.sql:/docker-entrypoint-initdb.d/initDB.sql
         environment:
-          POSTGRES_PASSWORD: rootpassword
+          POSTGRES_PASSWORD: vm
           POSTGRES_DB: tinderDB
         expose:
           - "5432"
