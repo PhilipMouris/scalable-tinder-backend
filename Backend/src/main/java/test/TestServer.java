@@ -1,8 +1,7 @@
-package tests;
+package test;
 
 
 import Config.Config;
-import Controller.Controller;
 import Database.ArangoInstance;
 import Database.PostgreSQL;
 import Entities.ServicesType;

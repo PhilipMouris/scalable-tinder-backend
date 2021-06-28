@@ -1,4 +1,4 @@
-package tests;
+package test;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -20,13 +20,13 @@ import java.util.concurrent.TimeUnit;
 import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class HelpersTest {
+public class Helpers {
     TestServer server;
     EmbeddedChannel channel;
     String token;
 
 
-    public HelpersTest(){
+    public Helpers(){
         server = new TestServer();
         channel = server.getChannel();
         Algorithm algorithm = Algorithm.HMAC256("secret");
