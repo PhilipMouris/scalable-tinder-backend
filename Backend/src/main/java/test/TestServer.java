@@ -48,11 +48,13 @@ public class TestServer {
     }
 
     public void initialize(){
+
         int count=0;
         int base_port = 12000;
         for(ServicesType type:services) {
            ServiceControl tempService= builder.build(type,base_port+count++);
            tempService.start();
+
         }
     }
 
