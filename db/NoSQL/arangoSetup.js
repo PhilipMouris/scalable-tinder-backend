@@ -1,27 +1,23 @@
 db = require('arangojs')();
-userSchema=require("./userSchema.json")
-notificationSchema=require("./notificationSchema.json")
-profileViewSchema=require("./profileViewSchema.json")
-chatSchema=require("./chatSchema.json")
 db.createDatabase('tinderDB').then(()=> console.log("db created"),err=>console.log("Failed to create db"))
 db.useDatabase('tinderDB')
-collection = db.collection("users", { "schema": userSchema });
-collection.create({"schema":userSchema}).then(
+collection = db.collection("users");
+collection.create().then(
   () => console.log('Collection created'),
   err => console.error('Failed to create collection:', err)
 );
-collection = db.collection("notifications", { "schema": notificationSchema });
-collection.create({"schema":notificationSchema}).then(
+collection = db.collection("notifications");
+collection.create().then(
   () => console.log('Collection created'),
   err => console.error('Failed to create collection:', err)
 );
-collection = db.collection("profileViews", { "schema": profileViewSchema });
-collection.create({"schema":profileViewSchema}).then(
+collection = db.collection("profileViews");
+collection.create().then(
   () => console.log('Collection created'),
   err => console.error('Failed to create collection:', err)
 );
-collection = db.collection("chats", { "schema": chatSchema });
-collection.create({"schema":chatSchema}).then(
+collection = db.collection("chats");
+collection.create().then(
   () => console.log('Collection created'),
   err => console.error('Failed to create collection:', err)
 );

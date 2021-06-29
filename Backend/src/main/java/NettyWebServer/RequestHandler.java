@@ -232,6 +232,9 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
                         if(responseJson.getString("command").equals("UpdateChat")||responseJson.getString("command").equals("UploadMedia"))
                             return;
                         String status=responseJson.get("status").toString() ;
+                        LOGGER.log(Level.INFO,"Application    :   " + responseJson + "12345678");
+                        LOGGER.log(Level.INFO,"Application    :   " + responseMsg +  "12345678");
+                        
                         FullHttpResponse response = new DefaultFullHttpResponse(
                                 HttpVersion.HTTP_1_1,
                                 mapToStatus(status),
@@ -342,9 +345,8 @@ public class RequestHandler extends ChannelInboundHandlerAdapter {
             try {
                 connection = connectionFactory.newConnection();
                 channel = connection.createChannel();
-
                 channel.basicPublish("", appName + "-Request", props, jsonRequest.toString().getBytes());
-                System.out.print(jsonRequest + "REQUEST")  ;
+
             }catch(IOException | TimeoutException e) {
 
                 e.printStackTrace();LOGGER.log(Level.SEVERE,e.getMessage(),e);

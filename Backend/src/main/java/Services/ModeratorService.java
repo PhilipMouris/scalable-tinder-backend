@@ -60,8 +60,7 @@ public class ModeratorService extends ServiceControl {
     }
 
 
-//    public static void main(String[] args) {
-//        new PostService();
-//        //postService.add_command("GetKhara","/home/aboelenien/Desktop/GetKhara.txt");
-//    }
+    public static void main(String[] args) {
+        new ModeratorService(0).start();
+    }
 }

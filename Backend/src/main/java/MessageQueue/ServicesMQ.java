@@ -1,21 +1,16 @@
 package MessageQueue;
 
 import Config.Config;
-import Controller.ControllerAdapterHandler;
-import NettyWebServer.NettyServerInitializer;
+
 import com.rabbitmq.client.*;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.http.*;
-import org.json.JSONObject;
+
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
+
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static io.netty.buffer.Unpooled.copiedBuffer;
 
 public class ServicesMQ {
 
@@ -85,7 +80,8 @@ public class ServicesMQ {
     }
 
 
-//    public static void main(String[] argv) {
-//        new MQinstance().start();
-//    }
+    public static void main(String[] argv) {
+        ServicesMQ mq = new ServicesMQ();
+        System.out.println("QUEUES CREATED SUCCESSFULLY");
+    }
 }
