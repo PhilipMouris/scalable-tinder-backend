@@ -6,7 +6,8 @@ import javax.persistence.Table;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-           
+    
+	
 @Entity
 @Table(name = "chats")
 public class Chat {
