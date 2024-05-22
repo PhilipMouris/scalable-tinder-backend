@@ -1,5 +1,5 @@
-# Scalable Tinder Backend
-## To Run DockerFiles of Application
+# scalable-tinder-backend
+## To Run Docker Files of Application
 
 
 1- Make Sure you're in "Backend" directory  
